@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to skaters_path, :flash => {success: 'Welcome Home #{skater.username}' }
     else
   # If user's login doesn't work, send them back to the login form.
-      redirect_to '/login', :flash => {error: 'Oops, something went wrong! Try again please'}
+      redirect_to '/login', :flash => {danger: 'Oops, something went wrong! Try again please'}
     end
   end
 
