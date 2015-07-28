@@ -7,10 +7,15 @@
           <li>
             <div class="media">
               <div class="media-left">
-                <img class="media-object" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar">
+                <a href="<%= spot_path(spot.id) %>">
+                  <img class="media-object" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar">
+                </a>
               </div>
               <div class="media-body">
-                <h4 class="media-heading"><%= spot.name %></h4>
+                  <a href="<%= spot_path(spot.id) %>">
+                    <h4 class="media-heading"><%= spot.name %>
+                    </h4>
+                  </a>
                  <%= spot.description %>
                   <p>balbalab</p>
               </div>

@@ -19,6 +19,7 @@ class SkatersController < ApplicationController
   end
 
   def show
+    @videos = Video.all
     @skater = Skater.find(params[:id])
   end
 

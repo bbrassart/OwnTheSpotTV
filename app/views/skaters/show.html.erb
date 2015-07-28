@@ -8,12 +8,29 @@
         </div>
         <div class="media-body">
           <h4 class="media-heading"><%= current_user.username %></h4>
-          <div>balbalab</div>
+          <p><%= current_user.stance.capitalize %>-footed</p>
+
+          <div>
           <div>
             <%= link_to "Update your profile", edit_skater_path(current_user)%>
           </div>
         </div>
       </div>
     </div>
+    <h3>Here the videos you posted</h3>
+    <div class="media">
+      <div class="media-body">
+        <% @videos.each do |video| %>
+          <% if video.skater_id = current_user.id %>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>" frameborder="0" allowfullscreen></iframe>
+            <h4 class="media-heading"><%= video.name %></h4>
+            <p><%= video.description %></p>
+            <p><span class="glyphicon glyphicon-cog"></span> <%= link_to "Modify this video", edit_video_path(video)%></p>
+            <p><span class="glyphicon glyphicon-trash"></span> <%= link_to "Delete this video", video, method: :delete, data: { confirm: "Are you sure?"} %><p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
   </div>
 </div>
