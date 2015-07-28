@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Check this spot being murdered</h3>
+      <div class="media">
+        <div class="media-left">
+          <img class="media-object" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"><%= @spot.name %></h4>
+          <%= @spot.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
