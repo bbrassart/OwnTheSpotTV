@@ -16,7 +16,29 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-
 body {
-  background: url("http://i.imgur.com/Iw9kqJC.jpg") center fixed;
+  background: url("http://i.imgur.com/fUO9FUm.jpg") center repeat;
+};
+
+.media {
+  padding: 10px 0;
 }
+
+.alert {
+  padding: 5px 35px;
+  margin: 3px auto;
+  border-radius: 50px;
+  width:80%;
+};
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 40px;
+  background-color: #F5F5F5;
+};
+
+ul {
+  list-style: none;
+};

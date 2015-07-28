@@ -15,3 +15,16 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  function fadeAlert(){
+    $('.alert-temp').removeClass('in');
+  }
+
+  function removeAlert(){
+    $('.alert-temp').fadeOut("slow");
+  }
+
+  window.setTimeout(fadeAlert,1000);
+  window.setTimeout(removeAlert,5000);
+});
