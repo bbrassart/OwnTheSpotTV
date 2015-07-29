@@ -38,7 +38,7 @@ categories = [
 
 videos = [
   Video.create!(url: 'https://www.youtube.com/watch?v=aT_yFSUbbVw', skater_id: skaters[0].id, spot_id: spots[0].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=1rvZVp5S9Jg', skater_id: skaters[1].id, spot_id: spots[0].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  #Video.create!(url: '', skater_id: skaters[1].id, spot_id: spots[0].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
   Video.create!(url: 'https://www.youtube.com/watch?v=1rvZVp5S9Jg', skater_id: skaters[1].id, spot_id: spots[2].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
   Video.create!(url: 'https://www.youtube.com/watch?v=j3EwXPTSlZ8', skater_id: skaters[1].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
   Video.create!(url: 'https://www.youtube.com/watch?v=mqGEOK-pnXQ', skater_id: skaters[1].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
