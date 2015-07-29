@@ -13,12 +13,17 @@
       </div>
       <div class="media">
         <div class="media-body">
-          <% @videos.each do |video| %>
-            <p><%= video.description %></p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>" frameborder="0" allowfullscreen></iframe>
-            <h4 class="media-heading"><%= video.name %></h4>
-            <p><%= video.description %></p>
-          <% end %>>
+          <% if @videos.any?%>
+            <% @videos.each do |video| %>
+              <% if @spot.id = video.spot_id %>
+                <h4 class="media-heading"><%= video.name %></h4>
+                <p><%= video.description %></p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>" frameborder="0" allowfullscreen></iframe>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p>No video submitted yet. Go ahead, submit yours and become the boss of the spot</p>
+          <% end %>
         </div>
       </div>
     </div>

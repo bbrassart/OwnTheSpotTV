@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
       <h3>The Mob family</h3>
       <% @skaters.each do |skater|%>
       <% if current_user.nil? %>
@@ -39,6 +39,18 @@
         </ul>
         <% end %>
       <%end%>
+    </div>
+    <div class="col-md-4">
+      <div class="btn-group">
+        <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose a skater <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <% @skaters.each do |skater|%>
+          <li><%= link_to skater.username, skater_path(skater.id) %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

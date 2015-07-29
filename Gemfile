@@ -7,6 +7,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "paperclip", "~> 4.2"
 gem 'awesome_print'
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'friendly_id', '~> 5.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'

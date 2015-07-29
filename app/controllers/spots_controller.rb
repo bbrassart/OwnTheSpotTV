@@ -18,8 +18,8 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @videos = Video.all
     @spot = Spot.find(params[:id])
+    @videos = @spot.videos
   end
 
   def destroy

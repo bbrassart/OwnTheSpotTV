@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
       <h3>The crime scenes</h3>
       <% @spots.each do |spot|%>
         <ul>
@@ -23,6 +23,18 @@
           </li>
         </ul>
         <% end %>
+    </div>
+    <div class="col-md-4">
+      <div class="btn-group">
+        <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose a spot <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <% @spots.each do |spot|%>
+          <li><%= link_to spot.name, spot_path(spot.id) %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

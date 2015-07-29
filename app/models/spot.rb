@@ -4,4 +4,5 @@ class Spot < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :visible, presence: true
+  has_many :videos
 end

@@ -5,4 +5,5 @@ class Video < ActiveRecord::Base
   validates :url, presence: true, uniqueness: true
   validates :spot_id, presence: true
   validates :category, presence: true
+  belongs_to :spot
 end

@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    # @current_user = nil
-    # session[:user_id] = nil
+    #session[:user_id] = nil
     @current_user ||= Skater.find(session[:user_id]) if session[:user_id]
   end
 
