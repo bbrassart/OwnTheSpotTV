@@ -2,6 +2,7 @@ class Video < ActiveRecord::Base
   validates :skater_id, presence: true
   validates :spot_id, presence: true
   validates :name, presence: true
-  validates :spot_id, presence: true, uniqueness: true
+  validates :url, presence: true, uniqueness: true
+  validates :spot_id, presence: true
   validates :category, presence: true
 end

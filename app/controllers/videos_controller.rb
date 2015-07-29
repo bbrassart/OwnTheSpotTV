@@ -21,13 +21,10 @@ class VideosController < ApplicationController
   end
 
   def edit
-    @spots = Spot.all
     @video = Video.find(params[:id])
   end
 
   def update
-    @spot = Spot.find(params[:spot_id])
-    @spots = Spot.all
     @video = Video.find(params[:id])
     if @video.update_attributes(video_params) && current_user
       redirect_to skater_path(current_user), flash: {success: 'Great!! Your video has been edited'}
@@ -37,7 +34,7 @@ class VideosController < ApplicationController
   end
   def destroy
       @video = Video.find_by(id: params[:id]).try(:destroy)
-      redirect_to skater_path(current_user), flash: {danger: "Your clip has been successfully deleted" }
+      redirect_to skater_path(current_user), flash: {success: "Your clip has been successfully deleted" }
   end
 
   private

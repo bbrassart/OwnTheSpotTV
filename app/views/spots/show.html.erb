@@ -14,16 +14,11 @@
       <div class="media">
         <div class="media-body">
           <% @videos.each do |video| %>
-            <% if current_user.nil? && video.spot_id == @spot.id %>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>" frameborder="0" allowfullscreen></iframe>
-              <h4 class="media-heading"><%= video.name %></h4>
-              <p><%= video.description %></p>
-            <% elsif video.spot_id == @spot.id  && current_user.id != video.skater_id%>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>" frameborder="0" allowfullscreen></iframe>
-              <h4 class="media-heading"><%= video.name %></h4>
-              <p><%= video.description %></p>
-            <% end %>
-          <% end %>
+            <p><%= video.description %></p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>" frameborder="0" allowfullscreen></iframe>
+            <h4 class="media-heading"><%= video.name %></h4>
+            <p><%= video.description %></p>
+          <% end %>>
         </div>
       </div>
     </div>

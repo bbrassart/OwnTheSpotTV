@@ -3,7 +3,24 @@
     <div class="col-md-12">
       <h3>The Mob family</h3>
       <% @skaters.each do |skater|%>
-      <% if current_user.nil? || skater.id != current_user.id  %>
+      <% if current_user.nil? %>
+        <ul>
+          <li>
+            <div class="media">
+              <div class="media-left">
+                <img class="media-object" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading"><%= skater.username %></h4>
+                  <p>balbalab</p>
+                  <% if skater.stance.present? %>
+                    <b>Stance:</b> <%= skater.stance.capitalize() %>
+                  <% end %>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <% elsif skater.id != current_user.id  %>
         <ul>
           <li>
             <div class="media">
