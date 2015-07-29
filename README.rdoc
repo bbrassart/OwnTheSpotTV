@@ -1,8 +1,12 @@
 Getting Started
 
 Git clone
+
 Bundle install
+
 create database and seed it
+
 initialize the rails server
+
 
 You are good to go
