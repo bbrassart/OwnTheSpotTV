@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h3>Check this spot being murdered</h3>
+      <p>Check this spot being murdered</p>
       <div class="media">
         <div class="media-left">
           <img class="media-object" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
@@ -11,21 +11,20 @@
           <%= @spot.description %>
         </div>
       </div>
-      <div class="media">
-        <div class="media-body">
-          <% if @videos.any?%>
-            <% @videos.each do |video| %>
-              <% if @spot.id = video.spot_id %>
-                <h4 class="media-heading"><%= video.name %></h4>
-                <p><%= video.description %></p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>" frameborder="0" allowfullscreen></iframe>
-              <% end %>
-            <% end %>
-          <% else %>
-            <p>No video submitted yet. Go ahead, submit yours and become the boss of the spot</p>
+      <% if @videos.any?%>
+        <div class="row">
+          <% @videos.each do |video| %>
+            <% if @spot.id = video.spot_id %>
+              <div class="col-md-6 video__carousel--slide">
+                <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+            </div>
           <% end %>
-        </div>
-      </div>
+        <% end %>
+      <% else %>
+        <p>No video submitted yet. Go ahead, submit yours and become the boss of the spot</p>
+      <% end %>
     </div>
   </div>
 </div>

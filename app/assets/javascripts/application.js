@@ -29,3 +29,8 @@ $(document).ready(function(){
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
 });
+
+$('#myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})

@@ -8,7 +8,6 @@
 </head>
 <body>
   <% flash.each do |k, v| %>
-
     <div class="alert alert-dismissible alert-temp alert-<%=k%>" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -16,12 +15,10 @@
       <%= v %>
     </div>
   <% end %>
-
   <%= render 'helpers/navbar' %>
-
   <%= yield %>
-
-  <%=render 'helpers/footer' %>
-
+  <div class="before--footer">
+    <%=render 'helpers/footer' %>
+  </div>
 </body>
 </html>

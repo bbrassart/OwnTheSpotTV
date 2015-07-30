@@ -20,6 +20,18 @@
   padding: 10px 0;
 }
 
+html, body {
+  height: 100%;
+}
+
+.before--footer {
+  margin-bottom: 40px;
+}
+
+.video__carousel--slide {
+  padding: 10px 0;
+}
+
 .rounded--avatars {
   border-radius: 50%;
 }
@@ -41,10 +53,10 @@
 };
 
 .footer {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
+  margin-bottom: auto;
   height: 40px;
+  bottom: 0;
+  width: 100%;
   background-color: #F5F5F5;
 };
 
