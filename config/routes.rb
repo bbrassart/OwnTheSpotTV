@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get '/' => 'site#home'
-  get '/login' => 'sessions#new'
+  root 'site#home'
   post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy'
 
   resources :skaters
   resources :spots

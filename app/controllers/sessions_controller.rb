@@ -8,16 +8,16 @@ class SessionsController < ApplicationController
     skater = Skater.find_by_username(params[:username])
     if skater && skater.authenticate(params[:password])
       session[:user_id] = skater.id
-      redirect_to skaters_path, :flash => {success: "Welcome Home #{skater.username}" }
+      redirect_to spots_path, :flash => {success: "Welcome Home #{skater.username}" }
     else
   # If user's login doesn't work, send them back to the login form.
-      redirect_to '/login', :flash => {danger: "Oops, something went wrong! Try again please"}
+      redirect_to root_path, :flash => {danger: "Oops, something went wrong! Try again please"}
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/login'
+    redirect_to root_path, :flash => {success: "You've been successfully logged out" }
   end
 
 end
