@@ -18,7 +18,7 @@
                     </h4>
                   </a>
                  <%= spot.description %>
-                  <p>Kick back and enjoy the <%= spot.videos.length + 1 %> clips submited for this spot</p>
+                  <p>Kick back and enjoy the <%= spot.videos.length %> clips submited for this spot</p>
               </div>
             </div>
           </li>
@@ -27,12 +27,16 @@
     </div>
     <div class="col-md-4">
       <div class="btn-group">
-        <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Choose a spot <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <% @spots.each do |spot|%>
-          <li><%= link_to spot.name, spot_path(spot.id) %></li>
+          <% @spots_by_district.each do |spot|%>
+            <%  if (spot.district != @current_district) then @current_district = spot.district%>
+                <li><a disabled=true><b><%= spot.district %></b></a></li>
+                <li><%= link_to spot.name, spot_path(spot.id) %></li>
+                <li role="separator" class="divider"></li>
+            <% end %>
           <% end %>
         </ul>
       </div>

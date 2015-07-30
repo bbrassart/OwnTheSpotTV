@@ -22,22 +22,20 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <h3>Your clips</h3>
-      <% if current_user.videos.any? %>
-        <% current_user.videos.each do |video| %>
-          <div class="media">
-            <div class="media-body">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>" frameborder="0" allowfullscreen></iframe>
-              <h4 class="media-heading"><%= video.name %></h4>
-              <p><%= video.description %></p>
+    <h3>Your clips</h3>
+      <div class="row">
+        <% if current_user.videos.any?%>
+          <% current_user.videos.each do |video| %>
+            <div class="col-md-6 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
               <p><span class="glyphicon glyphicon-cog"></span> <%= link_to "Modify this video", edit_video_path(video)%></p>
               <p><span class="glyphicon glyphicon-trash"></span> <%= link_to "Delete this video", video, method: :delete, data: { confirm: "Are you sure?"} %><p>
             </div>
-          </div>
-        <% end %>
+          <% end %>
       <% else %>
-        <p>You didn't submit any video yet. <%= link_to "Submit your first clip", new_video_path %>
+        You didn't submit any video yet. <%= link_to "Submit your first clip", new_video_path %>
       <% end %>
     </div>
   <% else %>
@@ -62,20 +60,18 @@
       </div>
     </div>
     <div class="row">
-      <% if @skater.videos.any? %>
-        <h3><%= @skater.username %> clips</h3>
+      <% if @skater.videos.any?%>
         <% @skater.videos.each do |video| %>
-          <div class="media">
-            <div class="media-body">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>" frameborder="0" allowfullscreen></iframe>
-              <h4 class="media-heading"><%= video.name %></h4>
-              <p><%= video.description %></p>
+          <div class="col-md-6 video__carousel--slide">
+            <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
             </div>
           </div>
         <% end %>
-      <% else %>
-        <p>He didn't submit any video yet.</p>
-      <% end %>
+    <% else %>
+      <p>he didn't submit any video yet.</p>
+    <% end %>
+  </div>
     <% end %>
   </div>
 </div>
