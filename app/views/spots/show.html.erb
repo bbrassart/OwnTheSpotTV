@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <p>Check this spot being murdered</p>
       <div class="media">
         <div class="media-left">
@@ -11,6 +11,22 @@
           <%= @spot.description %>
         </div>
       </div>
+    </div>
+    <div class="col-md-6">
+      <div class="btn-group">
+        <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose a category <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a disbaled="true">Best Trick</a></li>
+          <li><a disbaled="true">Best Line</a></li>
+          <li><a disbaled="true">Worst Slam</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <% if @videos.any?%>
         <div class="row">
           <% @videos.each do |video| %>
