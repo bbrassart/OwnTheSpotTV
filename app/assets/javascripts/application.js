@@ -17,6 +17,7 @@
 //= require_tree .
 
 $(document).ready(function(){
+
   function fadeAlert(){
     $('.alert-temp').removeClass('in');
   }

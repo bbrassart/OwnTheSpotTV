@@ -2,7 +2,7 @@ class SkatersController < ApplicationController
 
   def index
     @skaters = Skater.all
-    @most_active_skaters = Skater.all.sort_by{|skater| skater.videos.count}.reverse
+    @most_active_skaters = Skater.all.sort_by{|skater| skater.videos.count}.reverse.slice(0..2)
   end
 
   def new
@@ -27,6 +27,7 @@ class SkatersController < ApplicationController
   def destroy
     current_user.try(:destroy)
     redirect_to skaters_path, flash: {success: "How sad is that! #{current_user.username}'s profile has been deleted" }
+    session.clear
   end
 
   def edit

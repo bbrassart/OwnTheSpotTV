@@ -29,7 +29,7 @@
               </div>
               <div class="media-body">
                 <h4 class="media-heading"><%= skater.username %></h4>
-                  <p><%= skater.username %> already posted <%= (skater.videos.length + 1) %> clips.</p>
+                  <p><%= skater.username %> already posted <%= (skater.videos.length) %> clips.</p>
                   <% if skater.stance.present? %>
                     <b>Stance:</b> <%= skater.stance.capitalize() %>
                   <% end %>
@@ -48,17 +48,13 @@
         </button>
         <ul class="dropdown-menu">
           <% @skaters.each do |skater|%>
-          <li><%= link_to skater.username, skater_path(skater.id) %></li>
+            <% next if skater.id == current_user.id %>
+            <li><%= link_to skater.username, skater_path(skater.id) %></li>
           <% end %>
         </ul>
       </div>
     <% else %>
-      <div class="btn-group">
-        <a href="<%= new_skater_path %>">
-        <button class="btn btn-primary btn-lg" type="button">
-           Register as a new user
-        </button>
-      </div>
+      <%= link_to 'Login to see all the skaters', '/login' %>
     <% end %>
     </div>
   </div>

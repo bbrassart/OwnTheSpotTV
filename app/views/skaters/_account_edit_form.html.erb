@@ -1,0 +1,33 @@
+<%= form_for @skater, :html => {:multipart => true }  do |f| %>
+  <form>
+
+    <div class="form-group">
+      <%= f.radio_button :stance, 'regular', :checked => true %>
+      <%= label :stance, 'regular' %>
+      <%= f.radio_button :stance, 'goofy' %>
+      <%= label :stance, 'goofy' %>
+    </div>
+    <div class="form-group">
+      <label for="password">Type a new password</label>
+      <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+    </div>
+    <div class="form-group">
+      <label for="password_confirmation">Confirm your new password</label>
+      <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"  %>
+    </div>
+    <% if @skater.videos.any? %>
+      <p>Here is the list of clips you submitted already</p>
+      <% @skater.videos.each do |video| %>
+        <ul>
+          <li><%= video.name %></li>
+        </ul>
+      <% end %>
+    <% else %>
+      <p>You didn´t submit any video.
+        <%= link_to 'Submit a clip!', new_video_path %></p>
+    <% end %>
+    <div class="form-group">
+      <%= f.submit "Submit", class:"btn btn-primary" %>
+    </div>
+  </form>
+<% end %>
