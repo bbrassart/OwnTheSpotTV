@@ -6,4 +6,5 @@ class Video < ActiveRecord::Base
   validates :spot_id, presence: true
   validates :category, presence: true
   belongs_to :spot
+  belongs_to :skater
 end

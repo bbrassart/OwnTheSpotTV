@@ -2,13 +2,14 @@
   <div class="row">
     <div class="col-md-8">
       <h3>The crime scenes</h3>
-      <% @spots.each do |spot|%>
+      <p>Our most boiling skate spots</p>
+      <% @most_active_spots.each do |spot|%>
         <ul>
           <li>
             <div class="media">
               <div class="media-left">
                 <a href="<%= spot_path(spot.id) %>">
-                  <img class="media-object" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar">
+                  <img class="media-object rounded--avatars" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar">
                 </a>
               </div>
               <div class="media-body">
@@ -17,7 +18,7 @@
                     </h4>
                   </a>
                  <%= spot.description %>
-                  <p>balbalab</p>
+                  <p>Kick back and enjoy the <%= spot.videos.length + 1 %> clips submited for this spot</p>
               </div>
             </div>
           </li>

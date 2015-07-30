@@ -2,6 +2,7 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.all
+    @most_active_spots = Spot.all.sort_by{|spot| spot.videos.count}.reverse
   end
 
   def new

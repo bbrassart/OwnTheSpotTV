@@ -2,6 +2,7 @@ class SkatersController < ApplicationController
 
   def index
     @skaters = Skater.all
+    @most_active_skaters = Skater.all.sort_by{|skater| skater.videos.count}.reverse
   end
 
   def new

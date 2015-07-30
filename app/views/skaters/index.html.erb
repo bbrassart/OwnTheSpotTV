@@ -2,17 +2,17 @@
   <div class="row">
     <div class="col-md-8">
       <h3>The Mob family</h3>
-      <% @skaters.each do |skater|%>
+      <h4>Our most devoted soldiers</h4>
+      <% @most_active_skaters.each do |skater|%>
       <% if current_user.nil? %>
         <ul>
           <li>
             <div class="media">
               <div class="media-left">
-                <img class="media-object" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+                <img class="media-object rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
               </div>
               <div class="media-body">
                 <h4 class="media-heading"><%= skater.username %></h4>
-                  <p>balbalab</p>
                   <% if skater.stance.present? %>
                     <b>Stance:</b> <%= skater.stance.capitalize() %>
                   <% end %>
@@ -25,11 +25,11 @@
           <li>
             <div class="media">
               <div class="media-left">
-                <img class="media-object" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+                <img class="media-object rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
               </div>
               <div class="media-body">
                 <h4 class="media-heading"><%= skater.username %></h4>
-                  <p>balbalab</p>
+                  <p><%= skater.username %> already posted <%= (skater.videos.length + 1) %> clips.</p>
                   <% if skater.stance.present? %>
                     <b>Stance:</b> <%= skater.stance.capitalize() %>
                   <% end %>
@@ -41,6 +41,7 @@
       <%end%>
     </div>
     <div class="col-md-4">
+      <% if current_user %>
       <div class="btn-group">
         <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Choose a skater <span class="caret"></span>
@@ -51,6 +52,14 @@
           <% end %>
         </ul>
       </div>
+    <% else %>
+      <div class="btn-group">
+        <a href="<%= new_skater_path %>">
+        <button class="btn btn-primary btn-lg" type="button">
+           Register as a new user
+        </button>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>
