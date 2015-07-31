@@ -31,25 +31,23 @@
         <div class="row">
           <% if @videos.length == 1 %>
             <% @videos.each do |video| %>
-                <div class="col-md-12 video__carousel--slide">
-                  <div class="embed-responsive embed-responsive-16by9">
+              <div class="col-md-12 video__carousel--slide">
+                <div class="embed-responsive embed-responsive-16by9">
                   <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
                 </div>
-                <div>
-                  <button type="button" class="btn btn-success">Like</button>  <button type="button" class="btn btn-danger">Dislike</button>
-                </div>
+                <a disabled="true"><button type="button" class="btn btn-success">Like</button></a>
+                <a disabled="true"><button type="button" class="btn btn-danger">Dislike</button></a>
               </div>
             <% end %>
-          <% elsif @videos.length > 1 %>
-            <% @videos.each do |video| %>
+            <% elsif @videos.length > 1 %>
+              <% @videos.each do |video| %>
                 <div class="col-md-6 video__carousel--slide">
                   <div class="embed-responsive embed-responsive-16by9">
-                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-                </div>
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+                  </div>
                   <a disabled="true"><button type="button" class="btn btn-success">Like</button></a>
                   <a disabled="true"><button type="button" class="btn btn-danger">Dislike</button></a>
-                </ul>
-              </div>
+                </div>
             <% end %>
           <% end %>
       <% else %>
