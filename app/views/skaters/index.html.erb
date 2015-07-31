@@ -9,6 +9,7 @@
           <li>
             <div class="media">
               <div class="media-left">
+                <li><%= link_to skater.username, skater_path(skater) %></li>
                 <img class="media-object rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
               </div>
               <div class="media-body">
@@ -54,7 +55,7 @@
         <ul class="dropdown-menu">
           <% @skaters.each do |skater|%>
             <% next if skater.id == current_user.id %>
-            <li><%= link_to skater.username, skater_path(skater.id) %></li>
+            <li><%= link_to skater.username, skater_path(skater) %></li>
           <% end %>
         </ul>
       </div>

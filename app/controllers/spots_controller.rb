@@ -21,7 +21,7 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @spot = Spot.find(params[:id])
+    @spot = Spot.friendly.find(params[:id])
     @videos = @spot.videos
   end
 

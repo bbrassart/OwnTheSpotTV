@@ -13,7 +13,7 @@
             <% elsif spot.district != @current_district then @current_district = spot.district%>
             <li role="separator" class="divider"></li>
             <li><a disabled=true><b><%= spot.district %></b></a></li>
-              <li><%= link_to spot.name, spot_path(spot.id) %></li>
+              <li><%= link_to spot.name, spot_path(spot) %></li>
             <% end %>
           <% end%>
         </ul>
@@ -27,12 +27,12 @@
           <li>
             <div class="media">
               <div class="media-left">
-                <a href="<%= spot_path(spot.id) %>">
+                <a href="<%= spot_path(spot) %>">
                   <img class="media-object rounded--avatars" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar">
                 </a>
               </div>
               <div class="media-body">
-                  <a href="<%= spot_path(spot.id) %>">
+                  <a href="<%= spot_path(spot) %>">
                     <h4 class="media-heading"><%= spot.name %>
                     </h4>
                   </a>

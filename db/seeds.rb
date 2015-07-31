@@ -23,11 +23,11 @@ spots = [
 ]
 
 skaters = [
-  Skater.create!(username: 'Richie', email: 'richard.william.roberts@gmail.com', password: 'richie', password_confirmation: 'richie', stance: 'goofy'),
-  Skater.create!(username: 'Baptiste', email: 'baptiste.brassart@gmail.com', password: 'baptiste', password_confirmation: 'baptiste', stance: 'regular'),
-  Skater.create!(username: 'Usher', email: 'usher@gmail.com', password: 'usher', password_confirmation: 'usher', stance: 'goofy'),
-  Skater.create!(username: 'Damingo', email: 'blackout@hotmail.fr', password: 'damingo', password_confirmation: 'damingo', stance: 'regular'),
-  Skater.create!(username: 'Gavin', email: 'gavin@gmail.com', password: 'gavin', password_confirmation: 'gavin', stance: 'regular')
+  Skater.create!(username: 'Richie', email: 'richard.william.roberts@gmail.com', password: 'richierichie', password_confirmation: 'richierichie', stance: 'goofy'),
+  Skater.create!(username: 'Baptiste', email: 'baptiste.brassart@gmail.com', password: 'baptistebaptiste', password_confirmation: 'baptistebaptiste', stance: 'regular'),
+  Skater.create!(username: 'Usher', email: 'usher@gmail.com', password: 'usherusher', password_confirmation: 'usherusher', stance: 'goofy'),
+  Skater.create!(username: 'Damingo', email: 'blackout@hotmail.fr', password: 'damingodamingo', password_confirmation: 'damingodamingo', stance: 'regular'),
+  Skater.create!(username: 'Gavin', email: 'gavin@gmail.com', password: 'gavingavin', password_confirmation: 'gavingavin', stance: 'regular')
 ]
 
 categories = [

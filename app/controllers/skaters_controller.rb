@@ -21,7 +21,7 @@ class SkatersController < ApplicationController
 
   def show
     @videos = Video.all
-    @skater = Skater.find(params[:id])
+    @skater = Skater.friendly.find(params[:id])
   end
 
   def destroy

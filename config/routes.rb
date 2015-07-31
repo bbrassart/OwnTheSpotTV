@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   get '/rules' => 'site#rules'
   get '/contact' => 'site#contact'
   get 'about' => 'site#about'
-
   resources :skaters
   resources :spots
   resources :videos
+
 
 
 end
