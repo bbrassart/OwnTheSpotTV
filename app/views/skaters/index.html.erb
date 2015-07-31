@@ -15,6 +15,11 @@
                 <h4 class="media-heading"><%= skater.username %></h4>
                   <% if skater.stance.present? %>
                     <b>Stance:</b> <%= skater.stance.capitalize() %>
+                    <% if skater.videos.length == 1 %>
+                      <p> <%= skater.videos.length %> video posted</p>
+                    <% else %>
+                      <p><%= skater.videos.length %> videos posted</p>
+                    <% end %>
                   <% end %>
               </div>
             </div>

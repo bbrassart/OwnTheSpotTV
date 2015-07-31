@@ -29,15 +29,23 @@
     <div class="col-md-12">
       <% if @videos.any?%>
         <div class="row">
-          <% @videos.each do |video| %>
-            <% if @spot.id = video.spot_id %>
-              <div class="col-md-6 video__carousel--slide">
-                <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+          <% if @videos.length == 1 %>
+            <% @videos.each do |video| %>
+                <div class="col-md-12 video__carousel--slide">
+                  <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+                </div>
               </div>
-            </div>
+            <% end %>
+          <% elsif @videos.length > 1 %>
+            <% @videos.each do |video| %>
+                <div class="col-md-6 video__carousel--slide">
+                  <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+                </div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
       <% else %>
         <p>No video submitted yet. Go ahead, submit yours and become the boss of the spot</p>
       <% end %>
