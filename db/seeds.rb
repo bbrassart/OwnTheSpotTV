@@ -31,9 +31,9 @@ skaters = [
 ]
 
 categories = [
-  'Best trick',
-  'Best line',
-  'Worst slam'
+  'trick',
+  'line',
+  'slam'
 ]
 
 videos = [

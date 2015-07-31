@@ -7,12 +7,15 @@
         </button>
         <ul class="dropdown-menu">
           <% @spots_by_district.each do |spot|%>
-            <%  if (spot.district != @current_district) then @current_district = spot.district%>
-                <li><a disabled=true><b><%= spot.district %></b></a></li>
-                <li><%= link_to spot.name, spot_path(spot.id) %></li>
-                <li role="separator" class="divider"></li>
+            <% if spot.district == @current_district %>
+
+              <li><%= link_to spot.name, spot_path(spot.id) %></li>
+            <% elsif spot.district != @current_district then @current_district = spot.district%>
+            <li role="separator" class="divider"></li>
+            <li><a disabled=true><b><%= spot.district %></b></a></li>
+              <li><%= link_to spot.name, spot_path(spot.id) %></li>
             <% end %>
-          <% end %>
+          <% end%>
         </ul>
       </div>
     </div>

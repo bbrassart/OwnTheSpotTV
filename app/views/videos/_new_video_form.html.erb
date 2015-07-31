@@ -23,12 +23,12 @@
       <%= f.text_field :url, class: "form-control", placeholder: "Paste your YouTube link" %>
     </div>
     <div class="form-group">
-      <%= f.radio_button :category, 'best trick', :checked => true %>
-      <%= label :category, 'best trick' %>
-      <%= f.radio_button :category, 'best line' %>
-      <%= label :category, 'best line' %>
-      <%= f.radio_button :category, 'worst slam' %>
-      <%= label :category, 'worst slam' %>
+      <%= f.radio_button :category, 'trick', :checked => true %>
+      <%= label :category, 'Best trick' %>
+      <%= f.radio_button :category, 'line' %>
+      <%= label :category, 'Firing line' %>
+      <%= f.radio_button :category, 'slam' %>
+      <%= label :category, 'Worst slam' %>
     </div>
     <div class="form-group">
       <%= f.submit "Submit", class:"btn btn-primary" %>
