@@ -1,17 +1,34 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-lg-3">
+      <h3>The Boss you shouldn't mess with is.... </h3>
+      <div class="media">
+        <div class="media-left">
+          <img class="media-object rounded--avatars" src="<%= @best_skater.logo.url(:thumb)%>" alt="Skater's avatar">
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"><%= @best_skater.username %></h4>
+            <% if @best_skater.stance.present? %>
+              <b>Stance:</b> <%= @best_skater.stance.capitalize() %>
+              <% if @best_skater.videos.length == 1 %>
+                <p> <%= @best_skater.videos.length %> video posted</p>
+              <% else %>
+                <p><%= @best_skater.videos.length %> videos posted</p>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+      <p>His top video has been voted more than anyone else</p>
+    </div>
+    <div class="col-lg-9">
       <h3>Highest rated videos</h3>
       <% @highest_rated_videos.each do |video| %>
-        <div class="col-md-6 video__carousel--slide">
+        <div class="col-lg-6 video__carousel--slide">
           <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
           </div>
         </div>
       <% end %>
-    </div>
-    <div class="col-md-6">
-      <h3>The Bosses you shouldn't mess with are.... </h3>
     </div>
   </div>
 </div>
