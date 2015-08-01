@@ -1,5 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# This file should contain all the record creation needed to seed the database with its default values.# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
 #
@@ -23,11 +22,11 @@ spots = [
 ]
 
 skaters = [
-  Skater.create!(username: 'Richie', email: 'richard.william.roberts@gmail.com', password: 'richierichie', password_confirmation: 'richierichie', stance: 'goofy'),
-  Skater.create!(username: 'Baptiste', email: 'baptiste.brassart@gmail.com', password: 'baptistebaptiste', password_confirmation: 'baptistebaptiste', stance: 'regular'),
-  Skater.create!(username: 'Usher', email: 'usher@gmail.com', password: 'usherusher', password_confirmation: 'usherusher', stance: 'goofy'),
-  Skater.create!(username: 'Damingo', email: 'blackout@hotmail.fr', password: 'damingodamingo', password_confirmation: 'damingodamingo', stance: 'regular'),
-  Skater.create!(username: 'Gavin', email: 'gavin@gmail.com', password: 'gavingavin', password_confirmation: 'gavingavin', stance: 'regular')
+  Skater.create!(username: 'Richie', email: 'richard.william.roberts@gmail.com', password: 'richie', password_confirmation: 'richie', stance: 'goofy'),
+  Skater.create!(username: 'Baptiste', email: 'baptiste.brassart@gmail.com', password: 'baptiste', password_confirmation: 'baptiste', stance: 'regular'),
+  Skater.create!(username: 'Usher', email: 'usher@gmail.com', password: 'usher', password_confirmation: 'usher', stance: 'goofy'),
+  Skater.create!(username: 'Damingo', email: 'blackout@hotmail.fr', password: 'damingo', password_confirmation: 'damingo', stance: 'regular'),
+  Skater.create!(username: 'Gavin', email: 'gavin@gmail.com', password: 'gavin', password_confirmation: 'gavin', stance: 'regular')
 ]
 
 categories = [
@@ -45,6 +44,12 @@ videos = [
   Video.create!(url: 'https://www.youtube.com/watch?v=GO-MRMgQS8s', skater_id: skaters[1].id, spot_id: spots[3].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
   Video.create!(url: 'https://www.youtube.com/watch?v=MSR71TaFges', skater_id: skaters[1].id, spot_id: spots[8].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
   Video.create!(url: 'https://www.youtube.com/watch?v=Marv3fkn3LM', skater_id: skaters[4].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+]
+
+votes = [
+  Vote.create!(voter_id: skaters[1].id, video_id: videos[0].id, result: 1),
+  Vote.create!(voter_id: skaters[2].id, video_id: videos[0].id, result: 1),
+  Vote.create!(voter_id: skaters[4].id, video_id: videos[4].id, result: 1),
 
 ]
 

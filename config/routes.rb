@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'site#home'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :skaters
   resources :spots
   resources :videos
+  resources :votes
 
 
 

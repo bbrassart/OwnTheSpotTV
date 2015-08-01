@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
-  def new
-    @spot = Spot.find_by(params[:id])
-    @videos = Video.all
+
+  def index
+    @highest_rated_videos =  Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(0..2)
   end
 
   def new
