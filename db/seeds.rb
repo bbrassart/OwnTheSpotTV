@@ -18,7 +18,22 @@ spots = [
   Spot.create!(name: 'Parc de la Ciutadella', description: 'Awesome manny pad, chillout atmosphere, sunday spot', district: 'Fort Pienc'),
   Spot.create!(name: 'Montbau manual pad', description: 'Little stair up, long manny and a bank to go down, the way to go', district: 'Montbau'),
   Spot.create!(name: 'Montbau downhill', description: 'Try to get the perfect line at this difficult spot', district: 'Montbau'),
-  Spot.create!(name: 'Hostafrancs', description: 'Stairs for days, a big handrail and a big flatground space', district: 'Sants')
+  Spot.create!(name: 'Hostafrancs', description: 'Stairs for days, a big handrail and a big flatground space', district: 'Sants'),
+  Spot.create!(name: 'Barceloneta banks', description: 'Funny banks to skate', district: 'Barceloneta'),
+  Spot.create!(name: "Plaça d'Anna Frank", description: 'A big set of stairs, a man sized handrail', district: 'Gracia'),
+  Spot.create!(name: "Forum stairs", description: 'That double set has already been murdered but who knows, maybe you come up with something new', district: 'Forum'),
+  Spot.create!(name: "Vallcarca tennis court curbs", description: 'Low curbs, lines for days', district: 'Vallcarca'),
+  Spot.create!(name: "Forum fountain", description: 'Weird sculpture with all kind of possibilities. Mannys, banks, curbs and all...', district: 'Fourm'),
+  Spot.create!(name: "The infamois red low-to-high curb", description: 'A very long metal ledge, low-to-high-to-low', district: 'Poble Nou'),
+  Spot.create!(name: "Glories bumps and curbs", description: 'Some awesome kickers, colored curbs everywhere, security is on the alert', district: 'Glories'),
+  Spot.create!(name: "Marina micro spot", description: 'Stairs, a mini curb, a long hanbdrail, get creative!', district: 'Marina'),
+  Spot.create!(name: "World Trade Center", description: 'Perfect flatground, curbs, benches and security is on the alert', district: 'Drassanes'),
+  Spot.create!(name: "Hotel Vela", description: 'Chlly sunday spot, curbs and weird wavy structure', district: 'Barceloneta'),
+  Spot.create!(name: "Lava curbs", description: "Right next to the port, a series of curbs. There must be one that you'll like", district: 'Drassanes'),
+  Spot.create!(name: "Estació de Sants", description: "Another mytical plaza, try your best to kill this spot before anyone else does", district: 'Sants'),
+  Spot.create!(name: "Blue banks", description: "Next to the shopping mall, this spot offers a lot of interesting lines", district: 'Badalona'),
+
+
 ]
 
 skaters = [
@@ -49,6 +64,7 @@ videos = [
 votes = [
   Vote.create!(voter_id: skaters[1].id, video_id: videos[0].id, result: 1),
   Vote.create!(voter_id: skaters[2].id, video_id: videos[0].id, result: 1),
+  Vote.create!(voter_id: skaters[4].id, video_id: videos[0].id, result: 1),
   Vote.create!(voter_id: skaters[4].id, video_id: videos[4].id, result: 1),
 
 ]

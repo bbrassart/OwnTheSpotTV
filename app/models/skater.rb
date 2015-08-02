@@ -5,7 +5,7 @@ class Skater < ActiveRecord::Base
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\z/
   has_secure_password
   validates :username, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   has_many :videos
   has_many :votes
 end
