@@ -15,7 +15,7 @@ class SkatersController < ApplicationController
       session[:user_id] = skater.id
       redirect_to skaters_path, flash: {success: "Hi #{current_user.username}! Welcome to OwnTheSpot.TV!" }
     else
-      render :new, flash: {danger: "Oops, try to register again please" }
+      redirect_to root_path, flash: {danger: "Oops, try to register again please" }
     end
   end
 

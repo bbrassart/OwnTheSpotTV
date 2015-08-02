@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   get '/rules' => 'site#rules'
   get '/contact' => 'site#contact'
-  get 'about' => 'site#about'
+  get '/about-us' => 'site#about'
   resources :skaters
   resources :spots
   resources :videos

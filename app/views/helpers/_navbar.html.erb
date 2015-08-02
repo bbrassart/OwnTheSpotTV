@@ -18,10 +18,13 @@
       <ul class="nav navbar-nav">
         <li><%= link_to 'Spots', spots_path %></li>
         <li><%= link_to 'Leaderboard', votes_path %></li>
+        <% if current_user %>
+          <li><%= link_to 'Submit your clip', new_video_path %></li>
+        <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Join the Mob <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to "What is OwnTheSpot.TV", about_path %></li>
+            <li><%= link_to "What is OwnTheSpot.TV", about_us_path %></li>
             <li><%= link_to "10 rules to rule them all", rules_path %></li>
             <li><%= link_to 'Our partners in skate crime', skaters_path %></li>
             <li role="separator" class="divider"></li>
@@ -46,6 +49,7 @@
               </ul>
             </li>
         <% else %>
+        <ul class="navbar-nav nav">
           <li><a href="#myModal1" role="button" class="btn" data-target="#myModal1" data-toggle="modal">Log in</a></li>
           <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">
@@ -80,6 +84,7 @@
               </div>
             </div>
           </div>
+        </ul>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

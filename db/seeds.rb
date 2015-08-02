@@ -66,6 +66,7 @@ votes = [
   Vote.create!(voter_id: skaters[2].id, video_id: videos[0].id, result: 1),
   Vote.create!(voter_id: skaters[4].id, video_id: videos[0].id, result: 1),
   Vote.create!(voter_id: skaters[4].id, video_id: videos[4].id, result: 1),
+  Vote.create!(voter_id: skaters[3].id, video_id: videos[7].id, result: 1),
 
 ]
 
