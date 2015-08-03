@@ -3,13 +3,20 @@
     <div class="col-md-12" align="center">
       <h1>Contact us</h1>
       <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
-        <%= f.input :name, :required => true %>
-        <%= f.input :email, :required => true %>
-        <%= f.input :message, :as => :text, :required => true %>
+      <form>
+        <div class="form-group">
+          <%= f.input :name, :required => true %>
+        </div>
+        <div class="form-group">
+          <%= f.input :email, :required => true %>
+        </div>
+        <div class="form-group">
+          <%= f.input :message, :as => :text, :required => true %>
+        </div>
         <div class= "hidden">
           <%= f.input :nickname, :hint => 'Leave this field blank!' %>
         </div>
-        <div>
+        <div class="form-group">
           </br>
           <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
         </div>
