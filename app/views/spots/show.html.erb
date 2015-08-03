@@ -1,6 +1,8 @@
 <div class="container">
+
   <div class="row">
-    <div class="col-lg-8">
+
+    <div class="col-lg-5">
       <div class="media">
         <div class="media-left">
           <img class="media-object" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
@@ -11,7 +13,8 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
+
+    <div class="col-lg-2">
       <div class="btn-group">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Choose a category <span class="caret"></span>
@@ -24,55 +27,679 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-12">
-      <% if @videos.present?%>
-        <div class="row">
-          <h4>Best videos for this spot and the following category</h4>
-          <% if @videos.length == 1 %>
-            <% @videos.each do |video| %>
-              <div class="col-lg-6 video__carousel--slide">
-                <div class="embed-responsive embed-responsive-16by9">
-                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-                </div>
-                  <%= form_tag('/votes/like') do %>
-                  <%= hidden_field_tag :video_id, video.id %>
-                  <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
-                  <% end %>
-                  <%= form_tag('/votes/dislike') do %>
-                  <%= hidden_field_tag :video_id, video.id %>
-                  <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
-                  <% end %>
-                  <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
-              </div>
-            <% end %>
-            <% elsif @videos.length > 1 %>
-              <% @videos.each do |video| %>
-                <div class="col-md-6 video__carousel--slide">
-                  <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-                  </div>
-                  <div class="vote__buttons">
-                    <%= form_tag('/votes/like') do %>
-                    <%= hidden_field_tag :video_id, video.id %>
-                    <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
-                    <% end %>
-                  </div>
-                  <div class="vote__buttons">
-                    <%= form_tag('/votes/dislike') do %>
-                    <%= hidden_field_tag :video_id, video.id %>
-                    <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
-                    <% end %>
-                  </div>
-                  <div class="vote__buttons">
-                    <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
-                  </div>
-                </div>
+
+
+    <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
+      <h4>No videos submitted yet...</h4>
+    <% elsif @best_overall_videos.present? %>
+      <div class="col-md-3">
+        <h4>The Boss at <%= @spot.name %></h4>
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object rounded--avatars" src="<%= @overall_best_skater.logo.url(:thumb)%>" alt="Skater's avatar">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= @overall_best_skater.username %></h4>
+            <% if @overall_best_skater.stance.present? %>
+              <b>Stance:</b> <%= @overall_best_skater.stance.capitalize() %>
+              <% if @overall_best_skater.videos.length == 1 %>
+                <p> <%= @overall_best_skater.videos.length %> video posted</p>
+              <% else %>
+                <p><%= @overall_best_skater.videos.length %> videos posted</p>
               <% end %>
             <% end %>
           </div>
+        </div>
+      </div>
+    <% elsif @best_trick_videos.present? %>
+      <div class="col-md-3">
+        <h4>The Best Trick Award at <%= @spot.name %> goes to ...</h4>
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object rounded--avatars" src="<%= @best_trick_skater.logo.url(:thumb)%>" alt="Skater's avatar">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= @best_trick_skater.username %></h4>
+            <% if @best_trick_skater.stance.present? %>
+              <b>Stance:</b> <%= @best_trick_skater.stance.capitalize() %>
+              <% if @best_trick_skater.videos.length == 1 %>
+                <p> <%= @best_trick_skater.videos.length %> video posted</p>
+              <% else %>
+                <p><%= @best_trick_skater.videos.length %> videos posted</p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% elsif @worst_slam_videos.present? %>
+      <div class="col-md-3">
+        <h4>The Worst Slam Award at <%= @spot.name %> goes to ...</h4>
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object rounded--avatars" src="<%= @worst_slam_skater.logo.url(:thumb)%>" alt="Skater's avatar">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= @worst_slam_skater.username %></h4>
+            <% if @worst_slam_skater.stance.present? %>
+              <b>Stance:</b> <%= @worst_slam_skater.stance.capitalize() %>
+              <% if @worst_slam_skater.videos.length == 1 %>
+                <p> <%= @worst_slam_skater.videos.length %> video posted</p>
+              <% else %>
+                <p><%= @worst_slam_skater.videos.length %> videos posted</p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% elsif @best_line_videos.present? %>
+      <div class="col-md-3">
+        <h4>The Firing Line Award at <%= @spot.name %> goes to ...</h4>
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object rounded--avatars" src="<%= @best_line_skater.logo.url(:thumb)%>" alt="Skater's avatar">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= @best_line_skater.username %></h4>
+            <% if @best_line_skater.stance.present? %>
+              <b>Stance:</b> <%= @best_line_skater.stance.capitalize() %>
+              <% if @best_line_skater.videos.length == 1 %>
+                <p> <%= @best_line_skater.videos.length %> video posted</p>
+              <% else %>
+                <p><%= @best_line_skater.videos.length %> videos posted</p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <% if @latest_overall_videos.present? %>
+        <% if @latest_overall_videos.length == 1 %>
+          <h4>Overall best video</h4>
+          <% @latest_overall_videos.each do |video| %>
+            <div class="col-lg-12 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <%= form_tag('/votes/like') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+              <% end %>
+              <%= form_tag('/votes/dislike') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+              <% end %>
+              <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+            </div>
+          <% end %>
+        <% elsif @best_overall_videos.length == 2 %>
+          <h4>Overall best video</h4>
+          <% @best_overall_videos.each do |video| %>
+            <div class="col-lg-6 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% elsif @best_overall_videos.length == 3 %>
+          <h4>Overall best video</h4>
+          <% @best_overall_videos.each do |video| %>
+            <div class="col-lg-4 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
       <% else %>
-        <p>No video submitted yet. Go ahead, submit yours and become the boss of this spot</p>
+        <div class="col-lg-12">
+          <h4>
+          <p>No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %></p>
+        </div>
       <% end %>
+
+    <% elsif @best_trick_videos.present?%>
+        <% if @best_trick_videos.length == 1 %>
+          <h4>Best Trick video</h4>
+          <% @best_trick_videos.each do |video| %>
+            <div class="col-lg-12 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <%= form_tag('/votes/like') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+              <% end %>
+              <%= form_tag('/votes/dislike') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+              <% end %>
+              <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+            </div>
+          <% end %>
+        <% elsif @best_trick_videos.length == 2 %>
+          <h4>Best trick videos</h4>
+          <% @best_trick_videos.each do |video| %>
+            <div class="col-lg-6 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% elsif @best_trick_videos.length == 3 %>
+          <h4>Best videos</h4>
+          <% @best_trick_videos.each do |video| %>
+            <div class="col-lg-4 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-lg-12">
+            <h4>
+            <p>No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %></p>
+          </div>
+        <% end %>
+
+
+      <% elsif @best_line_videos.present?%>
+        <% if @best_line_videos.length == 1 %>
+          <h4>Best Firing Line video</h4>
+          <% @best_line_videos.each do |video| %>
+            <div class="col-lg-12 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <%= form_tag('/votes/like') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+              <% end %>
+              <%= form_tag('/votes/dislike') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+              <% end %>
+              <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+            </div>
+          <% end %>
+        <% elsif @best_line_videos.length == 2 %>
+          <h4>Best Firing Line videos</h4>
+          <% @best_line_videos.each do |video| %>
+            <div class="col-lg-6 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% elsif @best_line_videos.length == 3 %>
+          <h4>Best Firing Line videos</h4>
+          <% @best_line_videos.each do |video| %>
+            <div class="col-lg-4 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+      <% elsif @worst_slam_videos.present?%>
+        <% if @worst_slam_videos.length == 1 %>
+          <h4>Worst Slam video</h4>
+          <% @worst_slam_videos.each do |video| %>
+            <div class="col-lg-12 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <%= form_tag('/votes/like') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+              <% end %>
+              <%= form_tag('/votes/dislike') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+              <% end %>
+              <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+            </div>
+          <% end %>
+        <% elsif @worst_slam_videos.length == 2 %>
+          <h4>Worst Slam videos</h4>
+          <% @worst_slam_videos.each do |video| %>
+            <div class="col-lg-6 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% elsif @worst_slam_videos.length == 3 %>
+          <h4>Worst Slam videos</h4>
+          <% @worst_slam_videos.each do |video| %>
+            <div class="col-lg-4 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <%end%>
+      <%end%>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+
+
+      <% if @latest_overall_videos.present? %>
+        <% if @latest_overall_videos.length == 1 %>
+          <h4>Latest entries for <%= @spot.name %></h4>
+          <% @latest_overall_videos.each do |video| %>
+            <div class="col-lg-12 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <%= form_tag('/votes/like') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+              <% end %>
+              <%= form_tag('/votes/dislike') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+              <% end %>
+              <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+            </div>
+          <% end %>
+        <% elsif @latest_overall_videos.length == 2 %>
+          <h4>Latest entries for <%= @spot.name %></h4>
+          <% @latest_overall_videos.each do |video| %>
+            <div class="col-lg-6 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% elsif @latest_overall_videos.length == 3 %>
+          <h4>Latest entries for <%= @spot.name %></h4>
+          <% @latest_overall_videos.each do |video| %>
+            <div class="col-lg-4 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+      <% else %>
+        <div class="col-lg-12">
+          <h4>
+          <p>No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %></p>
+        </div>
+      <% end %>
+
+    <% elsif @latest_trick_videos.present?%>
+        <% if @latest_trick_videos.length == 1 %>
+          <h4>Latest Best Trick at <%= @spot.name %></h4>
+          <% @latest_trick_videos.each do |video| %>
+            <div class="col-lg-12 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <%= form_tag('/votes/like') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+              <% end %>
+              <%= form_tag('/votes/dislike') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+              <% end %>
+              <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+            </div>
+          <% end %>
+        <% elsif @latest_trick_videos.length == 2 %>
+          <h4>Latest Best Tricks at <%= @spot.name %></h4>
+          <% @latest_trick_videos.each do |video| %>
+            <div class="col-lg-6 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% elsif @latest_trick_videos.length == 3 %>
+          <h4>Latest Best Tricks at <%= @spot.name %></h4>
+          <% @latest_trick_videos.each do |video| %>
+            <div class="col-lg-4 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-lg-12">
+            <h4>
+            <p>No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %></p>
+          </div>
+        <% end %>
+
+
+      <% elsif @latest_line_videos.present?%>
+        <% if @latest_line_videos.length == 1 %>
+          <h4>Latest Firing Line at <%= @spot.name %></h4>
+          <% @latest_line_videos.each do |video| %>
+            <div class="col-lg-12 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <%= form_tag('/votes/like') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+              <% end %>
+              <%= form_tag('/votes/dislike') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+              <% end %>
+              <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+            </div>
+          <% end %>
+        <% elsif @latest_line_videos.length == 2 %>
+          <h4>Latest Firing Lines at <%= @spot.name %></h4>
+          <% @latest_line_videos.each do |video| %>
+            <div class="col-lg-6 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% elsif @latest_line_videos.length == 3 %>
+          <h4>Latest Firing Lines at <%= @spot.name %></h4>
+          <% @latest_line_videos.each do |video| %>
+            <div class="col-lg-4 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+      <% elsif @latest_slam_videos.present?%>
+        <% if @latest_slam_videos.length == 1 %>
+          <h4>Latest Slam Video at <%= @spot.name %></h4>
+          <% @latest_slam_videos.each do |video| %>
+            <div class="col-lg-12 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <%= form_tag('/votes/like') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+              <% end %>
+              <%= form_tag('/votes/dislike') do %>
+              <%= hidden_field_tag :video_id, video.id %>
+              <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+              <% end %>
+              <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+            </div>
+          <% end %>
+        <% elsif @latest_slam_videos.length == 2 %>
+          <h4>Latest Slam Videos at <%= @spot.name %></h4>
+          <% @latest_slam_videos.each do |video| %>
+            <div class="col-lg-6 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <% elsif @latest_slam_videos.length == 3 %>
+          <h4>Latest Slam Videos at <%= @spot.name %></h4>
+          <% @latest_slam_videos.each do |video| %>
+            <div class="col-lg-4 video__carousel--slide">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
+              </div>
+            </div>
+          <% end %>
+        <%end%>
+      <%end%>
+    </div>
+
+
   </div>
 </div>
