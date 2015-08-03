@@ -10,10 +10,12 @@ class SkatersController < ApplicationController
   end
 
   def create
-    skater = Skater.new(skater_params)
-    if skater.save
-      session[:user_id] = skater.id
+    @skater = Skater.new(skater_params)
+    if @skater.save
+      WelcomeMailer.welcome_email(@skater).deliver_now
+      session[:user_id] = @skater.id
       redirect_to skaters_path, flash: {success: "Hi #{current_user.username}! Welcome to OwnTheSpot.TV!" }
+
     else
       redirect_to root_path, flash: {danger: "Oops, try to register again please" }
     end

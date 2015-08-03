@@ -13,6 +13,9 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'figaro'
+gem 'mail_form'
+gem 'simple_form'
 
 
 # Use SCSS for stylesheets
