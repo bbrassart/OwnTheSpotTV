@@ -35,15 +35,15 @@
                 <div class="embed-responsive embed-responsive-16by9">
                   <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
                 </div>
-                <%= form_tag('/votes/like') do %>
-                <%= hidden_field_tag :video_id, video.id %>
-                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
-                <% end %>
-                <%= form_tag('/votes/dislike') do %>
-                <%= hidden_field_tag :video_id, video.id %>
-                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
-                <% end %>
-                <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+                  <%= form_tag('/votes/like') do %>
+                  <%= hidden_field_tag :video_id, video.id %>
+                  <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                  <% end %>
+                  <%= form_tag('/votes/dislike') do %>
+                  <%= hidden_field_tag :video_id, video.id %>
+                  <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                  <% end %>
+                  <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
             </div>
             <% end %>
             <% elsif @videos.length > 1 %>
@@ -52,15 +52,21 @@
                   <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
                   </div>
+                  <div class="vote__buttons">
                     <%= form_tag('/votes/like') do %>
                     <%= hidden_field_tag :video_id, video.id %>
                     <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
                     <% end %>
+                  </div>
+                  <div class="vote__buttons">
                     <%= form_tag('/votes/dislike') do %>
                     <%= hidden_field_tag :video_id, video.id %>
                     <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
                     <% end %>
+                  </div>
+                  <div class="vote__buttons">
                     <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+                  </div>
                 </div>
               <% end %>
             <% end %>
