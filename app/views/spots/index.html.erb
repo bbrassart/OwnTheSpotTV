@@ -56,7 +56,7 @@
           <% @spots_by_district.each do |spot|%>
             <% if current_user %>
               <% if spot.district == @current_district %>
-                <li><%= link_to spot.name, spot_path(spot.id) %></li>
+                <li><%= link_to spot.name, spot_path(spot) %></li>
               <% elsif spot.district != @current_district then @current_district = spot.district%>
               <li role="separator" class="divider"></li>
               <li><a disabled=true><b><%= spot.district %></b></a></li>

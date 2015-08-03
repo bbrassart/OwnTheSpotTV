@@ -29,26 +29,26 @@ class SpotsController < ApplicationController
         if @trick_videos.present?
           @best_trick_videos = @trick_videos.sort_by {|video| video.votes.sum('result')}.reverse.slice(0..2)
           @best_trick_skater = Skater.find_by_id(@best_trick_videos.slice(0).skater_id)
-          @latest_trick_videos = @trick_videos.order('created_at ASC').slice(0..2)
+          @latest_trick_videos = @trick_videos.order('created_at DESC').slice(0..2)
         end
       elsif params[:category] == 'line'
         @line_videos = videos.where category: 'line'
         if @line_videos.present?
           @best_line_videos = @line_videos.sort_by {|video| video.votes.sum('result')}.reverse.slice(0..2)
           @best_line_skater = Skater.find_by_id(@best_line_videos.slice(0).skater_id)
-          @latest_line_videos = @line_videos.order('created_at ASC').slice(0..2)
+          @latest_line_videos = @line_videos.order('created_at DESC').slice(0..2)
         end
       elsif params[:category] == 'slam'
         @slam_videos = videos.where category: 'slam'
         if @slam_videos.present?
           @worst_slam_videos = @slam_videos.sort_by {|video| video.votes.sum('result')}.reverse.slice(0..2)
           @worst_slam_skater = Skater.find_by_id(@worst_slam_videos.slice(0).skater_id)
-          @latest_slam_videos = @slam_videos.order('created_at ASC').slice(0..2)
+          @latest_slam_videos = @slam_videos.order('created_at DESC').slice(0..2)
         end
       else
         @best_overall_videos = videos.sort_by {|video| video.votes.sum('result')}.reverse.slice(0..2)
         @overall_best_skater = Skater.find_by_id(@best_overall_videos.slice(0).skater_id)
-        @latest_overall_videos = videos.order('created_at ASC').slice(0..2)
+        @latest_overall_videos = videos.order('created_at DESC').slice(0..2)
       end
     end
   end

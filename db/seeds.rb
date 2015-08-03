@@ -23,7 +23,7 @@ spots = [
   Spot.create!(name: "Plaça d'Anna Frank", description: 'A big set of stairs, a man sized handrail', district: 'Gracia'),
   Spot.create!(name: "Forum stairs", description: 'That double set has already been murdered but who knows, maybe you come up with something new', district: 'Forum'),
   Spot.create!(name: "Vallcarca tennis court curbs", description: 'Low curbs, lines for days', district: 'Vallcarca'),
-  Spot.create!(name: "Forum fountain", description: 'Weird sculpture with all kind of possibilities. Mannys, banks, curbs and all...', district: 'Fourm'),
+  Spot.create!(name: "Forum fountain", description: 'Weird sculpture with all kind of possibilities. Mannys, banks, curbs and all...', district: 'Forum'),
   Spot.create!(name: "The infamois red low-to-high curb", description: 'A very long metal ledge, low-to-high-to-low', district: 'Poble Nou'),
   Spot.create!(name: "Glories bumps and curbs", description: 'Some awesome kickers, colored curbs everywhere, security is on the alert', district: 'Glories'),
   Spot.create!(name: "Marina micro spot", description: 'Stairs, a mini curb, a long hanbdrail, get creative!', district: 'Marina'),
@@ -57,6 +57,8 @@ videos = [
   Video.create!(url: 'https://www.youtube.com/watch?v=GO-MRMgQS8s', skater_id: skaters[1].id, spot_id: spots[3].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
   Video.create!(url: 'https://www.youtube.com/watch?v=MSR71TaFges', skater_id: skaters[1].id, spot_id: spots[8].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
   Video.create!(url: 'https://www.youtube.com/watch?v=Marv3fkn3LM', skater_id: skaters[4].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://www.youtube.com/watch?v=mY8PBrjNdwk', skater_id: skaters[4].id, spot_id: spots[5].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://www.youtube.com/watch?v=WoB1dZAAaNE', skater_id: skaters[4].id, spot_id: spots[5].id, category: categories[2], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2))
 ]
 
 votes = [

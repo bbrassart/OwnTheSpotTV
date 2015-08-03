@@ -2,33 +2,87 @@
   <div class="row">
     <div class="col-lg-3">
       <h3>The Boss you shouldn't mess with is.... </h3>
-      <div class="media">
-        <div class="media-left">
-          <img class="media-object rounded--avatars" src="<%= @best_skater.logo.url(:thumb)%>" alt="Skater's avatar">
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading"><%= @best_skater.username %></h4>
-            <% if @best_skater.stance.present? %>
-              <b>Stance:</b> <%= @best_skater.stance.capitalize() %>
-              <% if @best_skater.videos.length == 1 %>
-                <p> <%= @best_skater.videos.length %> video posted</p>
-              <% else %>
-                <p><%= @best_skater.videos.length %> videos posted</p>
+        <% if current_user.present? %>
+          <div class="media">
+            <div class="media-left">
+              <a href="<%=skater_path(@best_skater)%>"><img class="media-object rounded--avatars" src="@best_skater.logo.url(:thumb)" alt="Skater's avatar"></a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><%= link_to @best_skater.username, skater_path(@best_skater) %></h4>
+              <% if @best_skater.stance.present? %>
+                <b>Stance:</b> <%= @best_skater.stance.capitalize() %>
+                <% if @best_skater.videos.length == 1 %>
+                  <p> <%= @best_skater.videos.length %> video posted</p>
+                <% else %>
+                  <p><%= @best_skater.videos.length %> videos posted</p>
+                <% end %>
               <% end %>
-            <% end %>
-        </div>
-      </div>
-      <p>His top video has been voted more than anyone else</p>
-    </div>
-    <div class="col-lg-9">
-      <h3>Highest rated videos</h3>
-      <% @highest_rated_videos.each do |video| %>
-        <div class="col-lg-6 video__carousel--slide">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+          <p>His top video has tons of like.</p>
+        <% else %>
+          <div class="media">
+            <div class="media-left">
+              <img class="media-object rounded--avatars" src="@best_skater.logo.url(:thumb)" alt="Skater's avatar">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><%= @best_skater.username %></h4>
+              <% if @best_skater.stance.present? %>
+                <b>Stance:</b> <%= @best_skater.stance.capitalize() %>
+                <% if @best_skater.videos.length == 1 %>
+                  <p> <%= @best_skater.videos.length %> video posted</p>
+                <% else %>
+                  <p><%= @best_skater.videos.length %> videos posted</p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <p>Wanna be on top of the Skate Mob? </p>
+          <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Register as a new user</h4>
+                </div>
+                <div class="modal-body">
+                  <%= render 'helpers/account_new_form' %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" role="button" data-target="#myModal1" data-toggle="modal" class="btn btn-default"><%= link_to "Or log in with your account", "#myMdoal1"%></button>
+          <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel1">Sign in</h4>
+                </div>
+                <div class="modal-body">
+                  <%= render 'helpers/signin_form' %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-lg-9">
+        <h3>Highest rated videos</h3>
+        <% @highest_rated_videos.each do |video| %>
+          <div class="col-lg-6 video__carousel--slide">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+            </div>
+          </div>
+        <% end %>
+      </div>
   </div>
 </div>
