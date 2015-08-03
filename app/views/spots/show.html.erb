@@ -35,9 +35,16 @@
                 <div class="embed-responsive embed-responsive-16by9">
                   <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
                 </div>
-                <a disabled="true"><button type="button" class="btn btn-success">Like</button></a>
-                <a disabled="true"><button type="button" class="btn btn-danger">Dislike</button></a>
-              </div>
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                <% end %>
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                <% end %>
+                <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+            </div>
             <% end %>
             <% elsif @videos.length > 1 %>
               <% @videos.each do |video| %>
@@ -45,11 +52,19 @@
                   <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
                   </div>
-                  <a disabled="true"><button type="button" class="btn btn-success">Like</button></a>
-                  <a disabled="true"><button type="button" class="btn btn-danger">Dislike</button></a>
+                    <%= form_tag('/votes/like') do %>
+                    <%= hidden_field_tag :video_id, video.id %>
+                    <div><%= submit_tag 'Like', class: "btn btn-success vote--buttons" %></div>
+                    <% end %>
+                    <%= form_tag('/votes/dislike') do %>
+                    <%= hidden_field_tag :video_id, video.id %>
+                    <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
+                    <% end %>
+                    <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
                 </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
       <% else %>
         <p>No video submitted yet. Go ahead, submit yours and become the boss of this spot</p>
       <% end %>

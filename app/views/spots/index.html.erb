@@ -7,15 +7,24 @@
         </button>
         <ul class="dropdown-menu">
           <% @spots_by_district.each do |spot|%>
-            <% if spot.district == @current_district %>
-
-              <li><%= link_to spot.name, spot_path(spot.id) %></li>
-            <% elsif spot.district != @current_district then @current_district = spot.district%>
-            <li role="separator" class="divider"></li>
-            <li><a disabled=true><b><%= spot.district %></b></a></li>
-              <li><%= link_to spot.name, spot_path(spot) %></li>
-            <% end %>
-          <% end%>
+            <% if current_user %>
+              <% if spot.district == @current_district %>
+                <li><%= link_to spot.name, spot_path(spot.id) %></li>
+              <% elsif spot.district != @current_district then @current_district = spot.district%>
+              <li role="separator" class="divider"></li>
+              <li><a disabled=true><b><%= spot.district %></b></a></li>
+                <li><%= link_to spot.name, spot_path(spot) %></li>
+              <% end %>
+            <% else %>
+              <% if spot.district == @current_district %>
+                <li><a disabled=true><%=spot.name %></a></li>
+              <% elsif spot.district != @current_district then @current_district = spot.district%>
+                <li role="separator" class="divider"></li>
+                <li><a disabled=true><b><%= spot.district %></b></a></li>
+                <li><a disabled=true> <%= spot.name %></a></li>
+              <% end %>
+            <% end%>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -23,26 +32,84 @@
       <h3>The crime scenes</h3>
       <p>Our most boiling skate spots</p>
       <% @most_active_spots.each do |spot|%>
-        <ul>
-          <li>
-            <div class="media">
-              <div class="media-left">
-                <a href="<%= spot_path(spot) %>">
-                  <img class="media-object rounded--avatars" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar">
-                </a>
-              </div>
-              <div class="media-body">
+        <% if current_user %>
+          <ul>
+            <li>
+              <div class="media">
+                <div class="media-left">
                   <a href="<%= spot_path(spot) %>">
-                    <h4 class="media-heading"><%= spot.name %>
-                    </h4>
+                    <img class="media-object rounded--avatars" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar">
                   </a>
-                 <%= spot.description %>
-                  <p>Kick back and enjoy the <%= spot.videos.length %> clips submited for this spot</p>
+                </div>
+                <div class="media-body">
+                    <a href="<%= spot_path(spot) %>">
+                      <h4 class="media-heading"><%= spot.name %>
+                      </h4>
+                    </a>
+                   <%= spot.description %>
+                    <p>Kick back and enjoy the <%= spot.videos.length %> clips submited for this spot</p>
+                </div>
               </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+          <% else %>
+            <ul>
+              <li>
+                <div class="media">
+                  <div class="media-left">
+                    <img class="media-object rounded--avatars" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar">
+                  </div>
+                  <div class="media-body">
+                      <h4 class="media-heading"><%= spot.name %>
+                      </h4>
+                     <%= spot.description %>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          <% end %>
         <% end %>
     </div>
   </div>
+  <% if current_user.nil? %>
+    <div class="row">
+      <div class="col-md-12">
+        <p>Wanna be on top of the Skate Mob? </p>
+        <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Register as a new user</h4>
+              </div>
+              <div class="modal-body">
+                <%= render 'helpers/account_new_form' %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" role="button" data-target="#myModal1" data-toggle="modal" class="btn btn-default"><%= link_to "Or log in with your account", "#myMdoal1"%></button>
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel1">Sign in</h4>
+              </div>
+              <div class="modal-body">
+                <%= render 'helpers/signin_form' %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

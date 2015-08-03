@@ -16,7 +16,7 @@
   <div class="row">
     <div class="col-lg-12">
       <p>Wanna be on top of the Skate Mob? </p>
-      <li><a href="#myModal" role="button" class="btn" data-target="#myModal" data-toggle="modal">Create a new account</a></li>
+      <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <li><a href="#myModal1" role="button" class="btn" data-target="#myModal1" data-toggle="modal">Or log in with your account</a></li>
+      <button type="button" role="button" data-target="#myModal1" data-toggle="modal" class="btn btn-default"><%= link_to "Or log in with your account", "#myMdoal1"%></button>
       <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -50,6 +50,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
