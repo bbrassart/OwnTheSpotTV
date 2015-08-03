@@ -22,7 +22,18 @@ class SpotsController < ApplicationController
 
   def show
     @spot = Spot.friendly.find(params[:id])
-    @videos = @spot.videos
+    if params[:category] == 'trick'
+      videos = @spot.videos
+      @videos = videos.where category: 'trick'
+    elsif params[:category] == 'line'
+      videos = @spot.videos
+      @videos = videos.where category: 'line'
+    elsif params[:category] == 'slam'
+      videos = @spot.videos
+      @videos = videos.where category: 'slam'
+    else
+      @videos = @spot.videos
+    end
   end
 
   def destroy

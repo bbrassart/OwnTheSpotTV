@@ -25,6 +25,10 @@
    width:80%;
  };
 
+ .choosespot__dropdown {
+   margin: 15px;
+ }
+
 
  ul {
    list-style: none;
@@ -67,9 +71,9 @@
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   margin-bottom: auto;
-  height: 40px;
+  height: 25px;
   bottom: 0;
   width: 100%;
   background-color: #F5F5F5;

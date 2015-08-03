@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <p>Check this spot being murdered</p>
+    <div class="col-lg-8">
       <div class="media">
         <div class="media-left">
           <img class="media-object" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
@@ -12,26 +11,26 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-lg-4">
       <div class="btn-group">
-        <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Choose a category <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-            <li><a disbaled="true">Best trick</a></li>
-            <li><a disbaled="true">Firing Line</a></li>
-            <li><a disbaled="true">Worst Slam</a></li>
+            <li><a href="<%= spot_path(params[:id])%>">All the videos</a></li>
+            <li><a href="<%= spot_path(params[:id])%>?category=trick">Best Trick</a></li>
+            <li><a href="<%= spot_path(params[:id])%>?category=line">Firing Line</a></li>
+            <li><a href="<%= spot_path(params[:id])%>?category=slam">Worst Slam</a></li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <% if @videos.any?%>
+    <div class="col-lg-12">
+      <% if @videos.present?%>
         <div class="row">
+          <h4>Best videos for this spot and the following category</h4>
           <% if @videos.length == 1 %>
             <% @videos.each do |video| %>
-              <div class="col-md-12 video__carousel--slide">
+              <div class="col-lg-6 video__carousel--slide">
                 <div class="embed-responsive embed-responsive-16by9">
                   <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
                 </div>
@@ -44,7 +43,7 @@
                   <div><%= submit_tag 'Dislike', class: "btn btn-danger vote--buttons" %></div>
                   <% end %>
                   <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
-            </div>
+              </div>
             <% end %>
             <% elsif @videos.length > 1 %>
               <% @videos.each do |video| %>
@@ -65,7 +64,7 @@
                     <% end %>
                   </div>
                   <div class="vote__buttons">
-                    <button type="button" class="btn btn-info"><%= link_to "Report poser", method: :put%></button></a>
+                    <button type="button" class="btn btn-default"><%= link_to "Report poser", method: :put%></button></a>
                   </div>
                 </div>
               <% end %>
