@@ -5,6 +5,7 @@ class SpotsController < ApplicationController
     @most_active_spots = Spot.all.sort_by{|spot| spot.videos.count}.reverse.slice(0..2)
     @spots_by_district = Spot.all.sort_by{ |spot| spot.district }
     @current_district = ""
+    @last_video_updated = Video.last
   end
 
   def new
