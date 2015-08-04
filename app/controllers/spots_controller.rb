@@ -28,9 +28,6 @@ class SpotsController < ApplicationController
         @trick_videos = videos.where category: 'trick'
         if @trick_videos.present?
           @best_trick_videos = @trick_videos.sort_by {|video| video.votes.sum('result')}.reverse.slice(0..2)
-          tmp_best_trick_likes = @best_trick_videos.each {|video| Vote.find_by_video_id(video.id)}
-          @best_trick_likes = tmp_best_trick_likes
-          @best_trick_dislikes = @best_trick_videos.inject([]) {|sum, video| sum + (video.votes.where result: -1)}
           @best_trick_skater = Skater.find_by_id(@best_trick_videos.slice(0).skater_id)
           @latest_trick_videos = @trick_videos.order('created_at DESC')
         end
@@ -50,9 +47,6 @@ class SpotsController < ApplicationController
         end
       else
         @best_overall_videos = videos.sort_by {|video| video.votes.sum('result')}.reverse.slice(0..2)
-        tmp_best_overall_likes = @best_overall_videos.sum { |video| video.votes.where(video_id: video.id).where(result: 1)}
-        @best_overall_likes = tmp_best_overall_likes.index_by(&:video_id)
-        @best_overall_dislikes = @best_overall_videos.sum { |video| video.votes.where(video_id: 197).where(result: -1)}
         @overall_best_skater = Skater.find_by_id(@best_overall_videos.slice(0).skater_id)
         @latest_overall_videos = videos.order('created_at DESC')
       end

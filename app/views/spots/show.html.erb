@@ -141,6 +141,9 @@
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-info"><%= link_to "Poser !", method: :put%></button></a>
               </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% elsif @best_overall_videos.length == 2 %>
@@ -164,6 +167,9 @@
               </div>
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser !", method: :put%></button></a>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
               </div>
             </div>
           <% end %>
@@ -189,6 +195,9 @@
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser !", method: :put%></button></a>
               </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
       <% end %>
@@ -201,15 +210,24 @@
               <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
               </div>
-              <%= form_tag('/votes/like') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Like', class: "btn btn-success btn-sm vote--buttons" %></div>
-              <% end %>
-              <%= form_tag('/votes/dislike') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Dislike', class: "btn btn-danger btn-sm vote--buttons" %></div>
-              <% end %>
-              <button type="button" class="btn btn-info"><%= link_to "Poser!", method: :put%></button></a>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success btn-sm vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger btn-sm vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-info"><%= link_to "Poser!", method: :put%></button>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% elsif @best_trick_videos.length == 2 %>
@@ -233,6 +251,9 @@
               </div>
               <div class="vote__buttons">
                 <button type="button" class="btn btn-default"><%= link_to "Poser!", method: :put%></button></a>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
               </div>
 
             </div>
@@ -259,6 +280,9 @@
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
               </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% else %>
@@ -277,15 +301,24 @@
               <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
               </div>
-              <%= form_tag('/votes/like') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Like', class: "btn btn-success btn-sm vote--buttons" %></div>
-              <% end %>
-              <%= form_tag('/votes/dislike') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Dislike', class: "btn btn-danger btn-sm vote--buttons" %></div>
-              <% end %>
-              <button type="button" class="btn btn-info"><%= link_to "Poser!", method: :put%></button></a>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success btn-sm vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger btn-sm vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-info"><%= link_to "Poser!", method: :put%></button>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% elsif @best_line_videos.length == 2 %>
@@ -309,6 +342,9 @@
               </div>
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
               </div>
             </div>
           <% end %>
@@ -334,6 +370,9 @@
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
               </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% end %>
@@ -346,15 +385,24 @@
               <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
               </div>
-              <%= form_tag('/votes/like') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Like', class: "btn btn-success btn-sm vote--buttons" %></div>
-              <% end %>
-              <%= form_tag('/votes/dislike') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Dislike', class: "btn btn-danger btn-sm vote--buttons" %></div>
-              <% end %>
-              <button type="button" class="btn btn-sm btn-info"><%= link_to "Poser!", method: :put%></button></a>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success btn-sm vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger btn-sm vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-sm btn-info"><%= link_to "Poser!", method: :put%></button>
+              </dvi>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% elsif @worst_slam_videos.length == 2 %>
@@ -378,6 +426,9 @@
               </div>
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
               </div>
             </div>
           <% end %>
@@ -403,6 +454,9 @@
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
               </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <%end%>
@@ -417,20 +471,29 @@
         <% if @latest_overall_videos.length == 1 %>
           <h4>Latest entries for <%= @spot.name %></h4>
           <% @latest_overall_videos.each do |video| %>
-            <div class="col-lg-12 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
+          <div class="col-lg-12 video__carousel--slide">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
+            </div>
+            <div class="vote__buttons">
               <%= form_tag('/votes/like') do %>
               <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Like', class: "btn btn-sm btn-success vote--buttons" %></div>
+              <div><%= submit_tag 'Like', class: "btn btn-success btn-sm vote--buttons" %></div>
               <% end %>
+            </div>
+            <div class="vote__buttons">
               <%= form_tag('/votes/dislike') do %>
               <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Dislike', class: "btn btn-sm btn-danger vote--buttons" %></div>
+              <div><%= submit_tag 'Dislike', class: "btn btn-danger btn-sm vote--buttons" %></div>
               <% end %>
+            </div>
+            <div class="vote__buttons">
               <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
             </div>
+            <div class="vote__buttons">
+              <b>Overall Score</b> <%= video.score %>
+            </div>
+          </div>
           <% end %>
         <% elsif @latest_overall_videos.length == 2 %>
           <h4>Latest entries for <%= @spot.name %></h4>
@@ -454,6 +517,9 @@
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
               </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% elsif @latest_overall_videos.length > 2 %>
@@ -476,7 +542,10 @@
                 <% end %>
               </div>
               <div class="vote__buttons">
-                <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
+                <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser !", method: :put%></button></a>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
               </div>
             </div>
           <% end %>
@@ -490,15 +559,24 @@
               <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
               </div>
-              <%= form_tag('/votes/like') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Like', class: "btn btn-sm btn-success vote--buttons" %></div>
-              <% end %>
-              <%= form_tag('/votes/dislike') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Dislike', class: "btn btn-sm btn-danger vote--buttons" %></div>
-              <% end %>
-              <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-sm btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-sm btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% elsif @latest_trick_videos.length == 2 %>
@@ -522,6 +600,9 @@
               </div>
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
               </div>
             </div>
           <% end %>
@@ -547,6 +628,9 @@
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
               </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% else %>
@@ -565,15 +649,24 @@
               <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
               </div>
-              <%= form_tag('/votes/like') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Like', class: "btn btn-sm btn-success vote--buttons" %></div>
-              <% end %>
-              <%= form_tag('/votes/dislike') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Dislike', class: "btn btn-sm btn-danger vote--buttons" %></div>
-              <% end %>
-              <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-sm btn-success vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote--buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-sm btn-danger vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote--buttons">
+                <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% elsif @latest_line_videos.length == 2 %>
@@ -597,6 +690,9 @@
               </div>
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
               </div>
             </div>
           <% end %>
@@ -622,6 +718,9 @@
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
               </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% end %>
@@ -634,15 +733,22 @@
               <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
               </div>
-              <%= form_tag('/votes/like') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Like', class: "btn btn-success btn-sm vote--buttons" %></div>
-              <% end %>
-              <%= form_tag('/votes/dislike') do %>
-              <%= hidden_field_tag :video_id, video.id %>
-              <div><%= submit_tag 'Dislike', class: "btn btn-danger btn-sm vote--buttons" %></div>
-              <% end %>
-              <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/like') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Like', class: "btn btn-success btn-sm vote--buttons" %></div>
+                <% end %>
+              </div>
+              <div class="vote__buttons">
+                <%= form_tag('/votes/dislike') do %>
+                <%= hidden_field_tag :video_id, video.id %>
+                <div><%= submit_tag 'Dislike', class: "btn btn-danger btn-sm vote--buttons" %></div>
+                <% end %>
+              </div>
+              <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% elsif @latest_slam_videos.length == 2 %>
@@ -667,6 +773,9 @@
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
               </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
+              </div>
             </div>
           <% end %>
         <% elsif @latest_slam_videos.length > 2 %>
@@ -690,6 +799,9 @@
               </div>
               <div class="vote__buttons">
                 <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser !", method: :put%></button></a>
+              </div>
+              <div class="vote__buttons">
+                <b>Overall Score</b> <%= video.score %>
               </div>
             </div>
           <% end %>

@@ -8,4 +8,9 @@ class Video < ActiveRecord::Base
   belongs_to :spot
   belongs_to :skater
   has_many :votes
+
+  def score
+  	votes.inject(0) { |total, vote| total + vote.result }
+  end
+
 end
