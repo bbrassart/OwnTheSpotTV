@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-lg-9">
-    
+
     <div class="jumbotron">
       <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">
       <h1>Welcome to OwnTheSpot.TV</h1>
@@ -14,7 +14,7 @@
     <h3>The Bosses you shouldn't mess with are.... </h3>
     <% @best_skaters.each do |skater| %>
     <div class="media">
-      <div class="media-left">
+      <div class="media-left media-middle">
         <img class="media-object rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
       </div>
       <div class="media-body">
