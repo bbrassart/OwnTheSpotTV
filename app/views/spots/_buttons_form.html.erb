@@ -1,0 +1,18 @@
+<div class="vote__buttons">
+  <%= form_tag('/votes/like') do %>
+  <%= hidden_field_tag :video_id, video.id %>
+  <div><%= submit_tag 'Like', class: "btn btn-success btn-sm vote--buttons" %></div>
+  <% end %>
+</div>
+<div class="vote__buttons">
+  <%= form_tag('/votes/dislike') do %>
+  <%= hidden_field_tag :video_id, video.id %>
+  <div><%= submit_tag 'Dislike', class: "btn btn-danger btn-sm vote--buttons" %></div>
+  <% end %>
+</div>
+<div class="vote__buttons">
+  <button type="button" class="btn btn-sm btn-default"><%= link_to "Poser!", method: :put%></button></a>
+</div>
+<div class="vote__buttons">
+  <b>Overall Score</b> <%= video.score %>
+</div>

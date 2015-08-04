@@ -27,12 +27,6 @@ class VotesController < ApplicationController
     @vote.video_id = params[:video_id]
     video = @vote.video
     if @vote.valid?
-      @votes.each do |vote|
-        if (current_user.id == vote.voter_id && params[:video_id] == vote.video_id)
-          redirect_to spot_path(video.spot), flash: {danger: "You cannot vote twice for the same video"}
-          break
-        end
-      end
       @vote.save
       redirect_to spot_path(video.spot), flash: {success: "Your vote has been registered!"}
     else
