@@ -41,6 +41,12 @@ GEM
       execjs
       json
     awesome_print (1.6.1)
+    aws-sdk (2.1.11)
+      aws-sdk-resources (= 2.1.11)
+    aws-sdk-core (2.1.11)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.1.11)
+      aws-sdk-core (= 2.1.11)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -104,6 +110,8 @@ GEM
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
+    jmespath (1.0.2)
+      multi_json (~> 1.0)
     jquery-rails (4.0.4)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -231,6 +239,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  aws-sdk
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
