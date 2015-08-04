@@ -41,7 +41,7 @@
     </div>
   <% end %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
       <div class="btn-group">
         <% if current_user %>
           <button class="btn btn-primary choosespot__dropdown dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,7 +75,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-9">
       <h3>The crime scenes</h3>
       <p>Our most boiling skate spots</p>
       <% @most_active_spots.each do |spot|%>
@@ -85,7 +85,7 @@
               <div class="media">
                 <div class="media-left">
                   <a href="<%= spot_path(spot) %>">
-                    <img class="media-object rounded--avatars" src="<%= spot.logo(:medium)%>" alt="Spot's avatar">
+                    <img class="media-object rounded--avatars" src="<%= spot.logo.url(:medium)%>" alt="Spot's avatar">
                   </a>
                 </div>
                 <div class="media-body">
@@ -104,7 +104,7 @@
               <li>
                 <div class="media">
                   <div class="media-left">
-                    <img class="media-object rounded--avatars" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar">
+                    <img class="media-object rounded--avatars" src="<%= spot.logo.url(:medium)%>" alt="Spot's avatar">
                   </div>
                   <div class="media-body">
                       <h4 class="media-heading"><%= spot.name %>
