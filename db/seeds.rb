@@ -8,6 +8,7 @@
 Skater.all.destroy_all
 Spot.all.destroy_all
 Video.all.destroy_all
+Vote.all.destroy_all
 
 spots = [
   Spot.create!(name: "Plaça Universitat", description: "Marble ledges everywhere, perfect flatground, best SKATE game spot, lines for days", district: 'Eixample'),

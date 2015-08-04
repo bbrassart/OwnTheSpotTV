@@ -9,7 +9,6 @@ class WelcomeMailer < ApplicationMailer
   def user_added_video(video)
 
     @video = video
-    binding.pry
     mail(to: 'ownthespotofficial@gmail.com')
   end
 end
