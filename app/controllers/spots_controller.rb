@@ -54,16 +54,16 @@ class SpotsController < ApplicationController
   end
 
   def destroy
-    spot = Spot.find_by(params[:id]).try(:destroy)
+    spot = Spot.friendly.find(params[:id]).try(:destroy)
     redirect_to spots_path, flash: {success: "#{spot.name} has been removed" }
   end
 
   def edit
-    @spot = Spot.find(params[:id])
+    @spot = Spot.friendly.find(params[:id])
   end
 
   def update
-    spot = Spot.find(params[:id])
+    spot = Spot.friendly.find(params[:id])
     if spot.update_attributes(spot_params)
       redirect_to spots_path, flash: {success: "#{spot.name} has been updated." }
     else
