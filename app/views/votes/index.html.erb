@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <h3>The Boss you shouldn't mess with is.... </h3>
+      <h3>The overall best skater is.... </h3>
         <% if current_user.present? %>
           <div class="media">
-            <div class="media-left">
+            <div class="media-left media-middle">
               <a href="<%=skater_path(@best_skater)%>"><img class="media-object rounded--avatars" src="@best_skater.logo.url(:thumb)" alt="Skater's avatar"></a>
             </div>
-            <div class="media-body">
+            <div class="media-body media-middle">
               <h4 class="media-heading"><%= link_to @best_skater.username, skater_path(@best_skater) %></h4>
               <% if @best_skater.stance.present? %>
                 <b>Stance:</b> <%= @best_skater.stance.capitalize() %>
@@ -22,10 +22,10 @@
           <p>His top video has tons of like.</p>
         <% else %>
           <div class="media">
-            <div class="media-left">
+            <div class="media-left media-middle">
               <img class="media-object rounded--avatars" src="@best_skater.logo.url(:thumb)" alt="Skater's avatar">
             </div>
-            <div class="media-body">
+            <div class="media-body media-middle">
               <h4 class="media-heading"><%= @best_skater.username %></h4>
               <% if @best_skater.stance.present? %>
                 <b>Stance:</b> <%= @best_skater.stance.capitalize() %>
