@@ -12,8 +12,8 @@ class VideosController < ApplicationController
     @video = Video.new video_params
     @video.skater_id = current_user.id
     @video.spot_id = @spot.id
-    if @video.valid?
-      @video.save
+    if @video.save!
+      WelcomeMailer.user_added_video(@video).deliver_now
       redirect_to skater_path(current_user), flash: {success: "Your clip is now online!"}
     else
       render :new, flash: {danger: "Oops, try to create it again please!" }

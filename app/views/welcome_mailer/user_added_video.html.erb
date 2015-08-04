@@ -1,0 +1,5 @@
+<h1><%= @video.skater %> just uploaded a video ! </h1>
+<p>
+  <%= @video.skater %> added the following video:
+    <%= link_to 'Link of the video', video_url(@video.id) %>
+</p>
