@@ -1,7 +1,7 @@
 class Spot < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
-  has_attached_file :logo, styles: {:medium => "300x300", :thumb => "100x100"}
+  has_attached_file :logo, styles: {:medium => "300x300", :thumb => "100x100", :square => "200x200"}
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\z/
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
