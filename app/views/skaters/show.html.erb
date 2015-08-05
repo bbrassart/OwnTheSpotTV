@@ -22,8 +22,9 @@
         </div>
       </div>
     </div>
-    <h3>Your clips</h3>
-      <div class="row">
+
+      <div class="row video__carousel--border">
+        <h3>Your clips</h3>
         <% if current_user.videos.any?%>
           <% current_user.videos.each do |video| %>
             <div class="col-md-6 video__carousel--slide">
@@ -59,8 +60,9 @@
         </div>
       </div>
     </div>
-    <div class="row">
+
       <% if @skater.videos.any?%>
+      <div class="row video__carousel--border">
         <% @skater.videos.each do |video| %>
           <div class="col-md-6 video__carousel--slide">
             <div class="embed-responsive embed-responsive-16by9">
@@ -68,8 +70,9 @@
             </div>
           </div>
         <% end %>
+          </div>
     <% end %>
-  </div>
+
     <% end %>
   </div>
 </div>
