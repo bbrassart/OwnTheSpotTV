@@ -16,6 +16,17 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+//* rules styling
+
+.rules__text--styling {
+  font-size: 15px;
+  line-height: 150%;
+}
+
+.rules__title--styling {
+  margin-bottom: 30px;
+}
+
  //*General styling
 
  .alert {
@@ -25,10 +36,23 @@
    width:80%;
  };
 
+ .button__category--spotshow {
+   margin-top: 40px;
+ }
+
+.spot__description--spotshow {
+  margin-top: 20px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+ }
+
 
 
 .before--footer {
-  margin-top: -40px;
+  margin-bottom: 40px;
 }
 
  ul {
@@ -39,26 +63,28 @@
    padding: 10px 0;
  }
 
+ .rules__about--div {
+   margin-bottom: 20px;
+ }
+
  body {
    margin: 0 0 40px; /* bottom = footer height */
  }
 
- html {
-    position: relative;
-    min-height: 100%;
-}
-
 
  //* navbar
 
- .navbar-brand {
-   margin-top: -6px;
- }
 
- .navbar-brand p {
-   margin-top: -24px;
-   padding-left: 45px;
- }
+
+
+.navbar-brand {
+ margin-top: -6px;
+}
+
+.navbar-brand p {
+ margin-top: -24px;
+ padding-left: 45px;
+}
 
 //* footer
 

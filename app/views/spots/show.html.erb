@@ -2,12 +2,12 @@
 
   <div class="row">
 
-    <div class="col-lg-5">
+    <div class="col-lg-5 spot__description--spotshow">
       <div class="media">
         <div class="media-left media-middle">
           <img class="media-object rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
         </div>
-        <div class="media-body">
+        <div class="media-body media-middle">
           <h4 class="media-heading"><%= @spot.name %></h4>
           <%= @spot.description %>
         </div>
@@ -24,7 +24,7 @@
           <div class="media-left media-middle">
             <img class="media-object rounded--avatars" src="<%= @overall_best_skater.logo.url(:thumb)%>" alt="Skater's avatar">
           </div>
-          <div class="media-body">
+          <div class="media-body media-middle">
             <h4 class="media-heading"><%= @overall_best_skater.username %></h4>
             <% if @overall_best_skater.stance.present? %>
               <b>Stance:</b> <%= @overall_best_skater.stance.capitalize() %>
@@ -44,7 +44,7 @@
           <div class="media-left media-middle">
             <img class="media-object rounded--avatars" src="<%= @best_trick_skater.logo.url(:thumb)%>" alt="Skater's avatar">
           </div>
-          <div class="media-body">
+          <div class="media-body media-middle">
             <h4 class="media-heading"><%= @best_trick_skater.username %></h4>
             <% if @best_trick_skater.stance.present? %>
               <b>Stance:</b> <%= @best_trick_skater.stance.capitalize() %>
@@ -64,7 +64,7 @@
           <div class="media-left media-middle">
             <img class="media-object rounded--avatars" src="<%= @worst_slam_skater.logo.url(:thumb)%>" alt="Skater's avatar">
           </div>
-          <div class="media-body">
+          <div class="media-body media-middle">
             <h4 class="media-heading"><%= @worst_slam_skater.username %></h4>
             <% if @worst_slam_skater.stance.present? %>
               <b>Stance:</b> <%= @worst_slam_skater.stance.capitalize() %>
@@ -84,7 +84,7 @@
           <div class="media-left media-middle">
             <img class="media-object rounded--avatars" src="<%= @best_line_skater.logo.url(:thumb)%>" alt="Skater's avatar">
           </div>
-          <div class="media-body">
+          <div class="media-body media-middle">
             <h4 class="media-heading"><%= @best_line_skater.username %></h4>
             <% if @best_line_skater.stance.present? %>
               <b>Stance:</b> <%= @best_line_skater.stance.capitalize() %>
@@ -99,7 +99,7 @@
       </div>
     <% end %>
 
-    <div class="col-lg-1">
+    <div class="col-lg-1 button__category--spotshow">
       <div class="btn-group">
         <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Choose a category <span class="caret"></span>

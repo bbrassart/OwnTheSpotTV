@@ -1,22 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-      <h1>8 rules to rule them all</h1>
-      <ul>
-        <li>Only registered users can submit videos.</li>
-        <li>Only registered users can vote for the best clips. Each user has one vote for each video: like or dislike.</li>
-        <li>There is 1 overall leaderboard (sorting skaters per total number of likes) and 3 leaderboards per spot (Best Trick, Firing Line, Worst SLam)</li>
-        <li>Post the right video - a real skateboarding video, not posers allowed in here - on the right spot. Otherwise, you might be banned</li>
-        <li>The skater who owns a spot in one of those 3 categories receives a badge. Best Trick. you're the Boss; Firing Line: you're the Caporegime, Worst Slam: you're the Best Soldier.</li>
-        <li>It's not a game of SKATE, you can do bonelesses, grabs, feet on the ground,...</li>
-        <li>Feel free to hit us on Facebook or via email to suggest any improvements</li>
-        <li>Don't worry about NBD's</li>
-      </ul>
+    <div class="col-md-6 col-md-offset-3 rules__about--div contentdiv--default__shadow">
+      <h2 class="rules__title--styling">8 rules to rule them all</h2>
+        <p class="rules__text--styling">20 spots, three categories: <b>Best Trick, Firing Line, Worst SLam</b></p>
+        <p class="rules__text--styling">Registered users can <b>submit their own YouTube clips</b></p>
+        <p class="rules__text--styling">Only registered users can <b>vote</b> for the best clips</p>
+        <p class="rules__text--styling">Each user has one vote for each video: <b>Like or Dislike</b></p>
+        <p class="rules__text--styling">It's not a game of SKATE, you can do bonelesses, grabs, benihanas...</p>
+        <p class="rules__text--styling">Don't worry about NBD's</p>
+        <p class="rules__text--styling">By clicking 'Report poser', you can inform us if a video is not legit</p>
+        <p class="rules__text--styling">Feel free to hit us on Facebook or via email to suggest any improvements</p>
     </div>
   </div>
+
   <div class="row">
-    <div class="col-lg-12">
-      <p>Wanna be on top of the Skate Mob? </p>
+    <% if current_user.nil? %>
+      <div class="col-md-6 col-md-offset-3">
       <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -51,7 +50,8 @@
           </div>
         </div>
       </div>
-
     </div>
+  <% end %>
   </div>
+
 </div>

@@ -1,47 +1,48 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>About us</h1>
-      <p>OwnTheSpot.TV is a website created by skateboarders for skateboarders. Registered users can submit their own YouTube videos and then vote for the best clips. We listed 30 skate spots in Barcelona. It's now your turn to battle in order to become the boss of the spot</p>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 rules__about--div contentdiv--default__shadow">
+        <h2 class="rules__title--styling">About us</h2>
+        <p>OwnTheSpot.TV is a website created by skateboarders for skateboarders.</p>
+        <p>Registered users can submit their own YouTube videos and then vote for the best clips.</p>
+        <p>20 skate spots in Barcelona. Become the boss of the spot</p>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <p>Wanna be on top of the Skate Mob? </p>
-      <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Register as a new user</h4>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Register as a new user</h4>
+              </div>
+              <div class="modal-body">
+                <%= render 'helpers/account_new_form' %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
             </div>
-            <div class="modal-body">
-              <%= render 'helpers/account_new_form' %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <button type="button" role="button" data-target="#myModal1" data-toggle="modal" class="btn btn-default"><%= link_to "Or log in with your account", "#myMdoal1"%></button>
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel1">Sign in</h4>
+              </div>
+              <div class="modal-body">
+                <%= render 'helpers/signin_form' %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <button type="button" role="button" data-target="#myModal1" data-toggle="modal" class="btn btn-default"><%= link_to "Or log in with your account", "#myMdoal1"%></button>
-      <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel1">Sign in</h4>
-            </div>
-            <div class="modal-body">
-              <%= render 'helpers/signin_form' %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
