@@ -1,5 +1,82 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-6">
+      <h3>The crime scenes</h3>
+      <p>Our most boiling skate spots</p>
+      <% @most_active_spots.each do |spot|%>
+        <% if current_user %>
+          <ul>
+            <li>
+              <div class="media">
+                <div class="media-left media-middle">
+                  <a href="<%= spot_path(spot) %>">
+                    <img class="media-object rounded--avatars" src="<%= spot.logo.url(:square)%>" alt="Spot's avatar">
+                  </a>
+                </div>
+                <div class="media-body media-middle">
+                    <a href="<%= spot_path(spot) %>">
+                      <h4 class="media-heading media-middle"><%= spot.name %>
+                      </h4>
+                    </a>
+                   <%= spot.description %>
+                   <p><%= spot.videos.length %> clips submited for this spot</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        <% else %>
+          <ul>
+            <li>
+              <div class="media">
+                <div class="media-left media-middle">
+                  <img class="media-object rounded--avatars" src="<%= spot.logo.url(:square)%>" alt="Spot's avatar">
+                </div>
+                <div class="media-body media-middle">
+                  <h4 class="media-heading"><%= spot.name %>
+                  </h4>
+                  <%= spot.description %>
+                </div>
+              </div>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-md-2">
+      <% if current_user.present? %>
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose a spot <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <% @spots_by_district.each do |spot|%>
+            <% if spot.district == @current_district %>
+              <li><%= link_to spot.name, spot_path(spot) %></li>
+            <% elsif spot.district != @current_district then @current_district = spot.district%>
+              <li role="separator" class="divider"></li>
+              <li><a disabled=true><b><%= spot.district %></b></a></li>
+              <li><%= link_to spot.name, spot_path(spot) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% elsif !current_user.present? %>
+        <button class="btn btn-primary choosespot__dropdown dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Check our spots <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <% @spots_by_district.each do |spot|%>
+            <% if spot.district == @current_district %>
+              <li><a disabled=true><%=spot.name %></a></li>
+            <% elsif spot.district != @current_district then @current_district = spot.district%>
+              <li role="separator" class="divider"></li>
+              <li><a disabled=true><b><%= spot.district %></b></a></li>
+              <li><a disabled=true> <%= spot.name %></a></li>
+            <% end %>
+          <% end%>
+        </ul>
+      <% end %>
+
+    </div>
     <div class="col-lg-4 contentdiv--default__shadow">
       <% if current_user %>
         <h4>Check the latest clip!<h4/>
@@ -9,12 +86,6 @@
           </div>
           <%= render :partial => "buttons_form", :locals => {:video => @last_video_updated} %>
         </div>
-        <br><br><br>
-        <p>Time for some action...</p>
-        <br>
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Choose a spot <span class="caret"></span>
-        </button>
       <% elsif current_user.nil? %>
         <h4>Check the latest clip!</h4>
         <div class="video__carousel--slide">
@@ -22,7 +93,6 @@
             <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @last_video_updated.url.slice(-11, 11) %>"></iframe>
           </div>
         </div>
-        <% if current_user.nil? %>
           <div class="btn-group">
             <p>Wanna be on top of the Skate Mob? </p>
             <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
@@ -61,75 +131,6 @@
             </div>
           </div>
         <% end %>
-        <br><br><br>
-        <button class="btn btn-primary choosespot__dropdown dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Have a look at our spots <span class="caret"></span>
-        </button>
-
-      <%end %>
-        <ul class="dropdown-menu">
-          <% @spots_by_district.each do |spot|%>
-            <% if current_user %>
-              <% if spot.district == @current_district %>
-                <li><%= link_to spot.name, spot_path(spot) %></li>
-              <% elsif spot.district != @current_district then @current_district = spot.district%>
-              <li role="separator" class="divider"></li>
-              <li><a disabled=true><b><%= spot.district %></b></a></li>
-                <li><%= link_to spot.name, spot_path(spot) %></li>
-              <% end %>
-            <% else %>
-              <% if spot.district == @current_district %>
-                <li><a disabled=true><%=spot.name %></a></li>
-              <% elsif spot.district != @current_district then @current_district = spot.district%>
-                <li role="separator" class="divider"></li>
-                <li><a disabled=true><b><%= spot.district %></b></a></li>
-                <li><a disabled=true> <%= spot.name %></a></li>
-              <% end %>
-            <% end%>
-          <% end %>
-        </ul>
       </div>
-      <div class="col-lg-8">
-        <h3>The crime scenes</h3>
-        <p>Our most boiling skate spots</p>
-        <% @most_active_spots.each do |spot|%>
-          <% if current_user %>
-            <ul>
-              <li>
-                <div class="media">
-                  <div class="media-left media-middle">
-                    <a href="<%= spot_path(spot) %>">
-                      <img class="media-object rounded--avatars" src="<%= spot.logo.url(:square)%>" alt="Spot's avatar">
-                    </a>
-                  </div>
-                  <div class="media-body media-middle">
-                      <a href="<%= spot_path(spot) %>">
-                        <h4 class="media-heading"><%= spot.name %>
-                        </h4>
-                      </a>
-                     <%= spot.description %>
-                      <p><%= spot.videos.length %> clips submited for this spot</p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            <% else %>
-              <ul>
-                <li>
-                  <div class="media">
-                    <div class="media-left media-middle">
-                      <img class="media-object rounded--avatars" src="<%= spot.logo.url(:square)%>" alt="Spot's avatar">
-                    </div>
-                    <div class="media-body media-middle">
-                        <h4 class="media-heading"><%= spot.name %>
-                        </h4>
-                       <%= spot.description %>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            <% end %>
-          <% end %>
-      </div>
-  </div>
+    </div>
 </div>

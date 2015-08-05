@@ -1,7 +1,5 @@
 <div class="container">
-
   <div class="row">
-
     <div class="col-lg-5 spot__description--spotshow">
       <div class="media">
         <div class="media-left media-middle">
@@ -13,7 +11,6 @@
         </div>
       </div>
     </div>
-
 
     <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
       <h4>No videos submitted yet...</h4>
@@ -116,7 +113,7 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 video--carousel__margin">
 
       <% if @best_overall_videos.present? %>
         <% if @best_overall_videos.length == 1 %>
@@ -259,7 +256,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 video--carousel__margin">
 
 
       <% if @latest_overall_videos.present? %>

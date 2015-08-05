@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 col-md-offset-1 contentdiv--default__shadow">
+    <div class="col-lg-4 contentdiv--default__shadow">
       <h3>The Mob family</h3>
       <h4>Our most devoted soldiers</h4>
       <% @most_active_skaters.each do |skater|%>
@@ -47,10 +47,11 @@
         <% end %>
       <%end%>
     </div>
-    <div class="col-md-3 col-md-offset-1 contentdiv--default__shadow">
+
+    <div class="col-lg-3">
       <% if current_user %>
         <div class="btn-group">
-          <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose a skater <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
@@ -61,8 +62,9 @@
           </ul>
         </div>
       <% else %>
-        <p>You have to login to see all the skaters</p>
-        <p>Wanna be on top of the Skate Mob? </p>
+        <div class="rules__about--div">
+          <p>You have to login to see all the skaters</p>
+        </div>
         <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
@@ -98,6 +100,17 @@
           </div>
         </div>
       <% end %>
+    </div>
+
+    <div class="col-lg-5 contentdiv--default__shadow">
+      <h4>Check the latest clip!</h4>
+      <div class="video__carousel--slide">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @last_video_updated.url.slice(-11, 11) %>"></iframe>
+        </div>
+      </div>
+    </div>
+
     </div>
   </div>
 </div>
