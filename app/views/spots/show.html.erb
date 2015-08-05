@@ -14,26 +14,12 @@
       </div>
     </div>
 
-    <div class="col-lg-2">
-      <div class="btn-group">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Choose a category <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a href="<%= spot_path(params[:id])%>">All the videos</a></li>
-            <li><a href="<%= spot_path(params[:id])%>?category=trick">Best Trick</a></li>
-            <li><a href="<%= spot_path(params[:id])%>?category=line">Firing Line</a></li>
-            <li><a href="<%= spot_path(params[:id])%>?category=slam">Worst Slam</a></li>
-        </ul>
-      </div>
-    </div>
-
 
     <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
       <h4>No videos submitted yet...</h4>
     <% elsif @best_overall_videos.present? %>
       <div class="col-md-3">
-        <h4>The Boss at <%= @spot.name %></h4>
+        <h4>The Boss here is</h4>
         <div class="media">
           <div class="media-left media-middle">
             <img class="media-object rounded--avatars" src="<%= @overall_best_skater.logo.url(:thumb)%>" alt="Skater's avatar">
@@ -53,7 +39,7 @@
       </div>
     <% elsif @best_trick_videos.present? %>
       <div class="col-md-3">
-        <h4>The Best Trick Award at <%= @spot.name %> goes to ...</h4>
+        <h4>The Best Trick Award goes to</h4>
         <div class="media">
           <div class="media-left media-middle">
             <img class="media-object rounded--avatars" src="<%= @best_trick_skater.logo.url(:thumb)%>" alt="Skater's avatar">
@@ -73,7 +59,7 @@
       </div>
     <% elsif @worst_slam_videos.present? %>
       <div class="col-md-3">
-        <h4>The Worst Slam Award at <%= @spot.name %> goes to ...</h4>
+        <h4>The Worst Slam Award goes to</h4>
         <div class="media">
           <div class="media-left media-middle">
             <img class="media-object rounded--avatars" src="<%= @worst_slam_skater.logo.url(:thumb)%>" alt="Skater's avatar">
@@ -92,8 +78,8 @@
         </div>
       </div>
     <% elsif @best_line_videos.present? %>
-      <div class="col-md-3">
-        <h4>The Firing Line Award at <%= @spot.name %> goes to ...</h4>
+      <div class="col-md-4">
+        <h4>The Firing Line Award goes to</h4>
         <div class="media">
           <div class="media-left media-middle">
             <img class="media-object rounded--avatars" src="<%= @best_line_skater.logo.url(:thumb)%>" alt="Skater's avatar">
@@ -112,6 +98,20 @@
         </div>
       </div>
     <% end %>
+
+    <div class="col-lg-1">
+      <div class="btn-group">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose a category <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="<%= spot_path(params[:id])%>">All the videos</a></li>
+            <li><a href="<%= spot_path(params[:id])%>?category=trick">Best Trick</a></li>
+            <li><a href="<%= spot_path(params[:id])%>?category=line">Firing Line</a></li>
+            <li><a href="<%= spot_path(params[:id])%>?category=slam">Worst Slam</a></li>
+        </ul>
+      </div>
+    </div>
 
   </div>
 
