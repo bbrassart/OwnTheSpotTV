@@ -2,7 +2,7 @@
   <div class="row">
         <% if current_user.present? %>
         <div class="col-lg-3 col-sm-offset-2 pushing__div--below">
-          <img src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/107/medium/Capture_d%E2%80%99e%CC%81cran_2015-08-05_a%CC%80_16.12.13.png?1438785321" width="150" height="147" alt="Number one" align="left">
+          <img src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/107/medium/Capture_d%E2%80%99e%CC%81cran_2015-08-05_a%CC%80_16.12.13.png?1438785321" class="winner--image" width="140" height="137" alt="Number one" align="left">
         </div>
         <div class="col-lg-6">
           <h3>The overall best skater</h3>
@@ -25,7 +25,7 @@
         </div>
         <% else %>
         <div class="col-lg-2 col-sm-offset-1 pushing__div--below">
-          <img src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/107/medium/Capture_d%E2%80%99e%CC%81cran_2015-08-05_a%CC%80_16.12.13.png?1438785321" width="150" height="147" alt="Number one" align="left">
+          <img src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/107/medium/Capture_d%E2%80%99e%CC%81cran_2015-08-05_a%CC%80_16.12.13.png?1438785321" class="winner--image" width="140" height="137" alt="Number one" align="left">
         </div>
         <div class="col-lg-5">
           <h3>The overall best skater</h3>
@@ -88,7 +88,7 @@
 
     </div>
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12  video__carousel--border">
         <h3>Highest rated videos</h3>
         <% @highest_rated_videos.each do |video| %>
           <div class="col-lg-4 video__carousel--slide">

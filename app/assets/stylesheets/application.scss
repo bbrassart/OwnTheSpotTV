@@ -16,6 +16,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+#map {
+  height: 380px;
+}
+
+.winner--image {
+  margin-bottom: 20px;
+}
+
  .pushing__div--below {
    margin-top: 20px;
  }
@@ -23,7 +31,7 @@
 
 .video__carousel--border {
   border-top: 1px solid #eee;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 //* rules styling
