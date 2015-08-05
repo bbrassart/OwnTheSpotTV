@@ -45,6 +45,7 @@
 
     <div class="col-md-2">
       <% if current_user.present? %>
+      <div class="pushing__div--below">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Choose a spot <span class="caret"></span>
         </button>
@@ -59,7 +60,9 @@
             <% end %>
           <% end %>
         </ul>
+      </div>
       <% elsif !current_user.present? %>
+      <div class="pushing__div--below">
         <button class="btn btn-primary choosespot__dropdown dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Check our spots <span class="caret"></span>
         </button>
@@ -74,9 +77,11 @@
             <% end %>
           <% end%>
         </ul>
+      </div>
       <% end %>
 
     </div>
+    <div class="pushing__div--below">
     <div class="col-lg-4 contentdiv--default__shadow">
       <% if current_user %>
         <h4>Check the latest clip!<h4/>
@@ -131,6 +136,7 @@
             </div>
           </div>
         <% end %>
+      </div>
       </div>
     </div>
 </div>

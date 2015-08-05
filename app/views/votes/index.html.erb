@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
-      <h3>The overall best skater</h3>
         <% if current_user.present? %>
+        <div class="col-lg-3 col-sm-offset-2 pushing__div--below">
+          <img src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/107/medium/Capture_d%E2%80%99e%CC%81cran_2015-08-05_a%CC%80_16.12.13.png?1438785321" width="150" height="147" alt="Number one" align="left">
+        </div>
+        <div class="col-lg-6">
+          <h3>The overall best skater</h3>
           <div class="media">
             <div class="media-left media-middle">
               <a href="<%=skater_path(@best_skater)%>"><img class="media-object rounded--avatars" src="<%= @best_skater.logo.url(:thumb) %>" alt="Skater's avatar"></a>
@@ -19,8 +22,13 @@
               <% end %>
             </div>
           </div>
-          <p>His top video has tons of like.</p>
+        </div>
         <% else %>
+        <div class="col-lg-2 col-sm-offset-1 pushing__div--below">
+          <img src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/107/medium/Capture_d%E2%80%99e%CC%81cran_2015-08-05_a%CC%80_16.12.13.png?1438785321" width="150" height="147" alt="Number one" align="left">
+        </div>
+        <div class="col-lg-5">
+          <h3>The overall best skater</h3>
           <div class="media">
             <div class="media-left media-middle">
               <img class="media-object rounded--avatars" src="@best_skater.logo.url(:thumb)" alt="Skater's avatar">
@@ -37,6 +45,8 @@
               <% end %>
             </div>
           </div>
+        </div>
+        <div class="col-md-4 pushing__div--below">
           <p>Wanna be on top of the Skate Mob? </p>
           <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -72,12 +82,16 @@
               </div>
             </div>
           </div>
+          </div>
+
         <% end %>
-      </div>
-      <div class="col-lg-9">
+
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
         <h3>Highest rated videos</h3>
         <% @highest_rated_videos.each do |video| %>
-          <div class="col-lg-6 video__carousel--slide">
+          <div class="col-lg-4 video__carousel--slide">
             <div class="embed-responsive embed-responsive-16by9">
               <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
             </div>

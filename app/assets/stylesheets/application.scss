@@ -16,6 +16,11 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ .pushing__div--below {
+   margin-top: 20px;
+ }
+
+
 //* rules styling
 
 .rules__text--styling {
@@ -169,33 +174,3 @@
   color: #468847;
   text-align: left;
 }
-
-//*rules styling
-
-.rules--div__list {
-    width: 500px;
-    margin: 10px;
-  }
-
-.rules--list__items {
-    color: #ccc;
-    list-style-type: none;
-  }
-
-.rules--list__items li {
-    position: relative;
-    font: bold italic 45px/1.5 Helvetica, Verdana, sans-serif;
-    margin-bottom: 20px;
-  }
-
-.rules--list__items li p {
-    font: 12px/1.5 Helvetica, sans-serif;
-    padding-left: 60px;
-    color: #555;
-  }
-
-.rules--list__items span {
-  margin-top: -30px;
-    position: absolute;
-    line-height: inherit;
-  }
