@@ -13,7 +13,9 @@
     </div>
 
     <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
-      <h4>No videos submitted yet...</h4>
+      <div class="col-md-3">
+        <h4>No videos submitted yet...</h4>
+      </div>
     <% elsif @best_overall_videos.present? %>
       <div class="col-md-3">
         <h4>The Boss here is</h4>
