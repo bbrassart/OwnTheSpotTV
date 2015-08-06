@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   match '/contacts',     to: 'contacts#new',             via: 'get'
   resources :contacts, only: [:new, :create]
   resources :skaters
-  resources :spots, only: [:index, :show]
+  resources :spots
   resources :videos
   resources :votes
 
