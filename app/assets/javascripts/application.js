@@ -20,9 +20,10 @@
 //= require turbolinks
 //= require_tree .
 
-L.Icon.Default.imagePath = '/sites/all/libraries/leaflet/dist/images';
+
 
 $(document).ready(function(){
+  L.Icon.Default.imagePath = '/sites/all/libraries/leaflet/dist/images';
 
   var map = L.map('map').setView([41.413876, 2.172767], 12);
 
