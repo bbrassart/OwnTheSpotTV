@@ -32,8 +32,6 @@ spots = [
   Spot.create!(name: "World Trade Center", description: 'Perfect flatground, curbs, benches and security is on the alert', district: 'Drassanes'),
   Spot.create!(name: "Hotel Vela", description: 'Chlly sunday spot, curbs and weird wavy structure', district: 'Barceloneta'),
   Spot.create!(name: "Estació de Sants", description: "Another mytical plaza, try your best to kill this spot before anyone else does", district: 'Sants')
-
-
 ]
 
 skaters = [

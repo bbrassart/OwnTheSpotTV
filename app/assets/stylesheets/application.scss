@@ -12,7 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ //=require leaflet
  */
+
+ #map {
+   height: 500px;
+ }
+
+
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
