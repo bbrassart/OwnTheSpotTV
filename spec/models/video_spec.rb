@@ -8,29 +8,44 @@ RSpec.describe Video, type: :model do
   end
 
   it "will NOT create the video if user ID is not present" do
-    video_example = Video.new(url: 'https://www.youtube.com/watch?v=aT_yFSUbbVw', spot_id: @spot.id, category: 'Best line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
+    video_example = Video.new(url: 'https://www.youtube.com/watch?v=aT_yFSUbbVw', spot_id: @spot.id, category: 'line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
     expect(video_example).not_to be_valid
   end
 
   it "will NOT create the video if URL is not provided" do
-    video_example = Video.new(skater_id: @skater.id, spot_id: @spot.id, category: 'Best line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
+    video_example = Video.new(skater_id: @skater.id, spot_id: @spot.id, category: 'line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
     expect(video_example).not_to be_valid
   end
+
+  it "will NOT create the video if category is not line, slam or trick" do
+    video_example = Video.new(skater_id: @skater.id, spot_id: @spot.id, category: 'twotricks', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
+    expect(video_example).not_to be_valid
+  end
+
+  it "will NOT create the video if URL does not include Youtu" do
+    video_example = Video.new(url: 'https://www.youtbe.com/watch?v=aT_yFSUbbVw', skater_id: @skater.id, spot_id: @spot.id, category: 'line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
+    expect(video_example).not_to be_valid
+  end
+
+  it "will NOT create the video if URL is larger than 43 characters" do
+    video_example = Video.new(url: 'https://www.youtbe.com/watch?v=aT_yFSUbbVwsdbsdudesc/ibfjhfkdbadadsbkadjs/', skater_id: @skater.id, spot_id: @spot.id, category: 'line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
+    expect(video_example).not_to be_valid
+  end
+
+  it "will NOT create the video if URL is smaller than 27 characters" do
+    video_example = Video.new(url: 'https://www.youtu.be/small', skater_id: @skater.id, spot_id: @spot.id, category: 'line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
+    expect(video_example).not_to be_valid
+  end
+
 
   it "will NOT create a video if URL is already online in the site" do
-    Video.create!(url: "http://example.com/", skater_id: @skater.id, spot_id: @spot.id, category: 'Best trick', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
-    video_example = Video.new(url: "http://example.com/", skater_id: @skater.id, spot_id: @spot.id, category: 'Best line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
+    Video.create!(url: "https://www.youtube.com/watch?v=aT_yFSUbbVw", skater_id: @skater.id, spot_id: @spot.id, category: 'trick', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
+    video_example = Video.new(url: "https://www.youtube.com/watch?v=aT_yFSUbbVw", skater_id: @skater.id, spot_id: @spot.id, category: 'trick', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
     expect(video_example).not_to be_valid
   end
 
-#  it "will NOT create a video if an account using the email already" do
-#    Video.create!(username: 'Rick', email: 'example@gmail.com', password: '246', password_confirmation: '246')
-#    video_example = Video.new(username: 'James', email: 'example@gmail.com', password: '123', password_confirmation: '123')
-#    expect(video_example).not_to be_valid
-#  end
-
-#  it "will create a video properly" do
-#    video_example = Video.create(username: 'Rik', email: 'example@gmail.com', password: '123', password_confirmation: '123')
-#    expect(video_example.id).to be_truthy
-#  end
+  it "will create a video properly" do
+    example = Video.create!(url: "https://www.youtube.com/watch?v=aT_yFSUbbVw", skater_id: @skater.id, spot_id: @spot.id, category: 'trick', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
+    expect(example.id).to be_truthy
+  end
 end
