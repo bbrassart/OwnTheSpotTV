@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= depend_on_asset "layers.png"
+//= depend_on_asset "layers-2x.png"
 //=require leaflet-src
+//= require leaflet
 //= require turbolinks
 //= require_tree .
 
