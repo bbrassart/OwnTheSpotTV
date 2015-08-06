@@ -1,5 +1,44 @@
 <div class="container">
   <div class="row">
+    <% if current_user.nil? %>
+      <div class="col-md-6 col-md-offset-3">
+      <h3>You need to sign up to see this page</h3>
+      <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Register as a new user</h4>
+            </div>
+            <div class="modal-body">
+              <%= render 'helpers/account_new_form' %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" role="button" data-target="#myModal1" data-toggle="modal" class="btn btn-default"><%= link_to "Or log in with your account", "#myMdoal1"%></button>
+      <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel1">Sign in</h4>
+            </div>
+            <div class="modal-body">
+              <%= render 'helpers/signin_form' %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
     <div class="col-lg-5 spot__description--spotshow">
       <div class="media">
         <div class="media-left media-middle">
@@ -410,6 +449,6 @@
       <%end%>
     </div>
 
-
+    <%end %>
   </div>
 </div>
