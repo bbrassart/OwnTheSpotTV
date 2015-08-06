@@ -20,7 +20,7 @@
 //= require turbolinks
 //= require_tree .
 
-L.Icon.Default.imagePath = './stylesheets/images';
+L.Icon.Default.imagePath = '/sites/all/libraries/leaflet/dist/images';
 
 $(document).ready(function(){
 
