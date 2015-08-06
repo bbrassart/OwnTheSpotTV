@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row homepage--pushcontent__below">
     <% if current_user.nil? %>
       <div class="col-md-6 col-md-offset-3">
       <h3>You need to sign up to see this page</h3>
@@ -142,7 +142,7 @@
         <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Choose a category <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu  skater__menu--whitebg">
             <li><a href="<%= spot_path(params[:id])%>">All the videos</a></li>
             <li><a href="<%= spot_path(params[:id])%>?category=trick">Best Trick</a></li>
             <li><a href="<%= spot_path(params[:id])%>?category=line">Firing Line</a></li>

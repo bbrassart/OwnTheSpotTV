@@ -18,11 +18,6 @@
 //= require_tree .
 
 
-
-
-
-
-
 $(document).ready(function(){
 
   var map = L.map('map').setView([41.413876, 2.172767], 12);
@@ -88,7 +83,4 @@ mercatDeLesFlors.bindPopup("<b>Mercat de les Flors</b><br><br><img src='http://s
 
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
-
-
-
 });

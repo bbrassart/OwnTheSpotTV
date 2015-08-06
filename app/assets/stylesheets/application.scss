@@ -17,13 +17,9 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-
-
  #map {
    height: 550px;
  }
-
-
 
 .navbar {
   background-color: #046bd5 !important;
@@ -46,6 +42,11 @@
     background-color: #337AB7 !important;
   }
 
+.homepage--pushcontent__below {
+  margin-top: 20px;
+
+  }
+
 .navbar-nav .open a,
 .nav .open a:hover,
 .nav .open a:focus,
@@ -53,12 +54,15 @@
  {
   background-color: #337ab7;
 }
+
  .leaflet-popup-content-wrapper {
    width: 238px;
  }
+
 .pushing__body--below {
   margin-bottom: 20px;
 }
+
 .open .skater__menu--whitebg {
   background-color: white !important;
 }

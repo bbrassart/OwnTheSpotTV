@@ -1,17 +1,17 @@
 <div class="container">
-  <div class="row">
+  <div class="row homepage--pushcontent__below">
     <div class="col-md-12" align="center">
       <h1>Contact us</h1>
       <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
       <form>
         <div class="form-group">
-          <%= f.input :name, :required => true %>
+          <%= f.input :name,  class: "form-control", :required => true %>
         </div>
         <div class="form-group">
-          <%= f.input :email, :required => true %>
+          <%= f.input :email, class: "form-control", :required => true %>
         </div>
         <div class="form-group">
-          <%= f.input :message, :as => :text, :required => true %>
+          <%= f.input :message, class: "form-control", :as => :text, :required => true %>
         </div>
         <div class= "hidden">
           <%= f.input :nickname, :hint => 'Leave this field blank!' %>
