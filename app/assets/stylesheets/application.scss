@@ -17,23 +17,15 @@
  @import "bootstrap";
 
 
- @media (max-width: 480px) {
-   .modal {
-       position: fixed;
-       top: 3%;
-       right: 3%;
-       left: 3%;
-       bottom: 3%;
-       width: auto;
-       margin: 0;
-     }
-   .modal-body {
-       max-height: 350px;
-       padding: 15px;
-       overflow-y: auto;
-       -webkit-overflow-scrolling: touch;
-     }
- };
+ @media (max-width: 767px) {
+ .modal {
+ position: absolute;
+ overflow:visible;
+ }
+ .modal-open {
+ overflow:visible;
+ }
+ }
 
 
 .winner--image {
