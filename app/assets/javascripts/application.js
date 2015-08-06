@@ -20,6 +20,7 @@
 //= require turbolinks
 //= require_tree .
 
+L.Icon.Default.imagePath = './stylesheets/images';
 
 $(document).ready(function(){
 
