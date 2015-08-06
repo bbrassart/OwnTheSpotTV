@@ -16,9 +16,43 @@
  */
 
  #map {
-   height: 500px;
+   height: 550px;
  }
 
+.navbar {
+  background-color: #046bd5 !important;
+  border-bottom: 2px solid white;
+}
+
+.navbar-default {
+  box-shadow: -1px 1px 3px 1px rgba(0, 0, 0, 0.7);
+  margin-bottom: 5px;
+}
+
+.navbar-nav li a,,
+.navbar-brand {
+  color: white !important ;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    background-color: #337AB7 !important;
+  }
+
+.navbar-nav .open a,
+.nav .open a:hover,
+.nav .open a:focus,
+.open .dropdown-menu
+ {
+  background-color: #337ab7;
+}
+ .leaflet-popup-content-wrapper {
+   width: 238px;
+ }
+.pushing__body--below {
+  margin-bottom: 20px;
+}
 
 
  @import "bootstrap-sprockets";
@@ -30,6 +64,10 @@
 
 .winner--image {
   margin-bottom: 20px;
+}
+
+.map--push--below {
+  margin-top: 25px;
 }
 
  .pushing__div--below {
