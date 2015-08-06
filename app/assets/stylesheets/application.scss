@@ -14,10 +14,16 @@
  *= require_self
  //=require leaflet
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
 
  #map {
    height: 550px;
  }
+
+
 
 .navbar {
   background-color: #046bd5 !important;
@@ -53,10 +59,10 @@
 .pushing__body--below {
   margin-bottom: 20px;
 }
+.open .skater__menu--whitebg {
+  background-color: white !important;
+}
 
-
- @import "bootstrap-sprockets";
- @import "bootstrap";
 
  .modal-body {
      height: 60%;

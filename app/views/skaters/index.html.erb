@@ -55,7 +55,7 @@
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose a skater <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu skater__menu--whitebg">
             <% @skaters.each do |skater|%>
               <% next if skater.id == current_user.id %>
               <li><%= link_to skater.username, skater_path(skater) %></li>
