@@ -16,24 +16,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- .modal {
-     position: fixed;
-     top: 3%;
-     right: 3%;
-     left: 3%;
-     width: auto;
-     margin: 0;
- }
 
  .modal-body {
-    max-height: 350px;
-    padding: 15px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
      height: 60%;
  }
-
-
 
 .winner--image {
   margin-bottom: 20px;
