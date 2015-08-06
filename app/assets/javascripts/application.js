@@ -17,8 +17,25 @@
 //= require turbolinks
 //= require_tree .
 
+function enterHandler(event){
+    if(event.keyCode==13){
+        formulaChange(document.getElementById("formula").value);
+    }
+}
+function formulaChange(formula){
+    val.item=Math.random();
+    tiles.redraw();
+}
+var map;
+var tiles;
+var val={
+    item: Math.random(),
+    toString: function(){
+        return this.item;
+    }
+};
 
-$(document).ready(function(){
+$(document).ready(function() {
 
   var map = L.map('map').setView([41.413876, 2.172767], 12);
 
@@ -43,14 +60,13 @@ $(document).ready(function(){
   var sants = L.marker([41.380283, 2.142049]).addTo(map);
   var mercatDeLesFlors = L.marker([41.371534, 2.157448]).addTo(map);
 
+
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18,
       id: 'bbrassart.b9fba4af',
       accessToken: 'pk.eyJ1IjoiYmJyYXNzYXJ0IiwiYSI6IjU2MTZjMjRmMjE2MmE4M2Q0OWEwMDVkYTc5YzM3M2Y3In0.V44T7lzZarK4_QwAwoEClw'
   }).addTo(map);
-
-
 
 macba.bindPopup("<b>Macba</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/249/square/macba.jpg'><br><br><a href='/spots/macba'>Go to the spot</a>");
 placaUniversitat.bindPopup("<b>Plaça Universitat</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/248/square/uni.jpg'><br><br><a href='/spots/placa-universitat'>Go to the spot</a>");
@@ -72,6 +88,7 @@ marinaMicroSpot.bindPopup("<b>Marina mini spot</b><br><br><img src='http://s3.am
 worldTradeCenter.bindPopup("<b>World Trade Center</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/265/square/wtc.png?1438730516'><br><br><a href='/spots/world-trade-center'>Go to the spot</a>");
 sants.bindPopup("<b>Estació de Sants</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/267/square/sants.jpg'><br><br><a href='/spots/estacio-de-sants'>Go to the spot</a>");
 mercatDeLesFlors.bindPopup("<b>Mercat de les Flors</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/251/square/mercat.jpg'><br><br><a href='/spots/mercat-de-las-flors'>Go to the spot</a>");
+
 
   function fadeAlert(){
     $('.alert-temp').removeClass('in');
