@@ -251,7 +251,7 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
   jquery-rails
-  leaflet-rails
+  leaflet-rails (>= 0.6.4)
   mail_form
   paperclip (~> 4.2)
   pg

@@ -17,7 +17,7 @@ gem 'pg'
 gem 'figaro'
 gem 'mail_form'
 gem 'simple_form'
-gem 'leaflet-rails'
+gem 'leaflet-rails', '>=0.6.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
