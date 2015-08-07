@@ -21,12 +21,7 @@
 
 $(document).ready(function() {
 
-  var myIcon = L.icon({
-      iconUrl: 'images/marker-icon.png',
-      iconRetinaUrl: 'images/marker-icon-2x.png',
-      shadowUrl: 'images/marker-shadow.png',
-
-  });
+  var myIcon = L.icon.Default;
 
   var map = L.map('map').setView([41.413876, 2.172767], 12);
 
