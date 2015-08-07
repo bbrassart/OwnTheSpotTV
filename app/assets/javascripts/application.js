@@ -19,6 +19,7 @@
 
 
 
+
 $(document).ready(function() {
 
   var myIcon = L.icon({
@@ -33,11 +34,9 @@ $(document).ready(function() {
       shadowAnchor: [22, 94]
   });
 
-
-
   var map = L.map('map').setView([41.413876, 2.172767], 12);
 
-  var macba = L.marker ([41.382950, 2.167280], {icon: myIcon}).addTo(map);
+  var macba = L.marker([41.382950, 2.167280], {icon: myIcon}).addTo(map);
   var placaUniversitat = L.marker([41.385727, 2.164016], {icon: myIcon}).addTo(map);
   var hotelVela = L.marker([41.368066, 2.190249], {icon: myIcon}).addTo(map);
   var macbaDownhill = L.marker([41.384521, 2.165832], {icon: myIcon}).addTo(map);
