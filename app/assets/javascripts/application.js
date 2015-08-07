@@ -17,25 +17,10 @@
 //= require turbolinks
 //= require_tree .
 
-function enterHandler(event){
-    if(event.keyCode==13){
-        formulaChange(document.getElementById("formula").value);
-    }
-}
-function formulaChange(formula){
-    val.item=Math.random();
-    tiles.redraw();
-}
-var map;
-var tiles;
-var val={
-    item: Math.random(),
-    toString: function(){
-        return this.item;
-    }
-};
 
 $(document).ready(function() {
+  window.L.Icon.Default.imagePath = 'http://api.tiles.mapbox.com/mapbox.js/' +
+    require('./package.json').version + '/images';
 
   var map = L.map('map').setView([41.413876, 2.172767], 12);
 
