@@ -23,6 +23,7 @@ $(document).ready(function() {
 
   var myIcon = L.icon({
       iconUrl: 'images/marker-icon.png',
+      iconAnchor: [22, 94],
   });
 
   var map = L.map('map').setView([41.413876, 2.172767], 12);
