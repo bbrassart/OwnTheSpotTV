@@ -18,21 +18,21 @@
 //= require_tree .
 
 var loadMarker = function() {
+
   var myIcon = L.icon({
-      iconUrl: 'my-icon.png',
-      iconRetinaUrl: 'my-icon@2x.png',
+      iconUrl: 'marker-icon.png',
+      iconRetinaUrl: 'marker-icon-2x.png',
       iconSize: [38, 95],
       iconAnchor: [22, 94],
       popupAnchor: [-3, -76],
-      shadowUrl: 'my-icon-shadow.png',
-      shadowRetinaUrl: 'my-icon-shadow@2x.png',
+      shadowUrl: 'marker-shadow.png',
       shadowSize: [68, 95],
       shadowAnchor: [22, 94]
   });
-};
+}
 
 
-$(document).ready(loadMarker.done(function() {
+$(document).ready(function() {
 
 
 
@@ -99,4 +99,4 @@ mercatDeLesFlors.bindPopup("<b>Mercat de les Flors</b><br><br><img src='http://s
 
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
-}));
+});
