@@ -17,10 +17,12 @@
 //= require turbolinks
 //= require_tree .
 
+window.L.Icon.Default.imagePath = 'http://api.tiles.mapbox.com/mapbox.js/' +
+  require('./package.json').version + '/images';
 
+  
 $(document).ready(function() {
-  window.L.Icon.Default.imagePath = 'http://api.tiles.mapbox.com/mapbox.js/' +
-    require('./package.json').version + '/images';
+
 
   var map = L.map('map').setView([41.413876, 2.172767], 12);
 
