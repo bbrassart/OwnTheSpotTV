@@ -23,11 +23,9 @@ $(document).ready(function() {
 
   var myIcon = L.icon({
       iconUrl: 'marker-icon.png',
-      iconRetinaUrl: 'marker-icon-2x.png',
       iconSize: [38, 95],
       iconAnchor: [22, 94],
       popupAnchor: [-3, -76],
-      shadowUrl: 'marker-shadow.png',
       shadowSize: [68, 95],
       shadowAnchor: [22, 94]
   });
