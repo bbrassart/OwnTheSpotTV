@@ -17,11 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
-
-
-
-$(document).ready(function() {
-
+var loadMarker = function() {
   var myIcon = L.icon({
       iconUrl: 'my-icon.png',
       iconRetinaUrl: 'my-icon@2x.png',
@@ -33,6 +29,12 @@ $(document).ready(function() {
       shadowSize: [68, 95],
       shadowAnchor: [22, 94]
   });
+};
+
+
+$(document).ready(loadMarker.done(function() {
+
+
 
   var map = L.map('map').setView([41.413876, 2.172767], 12);
 
@@ -97,4 +99,4 @@ mercatDeLesFlors.bindPopup("<b>Mercat de les Flors</b><br><br><img src='http://s
 
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
-});
+}));
