@@ -17,35 +17,46 @@
 //= require turbolinks
 //= require_tree .
 
-window.L.Icon.Default.imagePath = 'http://api.tiles.mapbox.com/mapbox.js/' +
-  require('./package.json').version + '/images';
 
-  
+
 $(document).ready(function() {
+
+  var myIcon = L.icon({
+      iconUrl: 'my-icon.png',
+      iconRetinaUrl: 'my-icon@2x.png',
+      iconSize: [38, 95],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+      shadowUrl: 'my-icon-shadow.png',
+      shadowRetinaUrl: 'my-icon-shadow@2x.png',
+      shadowSize: [68, 95],
+      shadowAnchor: [22, 94]
+  });
+
 
 
   var map = L.map('map').setView([41.413876, 2.172767], 12);
 
-  var macba = L.marker([41.382950, 2.167280]).addTo(map);
-  var placaUniversitat = L.marker([41.385727, 2.164016]).addTo(map);
-  var hotelVela = L.marker([41.368066, 2.190249]).addTo(map);
-  var macbaDownhill = L.marker([41.384521, 2.165832]).addTo(map);
-  var arcDeTriomf = L.marker([41.389483, 2.183147]).addTo(map);
-  var parcCiutadella = L.marker([41.386411, 2.186643]).addTo(map);
-  var montbauManualPad = L.marker([41.430239, 2.145480]).addTo(map);
-  var montbauDownhill = L.marker([41.432158, 2.148331]).addTo(map);
-  var hostafrancs = L.marker([41.376212, 2.142402]).addTo(map);
-  var barcelonetaBanks = L.marker([41.382308, 2.186439]).addTo(map);
-  var placaAnnaFrank = L.marker([41.402490, 2.154398]).addTo(map);
-  var fondoStairs = L.marker([41.454024, 2.222365]).addTo(map);
-  var canyelles = L.marker([41.443632, 2.171952]).addTo(map);
-  var forumFountain = L.marker([41.411157, 2.220802]).addTo(map);
-  var pobleNouRedCurb = L.marker([41.400337, 2.210062]).addTo(map);
-  var gloriesBumps = L.marker([41.403339, 2.189907]).addTo(map);
-  var marinaMicroSpot = L.marker([41.391600, 2.191466]).addTo(map);
-  var worldTradeCenter = L.marker([41.372649, 2.178741]).addTo(map);
-  var sants = L.marker([41.380283, 2.142049]).addTo(map);
-  var mercatDeLesFlors = L.marker([41.371534, 2.157448]).addTo(map);
+  var macba = L.marker ([41.382950, 2.167280], {icon: myIcon}).addTo(map);
+  var placaUniversitat = L.marker([41.385727, 2.164016], {icon: myIcon}).addTo(map);
+  var hotelVela = L.marker([41.368066, 2.190249], {icon: myIcon}).addTo(map);
+  var macbaDownhill = L.marker([41.384521, 2.165832], {icon: myIcon}).addTo(map);
+  var arcDeTriomf = L.marker([41.389483, 2.183147], {icon: myIcon}).addTo(map);
+  var parcCiutadella = L.marker([41.386411, 2.186643], {icon: myIcon}).addTo(map);
+  var montbauManualPad = L.marker([41.430239, 2.145480], {icon: myIcon}).addTo(map);
+  var montbauDownhill = L.marker([41.432158, 2.148331], {icon: myIcon}).addTo(map);
+  var hostafrancs = L.marker([41.376212, 2.142402], {icon: myIcon}).addTo(map);
+  var barcelonetaBanks = L.marker([41.382308, 2.186439], {icon: myIcon}).addTo(map);
+  var placaAnnaFrank = L.marker([41.402490, 2.154398], {icon: myIcon}).addTo(map);
+  var fondoStairs = L.marker([41.454024, 2.222365], {icon: myIcon}).addTo(map);
+  var canyelles = L.marker([41.443632, 2.171952], {icon: myIcon}).addTo(map);
+  var forumFountain = L.marker([41.411157, 2.220802], {icon: myIcon}).addTo(map);
+  var pobleNouRedCurb = L.marker([41.400337, 2.210062], {icon: myIcon}).addTo(map);
+  var gloriesBumps = L.marker([41.403339, 2.189907], {icon: myIcon}).addTo(map);
+  var marinaMicroSpot = L.marker([41.391600, 2.191466], {icon: myIcon}).addTo(map);
+  var worldTradeCenter = L.marker([41.372649, 2.178741], {icon: myIcon}).addTo(map);
+  var sants = L.marker([41.380283, 2.142049], {icon: myIcon}).addTo(map);
+  var mercatDeLesFlors = L.marker([41.371534, 2.157448], {icon: myIcon}).addTo(map);
 
 
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
