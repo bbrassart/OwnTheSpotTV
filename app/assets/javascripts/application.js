@@ -73,7 +73,7 @@ placaUniversitat.bindPopup("<b>Plaça Universitat</b><br><br><img src='http://s3
 hotelVela.bindPopup("<b>Hotel Vela</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/266/square/vela.jpg'><br><br><a href='/spots/hotel-vela'>Go to the spot</a>");
 macbaDownhill.bindPopup("<b>Macba downhill</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/250/square/macba_downhill.png'><br><br><a href='/spots/macba-downhill'>Go to the spot</a>");
 arcDeTriomf.bindPopup("<b>Arc de Triomf</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/252/square/arc.jpg'><br><br><a href='/spots/arc-de-triomf'>Go to the spot</a>");
-parcCiutadella.bindPopup("<b>Parc de la Ciutadella</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/253/square/ciutadella.jpg'><br<br>><a href='/spots/parc-de-la-ciutadella'>Go to the spot</a>");
+parcCiutadella.bindPopup("<b>Parc de la Ciutadella</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/253/square/ciutadella.jpg'><br><br><a href='/spots/parc-de-la-ciutadella'>Go to the spot</a>");
 montbauManualPad.bindPopup("<b>Montbau manual pad</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/254/square/montbau_manny.png'><br><br><a href='/spots/montbau-manual-pad'>Go to the spot</a>");
 montbauDownhill.bindPopup("<b>Montbau downhill</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/255/square/montbau_downhill.jpg'><br><br><a href='/spots/montbau-downhill'>Go to the spot</a>");
 hostafrancs.bindPopup("<b>Hostafrancs</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/256/square/hostafrancs.png'><br><br><a href='/spots/hostafrancs'>Go to the spot</a>");

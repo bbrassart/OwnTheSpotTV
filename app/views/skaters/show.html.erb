@@ -1,10 +1,10 @@
 <div class="container">
   <% if current_user.id == @skater.id %>
-    <div class="row">
-      <div class="col-md-6">
+    <div class="row homepage--pushcontent__below">
+      <div class="col-md-6 col-md-offset-1">
         <img class="media-object rounded--avatars" src="<%= current_user.logo.url(:medium)%>" alt="Skater's avatar">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="media-body">
           <h4 class="media-heading"><%= current_user.username %></h4>
           <p>You are <%= current_user.stance %>-footed</p>
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-      <div class="row video__carousel--border">
+      <div class="row video__carousel--border  homepage--pushcontent__below">
         <h3>Your clips</h3>
         <% if current_user.videos.any?%>
           <% current_user.videos.each do |video| %>
@@ -40,11 +40,11 @@
       <% end %>
     </div>
   <% else %>
-    <div class="row">
-      <div class="col-md-6">
+    <div class="row  homepage--pushcontent__below">
+      <div class="col-md-6 col-md-offset-1">
         <img class="media-object rounded--avatars" style="width: 250px; height: 250px" src="<%= @skater.logo.url(:medium)%>" alt="Skater's avatar">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="media-body">
           <h4 class="media-heading"><%= @skater.username %></h4>
           <p><%= @skater.username %> is <%= @skater.stance %>-footed</p>
@@ -62,7 +62,7 @@
     </div>
 
       <% if @skater.videos.any?%>
-      <div class="row video__carousel--border">
+      <div class="row video__carousel--border  homepage--pushcontent__below">
         <% @skater.videos.each do |video| %>
           <div class="col-md-6 video__carousel--slide">
             <div class="embed-responsive embed-responsive-16by9">
@@ -75,4 +75,3 @@
 
     <% end %>
   </div>
-</div>
