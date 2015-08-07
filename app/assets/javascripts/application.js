@@ -17,7 +17,9 @@
 //= require turbolinks
 //= require_tree .
 
-var loadMarker = function() {
+
+
+$(document).ready(function() {
 
   var myIcon = L.icon({
       iconUrl: 'marker-icon.png',
@@ -29,12 +31,6 @@ var loadMarker = function() {
       shadowSize: [68, 95],
       shadowAnchor: [22, 94]
   });
-}
-
-
-$(document).ready(function() {
-
-
 
   var map = L.map('map').setView([41.413876, 2.172767], 12);
 
