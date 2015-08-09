@@ -18,8 +18,7 @@
 //= require_tree .
 
 
-
-$(document).ready(function() {
+$(document).on('page:change', function() {
 
   var myIcon = L.icon({
       iconUrl: 'images/marker-icon.png',
