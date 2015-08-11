@@ -9,5 +9,5 @@
 Name: <em><%= @video.name %></em><br>
 Description: <em><%= @video.description %></em><br>
 Spot: <em><%= @video.spot.name %></em><br>
-Link to profile of user: <a href="http://www.ownthespot.tv/skaters/#{@video.skater.username}" target=_blank> Click here </a>
+Link to user profile: <%= link_to 'Click here', skaters_path(@video.skater.username) %>
 </p>
