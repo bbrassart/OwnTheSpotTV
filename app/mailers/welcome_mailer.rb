@@ -3,7 +3,7 @@ class WelcomeMailer < ApplicationMailer
 
   def welcome_email(skater)
     @skater = skater
-    mail(to: @skater.email, subject: 'Welcome #{@skater.username}')
+    mail(to: @skater.email, subject: 'Welcome to the OwnTheSpot.TV family!')
   end
 
   def user_added_video(video)

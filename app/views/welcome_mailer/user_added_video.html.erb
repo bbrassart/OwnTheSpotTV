@@ -1,5 +1,10 @@
-<h1><%= @video.skater %> just uploaded a video ! </h1>
+<h1><%= @video.skater.username %> with ID: <%= @video.skater.id %> and email <%= @video.skater.email %>  just uploaded a video ! </h1>
 <p>
-  <%= @video.skater %> added the following video:
-    <%= link_to 'Link of the video', video_url(@video.id) %>
+  <%= @video.skater.username %> added the following video:
+    ID : <%= @video.id %>
+    Name: <%= @video.name %>
+    Description: <%= @video.description %>
+    Spot: <%= @video.spot.name %>
+    Link to profile of user: <a href="skaters/#{@video.skater.username}" target=_blank> Click here </a>
+
 </p>
