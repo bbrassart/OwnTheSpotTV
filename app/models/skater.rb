@@ -6,6 +6,6 @@ class Skater < ActiveRecord::Base
   has_secure_password
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-  has_many :videos
+  has_many :videos, dependent: :delete
   has_many :votes
 end
