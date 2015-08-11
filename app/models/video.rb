@@ -6,7 +6,7 @@ class Video < ActiveRecord::Base
   validates :spot_id, presence: true
   validates :category, presence: true, inclusion: { in: %w( trick line slam ) }
   belongs_to :spot
-  belongs_to :skater
+  belongs_to :skater, :dependent => :delete
   has_many :votes
 
   def score
