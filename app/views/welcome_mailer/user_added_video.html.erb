@@ -1,10 +1,13 @@
-<h1><%= @video.skater.username %> with ID: <%= @video.skater.id %> and email <%= @video.skater.email %>  just uploaded a video ! </h1>
-<p>
-  <%= @video.skater.username %> added the following video:
-    ID : <%= @video.id %>
-    Name: <%= @video.name %>
-    Description: <%= @video.description %>
-    Spot: <%= @video.spot.name %>
-    Link to profile of user: <a href="skaters/#{@video.skater.username}" target=_blank> Click here </a>
-
+<h1>User with name <%= @video.skater.username %> uploaded a video ! </h1>
+<br>
+<h2>User details:</h2>
+<p>ID: <em><%= @video.skater.id %></em></p>
+<p>Email: <em><%= @video.skater.email %></em> </p>
+<br>
+<p><em><%= @video.skater.username %> </em>added the following video:</p>
+<p>ID : <em><%= @video.id %></em><br>
+Name: <em><%= @video.name %></em><br>
+Description: <em><%= @video.description %></em><br>
+Spot: <em><%= @video.spot.name %></em><br>
+Link to profile of user: <a href="skaters/#{@video.skater.username}" target=_blank> Click here </a>
 </p>
