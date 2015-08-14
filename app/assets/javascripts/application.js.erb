@@ -19,6 +19,9 @@
 
 
 $(document).on('page:change', function() {
+  
+  var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
+  var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
 
   var myIcon = L.icon({
       iconUrl: 'images/marker-icon.png',
@@ -52,8 +55,8 @@ $(document).on('page:change', function() {
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18,
-      id: 'bbrassart.b9fba4af',
-      accessToken: 'pk.eyJ1IjoiYmJyYXNzYXJ0IiwiYSI6IjU2MTZjMjRmMjE2MmE4M2Q0OWEwMDVkYTc5YzM3M2Y3In0.V44T7lzZarK4_QwAwoEClw'
+      id: mapboxId,
+      accessToken: mapboxAccessToken,
   }).addTo(map);
 
 macba.bindPopup("<b>Macba</b><br><br><img src='http://s3.amazonaws.com/ownthespot/spots/logos/000/000/249/square/macba.jpg'><br><br><a href='/spots/macba'>Go to the spot</a>");
