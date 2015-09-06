@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'site#home'
+  get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/rules' => 'site#rules'
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   match '/contacts',     to: 'contacts#new',             via: 'get'
   resources :contacts, only: [:new, :create]
   resources :skaters
-  resources :spots
+  resources :spots, only: [:index, :show]
   resources :videos
   resources :votes
 
