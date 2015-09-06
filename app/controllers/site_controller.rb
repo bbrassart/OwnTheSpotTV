@@ -6,6 +6,8 @@ class SiteController < ApplicationController
     @best_skaters.push(Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(0).skater_id))
     @best_skaters.push(Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(1).skater_id))
     @best_skaters.push(Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(2).skater_id))
+    @best_skaters.push(Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(3).skater_id))
+    @best_skaters.push(Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(4).skater_id))
   end
 
 end

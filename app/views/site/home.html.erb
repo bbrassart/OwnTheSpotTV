@@ -1,38 +1,55 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9 homepage--pushcontent__below">
-    <div class="jumbotron">
-      <% if current_user.nil?%>
-        <%= render 'helpers/suscribe_buttons' %>
-      <%end%>
-
-      <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">
-      <h1>Welcome to OwnTheSpot.TV</h1>
-      <p>20 skate spots located in Barcelona</p>
-      <p>Best Trick, Best Line, Worst Slam... Send us your best videos!</p>
-      <p>Watch the footy, you decide who is the Boss of the spot!</p>
-      <p><a class="btn btn-primary btn-lg" href="/spots" role="button">Learn more</a></p>
-    </div>
-  </div>
-  <div class="col-lg-3 homepage--pushcontent__below">
-    <h3>Top of the Mob</h3>
-    <% @best_skaters.each do |skater| %>
-    <div class="media">
-      <div class="media-left media-middle">
-        <img class="media-object rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
-      </div>
-      <div class="media-body media-middle">
-        <h4 class="media-heading"><%= skater.username %></h4>
-          <% if skater.stance.present? %>
-            <b>Stance:</b> <%= skater.stance.capitalize() %>
-            <% if skater.videos.length == 1 %>
-              <p> <%= skater.videos.length %> video posted</p>
-            <% else %>
-              <p><%= skater.videos.length %> videos posted</p>
-            <% end %>
-          <% end %>
+    <div class="col l7 m12">
+      <div class="card large z-depth-2">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="http://i.imgur.com/J82JukZ.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4 center-align">Welcome to OwnTheSpot.TV<br>Barcelona Skateboarding<i class="material-icons right">more_vert</i></span>
+          <p><a href="/spots">Check the spots</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4 center-align">Welcome to OwnTheSpot.TV<i class="material-icons right">close</i></span>
+          <div class="center-align">
+            <img class="center-align" src="http://i.imgur.com/tjF76Fq.png" width="300px" height="300px">
+          </div>
+          <p class="center-align">20 skate spots located in Barcelona.
+          Best Trick, Best Line, Worst Slam... Send us your best videos!
+          Watch the footy, you decide who is the Boss of the spot!</p>
+          <div class="center-align">
+            <%= link_to 'Log in', login_path, class:"white-text waves-effect waves-light btn" %><i class="material-icons left"></i>
+            <%= link_to 'Signup', new_skater_path, class:"white-text waves-effect waves-light btn" %><i class="material-icons left"></i>
+          </div>
         </div>
       </div>
-    <% end %>
+    </div>
+    <% if current_user.nil?%>
+      <div class="col l5 m12">
+          <%= render 'helpers/suscribe_buttons' %>
+      </div>
+    <%end%>
+
+    <div class="col l5 m12">
+      <ul class="collection  z-depth-2">
+        <h3 class="center-align">Top of the Mob</h3>
+      <% @best_skaters.each do |skater| %>
+        <li class="collection-item avatar">
+          <img src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar" class="circle">
+          <span class="title"><%= skater.username %></span>
+
+          <% if skater.stance.present? %>
+            <p><b>Stance:</b> <%= skater.stance.capitalize() %>
+            <br>
+          <%end %>
+          <% if skater.videos.length == 1 %>
+            <%= skater.videos.length %> video posted</p>
+          <% else %>
+            <%= skater.videos.length %> videos posted</p>
+          <% end %>
+          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
