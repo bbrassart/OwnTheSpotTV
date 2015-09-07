@@ -22,8 +22,22 @@
   line-height: 1.5em;
 }
 
+.nav-wrapper a:hover {
+  color: #b2dfdb;
+  background-color: #00695c;
+}
+
 .welcomecard_bottom-link  {
   margin-top: 8% !important;
+}
+
+footer a:hover {
+  color: #b2dfdb;
+  background-color: #00695c;
+}
+
+footer {
+  padding: 10px 0;
 }
 
 .nav-wrapper {
@@ -34,8 +48,9 @@
   height: 550px;
 }
 
-.navbar-left_wheel {
-  margin-top: 15%;
+a.brand-logo {
+  height: 64px;
+  padding: 0 15px;
 }
 
 .navbar-left_name {
@@ -50,22 +65,16 @@
  padding-right: 5%;
 }
 
+
 .footer_left-text {
   padding-left: 5%;
 }
 
-.footer_right-a {
+.footer_right-backtohomepage {
   padding-right: 5%;
 }
 
-.fb--social__icon {
- padding-top: 10.5px;
-}
 
-.insta--badge {
- padding-top: 15px;
- margin-bottom: -15px;
-}
 
 
  .leaflet-popup-content-wrapper {
@@ -160,9 +169,6 @@ body {
   border-radius: 50%;
 }
 
-.footer-copyright {
-  padding: 10px 0;
-}
 
 // Contact form styling
 
