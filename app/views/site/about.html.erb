@@ -1,13 +1,13 @@
 <div class="container">
-    <div class="row">
-      <div class="col s12 center-align">
-        <h2>About us</h2>
-        <p>OwnTheSpot.TV is a website created by skateboarders for skateboarders.</p>
-        <p>Registered users can submit their own YouTube videos and then vote for the best clips.</p>
-        <p>20 skate spots in Barcelona. Become the boss of the spot</p>
-        <% if current_user.nil? %>
-          <%= render 'helpers/suscribe_buttons' %>
-        <% end %>
+  <div class="row">
+    <div class="col s12 center-align">
+      <h2>About us</h2>
+      <p>OwnTheSpot.TV is a website created by skateboarders for skateboarders.</p>
+      <p>Registered users can submit their own YouTube videos and then vote for the best clips.</p>
+      <p>20 skate spots in Barcelona. Become the boss of the spot</p>
+      <% if current_user.nil? %>
+        <%= render 'helpers/suscribe_buttons' %>
+      <% end %>
     </div>
   </div>
 </div>

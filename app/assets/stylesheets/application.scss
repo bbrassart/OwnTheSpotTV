@@ -18,6 +18,10 @@
 @import "materialize/components/color";
 @import 'materialize';
 
+.welcome_card-text {
+  line-height: 1.5em;
+}
+
 .nav-wrapper {
   @extend .teal, .lighten-4;
 }
@@ -40,6 +44,14 @@
 
 .top_main-ul {
  padding-right: 5%;
+}
+
+.footer_left-text {
+  padding-left: 5%;
+}
+
+.footer_right-a {
+  padding-right: 5%;
 }
 
 .fb--social__icon {
@@ -90,10 +102,6 @@
    height: 100%;
   }
 
- .before--footer {
-   margin-bottom: 40px;
- }
-
   ul {
     list-style: none;
   };
@@ -127,29 +135,10 @@
  }
 
 body {
-  margin: 0 0 40px; /* bottom = footer height */
+  margin: 0 0; /* bottom = footer height */
   height: 100%;
 }
 
-//* footer
-
-.copyright__footer {
-  margin-top: -17px;
-  margin-right: 15px;
-}
-
-.homepage__footer {
-  margin-top: 5px;
-}
-
-.footer {
-  position: fixed;
-  margin-bottom: auto;
-  height: 25px;
-  bottom: 0;
-  width: 100%;
-  background-color: #F5F5F5;
-};
 
 //*YouTube videos styling
 
@@ -167,7 +156,9 @@ body {
   border-radius: 50%;
 }
 
-
+.footer-copyright {
+  padding: 10px 0;
+}
 
 // Contact form styling
 
