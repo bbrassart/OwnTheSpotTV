@@ -115,6 +115,7 @@ GEM
     mail_form (1.5.1)
       actionmailer (>= 3.2, < 5)
       activemodel (>= 3.2, < 5)
+    material_icons (1.0.0)
     materialize-sass (0.97.0)
       sass (~> 3.3)
     method_source (0.8.2)
@@ -246,6 +247,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mail_form
+  material_icons
   materialize-sass
   paperclip (~> 4.2)
   pg

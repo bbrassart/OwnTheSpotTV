@@ -1,0 +1,16 @@
+<div class="col s3 offset-s2 pushing__div--below">
+  <img class="winner--image" src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/122/medium/winner.jpg" width="140" height="137" alt="Number one" align="left">
+</div>
+<div class="col s6">
+  <h5>The overall best skater</h5>
+  <a href="<%=skater_path(skater)%>"><img class="media-object rounded--avatars" src="<%= skater.logo.url(:thumb) %>" alt="Skater's avatar"></a>
+  <h6 class="media-heading"><%= link_to skater.username, skater_path(skater) %></h6>
+  <% if skater.stance.present? %>
+    <b>Stance:</b> <%= skater.stance.capitalize() %>
+    <% if skater.videos.length == 1 %>
+      <p> <%= skater.videos.length %> video posted</p>
+    <% else %>
+      <p><%= skater.videos.length %> videos posted</p>
+    <% end %>
+  <% end %>
+</div>

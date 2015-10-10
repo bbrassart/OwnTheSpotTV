@@ -1,0 +1,9 @@
+<a href="<%= spot_path(spot) %>">
+  <img class="media-object rounded--avatars" src="<%= spot.logo.url(:square)%>" alt="Spot's avatar">
+</a>
+<a href="<%= spot_path(spot) %>">
+  <h5><%= spot.name %>
+  </h5>
+</a>
+<%= spot.description %>
+<p><%= spot.videos.length %> clips submited for this spot</p>
