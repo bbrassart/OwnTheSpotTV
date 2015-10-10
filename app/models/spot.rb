@@ -7,4 +7,12 @@ class Spot < ActiveRecord::Base
   validates :description, presence: true
   validates :visible, presence: true
   has_many :videos
+
+  def self.most_active_spots
+    Spot.all.sort_by{|spot| spot.videos.count}.reverse.slice(0..2)
+  end
+
+  def self.spots_by_district
+    Spot.all.sort_by{ |spot| spot.district }
+  end
 end

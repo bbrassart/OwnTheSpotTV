@@ -6,7 +6,7 @@
   <link href="/assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
   <title>OwnTheSpot.TV</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -24,5 +24,6 @@
   <div class="before--footer">
     <%=render 'helpers/footer' %>
   </div>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

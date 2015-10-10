@@ -2,7 +2,7 @@ class SkatersController < ApplicationController
 
   def index
     @skaters = Skater.all
-    @most_active_skaters = Skater.all.sort_by{|skater| skater.videos.count}.reverse.slice(0..2)
+    @most_active_skaters = Skater.most_active_skaters
     @last_video_updated = Video.last
   end
 
