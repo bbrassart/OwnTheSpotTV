@@ -51,33 +51,45 @@
         </div>
   <% else %>
     <div class="row  homepage--pushcontent__below">
-      <div class="col-md-6 col-md-offset-1">
-        <img class="media-object rounded--avatars" style="width: 250px; height: 250px" src="<%= @skater.logo.url(:medium)%>" alt="Skater's avatar">
+      <div class="col s6 offset-s1">
+        <img class="rounded--avatars" style="width: 250px; height: 250px" src="<%= @skater.logo.url(:medium)%>" alt="Skater's avatar">
       </div>
-      <div class="col-md-4">
-        <div class="media-body">
-          <h4 class="media-heading"><%= @skater.username %></h4>
-          <p><%= @skater.username %> is <%= @skater.stance %>-footed</p>
-          <% if @skater.videos.any? %>
-            <% if @skater.videos.length == 1 %>
-              <p><%= @skater.username %> already posted <%= (@skater.videos.length) %> video.</p>
-            <% else %>
-              <p><%= @skater.username %> already posted <%= (@skater.videos.length) %> videos.</p>
-            <%end %>
-          <% elsif %>
-            <p>No video submited by this skater yet.</p>
-          <% end %>
-        </div>
+      <div class="col s4">
+        <%= @skater.username %></h4>
+        <p><%= @skater.username %> is <%= @skater.stance %>-footed</p>
+        <% if @skater.videos.any? %>
+          <% if @skater.videos.length == 1 %>
+            <p><%= @skater.username %> already posted <%= (@skater.videos.length) %> video.</p>
+          <% else %>
+            <p><%= @skater.username %> already posted <%= (@skater.videos.length) %> videos.</p>
+          <%end %>
+        <% elsif %>
+          <p>No video submited by this skater yet.</p>
+        <% end %>
       </div>
     </div>
-
+    <div clas="row">
       <% if @skater.videos.any?%>
-      <div class="row video__carousel--border  homepage--pushcontent__below">
-        <% @skater.videos.each do |video| %>
-          <%= render template: "videos/video", locals: {video: video} %>
-        <% end %>
-          </div>
-    <% end %>
-
-    <% end %>
+        <div class="row video__carousel--border  homepage--pushcontent__below">
+          <%if @skater.videos.length == 1 %>
+            <div class="col s12">
+              <%= render partial: "videos/video_media", locals: {video: @skater.videos[0]} %>
+            </div>
+          <% elsif @skater.videos.length == 2 %>
+            <% @skater.videos.each do |video| %>
+              <div class="col s6">
+                <%= render partial: "videos/video_media", locals: {video: video} %>
+              </div>
+            <% end %>
+          <%else%>
+            <% @skater.videos.each do |video| %>
+              <div class="col s4">
+                <%= render partial: "videos/video_media", locals: {video: video} %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <%end%>
   </div>
+</div>

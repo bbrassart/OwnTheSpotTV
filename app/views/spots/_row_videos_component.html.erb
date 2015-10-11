@@ -1,4 +1,8 @@
-<% if videos.length == 1 %>
+<% if !videos.present? %>
+<div class="col s12">
+  <p>No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %></p>
+</div>
+<% elsif videos.length == 1 %>
   <h4>Overall best video</h4>
   <div class="col s12 video__carousel--slide">
     <%= render partial: "videos/video_media", locals: {video: videos[0]} %>
@@ -20,8 +24,4 @@
       <%= render partial: "helpers/buttons_form", locals: {:video => video} %>
     </div>
   <% end %>
-<% else %>
-  <div class="col s12">
-    <p>No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %></p>
-  </div>
 <% end %>

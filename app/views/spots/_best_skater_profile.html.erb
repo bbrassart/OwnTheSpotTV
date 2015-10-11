@@ -1,10 +1,26 @@
-<img class="rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
-<h5><%= skater.username %></h4>
-<% if skater.stance.present? %>
-  <b>Stance:</b> <%= skater.stance.capitalize() %>
-  <% if skater.videos.length == 1 %>
-    <p> <%= skater.videos.length %> video posted</p>
-  <% else %>
-    <p><%= skater.videos.length %> videos posted</p>
+<% if current_user %>
+  <%= link_to skater_path(skater) do %>
+    <img class="rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+    <h5><%= skater.username %></h5>
   <% end %>
-<% end %>
+  <% if skater.stance.present? %>
+    <b>Stance:</b> <%= skater.stance.capitalize() %>
+    <% if skater.videos.length == 1 %>
+      <p> <%= skater.videos.length %> video posted</p>
+    <% else %>
+      <p><%= skater.videos.length %> videos posted</p>
+    <% end %>
+  <%end%>
+
+<%else%>
+  <img class="rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+  <h5><%= skater.username %></h5>
+  <% if skater.stance.present? %>
+    <b>Stance:</b> <%= skater.stance.capitalize() %>
+    <% if skater.videos.length == 1 %>
+      <p> <%= skater.videos.length %> video posted</p>
+    <% else %>
+      <p><%= skater.videos.length %> videos posted</p>
+    <% end %>
+  <%end%>
+<%end%>

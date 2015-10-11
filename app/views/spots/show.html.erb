@@ -6,18 +6,18 @@
 
     <div class="col s6">
       <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
-          <h4>No videos submitted yet...</h4>
+          <h5>No videos submitted yet...</h5>
       <% elsif @best_overall_videos.present? %>
-          <h4>The Boss here is</h4>
+          <h5>The Boss here is</h5>
           <%= render partial: "spots/best_skater_profile", locals: {skater: @overall_best_skater} %>
       <% elsif @best_trick_videos.present? %>
-          <h4>The Best Trick Award goes to</h4>
+          <h5>The Best Trick Award goes to</h5>
           <%= render partial: "spots/best_skater_profile", locals: {skater: @best_trick_skater} %>
       <% elsif @worst_slam_videos.present? %>
-          <h4>The Worst Slam Award goes to</h4>
+          <h5>The Worst Slam Award goes to</h5>
           <%= render partial: "spots/best_skater_profile", locals: {skater: @worst_slam_skater} %>
       <% elsif @best_line_videos.present? %>
-          <h4>The Firing Line Award goes to</h4>
+          <h5>The Firing Line Award goes to</h5>
           <%= render partial: "spots/best_skater_profile", locals: {skater: @best_line_skater} %>
       <% end %>
     </div>

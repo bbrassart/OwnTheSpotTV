@@ -19,6 +19,13 @@
 @import "materialize/components/color";
 @import 'materialize';
 
+.poser__button {
+  width: 94px;
+  text-align: center;
+  padding-left: 24px;
+  background-color: black;
+}
+
 .welcome_card-text {
   line-height: 1.5em;
 }
