@@ -19,6 +19,38 @@
 @import "materialize/components/color";
 @import 'materialize';
 
+//* Navbar styling
+
+.title--navbar__text {
+  font-size: 18px;
+}
+.navbar--title {
+  vertical-align: middle;
+}
+
+.nav-wrapper a:hover {
+  color: white;
+  background-color: #00695c;
+}
+
+.nav-wrapper {
+  @extend .teal, .lighten-4;
+}
+
+a.brand-logo {
+  height: 64px;
+  padding: 0 15px;
+}
+
+.navbar__ul--left {
+ padding-left: 3%;
+}
+
+.navbar__ul--right {
+ padding-right: 3%;
+}
+
+
 .poser__button {
   width: 94px;
   text-align: center;
@@ -26,21 +58,12 @@
   background-color: black;
 }
 
-.title--navbar__text {
-  font-size: 15px;
-}
-.navbar--title {
-  vertical-align: middle;
-}
+
 
 .welcome_card-text {
   line-height: 1.5em;
 }
 
-.nav-wrapper a:hover {
-  color: white;
-  background-color: #00695c;
-}
 
 .welcomecard_bottom-link  {
   margin-top: 8% !important;
@@ -56,29 +79,10 @@ footer {
   padding: 10px 0;
 }
 
-.nav-wrapper {
-  @extend .teal, .lighten-4;
-}
+
 
 #map {
   height: 550px;
-}
-
-a.brand-logo {
-  height: 64px;
-  padding: 0 15px;
-}
-
-.navbar-left_name {
-  padding-left: 5%;
-}
-
-.top_main-logo {
- padding-left: 5%;
-}
-
-.top_main-ul {
- padding-right: 5%;
 }
 
 
@@ -89,9 +93,6 @@ a.brand-logo {
 .footer_right-backtohomepage {
   padding-right: 5%;
 }
-
-
-
 
  .leaflet-popup-content-wrapper {
    width: 238px;
@@ -152,7 +153,6 @@ a.brand-logo {
 
 .video--carousel__margin {
   margin-top: 1px solid #eee;
-
 }
 
  .media {
