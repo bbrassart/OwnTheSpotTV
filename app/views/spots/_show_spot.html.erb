@@ -1,3 +1,16 @@
-<img class="rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
-<h5 class="media-heading"><%= @spot.name %></h5>
-<%= @spot.description %>
+<div class="card small">
+  <div class="card-image">
+    <img class="rounded--avatars" src="<%= spot.logo.url(:square)%>" alt="Spot's avatar">
+    <span class="card-title">
+      <%= spot.name %>
+    </span>
+  </div>
+  <div class="card-content">
+    <% if spot.description.length > 75%>
+      <p><%= truncate spot.description, length: 75 %>...</p>
+    <%else %>
+      <p><%= spot.description %>
+    <%end%>
+    <p><em><%= spot.videos.length %> clips submited for this spot</em></p>
+  </div>
+</div>

@@ -2,7 +2,10 @@ class VotesController < ApplicationController
 
   def index
     @highest_rated_videos =  Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(0..5)
-    @best_skater = Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(0).skater_id)
+    first_skater = Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(0).skater_id)
+    second_skater = Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(1).skater_id)
+    third_skater = Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(2).skater_id)
+    @skaters = [first_skater, second_skater, third_skater]
   end
 
   def like

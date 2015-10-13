@@ -1,72 +1,23 @@
 <div class="container">
   <% if current_user.id == @skater.id %>
     <div class="row homepage--pushcontent__below">
-      <div class="col s6 offset-s1">
-        <img class="media-object rounded--avatars" src="<%= current_user.logo.url(:medium)%>" alt="Skater's avatar">
-      </div>
-      <div class="col s4">
-        <h4><%= current_user.username %></h4>
-        <p>You are <%= current_user.stance %>-footed</p>
-        <% if current_user.videos.any? %>
-          <% if current_user.videos.length == 1 %>
-            <p>You already posted <%= (current_user.videos.length) %> video. Keep on shredding!</p>
-          <% else %>
-            <p>You already posted <%= (current_user.videos.length) %> videos. Keep on shredding!</p>
-          <% end %>
-        <% elsif %>
-          <p>Don't be scared of the Mob. <%= link_to "Submit your first clip", new_video_path %> and get rewarded!</p>
-        <% end %>
-        <p>
-          <%= link_to edit_skater_path(current_user) do %>
-            <i class="material-icons">build</i>  Update your profile
-          <% end %>
-        </p>
-        <p>
-          <%= link_to current_user, method: :delete, data: { confirm: "Are you sure you want to delete your account?"} do %>
-            <i class="material-icons">delete</i> Wanna quit the Mob?
-          <% end %>
-        </p>
-      </div>
+        <%= render partial: "helpers/current_user/user_profile", locals: {user: current_user} %>
     </div>
-
-      <div class="row video__carousel--border  homepage--pushcontent__below">
-        <h5>Your clips</h5>
-        <% if current_user.videos.any?%>
-          <% current_user.videos.each do |video| %>
-            <%= render partial: "videos/video_media", locals: {video: video} %>
-            <p>
-              <%= link_to edit_video_path(video) do %>
-                <i class="material-icons">settings</i> Modify this video
-              <% end %>
-            </p>
-            <p>
-              <%= link_to video, method: :delete, data: { confirm: "Are you sure?"} do %>
-                <i class="material-icons">delete</i> Delete this video
-              <% end %>
-            </p>
-          <% end %>
-        <% else %>
-          You didn't submit any video yet. <%= link_to "Submit your first clip", new_video_path %>
+    <div class="row video__carousel--border  homepage--pushcontent__below">
+      <h5>Your clips</h5>
+      <% if current_user.videos.any?%>
+        <% current_user.videos.each do |video| %>
+          <%= render partial: "videos/video_media", locals: {video: video} %>
+          <%= render partial: "helpers/current_user/edit_delete_video_buttons", locals: {video: video} %>
         <% end %>
-        </div>
+      <% else %>
+        You didn't submit any video yet. <%= link_to "Submit your first clip", new_video_path %>
+      <% end %>
+      </div>
   <% else %>
     <div class="row  homepage--pushcontent__below">
-      <div class="col s6 offset-s1">
-        <img class="rounded--avatars" style="width: 250px; height: 250px" src="<%= @skater.logo.url(:medium)%>" alt="Skater's avatar">
-      </div>
-      <div class="col s4">
-        <%= @skater.username %></h4>
-        <p><%= @skater.username %> is <%= @skater.stance %>-footed</p>
-        <% if @skater.videos.any? %>
-          <% if @skater.videos.length == 1 %>
-            <p><%= @skater.username %> already posted <%= (@skater.videos.length) %> video.</p>
-          <% else %>
-            <p><%= @skater.username %> already posted <%= (@skater.videos.length) %> videos.</p>
-          <%end %>
-        <% elsif %>
-          <p>No video submited by this skater yet.</p>
-        <% end %>
-      </div>
+      <%= render partial: "helpers/visitor/user_profile", locals: {skater: @skater} %>
+
     </div>
     <div clas="row">
       <% if @skater.videos.any?%>

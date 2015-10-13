@@ -1,26 +1,29 @@
 <div class="container">
   <div class="row homepage--pushcontent__below">
-      <% if current_user.present? %>
-        <%= render partial: "skaters/overall_best_current_user", locals: {skater: @best_skater} %>
-      <% else %>
-        <%= render partial: "skaters/overall_best_visitor", locals: {skater: @best_skater} %>
-
-        <div class="col s4 pushing__div--below">
-          <%= render 'helpers/suscribe_buttons' %>
+    <% if current_user.present? %>
+      <%= render partial: "skaters/overall_best_current_user", locals: {skaters: @skaters} %>
+    <% else %>
+      <%= render partial: "skaters/overall_best_visitor", locals: {skaters: @skaters} %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="video__carousel--border">
+      <h5>Highest rated videos</h5>
+      <% @highest_rated_videos.each do |video| %>
+        <div class="col s4">
+          <%= render partial: "videos/video_media", locals: {video: video} %>
+          <div class="vote__buttons">
+            <b>Overall Score</b> <%= video.score %>
+          </div>
         </div>
       <% end %>
     </div>
-    <div class="row">
-      <div class="video__carousel--border">
-        <h5>Highest rated videos</h5>
-        <% @highest_rated_videos.each do |video| %>
-          <div class="col s4">
-            <%= render partial: "videos/video_media", locals: {video: video} %>
-            <div class="vote__buttons">
-              <b>Overall Score</b> <%= video.score %>
-            </div>
-          </div>
-        <% end %>
-      </div>
   </div>
+  <%unless current_user %>
+    <div class="row">
+      <div class="col s12">
+        <%=render partial: "helpers/suscribe_buttons" %>
+      </div>
+    </div>
+  <%end%>
 </div>

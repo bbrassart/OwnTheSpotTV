@@ -1,0 +1,10 @@
+<p>
+  <%= link_to edit_video_path(video) do %>
+    <i class="material-icons">settings</i> Modify this video
+  <% end %>
+</p>
+<p>
+  <%= link_to video, method: :delete, data: { confirm: "Are you sure?"} do %>
+    <i class="material-icons">delete</i> Delete this video
+  <% end %>
+</p>

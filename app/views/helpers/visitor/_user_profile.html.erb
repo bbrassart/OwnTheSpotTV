@@ -1,0 +1,16 @@
+<div class="col s6 offset-s1">
+  <img class="rounded--avatars" style="width: 250px; height: 250px" src="<%= skater.logo.url(:medium)%>" alt="Skater's avatar">
+</div>
+<div class="col s4">
+  <%= skater.username %></h4>
+  <p><%= skater.username %> is <%= skater.stance %>-footed</p>
+  <% if skater.videos.any? %>
+    <% if skater.videos.length == 1 %>
+      <p><%= skater.username %> already posted <%= (skater.videos.length) %> video.</p>
+    <% else %>
+      <p><%= skater.username %> already posted <%= (skater.videos.length) %> videos.</p>
+    <%end %>
+  <% elsif %>
+    <p>No video submited by this skater yet.</p>
+  <% end %>
+</div>
