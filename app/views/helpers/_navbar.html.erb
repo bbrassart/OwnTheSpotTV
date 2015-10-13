@@ -21,8 +21,9 @@
   <div class="nav-wrapper grey darken-4 z-depth-1">
     <div class="top_main-logo">
       <a class="brand-logo" href="/">
-        <img alt="OTS.TV logo" src="http://i.imgur.com/iRy0d1e.png">
-        <span>OwnTheSpot</span>
+
+        <img class="navbar--title" alt="OTS.TV logo" src="http://i.imgur.com/iRy0d1e.png">
+        <span class="navbar--title">OwnTheSpot</span>
       </a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -35,9 +36,9 @@
         <% end %>
         <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Join The Mob<i class="material-icons right">arrow_drop_down</i></a></li>
         <li>
-          <a href="http://instagram.com/ownthespot?ref=badge" target="_blank" class="ig-b- ig-b-32"><img src="//badges.instagram.com/static/images/ig-badge-32.png" alt="Instagram" /></a>
+          <a href="http://instagram.com/ownthespot?ref=badge" target="_blank" class="ig-b- ig-b-32"><img src="//badges.instagram.com/static/images/ig-badge-32.png" alt="Instagram" class="navbar--title" /></a>
         </li>
-        <li><a href="http://facebook.com/ownthespotofficial" target=_blank><img src="http://static.viewbook.com/images/social_icons/facebook_32.png"></a></li>
+        <li><a href="http://facebook.com/ownthespotofficial" target=_blank><img class="navbar--title" src="http://static.viewbook.com/images/social_icons/facebook_32.png"></a></li>
         <% if current_user %>
           <li><a disabled="true"><b>Signed in as <%= current_user.username %></b> <img class="rounded--avatars" style="width:30px; height:30px" src="<%= current_user.logo.url(:thumb)%>" alt="Skater's avatar"></a></li>
               <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Account<i class="material-icons right">arrow_drop_down</i></a></li>

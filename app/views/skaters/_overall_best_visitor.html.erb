@@ -7,9 +7,9 @@
   <div class="collection">
     <% skaters.each do |skater| %>
       <a href="<%= new_skater_path%>" class="collection-item">
-        <img class="rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+        <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
         <%= skater.username %>
-        <span class="badge">18 likes</span>
+        <span class="navbar--title badge">18 likes</span>
       </a>
     <%end%>
   </div>

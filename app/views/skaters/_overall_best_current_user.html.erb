@@ -6,7 +6,8 @@
   <h5>Top 3 ranking</h5>
   <div class="collection">
     <% skaters.each do |skater| %>
-      <a href="<%= skater_path(skater)%>" class="collection-item"><img class="rounded--avatars" style="width:35px; height:35px" src="<%= current_user.logo.url(:thumb)%>" alt="Skater's avatar"> <%= skater.username %><span class="badge">18 likes</span></a>
+      <a href="<%= skater_path(skater)%>" class="collection-item"><img class="navbar--title rounded--avatars" style="width:35px; height:35px;" src="<%= current_user.logo.url(:thumb)%>" alt="Skater's avatar"> <%= skater.username %>
+      <span class="navbar--title badge">18 likes</span></a>
     <%end%>
   </div>
 </div>
