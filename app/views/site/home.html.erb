@@ -24,15 +24,10 @@
         </div>
       </div>
     </div>
-    <% if current_user.nil?%>
-      <div class="col l5 m12">
-          <%= render 'helpers/suscribe_buttons' %>
-      </div>
-    <%end%>
 
     <div class="col l5 m12">
       <ul class="collection  z-depth-2">
-        <h3 class="center-align">Top of the Mob</h3>
+        <h4 class="center-align">Top of the Mob</h4>
       <% @best_skaters.each do |skater| %>
         <li class="collection-item avatar">
           <img src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar" class="circle">
@@ -52,5 +47,10 @@
         <% end %>
       </ul>
     </div>
+    <% if current_user.nil?%>
+      <div class="col l12">
+          <%= render 'helpers/suscribe_buttons' %>
+      </div>
+    <%end%>
   </div>
 </div>

@@ -5,7 +5,9 @@ class VotesController < ApplicationController
     first_skater = Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(0).skater_id)
     second_skater = Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(1).skater_id)
     third_skater = Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(2).skater_id)
-    @skaters = [first_skater, second_skater, third_skater]
+    fourth_skater = Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(3).skater_id)
+    fifth_skater = Skater.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(4).skater_id)
+    @skaters = [first_skater, second_skater, third_skater, fourth_skater, fifth_skater]
   end
 
   def like

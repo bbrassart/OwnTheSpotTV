@@ -75,13 +75,15 @@
       <% elsif @latest_slam_videos.present?%>
         <%= render partial:"spots/row_latest_videos_component", locals: {videos: @latest_slam_videos} %>
       <% else %>
-        <div class="spot__description--spotshow jumbotron">
-          <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">
-          <h1>You're lucky today!</h1>
-          <p>You already killed that spot?</p>
-          <p>Submit your clip and, all of sudden, you'll be the Boss at <%= @spot.name %>..</p>
-          <p><a class="btn" href="/videos/new" role="button">Submit your clip</a></p>
-        </div>
+        <center>
+          <div class="col s12 spot__description--spotshow jumbotron">
+            <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">
+            <h1>You're lucky today!</h1>
+            <p>You already killed that spot?</p>
+            <p>Submit your clip and, all of sudden, you'll be the Boss at <%= @spot.name %>..</p>
+            <p><a class="btn" href="/videos/new" role="button">Submit your clip</a></p>
+          </div>
+        </center>
       <%end%>
     </div>
   </div>

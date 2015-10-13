@@ -1,9 +1,5 @@
-<div class="col s6 offset-s2 pushing__div--below">
-  <img class="winner--image" src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/122/medium/winner.jpg" width="140" height="137" alt="Number one" align="left">
-</div>
-
 <div class="col s4">
-  <h5>Top 3 ranking</h5>
+  <h5>Top 5 ranking</h5>
   <div class="collection">
     <% skaters.each do |skater| %>
       <a href="<%= new_skater_path%>" class="collection-item">
@@ -13,4 +9,8 @@
       </a>
     <%end%>
   </div>
+</div>
+
+<div class="col s8 pushing__div--below">
+  <img class="winner--image" src="http://i.imgur.com/38CPPcu.jpg" width="525px"alt="Number one" align="left">
 </div>

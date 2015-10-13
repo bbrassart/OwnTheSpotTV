@@ -9,6 +9,7 @@
 
 <% if current_user %>
   <ul id="dropdown2" class="dropdown-content">
+    <li><%= link_to "Submit your clip", new_video_path%></li>
     <li><%= link_to "View your profile", skater_path(current_user)%></li>
     <li><%= link_to "Edit your profile", edit_skater_path(current_user)%></li>
     <li><%= link_to "Log out", logout_path, method:"delete" %></li>
@@ -23,25 +24,24 @@
       <a class="brand-logo" href="/">
 
         <img class="navbar--title" alt="OTS.TV logo" src="http://i.imgur.com/iRy0d1e.png">
-        <span class="navbar--title">OwnTheSpot</span>
+        <span class="navbar--title title--navbar__text">OwnTheSpot</span>
       </a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
     <div class="top_main-ul">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><%= link_to 'Spots', spots_path%></li>
-        <li><%= link_to 'Leaderboard', votes_path %></li>
-        <% if current_user %>
-          <li><%= link_to 'Submit your clip', new_video_path %></li>
-        <% end %>
+        <li><%= link_to 'Leaderboard', rankings_path %></li>
         <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Join The Mob<i class="material-icons right">arrow_drop_down</i></a></li>
         <li>
           <a href="http://instagram.com/ownthespot?ref=badge" target="_blank" class="ig-b- ig-b-32"><img src="//badges.instagram.com/static/images/ig-badge-32.png" alt="Instagram" class="navbar--title" /></a>
         </li>
         <li><a href="http://facebook.com/ownthespotofficial" target=_blank><img class="navbar--title" src="http://static.viewbook.com/images/social_icons/facebook_32.png"></a></li>
         <% if current_user %>
-          <li><a disabled="true"><b>Signed in as <%= current_user.username %></b> <img class="rounded--avatars" style="width:30px; height:30px" src="<%= current_user.logo.url(:thumb)%>" alt="Skater's avatar"></a></li>
-              <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a disabled="true"><b>Signed in as <%= current_user.username %></b> <img class=" navbar--title rounded--avatars" style="width:30px; height:30px" src="<%= current_user.logo.url(:thumb)%>" alt="Skater's avatar"></a></li>
+              <li><a class="dropdown-button" href="#!" data-activates="dropdown2">
+                Account<i class="material-icons right">arrow_drop_down</i></a>
+              </li>
           </li>
         <% else %>
           <li><%= link_to 'Log in', login_path %></li>
@@ -49,19 +49,18 @@
         <% end %>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><%= link_to 'Spots', spots_path, class: "active"%></li>
-        <li><%= link_to 'Leaderboard', votes_path %></li>
         <% if current_user %>
+          <li><a disabled="true"><b>Signed in as <%= current_user.username %></b></a></li>
           <li><%= link_to 'Submit your clip', new_video_path %></li>
-        <% end %>
-        <li><a href="https://instagram.com/ownthespot">Instagram</a></li>
-        <li><a href="https://www.facebook.com/ownthespotofficial">Facebook</a></li>
-        <% if current_user %>
-          <li><a disabled="true"><b>Signed in as <%= current_user.username %></b></li>
         <% else %>
           <li><%= link_to 'Log in', login_path %></li>
           <li><%= link_to 'Signup', new_skater_path %></li>
         <% end %>
+        <li><%= link_to 'Spots', spots_path, class: "active"%></li>
+        <li><%= link_to 'Leaderboard', rankings_path %></li>
+        <li><a href="https://instagram.com/ownthespot">Instagram</a></li>
+        <li><a href="https://www.facebook.com/ownthespotofficial">Facebook</a></li>
+
       </ul>
     </div>
   </div>
