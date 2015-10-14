@@ -50,14 +50,6 @@ a.brand-logo {
  padding-right: 3%;
 }
 
-//* Rest
-
-.poser__button {
-  text-align: center;
-  padding-left: 24px;
-  background-color: black;
-}
-
 .welcome_card-text {
   line-height: 1.5em;
 }
@@ -72,17 +64,22 @@ footer a:hover {
   margin-color:  #00695c;
 }
 
-
 footer {
   padding: 10px 0;
 }
-
-
 
 #map {
   height: 550px;
 }
 
+.leaflet-popup-content-wrapper {
+  width: 238px;
+}
+
+.votebuttons__wrapper {
+  margin-bottom: 5px;
+}
+//* Footer
 
 .footer_left-text {
   padding-left: 5%;
@@ -92,27 +89,9 @@ footer {
   padding-right: 5%;
 }
 
- .leaflet-popup-content-wrapper {
-   width: 238px;
- }
-
 .open .skater__menu--whitebg {
   background-color: white !important;
 }
-
-.winner--image {
-  margin-bottom: 20px;
-}
-
-.map--push--below {
-  margin-top: 25px;
-}
-
-.video__carousel--border {
-  border-top: 1px solid #eee;
-  padding-top: 10px;
-}
-
 
  //*General styling
 
@@ -140,10 +119,6 @@ footer {
   margin-top: 20px;
 }
 
-.video--carousel__margin {
-  margin-top: 1px solid #eee;
-}
-
  .media {
    padding: 10px 0;
  }
@@ -160,13 +135,21 @@ body {
 
 //*YouTube videos styling
 
+//* Vote buttons
 
-.vote__buttons {
-  padding: 3px 3px 0 3px;
+.poser__button {
+  text-align: center;
+  padding-left: 24px;
+  background-color: black;
 }
 
-.video__carousel--slide {
-  padding: 25px 25px 35px 25px;
+.text__votebuttons {
+  margin: 0.42rem 0 0.36rem 0;
+}
+
+.vote__buttons {
+  float: right;
+  padding: 3px 3px 0 3px;
 }
 
 .rounded--avatars {
