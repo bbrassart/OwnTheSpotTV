@@ -1,54 +1,56 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-        <div class="map--push--below winner--image" id="map">
+      <div class="section">
+        <div id="map">
         </div>
+      </div>
     </div>
   </div>
   <div class="row">
-    <center>
-      <h4>The crime scenes</h4>
-      <h5>Our most boiling skate spots</h5>
-    </center>
-    <% @most_active_spots.each do |spot|%>
-      <% if current_user %>
-        <ul>
-          <div class="col s4">
-            <li>
+    <div class="col s12">
+      <div class="divider"></div>
+      <div class="section">
+        <h4>The crime scenes</h4>
+        <h5>Our most boiling skate spots</h5>
+      </div>
+      <div class="section">
+        <% @most_active_spots.each do |spot|%>
+          <% if current_user %>
+            <div class="col l4 m12 s12">
               <%= render partial: "spot_media_current_user", locals: {:spot => spot} %>
-            </li>
-          </div>
-        </ul>
-      <% else %>
-        <ul>
-          <div class="col s4">
-            <li>
+            </div>
+          <% else %>
+            <div class="col l4 m12 s12">
               <%= render partial: "spot_media_visitor", locals: {spot: spot} %>
-            </li>
-          </div>
-        </ul>
-      <% end %>
-    <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="row">
-    <div class="pushing__div--below">
-      <% if current_user %>
-      <center>
-        <div class="col s6 contentdiv--default__shadow">
+    <% if current_user %>
+      <div class="col s12">
+        <div class="divider"></div>
+        <div class="section">
           <h5>Check the latest clip!<h5/>
           <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
           <%= render partial: "helpers/buttons_form", locals: {video: @last_video_updated} %>
         </div>
-      </center>
-      <% elsif current_user.nil? %>
-        <div class="col s6 contentdiv--default__shadow">
+      </div>
+    <% elsif current_user.nil? %>
+      <div class="col s12">
+        <div class="divider"></div>
+        <div class="section">
           <h4>Check the latest clip!</h4>
           <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
         </div>
-        <div class="col s6">
+        <div class="divider"></div>
+        <div class="section">
           <%= render 'helpers/suscribe_buttons' %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

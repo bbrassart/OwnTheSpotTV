@@ -1,56 +1,62 @@
 <div class="container">
   <div class="row">
     <div class="col l7 m12">
-      <div class="card large z-depth-2">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="http://i.imgur.com/J82JukZ.jpg">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4 center-align"><p class="welcome_card-text">Welcome to OwnTheSpot.TV<br>Barcelona Skateboarding</p><i class="welcomecard_bottom-link material-icons right">more_vert</i></span>
-          <p class="welcomecard_bottom-link"><a href="/spots">Become the boss of the skate Mob</a></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4 center-align">Welcome to OwnTheSpot.TV<i class=" material-icons right">close</i></span>
-          <div class="center-align">
-            <img class="center-align" src="http://i.imgur.com/tjF76Fq.png" width="260px" height="260px">
+      <div class="section">
+        <div class="card large z-depth-2">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="http://i.imgur.com/J82JukZ.jpg">
           </div>
-          <p class="center-align">20 skate spots located in Barcelona.
-          Best Trick, Best Line, Worst Slam... Send us your best videos!
-          Watch the footy, you decide who is the Boss of the spot!</p>
-          <div class="center-align">
-            <%= link_to 'Log in', login_path, class:"white-text waves-effect waves-light btn" %><i class="material-icons left"></i>
-            <%= link_to 'Signup', new_skater_path, class:"white-text waves-effect waves-light btn" %><i class="material-icons left"></i>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4 center-align"><p class="welcome_card-text">Welcome to OwnTheSpot.TV<br>Barcelona Skateboarding</p><i class="welcomecard_bottom-link material-icons right">more_vert</i></span>
+            <p class="welcomecard_bottom-link"><a href="/spots">Become the boss of the skate Mob</a></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4 center-align">Welcome to OwnTheSpot.TV<i class=" material-icons right">close</i></span>
+            <div class="center-align">
+              <img class="center-align" src="http://i.imgur.com/tjF76Fq.png" width="260px" height="260px">
+            </div>
+            <p class="center-align">20 skate spots located in Barcelona.
+            Best Trick, Best Line, Worst Slam... Send us your best videos!
+            Watch the footy, you decide who is the Boss of the spot!</p>
+            <div class="center-align">
+              <%= link_to 'Log in', login_path, class:"white-text waves-effect waves-light btn" %><i class="material-icons left"></i>
+              <%= link_to 'Signup', new_skater_path, class:"white-text waves-effect waves-light btn" %><i class="material-icons left"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="col l5 m12">
-      <ul class="collection  z-depth-2">
-        <h4 class="center-align">Top of the Mob</h4>
-      <% @best_skaters.each do |skater| %>
-        <li class="collection-item avatar">
-          <img src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar" class="circle">
-          <span class="title"><%= skater.username %></span>
-
-          <% if skater.stance.present? %>
-            <p><b>Stance:</b> <%= skater.stance.capitalize() %>
-            <br>
-          <%end %>
-          <% if skater.videos.length == 1 %>
-            <%= skater.videos.length %> video posted</p>
-          <% else %>
-            <%= skater.videos.length %> videos posted</p>
-          <% end %>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-    <% if current_user.nil?%>
-      <div class="col l12">
-          <%= render 'helpers/suscribe_buttons' %>
+      <div class="section">
+        <h4>Top of the Mob</h4>
+        <ul class="collection z-depth-2">
+          <% @best_skaters.each do |skater| %>
+            <li class="collection-item avatar">
+              <img src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar" class="circle">
+              <span class="title"><%= skater.username %></span>
+              <% if skater.stance.present? %>
+                <p><b>Stance:</b> <%= skater.stance.capitalize() %>
+              <%end %>
+              <% if skater.videos.length == 1 %>
+                <%= skater.videos.length %> video posted</p>
+              <% else %>
+                <%= skater.videos.length %> videos posted</p>
+              <% end %>
+              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+          <%end%>
+        </ul>
       </div>
-    <%end%>
+    </div>
   </div>
+
+  <% if current_user.nil?%>
+    <div class="row">
+      <div class="col s12">
+        <div class="divider"></div>
+        <%= render 'helpers/suscribe_buttons' %>
+      </div>
+    </div>
+  <%end%>
 </div>
