@@ -52,17 +52,10 @@
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <% if current_user %>
-          <li><a disabled="true"><b>Signed in as <%= current_user.username %></b></a></li>
-          <li><%= link_to 'Submit your clip', new_video_path %></li>
+          <%= render partial: "helpers/current_user/mobile_side_menu", locals: {current_user: current_user} %>
         <% else %>
-          <li><%= link_to 'Log in', login_path %></li>
-          <li><%= link_to 'Signup', new_skater_path %></li>
-        <% end %>
-        <li><%= link_to 'Spots', spots_path, class: "active"%></li>
-        <li><%= link_to 'Leaderboard', rankings_path %></li>
-        <li><a href="https://instagram.com/ownthespot">Instagram</a></li>
-        <li><a href="https://www.facebook.com/ownthespotofficial">Facebook</a></li>
-
+          <%= render partial: "helpers/visitor/mobile_side_menu" %>
+        <%end%>
       </ul>
     </div>
   </div>

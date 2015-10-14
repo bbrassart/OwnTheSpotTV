@@ -1,23 +1,35 @@
 <div class="container">
   <% if current_user.id == @skater.id %>
+
     <div class="row homepage--pushcontent__below">
-        <%= render partial: "helpers/current_user/user_profile", locals: {user: current_user} %>
+        <%= render partial: "helpers/current_user/user_profile", locals: {skater: current_user} %>
     </div>
     <div class="row video__carousel--border  homepage--pushcontent__below">
       <h5>Your clips</h5>
       <% if current_user.videos.any?%>
-        <% current_user.videos.each do |video| %>
-          <%= render partial: "videos/video_media", locals: {video: video} %>
-          <%= render partial: "helpers/current_user/edit_delete_video_buttons", locals: {video: video} %>
-        <% end %>
+        <% if current_user.videos.length == 1 %>
+            <%= render partial: "videos/video_media", locals: {video: current_user.videos[0]} %>
+            <%= render partial: "helpers/current_user/edit_delete_video_buttons", locals: {video: current_user.videos[0]} %>
+        <%elsif current_user.videos.length > 1 %>
+          <%current_user.videos.each do |video| %>
+            <div class="col l6 m12">
+              <%= render partial: "videos/video_media", locals: {video: video} %>
+              <%= render partial: "helpers/current_user/edit_delete_video_buttons", locals: {video: video} %>
+            </div>
+          <% end %>
+        <%end%>
       <% else %>
-        You didn't submit any video yet. <%= link_to "Submit your first clip", new_video_path %>
+        <div class="col s12">
+          You didn't submit any video yet. <%= link_to "Submit your first clip", new_video_path %>
+        </div>
       <% end %>
-      </div>
+    </div>
+
   <% else %>
     <div class="row  homepage--pushcontent__below">
-      <%= render partial: "helpers/visitor/user_profile", locals: {skater: @skater} %>
-
+      <div class="col s12">
+        <%= render partial: "helpers/visitor/user_profile", locals: {skater: @skater} %>
+      </div>
     </div>
     <div clas="row">
       <% if @skater.videos.any?%>
@@ -28,13 +40,13 @@
             </div>
           <% elsif @skater.videos.length == 2 %>
             <% @skater.videos.each do |video| %>
-              <div class="col s6">
+              <div class="col m6 s12">
                 <%= render partial: "videos/video_media", locals: {video: video} %>
               </div>
             <% end %>
           <%else%>
             <% @skater.videos.each do |video| %>
-              <div class="col s4">
+              <div class="col m6 s12">
                 <%= render partial: "videos/video_media", locals: {video: video} %>
               </div>
             <% end %>

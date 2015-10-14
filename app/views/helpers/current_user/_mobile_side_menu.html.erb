@@ -1,0 +1,7 @@
+<li><a disabled="true"><b>Signed in as <%= current_user.username %></b></a></li>
+<li><%= link_to 'Submit your clip', new_video_path %></li>
+<li><%= link_to "View your profile", skater_path(current_user)%></li>
+<li><%= link_to "Edit your profile", edit_skater_path(current_user)%></li>
+<li><%= link_to 'Spots', spots_path, class: "active"%></li>
+<li><%= link_to 'Leaderboard', rankings_path %></li>
+<li><%= link_to "Log out", logout_path, method:"delete" %></li>
