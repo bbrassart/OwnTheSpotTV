@@ -58,15 +58,20 @@ a.brand-logo {
   margin-top: 8% !important;
 }
 
+//* Footer styling
+
 footer a:hover {
   color: white;
   background-color: #00695c;
-  margin-color:  #00695c;
 }
 
-footer {
-  padding: 10px 0;
+.page-footer {
+  padding: 5px 0 !important;
 }
+.footer__elements--padding {
+  padding: 5px 15px;
+}
+
 
 #map {
   height: 550px;
@@ -80,14 +85,6 @@ footer {
   margin-bottom: 5px;
 }
 //* Footer
-
-.footer_left-text {
-  padding-left: 5%;
-}
-
-.footer_right-backtohomepage {
-  padding-right: 5%;
-}
 
 .open .skater__menu--whitebg {
   background-color: white !important;
