@@ -1,454 +1,91 @@
 <div class="container">
   <div class="row homepage--pushcontent__below">
-    <% if current_user.nil? %>
-      <div class="col-md-6 col-md-offset-3">
-      <h3>You need to sign up to see this page</h3>
-      <button type="button" role="button" data-target="#myModal" data-toggle="modal" class="btn btn-default"><%= link_to "Create a new account", "#myMdoal"%></button>
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Register as a new user</h4>
-            </div>
-            <div class="modal-body">
-              <%= render 'helpers/account_new_form' %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button type="button" role="button" data-target="#myModal1" data-toggle="modal" class="btn btn-default"><%= link_to "Or log in with your account", "#myMdoal1"%></button>
-      <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel1">Sign in</h4>
-            </div>
-            <div class="modal-body">
-              <%= render 'helpers/signin_form' %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% else %>
-    <div class="col-lg-5 spot__description--spotshow">
-      <div class="media">
-        <div class="media-left media-middle">
-          <img class="media-object rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
-        </div>
-        <div class="media-body media-middle">
-          <h4 class="media-heading"><%= @spot.name %></h4>
-          <%= @spot.description %>
-        </div>
-      </div>
-    </div>
-
-    <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
-      <div class="col-md-3 spot__description--spotshow">
-        <h4>No videos submitted yet...</h4>
-      </div>
-    <% elsif @best_overall_videos.present? %>
-      <div class="col-md-3">
-        <h4>The Boss here is</h4>
-        <div class="media">
-          <div class="media-left media-middle">
-            <img class="media-object rounded--avatars" src="<%= @overall_best_skater.logo.url(:thumb)%>" alt="Skater's avatar">
-          </div>
-          <div class="media-body media-middle">
-            <h4 class="media-heading"><%= @overall_best_skater.username %></h4>
-            <% if @overall_best_skater.stance.present? %>
-              <b>Stance:</b> <%= @overall_best_skater.stance.capitalize() %>
-              <% if @overall_best_skater.videos.length == 1 %>
-                <p> <%= @overall_best_skater.videos.length %> video posted</p>
-              <% else %>
-                <p><%= @overall_best_skater.videos.length %> videos posted</p>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% elsif @best_trick_videos.present? %>
-      <div class="col-md-3">
-        <h4>The Best Trick Award goes to</h4>
-        <div class="media">
-          <div class="media-left media-middle">
-            <img class="media-object rounded--avatars" src="<%= @best_trick_skater.logo.url(:thumb)%>" alt="Skater's avatar">
-          </div>
-          <div class="media-body media-middle">
-            <h4 class="media-heading"><%= @best_trick_skater.username %></h4>
-            <% if @best_trick_skater.stance.present? %>
-              <b>Stance:</b> <%= @best_trick_skater.stance.capitalize() %>
-              <% if @best_trick_skater.videos.length == 1 %>
-                <p> <%= @best_trick_skater.videos.length %> video posted</p>
-              <% else %>
-                <p><%= @best_trick_skater.videos.length %> videos posted</p>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% elsif @worst_slam_videos.present? %>
-      <div class="col-md-3">
-        <h4>The Worst Slam Award goes to</h4>
-        <div class="media">
-          <div class="media-left media-middle">
-            <img class="media-object rounded--avatars" src="<%= @worst_slam_skater.logo.url(:thumb)%>" alt="Skater's avatar">
-          </div>
-          <div class="media-body media-middle">
-            <h4 class="media-heading"><%= @worst_slam_skater.username %></h4>
-            <% if @worst_slam_skater.stance.present? %>
-              <b>Stance:</b> <%= @worst_slam_skater.stance.capitalize() %>
-              <% if @worst_slam_skater.videos.length == 1 %>
-                <p> <%= @worst_slam_skater.videos.length %> video posted</p>
-              <% else %>
-                <p><%= @worst_slam_skater.videos.length %> videos posted</p>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% elsif @best_line_videos.present? %>
-      <div class="col-md-4">
-        <h4>The Firing Line Award goes to</h4>
-        <div class="media">
-          <div class="media-left media-middle">
-            <img class="media-object rounded--avatars" src="<%= @best_line_skater.logo.url(:thumb)%>" alt="Skater's avatar">
-          </div>
-          <div class="media-body media-middle">
-            <h4 class="media-heading"><%= @best_line_skater.username %></h4>
-            <% if @best_line_skater.stance.present? %>
-              <b>Stance:</b> <%= @best_line_skater.stance.capitalize() %>
-              <% if @best_line_skater.videos.length == 1 %>
-                <p> <%= @best_line_skater.videos.length %> video posted</p>
-              <% else %>
-                <p><%= @best_line_skater.videos.length %> videos posted</p>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
-    <div class="col-lg-1 button__category--spotshow">
-      <div class="btn-group">
-        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Choose a category <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu  skater__menu--whitebg">
-            <li><a href="<%= spot_path(params[:id])%>">All the videos</a></li>
-            <li><a href="<%= spot_path(params[:id])%>?category=trick">Best Trick</a></li>
-            <li><a href="<%= spot_path(params[:id])%>?category=line">Firing Line</a></li>
-            <li><a href="<%= spot_path(params[:id])%>?category=slam">Worst Slam</a></li>
-        </ul>
-      </div>
-    </div>
-
+    <center>
+      <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
+          <h5>No videos submitted yet...</h5>
+      <% elsif @best_overall_videos.present? %>
+          <h5>The Boss here is</h5>
+      <% elsif @best_trick_videos.present? %>
+          <h5>The Best Trick Award goes to</h5>
+      <% elsif @worst_slam_videos.present? %>
+          <h5>The Worst Slam Award goes to</h5>
+      <% elsif @best_line_videos.present? %>
+          <h5>The Firing Line Award goes to</h5>
+      <% end %>
+    </center>
   </div>
 
+  <div class="row homepage--pushcontent__below">
 
-
-      <% if @best_overall_videos.present? %>
-      <div class="row">
-        <div class="col-lg-12 video--carousel__margin video__carousel--border">
-        <% if @best_overall_videos.length == 1 %>
-          <h4>Overall best video</h4>
-          <% @best_overall_videos.each do |video| %>
-            <div class="col-lg-12 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @best_overall_videos.length == 2 %>
-          <h4>Overall best video</h4>
-          <% @best_overall_videos.each do |video| %>
-            <div class="col-lg-6 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @best_overall_videos.length > 2 %>
-          <h4>Overall best video</h4>
-          <% @best_overall_videos.each do |video| %>
-            <div class="col-lg-4 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-      <% end %>
-
-    <% elsif @best_trick_videos.present?%>
-        <% if @best_trick_videos.length == 1 %>
-          <h4>Best Trick video</h4>
-          <% @best_trick_videos.each do |video| %>
-            <div class="col-lg-12 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @best_trick_videos.length == 2 %>
-          <h4>Best trick videos</h4>
-          <% @best_trick_videos.each do |video, index| %>
-            <div class="col-lg-6 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @best_trick_videos.length > 2 %>
-          <h4>Best videos</h4>
-          <% @best_trick_videos.each do |video| %>
-            <div class="col-lg-4 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="col-lg-12">
-            <h4>
-            <p>No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %></p>
-          </div>
-        <% end %>
-
-
-      <% elsif @best_line_videos.present?%>
-        <% if @best_line_videos.length == 1 %>
-          <h4>Best Firing Line video</h4>
-          <% @best_line_videos.each do |video| %>
-            <div class="col-lg-12 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @best_line_videos.length == 2 %>
-          <h4>Best Firing Line videos</h4>
-          <% @best_line_videos.each do |video| %>
-            <div class="col-lg-6 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @best_line_videos.length > 2 %>
-          <h4>Best Firing Line videos</h4>
-          <% @best_line_videos.each do |video| %>
-            <div class="col-lg-4 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-
-          <% end %>
-        <% end %>
-
-      <% elsif @worst_slam_videos.present?%>
-        <% if @worst_slam_videos.length == 1 %>
-          <h4>Worst Slam video</h4>
-          <% @worst_slam_videos.each do |video| %>
-            <div class="col-lg-12 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @worst_slam_videos.length == 2 %>
-          <h4>Worst Slam videos</h4>
-          <% @worst_slam_videos.each do |video| %>
-            <div class="col-lg-6 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @worst_slam_videos.length > 3 %>
-          <h4>Worst Slam videos</h4>
-          <% @worst_slam_videos.each do |video| %>
-            <div class="col-lg-4 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div><%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <%end%>
-      </div>
+    <div class="col s4">
+      <%= render partial: "spots/show_spot", locals: {spot: @spot} %>
     </div>
-      <%end%>
+
+    <div class="col s5">
+      <%if @best_overall_videos.present? %>
+        <%= render partial: "spots/best_skater_profile", locals: {skater: @overall_best_skater} %>
+      <% elsif @best_trick_videos.present? %>
+        <%= render partial: "spots/best_skater_profile", locals: {skater: @best_trick_skater} %>
+      <% elsif @worst_slam_videos.present? %>
+        <%= render partial: "spots/best_skater_profile", locals: {skater: @worst_slam_skater} %>
+      <% elsif @best_line_videos.present? %>
+        <%= render partial: "spots/best_skater_profile", locals: {skater: @best_line_skater} %>
+      <% end %>
+    </div>
+
+    <div class="col s3 button__category--spotshow">
+      <ul class="dropdown-menu  skater__menu--whitebg">
+          <li><a href="<%= spot_path(params[:id])%>">All the videos</a></li>
+          <li><a href="<%= spot_path(params[:id])%>?category=trick">Best Trick</a></li>
+          <li><a href="<%= spot_path(params[:id])%>?category=line">Firing Line</a></li>
+          <li><a href="<%= spot_path(params[:id])%>?category=slam">Worst Slam</a></li>
+      </ul>
+    </div>
+  </div>
 
   <div class="row">
-    <div class="col-lg-12 video--carousel__margin video__carousel--border">
+    <% if @best_overall_videos.present? %>
+      <%= render partial:"spots/row_videos_component", locals: {videos: @best_overall_videos} %>
+  </div>
 
+  <div class="row">
+    <% elsif @best_trick_videos.present?%>
+      <%= render partial:"spots/row_videos_component", locals: {videos: @best_tricks_videos} %>
+  </div>
 
+  <div class="row">
+    <% elsif @best_line_videos.present?%>
+      <%= render partial:"spots/row_videos_component", locals: {videos: @best_line_videos} %>
+  </div>
+
+  <div class="row">
+    <% elsif @worst_slam_videos.present?%>
+      <%= render partial:"spots/row_videos_component", locals: {videos: @worst_slam_videos} %>
+  </div>
+    <%end%>
+
+  <div class="row">
+    <div class="video--carousel__margin video__carousel--border">
       <% if @latest_overall_videos.present? %>
-        <% if @latest_overall_videos.length == 1 %>
-          <h4>Latest entries for <%= @spot.name %></h4>
-          <% @latest_overall_videos.each do |video| %>
-          <div class="col-lg-12 video__carousel--slide">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-            </div><%= render :partial => "buttons_form", :locals => {:video => video} %>
-          </div>
-          <% end %>
-        <% elsif @latest_overall_videos.length == 2 %>
-          <h4>Latest entries for <%= @spot.name %></h4>
-          <% @latest_overall_videos.each do |video| %>
-            <div class="col-lg-6 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @latest_overall_videos.length > 2 %>
-          <h4>Latest entries for <%= @spot.name %></h4>
-          <% @latest_overall_videos.each do |video| %>
-            <div class="col-lg-4 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-      <% end %>
-
-    <% elsif @latest_trick_videos.present?%>
-        <% if @latest_trick_videos.length == 1 %>
-          <h4>Latest Best Trick at <%= @spot.name %></h4>
-          <% @latest_trick_videos.each do |video| %>
-            <div class="col-lg-12 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @latest_trick_videos.length == 2 %>
-          <h4>Latest Best Tricks at <%= @spot.name %></h4>
-          <% @latest_trick_videos.each do |video| %>
-            <div class="col-lg-6 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @latest_trick_videos.length > 2 %>
-          <h4>Latest Best Tricks at <%= @spot.name %></h4>
-          <% @latest_trick_videos.each do |video| %>
-            <div class="col-lg-4 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="col-lg-12">
-            <h4>
-            <p>No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %></p>
-          </div>
-        <% end %>
-
-
+        <%= render partial:"spots/row_latest_videos_component", locals: {videos: @latest_overall_videos} %>
+      <% elsif @latest_trick_videos.present?%>
+        <%= render partial:"spots/row_latest_videos_component", locals: {videos: @latest_trick_videos} %>
       <% elsif @latest_line_videos.present?%>
-        <% if @latest_line_videos.length == 1 %>
-          <h4>Latest Firing Line at <%= @spot.name %></h4>
-          <% @latest_line_videos.each do |video| %>
-            <div class="col-lg-12 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @latest_line_videos.length == 2 %>
-          <h4>Latest Firing Lines at <%= @spot.name %></h4>
-          <% @latest_line_videos.each do |video| %>
-            <div class="col-lg-6 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @latest_line_videos.length > 2 %>
-          <h4>Latest Firing Lines at <%= @spot.name %></h4>
-          <% @latest_line_videos.each do |video| %>
-            <div class="col-lg-4 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <% render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% end %>
-
+        <%= render partial:"spots/row_latest_videos_component", locals: {videos: @latest_line_videos} %>
       <% elsif @latest_slam_videos.present?%>
-        <% if @latest_slam_videos.length == 1 %>
-          <h4>Latest Slam Video at <%= @spot.name %></h4>
-          <% @latest_slam_videos.each do |video| %>
-            <div class="col-lg-12 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @latest_slam_videos.length == 2 %>
-          <h4>Latest Slam Videos at <%= @spot.name %></h4>
-          <% @latest_slam_videos.each do |video| %>
-            <div class="col-lg-6 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <% elsif @latest_slam_videos.length > 2 %>
-          <h4>Latest Slam Videos at <%= @spot.name %></h4>
-          <% @latest_slam_videos.each do |video| %>
-            <div class="col-lg-4 video__carousel--slide">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-              </div>
-              <%= render :partial => "buttons_form", :locals => {:video => video} %>
-            </div>
-          <% end %>
-        <%end%>
+        <%= render partial:"spots/row_latest_videos_component", locals: {videos: @latest_slam_videos} %>
       <% else %>
-        <div class="spot__description--spotshow jumbotron">
-          <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">
-          <h1>You're lucky today!</h1>
-          <p>You already killed that spot?</p>
-          <p>Submit your clip and, all of sudden, you'll be the Boss at <%= @spot.name %>..</p>
-          <p><a class="btn btn-primary btn-lg" href="/videos/new" role="button">Submit your clip</a></p>
-        </div>
+        <center>
+          <div class="col s12 spot__description--spotshow jumbotron">
+            <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">
+            <h1>You're lucky today!</h1>
+            <p>You already killed that spot?</p>
+            <p>Submit your clip and, all of sudden, you'll be the Boss at <%= @spot.name %>..</p>
+            <p><a class="btn" href="/videos/new" role="button">Submit your clip</a></p>
+          </div>
+        </center>
       <%end%>
     </div>
-
-    <%end %>
   </div>
+</div>
 </div>

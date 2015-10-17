@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   resources :skaters
   resources :spots, only: [:index, :show]
   resources :videos
-  resources :votes
+  get '/rankings' => 'votes#index'
 
 end

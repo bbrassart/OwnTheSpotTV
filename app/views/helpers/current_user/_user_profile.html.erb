@@ -1,0 +1,51 @@
+<div class="col l6 s12">
+  <div class="card small">
+    <div class="card-image">
+      <img class="rounded--avatars" src="<%= skater.logo.url(:medium)%>" alt="Skater's avatar">
+    </div>
+    <div class="card-content">
+      <% if skater.stance.present? %>
+        <b>Stance:</b> <%= skater.stance.capitalize() %>
+      <%end%>
+      <%if skater.videos.any? %>
+        <% if skater.videos.length == 1 %>
+          <p> <%= skater.videos.length %> video posted</p>
+        <% else %>
+          <p><%= skater.videos.length %> videos posted</p>
+        <% end %>
+      <%else%>
+        <p>Don't be scared of the Mob. <%= link_to "Submit your first clip", new_video_path %> and get rewarded!</p>
+      <%end%>
+    </div>
+
+    <div class="card-action">
+      <a href="<%= spots_path%>">Go to the skate spots!</a>
+    </div>
+  </div>
+</div>
+
+<div class="col l6 s12">
+  <div class="card small">
+
+    <div class="card-content">
+      <h4>What's up <%= skater.username %> ?</h4>
+      <ul>
+        <li>
+          <%= link_to edit_skater_path(skater) do %>
+            <i class="navbar--title material-icons">build</i>  Update your profile
+          <% end %>
+        </li>
+        <li>
+          <%= link_to skater, method: :delete, data: { confirm: "Are you sure you want to delete your account?"} do %>
+            <i class="navbar--title material-icons">delete</i> Wanna quit the Mob?
+          <% end %>
+
+        </li>
+      </ul>
+
+    </div>
+    <div class="card-action">
+      <a>Here will go the number of likes</a>
+    </div>
+  </div>
+</div>

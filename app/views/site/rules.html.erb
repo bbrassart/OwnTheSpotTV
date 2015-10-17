@@ -1,25 +1,26 @@
 <div class="container">
-  <div class="row homepage--pushcontent__below">
-    <div class="col-md-6 col-md-offset-3 rules__about--div">
-      <h2 class="rules__title--styling">8 rules to rule them all</h2>
-        <p class="rules__text--styling">20 spots, three categories: <b>Best Trick, Firing Line, Worst SLam</b></p>
-        <p class="rules__text--styling">Registered users can <b>submit their own YouTube clips</b></p>
-        <p class="rules__text--styling">Only registered users can <b>vote</b> for the best clips</p>
-        <p class="rules__text--styling">Each user has one vote for each video: <b>Like or Dislike</b></p>
-        <p class="rules__text--styling">It's not a game of SKATE, you can do bonelesses, grabs, benihanas...</p>
-        <p class="rules__text--styling">Don't worry about NBD's</p>
-        <p class="rules__text--styling">By clicking 'Report poser', you can inform us if a video is not legit</p>
-        <p class="rules__text--styling">Feel free to hit us on Facebook or via email to suggest any improvements</p>
-    </div>
-  </div>
-
   <div class="row">
-    <% if current_user.nil? %>
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <%= render 'helpers/suscribe_buttons' %>
+    <div class="col s12 l6">
+      <div class="card z-depth-3">
+        <div class="card-content">
+          <span class="card-title black-text">8 rules to rule them all</span>
+          <p class="left-align">20 spots, three categories: <b>Best Trick, Firing Line, Worst SLam</b><br>
+          Registered users can <b>submit their own YouTube clips</b><br>
+          Only registered users can <b>vote</b> for the best clips<br>
+          Each user has one vote for each video: <b>Like or Dislike</b><br>
+          It's not a game of SKATE, you can do bonelesses, grabs, benihanas...<br>
+          Don't worry about NBD's<br>
+          By clicking 'Report poser', you can inform us if a video is not legit<br>
+          Feel free to hit us on Facebook or via email to suggest any improvements<br>
+          I am a very simple card. I am good at containing small bits of information.<br>
+          I am convenient because I require little markup to use effectively.</p><br>
         </div>
       </div>
-    <% end %>
+    </div>
+    <div class="col s12 l6">
+      <% if current_user.nil? %>
+        <%= render 'helpers/suscribe_buttons' %>
+      <% end %>
+    </div>
   </div>
 </div>

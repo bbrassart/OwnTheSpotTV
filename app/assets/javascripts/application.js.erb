@@ -13,14 +13,18 @@
 
 
 //= require jquery
+//= require materialize-sprockets
 //= require jquery_ujs
 //=require leaflet-src
-//= require bootstrap
 //= require turbolinks
 //= require_tree .
 //= require turbolinks
 
 $(document).on('page:change', function() {
+  $(".button-collapse").sideNav();
+  $(".dropdown-button").dropdown();
+
+
 
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";

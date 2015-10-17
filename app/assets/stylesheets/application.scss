@@ -13,104 +13,92 @@
  *= require_tree .
  *= require_self
  //=require leaflet
+ //= require material_icons
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
 
- #map {
-   height: 550px;
- }
+@import "materialize/components/color";
+@import 'materialize';
 
-.navbar {
-  background-color: #046bd5 !important;
-  border-bottom: 2px solid white;
+//* Navbar styling
+
+.title--navbar__text {
+  font-size: 18px;
+}
+.navbar--title {
+  vertical-align: middle;
 }
 
-.navbar-default {
-  box-shadow: -1px 1px 3px 1px rgba(0, 0, 0, 0.7);
+.nav-wrapper a:hover {
+  color: white;
+  background-color: #00695c;
+}
+
+.nav-wrapper {
+  @extend .teal, .lighten-4;
+}
+
+a.brand-logo {
+  height: 64px;
+  padding: 0 15px;
+}
+
+.navbar__ul--left {
+ padding-left: 3%;
+}
+
+.navbar__ul--right {
+ padding-right: 3%;
+}
+
+.welcome_card-text {
+  line-height: 1.5em;
+}
+
+.welcomecard_bottom-link  {
+  margin-top: 8% !important;
+}
+
+footer a:hover {
+  color: white;
+  background-color: #00695c;
+  margin-color:  #00695c;
+}
+
+footer {
+  padding: 10px 0;
+}
+
+#map {
+  height: 550px;
+}
+
+.leaflet-popup-content-wrapper {
+  width: 238px;
+}
+
+.votebuttons__wrapper {
   margin-bottom: 5px;
 }
+//* Footer
 
-.navbar-nav li a,,
-.navbar-brand {
-  color: white !important ;
+.footer_left-text {
+  padding-left: 5%;
 }
 
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-    background-color: #337AB7 !important;
-  }
-
-.homepage--pushcontent__below {
-  margin-top: 20px;
-
-  }
-
-.navbar-nav .open a,
-.nav .open a:hover,
-.nav .open a:focus,
-.open .dropdown-menu
- {
-  background-color: #337ab7;
-}
-
- .leaflet-popup-content-wrapper {
-   width: 238px;
- }
-
-.pushing__body--below {
-  margin-bottom: 20px;
+.footer_right-backtohomepage {
+  padding-right: 5%;
 }
 
 .open .skater__menu--whitebg {
   background-color: white !important;
 }
 
-
- .modal-body {
-     height: 60%;
- }
-
-.winner--image {
-  margin-bottom: 20px;
-}
-
-.map--push--below {
-  margin-top: 25px;
-}
-
- .pushing__div--below {
-   margin-top: 20px;
- }
-
-
-.video__carousel--border {
-  border-top: 1px solid #eee;
-  padding-top: 10px;
-}
-
-//* rules styling
-
-.rules__text--styling {
-  font-size: 15px;
-  line-height: 150%;
-}
-
-.rules__title--styling {
-  margin-bottom: 30px;
-}
-
  //*General styling
 
  html {
    position: relative;
-   min-height: 100%;
+   height: 100%;
   }
-
- .before--footer {
-   margin-bottom: 40px;
- }
 
   ul {
     list-style: none;
@@ -131,11 +119,6 @@
   margin-top: 20px;
 }
 
-.video--carousel__margin {
-  margin-top: 1px solid #eee;
-
-}
-
  .media {
    padding: 10px 0;
  }
@@ -144,70 +127,35 @@
    margin-bottom: 20px;
  }
 
- body {
-   margin: 0 0 40px; /* bottom = footer height */
- }
-
-
- //* navbar
-
-
-
-
-.navbar-brand {
- margin-top: -6px;
+body {
+  margin: 0 0; /* bottom = footer height */
+  height: 100%;
 }
 
-.navbar-brand p {
- margin-top: -24px;
- padding-left: 45px;
-}
-
-//* footer
-
-.copyright__footer {
-  margin-top: -17px;
-  margin-right: 15px;
-}
-
-.homepage__footer {
-  margin-top: 5px;
-}
-
-.footer {
-  position: fixed;
-  margin-bottom: auto;
-  height: 25px;
-  bottom: 0;
-  width: 100%;
-  background-color: #F5F5F5;
-};
 
 //*YouTube videos styling
 
+//* Vote buttons
 
-.vote__buttons {
-  float: left;
-  padding: 3px 3px 0 3px;
+.poser__button {
+  text-align: center;
+  padding-left: 24px;
+  background-color: black;
 }
 
-.video__carousel--slide {
-  padding: 25px 25px 35px 25px;
+.text__votebuttons {
+  margin: 0.42rem 0 0.36rem 0;
+}
+
+.vote__buttons {
+  float: right;
+  padding: 3px 3px 0 3px;
 }
 
 .rounded--avatars {
   border-radius: 50%;
 }
 
-
-.fb--social__icon {
-  margin-top: -2px;
-}
-
-.insta--badge {
-  padding-top: 12px;
-  padding-left: 5px;
-}
 
 // Contact form styling
 
@@ -216,28 +164,28 @@
   /*flash*/
 }
 
-  .alert-error {
+.alert-error {
   background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
   text-align: left;
   }
 
-  .alert-alert {
+.alert-alert {
   background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
   text-align: left;
   }
 
-  .alert-success {
+.alert-success {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;
   text-align: left;
   }
 
-  .alert-notice {
+.alert-notice {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;

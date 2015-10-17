@@ -1,79 +1,60 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-
-
-        <div class="map--push--below winner--image" id="map">
-
+    <div class="col s12">
+      <div class="section">
+        <div id="map">
         </div>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
-      <h3>The crime scenes</h3>
-      <p>Our most boiling skate spots</p>
-      <% @most_active_spots.each do |spot|%>
-        <% if current_user %>
-          <ul>
-            <li>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="<%= spot_path(spot) %>">
-                    <img class="media-object rounded--avatars" src="<%= spot.logo.url(:square)%>" alt="Spot's avatar">
-                  </a>
-                </div>
-                <div class="media-body media-middle">
-                    <a href="<%= spot_path(spot) %>">
-                      <h4 class="media-heading media-middle"><%= spot.name %>
-                      </h4>
-                    </a>
-                   <%= spot.description %>
-                   <p><%= spot.videos.length %> clips submited for this spot</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        <% else %>
-          <ul>
-            <li>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <img class="media-object rounded--avatars" src="<%= spot.logo.url(:square)%>" alt="Spot's avatar">
-                </div>
-                <div class="media-body media-middle">
-                  <h4 class="media-heading"><%= spot.name %>
-                  </h4>
-                  <%= spot.description %>
-                </div>
-              </div>
-            </li>
-          </ul>
+    <div class="col s12">
+      <div class="divider"></div>
+      <div class="section center-align">
+        <h4>The crime scenes</h4>
+        <h5>Our most boiling skate spots</h5>
+      </div>
+      <div class="section">
+        <% @most_active_spots.each do |spot|%>
+          <% if current_user %>
+            <div class="col l4 m12 s12">
+              <%= render partial: "spot_media_current_user", locals: {:spot => spot} %>
+            </div>
+          <% else %>
+            <div class="col l4 m12 s12">
+              <%= render partial: "spot_media_visitor", locals: {spot: spot} %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-
-    <div class="pushing__div--below">
-    <div class="col-lg-4 contentdiv--default__shadow">
-      <% if current_user %>
-        <h4>Check the latest clip!<h4/>
-        <div class="video__carousel--slide">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @last_video_updated.url.slice(-11, 11) %>"></iframe>
-          </div>
-          <%= render :partial => "buttons_form", :locals => {:video => @last_video_updated} %>
+  </div>
+  <div class="row">
+    <% if current_user %>
+      <div class="col s12">
+        <div class="divider"></div>
+        <div class="section center-align">
+          <h5>Check the latest clip!<h5/>
         </div>
-      <% elsif current_user.nil? %>
-        <h4>Check the latest clip!</h4>
-        <div class="video__carousel--slide">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @last_video_updated.url.slice(-11, 11) %>"></iframe>
+        <div class="section">
+          <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
+          <%= render partial: "helpers/buttons_form", locals: {video: @last_video_updated} %>
+        </div>
+      </div>
+    <% elsif current_user.nil? %>
+      <div class="col s12">
+        <div class="divider"></div>
+        <div class="section center-align">
+          <h4>Check the latest clip!</h4>
+          <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
+        </div>
+        <div class="divider"></div>
+          <div class="section">
+            <%= render 'helpers/suscribe_buttons' %>
           </div>
         </div>
-        <%= render 'helpers/suscribe_buttons' %>
-        <% end %>
       </div>
-      </div>
-
+    <% end %>
   </div>
 </div>

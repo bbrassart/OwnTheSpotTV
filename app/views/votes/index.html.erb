@@ -1,69 +1,29 @@
 <div class="container">
   <div class="row homepage--pushcontent__below">
-      <% if current_user.present? %>
-        <div class="col-lg-3 col-sm-offset-2 pushing__div--below">
-          <img class="winner--image" src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/122/medium/winner.jpg" width="140" height="137" alt="Number one" align="left">
-        </div>
-        <div class="col-lg-6">
-          <h3>The overall best skater</h3>
-          <div class="media">
-            <div class="media-left media-middle">
-              <a href="<%=skater_path(@best_skater)%>"><img class="media-object rounded--avatars" src="<%= @best_skater.logo.url(:thumb) %>" alt="Skater's avatar"></a>
-            </div>
-            <div class="media-body media-middle">
-              <h4 class="media-heading"><%= link_to @best_skater.username, skater_path(@best_skater) %></h4>
-              <% if @best_skater.stance.present? %>
-                <b>Stance:</b> <%= @best_skater.stance.capitalize() %>
-                <% if @best_skater.videos.length == 1 %>
-                  <p> <%= @best_skater.videos.length %> video posted</p>
-                <% else %>
-                  <p><%= @best_skater.videos.length %> videos posted</p>
-                <% end %>
-              <% end %>
-            </div>
+    <% if current_user.present? %>
+      <%= render partial: "skaters/overall_best_current_user", locals: {skaters: @skaters} %>
+    <% else %>
+      <%= render partial: "skaters/overall_best_visitor", locals: {skaters: @skaters} %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="video__carousel--border">
+      <h5>Highest rated videos</h5>
+      <% @highest_rated_videos.each do |video| %>
+        <div class="col l4 m6 s12">
+          <%= render partial: "videos/video_media", locals: {video: video} %>
+          <div class="vote__buttons">
+            <b>Overall Score</b> <%= video.score %>
           </div>
-        </div>
-        <% else %>
-        <div class="col-lg-2 col-sm-offset-1 pushing__div--below">
-          <img class="winner--image" src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/122/medium/winner.jpg" class="winner--image" width="140" height="137" alt="Number one" align="left">
-        </div>
-        <div class="col-lg-5">
-          <h3>The overall best skater</h3>
-          <div class="media">
-            <div class="media-left media-middle">
-              <img class="media-object rounded--avatars" src="<%= @best_skater.logo.url(:thumb) %>" alt="Skater's avatar">
-            </div>
-            <div class="media-body media-middle">
-              <h4 class="media-heading"><%= @best_skater.username %></h4>
-              <% if @best_skater.stance.present? %>
-                <b>Stance:</b> <%= @best_skater.stance.capitalize() %>
-                <% if @best_skater.videos.length == 1 %>
-                  <p> <%= @best_skater.videos.length %> video posted</p>
-                <% else %>
-                  <p><%= @best_skater.videos.length %> videos posted</p>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 pushing__div--below">
-          <%= render 'helpers/suscribe_buttons' %>
         </div>
       <% end %>
     </div>
-    <div class="row">
-      <div class="col-lg-12  video__carousel--border">
-        <h3>Highest rated videos</h3>
-        <% @highest_rated_videos.each do |video| %>
-          <div class="col-lg-4 video__carousel--slide">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.url.slice(-11, 11) %>"></iframe>
-            </div>
-            <div class="vote__buttons">
-              <b>Overall Score</b> <%= video.score %>
-            </div>
-          </div>
-        <% end %>
-      </div>
   </div>
+  <%unless current_user %>
+    <div class="row">
+      <div class="col s12">
+        <%=render partial: "helpers/suscribe_buttons" %>
+      </div>
+    </div>
+  <%end%>
 </div>

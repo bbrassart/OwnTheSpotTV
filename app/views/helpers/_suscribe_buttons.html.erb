@@ -1,5 +1,12 @@
-<p>Wanna be on top of the Skate Mob? </p>
-<div class="btn-group">
-  <%= link_to 'Log in', login_path, class:"btn btn-primary" %>
-  <%= link_to 'Signup', new_skater_path, class:"btn btn-primary"%>
+<div class="card card-panel hoverable teal lghten-4 z-depth-3">
+  <div class="card-content white-text">
+    <div class="center-align">
+      <span class="card-title">Wanna join the Mob?</span>
+      <p>Post your footage, shred the spots and make your way to the top!</p>
+    </div>
+  </div>
+  <div class="card-action center-align">
+    <%= link_to 'Log in', login_path, class:"white-text waves-effect waves-light btn" %><i class="material-icons left"></i>
+    <%= link_to 'Signup', new_skater_path, class:"white-text waves-effect waves-light btn" %><i class="material-icons left"></i>
+  </div>
 </div>

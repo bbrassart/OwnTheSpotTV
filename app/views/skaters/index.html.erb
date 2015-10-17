@@ -1,87 +1,44 @@
 <div class="container">
   <div class="row homepage--pushcontent__below">
-    <div class="col-lg-4 contentdiv--default__shadow">
-      <h3>The Mob family</h3>
-      <h4>Our most devoted soldiers</h4>
+    <h4>The Mob family</h4>
+    <h5>Our most devoted soldiers</h5>
+    <div class="contentdiv--default__shadow">
       <% @most_active_skaters.each do |skater|%>
         <% if current_user.nil? %>
-          <ul>
-            <li>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <img class="media-object rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
-                </div>
-                <div class="media-body media-middle">
-                  <h4 class="media-heading"><%= skater.username %></h4>
-                    <% if skater.stance.present? %>
-                      <b>Stance:</b> <%= skater.stance.capitalize() %>
-                      <% if skater.videos.length == 1 %>
-                        <p> <%= skater.videos.length %> video posted</p>
-                      <% else %>
-                        <p><%= skater.videos.length %> videos posted</p>
-                      <% end %>
-                    <% end %>
-                </div>
-              </div>
-            </li>
-          </ul>
+          <div class="col s4">
+            <%= render partial: "helpers/visitor/list_user_profile", locals: {skater: skater} %>
+          </div>
         <% elsif skater.id != current_user.id  %>
-          <ul>
-            <li>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="<%= skater_path(skater) %>">
-                    <img class="media-object rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
-                  </a>
-                </div>
-                <div class="media-body media-middle">
-                  <h4 class="media-heading"><%= skater.username %></h4>
-                    <p><%= skater.username %> already posted <%= (skater.videos.length) %> clips.</p>
-                    <% if skater.stance.present? %>
-                      <b>Stance:</b> <%= skater.stance.capitalize() %>
-                    <% end %>
-                </div>
-              </div>
-            </li>
-          </ul>
-        <% end %>
+          <div class="col s4">
+            <%= render partial: "helpers/current_user/list_user_profile", locals: {skater: skater} %>
+          </div>
+        <%end%>
       <%end%>
     </div>
-
-    <div class="col-lg-3">
+  </div>
+  <div class="row">
+    <div class="col s6">
       <% if current_user %>
       <div class="pushing__div--below">
-        <div class="btn-group">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Choose a skater <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu skater__menu--whitebg">
-            <% @skaters.each do |skater|%>
-              <% next if skater.id == current_user.id %>
-              <li><%= link_to skater.username, skater_path(skater) %></li>
-            <% end %>
-          </ul>
-        </div>
+        <ul class="skater__menu--whitebg">
+          <% @skaters.each do |skater|%>
+            <% next if skater.id == current_user.id %>
+            <li><%= link_to skater.username, skater_path(skater) %></li>
+          <% end %>
+        </ul>
       </div>
       <% else %>
-      <div class="pushing__div--below">
-        <div class="rules__about--div">
-          <%= render 'helpers/suscribe_buttons' %>
+        <div class="pushing__div--below">
+          <div class="rules__about--div">
+            <%= render 'helpers/suscribe_buttons' %>
+          </div>
         </div>
-      </div>
       <% end %>
     </div>
 
-    <div class="col-lg-5 pushing__div--below">
-
+    <div class="col s6 pushing__div--below">
       <h4>Check the latest clip!</h4>
-      <div class="video__carousel--slide">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @last_video_updated.url.slice(-11, 11) %>"></iframe>
-        </div>
-      </div>
-    </div>
-
+      <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
     </div>
   </div>
 </div>

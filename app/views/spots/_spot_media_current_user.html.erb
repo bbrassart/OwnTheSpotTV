@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-image">
+    <a href="<%= spot_path(spot) %>">
+      <img class="rounded--avatars" src="<%= spot.logo.url(:square)%>" alt="Spot's avatar">
+    </a>
+    <span class="card-title">
+      <%= spot.name %>
+    </span>
+  </div>
+  <div class="card-content">
+    <% if spot.description.length > 75%>
+      <p><%= truncate spot.description, length: 75 %>...</p>
+    <%else %>
+      <p><%= spot.description %>
+    <%end%>
+    <p><em><%= spot.videos.length %> clips submited for this spot</em></p>
+  </div>
+    <div class="card-action">
+      <a href="<%= spot_path(spot) %>">
+        Check more action
+      </a>
+    </div>
+</div>

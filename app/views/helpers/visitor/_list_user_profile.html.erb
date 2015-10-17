@@ -1,0 +1,24 @@
+<div class="card small">
+  <div class="card-image">
+    <a href="<%= skater_path(skater) %>">
+      <img class="rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+    </a>
+    <span class="card-title">
+      <%= skater.username %>
+    </span>
+  </div>
+  <div class="card-content">
+    <% if skater.stance.present? %>
+      <b>Stance:</b> <%= skater.stance.capitalize() %>
+      <% if skater.videos.length == 1 %>
+        <p> <%= skater.videos.length %> video posted</p>
+      <% else %>
+        <p><%= skater.videos.length %> videos posted</p>
+      <% end %>
+    <%end%>
+  </div>
+
+  <div class="card-action">
+    <a href="<%= spots_path%>">Check out the skate spots!</a>
+  </div>
+</div>
