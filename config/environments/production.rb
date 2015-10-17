@@ -15,6 +15,7 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
   config.action_mailer.raise_delivery_errors = true
+  config.action_controller.asset_host = 'ownthespot.tv'
 
 
   # #paperclip aws config
