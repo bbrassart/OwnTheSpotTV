@@ -8,5 +8,8 @@ create database and seed it
 
 initialize the rails server
 
+Username: Richie
+password: richie
+
 
 You are good to go
