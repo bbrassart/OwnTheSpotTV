@@ -8,11 +8,7 @@
     </span>
   </div>
   <div class="card-content">
-    <% if spot.description.length > 75%>
-      <p><%= truncate spot.description, length: 75 %>...</p>
-    <%else %>
-      <p><%= spot.description %>
-    <%end%>
+    <p><%= truncate spot.description, length: 50 %>...</p>
     <p><em><%= spot.videos.length %> clips submited for this spot</em></p>
   </div>
     <div class="card-action">

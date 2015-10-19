@@ -18,9 +18,9 @@
             <p class="center-align">20 skate spots located in Barcelona.
             Best Trick, Best Line, Worst Slam... Send us your best videos!
             Watch the footy, you decide who is the Boss of the spot!</p>
-            <div>
-              <%= link_to 'Log in', login_path, class:"white-text waves-effect waves-light btn" %><i class="material-icons left"></i>
-              <%= link_to 'Signup', new_skater_path, class:"white-text waves-effect waves-light btn" %><i class="material-icons left"></i>
+            <div class="center-align">
+              <%= link_to 'Log in', login_path, class:"white-text waves-effect waves-light btn" %>
+              <%= link_to 'Signup', new_skater_path, class:"white-text waves-effect waves-light btn" %>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
 
   <% if current_user.nil?%>
     <div class="row">
-      <div class="col s12">
+      <div class="col l12">
         <div class="divider"></div>
         <%= render 'helpers/suscribe_buttons' %>
       </div>

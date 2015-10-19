@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row homepage--pushcontent__below">
+  <div class="row">
     <% if current_user.present? %>
       <%= render partial: "skaters/overall_best_current_user", locals: {skaters: @skaters} %>
     <% else %>
@@ -7,8 +7,11 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="video__carousel--border">
-      <h5>Highest rated videos</h5>
+    <div class="section">
+      <div class="divider"></div>
+      <h5 class="center-align">Highest rated videos</h5>
+    </div>
+    <div class="section">
       <% @highest_rated_videos.each do |video| %>
         <div class="col l4 m6 s12">
           <%= render partial: "videos/video_media", locals: {video: video} %>
@@ -22,7 +25,10 @@
   <%unless current_user %>
     <div class="row">
       <div class="col s12">
-        <%=render partial: "helpers/suscribe_buttons" %>
+        <div class="divider"></div>
+        <div class="section">
+          <%= render 'helpers/suscribe_buttons' %>
+        </div>
       </div>
     </div>
   <%end%>
