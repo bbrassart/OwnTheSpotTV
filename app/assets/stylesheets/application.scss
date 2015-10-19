@@ -24,6 +24,7 @@
 .title--navbar__text {
   font-size: 18px;
 }
+
 .navbar--title {
   vertical-align: middle;
 }
@@ -68,8 +69,9 @@ footer a:hover {
 .page-footer {
   padding: 5px 0 !important;
 }
+
 .footer__elements--padding {
-  padding: 5px 15px;
+  padding: 20px 15px;
 }
 
 
@@ -138,6 +140,10 @@ body {
   text-align: center;
   padding-left: 24px;
   background-color: black;
+}
+
+.topmob__star {
+  padding: 0px 0 0 20px;
 }
 
 .text__votebuttons {
