@@ -81,7 +81,6 @@ footer {
   padding: 0 15px;
 }
 
-
 #map {
   height: 550px;
 }
@@ -116,40 +115,39 @@ footer {
   background-size: 100% auto;
 }
 
-.Macba {
-  background-image: url("http://i.imgur.com/yI78QIE.jpg");
+.background-MercatdelesFlors {
+  background-image: url("https://s3.amazonaws.com/ownthespot/mercat-bg.jpg");
 }
 
-.background-469 {
+.background-Macba {
+  background-image: url("https://s3.amazonaws.com/ownthespot/bg-macba.jpg");
+}
+
+.background-Gloriesbumpsandcurbs {
   background-image: url("https://s3.amazonaws.com/ownthespot/glories-bg.jpg")
 }
 
-.background-457 {
-  background-image: url("https://s3.amazonaws.com/ownthespot/mercat-bg.jpg")
-}
-
-
-.background-473 {
+.background-EstaciódeSants {
   background-image: url("https://s3.amazonaws.com/ownthespot/sants-bg.jpg")
 }
 
-.background-248 {
+.background-PlaçaUniversitat {
   background-image: url("https://s3.amazonaws.com/ownthespot/uni-bg.jpg")
 }
 
-.background-460 {
+.background-Montbaumanualpad {
   background-image: url("https://s3.amazonaws.com/ownthespot/wheelie-bg.jpg")
 }
 
-.background-465 {
+.background-Forumstairs {
   background-image: url("https://s3.amazonaws.com/ownthespot/fondo-bg.jpg")
 }
 
-.background-464 {
-  background-image: url("https://s3.amazonaws.com/ownthespot/annafrank-bg.jpg")
+div[class*="Plaçad"] {
+  background-image: url("https://s3.amazonaws.com/ownthespot/annafrank-bg.jpg");
 }
 
-.background-456 {
+.background-Macbadownhill {
   background-image: url("https://s3.amazonaws.com/ownthespot/biblioteca-bg.jpg")
 }
 

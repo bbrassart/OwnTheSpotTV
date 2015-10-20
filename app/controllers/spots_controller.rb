@@ -22,6 +22,7 @@ class SpotsController < ApplicationController
 
   def show
     @spot = Spot.friendly.find(params[:id])
+    @bg_id = @spot.name.split(" ").join("")
     videos = @spot.videos
     if videos.present?
       if params[:category] == 'trick'
