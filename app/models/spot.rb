@@ -15,4 +15,8 @@ class Spot < ActiveRecord::Base
   def self.spots_by_district
     Spot.all.sort_by{ |spot| spot.district }
   end
+
+  def fullname
+    name.split(" ").join("")
+  end
 end
