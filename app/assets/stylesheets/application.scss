@@ -116,40 +116,44 @@ footer {
   background-size: 100% auto;
 }
 
-.background-MercatdelesFlors {
-  background-image: url("https://s3.amazonaws.com/ownthespot/mercat-bg.jpg");
+.custom__background-MercatdelesFlors {
+  background-image: url("https://s3.amazonaws.com/ownthespot/mercat-bg.jpg") !important;
 }
 
-.background-Macba {
-  background-image: url("https://s3.amazonaws.com/ownthespot/bg-macba.jpg");
+.custom__background-Macba {
+  background-image: url("https://s3.amazonaws.com/ownthespot/bg-macba.jpg") !important;
 }
 
-.background-Gloriesbumpsandcurbs {
-  background-image: url("https://s3.amazonaws.com/ownthespot/glories-bg.jpg")
+.custom__background-Gloriesbumpsandcurbs {
+  background-image: url("https://s3.amazonaws.com/ownthespot/glories-bg.jpg") !important;
 }
 
-.background-EstaciódeSants {
-  background-image: url("https://s3.amazonaws.com/ownthespot/sants-bg.jpg")
+.custom__background-EstaciódeSants {
+  background-image: url("https://s3.amazonaws.com/ownthespot/sants-bg.jpg") !important;
 }
 
-.background-PlaçaUniversitat {
-  background-image: url("https://s3.amazonaws.com/ownthespot/uni-bg.jpg")
+.custom__background-PlaçaUniversitat {
+  background-image: url("https://s3.amazonaws.com/ownthespot/uni-bg.jpg") !important;
 }
 
-.background-Montbaumanualpad {
-  background-image: url("https://s3.amazonaws.com/ownthespot/wheelie-bg.jpg")
+.custom__background-Montbaumanualpad {
+  background-image: url("https://s3.amazonaws.com/ownthespot/wheelie-bg.jpg") !important;
 }
 
-.background-Forumstairs {
-  background-image: url("https://s3.amazonaws.com/ownthespot/fondo-bg.jpg")
+.custom__background-Forumstairs {
+  background-image: url("https://s3.amazonaws.com/ownthespot/fondo-bg.jpg") !important;
 }
 
-div[class*="Plaçad"] {
-  background-image: url("https://s3.amazonaws.com/ownthespot/annafrank-bg.jpg");
+div[class*="custom__background-Plaçad"] {
+  background-image: url("https://s3.amazonaws.com/ownthespot/annafrank-bg.jpg") !important;
 }
 
-.background-Macbadownhill {
-  background-image: url("https://s3.amazonaws.com/ownthespot/biblioteca-bg.jpg")
+.custom__background-Macbadownhill {
+  background-image: url("https://s3.amazonaws.com/ownthespot/biblioteca-bg.jpg") !important;
+}
+
+div[class*="custom__background-"] {
+  background-image: url("https://s3.amazonaws.com/ownthespot/background-main.jpg");
 }
 
 ul {
