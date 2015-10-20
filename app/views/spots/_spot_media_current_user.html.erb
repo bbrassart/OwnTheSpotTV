@@ -8,11 +8,14 @@
     </span>
   </div>
   <div class="card-content">
-    <p><%= truncate spot.description, length: 50 %>...</p>
-    <p><em><%= spot.videos.length %> clips submited for this spot</em></p>
+    <p><%= truncate spot.description, length: 75 %>...</p>
+    <br>
+    <div class="divider"></div>
+    <br>
+    <p class="center-align"><em><%= spot.videos.length %> clips submited for this spot</em></p>
   </div>
-    <div class="card-action">
-      <a href="<%= spot_path(spot) %>">
+    <div class="center-align card-action">
+      <a class="blue-text" href="<%= spot_path(spot) %>">
         Check more action
       </a>
     </div>

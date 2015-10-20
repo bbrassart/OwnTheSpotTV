@@ -1,71 +1,61 @@
-<div class="container">
-  <div class="row homepage--pushcontent__below">
-    <center>
-      <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
-          <h5>No videos submitted yet...</h5>
-      <% elsif @best_overall_videos.present? %>
-          <h5>The Boss here is</h5>
-      <% elsif @best_trick_videos.present? %>
-          <h5>The Best Trick Award goes to</h5>
-      <% elsif @worst_slam_videos.present? %>
-          <h5>The Worst Slam Award goes to</h5>
-      <% elsif @best_line_videos.present? %>
-          <h5>The Firing Line Award goes to</h5>
-      <% end %>
-    </center>
-  </div>
+<div class="main__background background-<%=@spot.id%>">
+  <div class="container">
+    <div class="row">
+      <div class="section">
+        <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
+          <h5 class="center-align">No videos submitted yet...</h5>
+        <% elsif @best_overall_videos.present? %>
+          <h5 class="center-align">The Boss here is</h5>
+        <% elsif @best_trick_videos.present? %>
+          <h5 class="center-align">The Best Trick Award goes to</h5>
+        <% elsif @worst_slam_videos.present? %>
+          <h5 class="center-align">The Worst Slam Award goes to</h5>
+        <% elsif @best_line_videos.present? %>
+          <h5 class="center-align">The Firing Line Award goes to</h5>
+        <% end %>
+      </div>
 
-  <div class="row homepage--pushcontent__below">
+      <div class="section">
+        <div class="col s4">
+          <%= render partial: "spots/show_spot", locals: {spot: @spot} %>
+        </div>
 
-    <div class="col s4">
-      <%= render partial: "spots/show_spot", locals: {spot: @spot} %>
+        <div class="col s5">
+          <%if @best_overall_videos.present? %>
+            <%= render partial: "spots/best_skater_profile", locals: {skater: @overall_best_skater} %>
+          <% elsif @best_trick_videos.present? %>
+            <%= render partial: "spots/best_skater_profile", locals: {skater: @best_trick_skater} %>
+          <% elsif @worst_slam_videos.present? %>
+            <%= render partial: "spots/best_skater_profile", locals: {skater: @worst_slam_skater} %>
+          <% elsif @best_line_videos.present? %>
+            <%= render partial: "spots/best_skater_profile", locals: {skater: @best_line_skater} %>
+          <% end %>
+        </div>
+
+        <div class="col s3">
+          <ul class="dropdown-menu">
+              <li><a href="<%= spot_path(params[:id])%>">All the videos</a></li>
+              <li><a href="<%= spot_path(params[:id])%>?category=trick">Best Trick</a></li>
+              <li><a href="<%= spot_path(params[:id])%>?category=line">Firing Line</a></li>
+              <li><a href="<%= spot_path(params[:id])%>?category=slam">Worst Slam</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="col s5">
-      <%if @best_overall_videos.present? %>
-        <%= render partial: "spots/best_skater_profile", locals: {skater: @overall_best_skater} %>
-      <% elsif @best_trick_videos.present? %>
-        <%= render partial: "spots/best_skater_profile", locals: {skater: @best_trick_skater} %>
-      <% elsif @worst_slam_videos.present? %>
-        <%= render partial: "spots/best_skater_profile", locals: {skater: @worst_slam_skater} %>
-      <% elsif @best_line_videos.present? %>
-        <%= render partial: "spots/best_skater_profile", locals: {skater: @best_line_skater} %>
-      <% end %>
+    <div class="row">
+      <% if @best_overall_videos.present? %>
+        <%= render partial:"spots/row_videos_component", locals: {videos: @best_overall_videos} %>
+      <% elsif @best_trick_videos.present?%>
+        <%= render partial:"spots/row_videos_component", locals: {videos: @best_tricks_videos} %>
+      <% elsif @best_line_videos.present?%>
+        <%= render partial:"spots/row_videos_component", locals: {videos: @best_line_videos} %>
+      <% elsif @worst_slam_videos.present?%>
+        <%= render partial:"spots/row_videos_component", locals: {videos: @worst_slam_videos} %>
+      <%end%>
     </div>
 
-    <div class="col s3 button__category--spotshow">
-      <ul class="dropdown-menu  skater__menu--whitebg">
-          <li><a href="<%= spot_path(params[:id])%>">All the videos</a></li>
-          <li><a href="<%= spot_path(params[:id])%>?category=trick">Best Trick</a></li>
-          <li><a href="<%= spot_path(params[:id])%>?category=line">Firing Line</a></li>
-          <li><a href="<%= spot_path(params[:id])%>?category=slam">Worst Slam</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="row">
-    <% if @best_overall_videos.present? %>
-      <%= render partial:"spots/row_videos_component", locals: {videos: @best_overall_videos} %>
-  </div>
-
-  <div class="row">
-    <% elsif @best_trick_videos.present?%>
-      <%= render partial:"spots/row_videos_component", locals: {videos: @best_tricks_videos} %>
-  </div>
-
-  <div class="row">
-    <% elsif @best_line_videos.present?%>
-      <%= render partial:"spots/row_videos_component", locals: {videos: @best_line_videos} %>
-  </div>
-
-  <div class="row">
-    <% elsif @worst_slam_videos.present?%>
-      <%= render partial:"spots/row_videos_component", locals: {videos: @worst_slam_videos} %>
-  </div>
-    <%end%>
-
-  <div class="row">
-    <div class="video--carousel__margin video__carousel--border">
+    <div class="row">
       <% if @latest_overall_videos.present? %>
         <%= render partial:"spots/row_latest_videos_component", locals: {videos: @latest_overall_videos} %>
       <% elsif @latest_trick_videos.present?%>
@@ -75,17 +65,16 @@
       <% elsif @latest_slam_videos.present?%>
         <%= render partial:"spots/row_latest_videos_component", locals: {videos: @latest_slam_videos} %>
       <% else %>
-        <center>
-          <div class="col s12 spot__description--spotshow jumbotron">
-            <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">
-            <h1>You're lucky today!</h1>
-            <p>You already killed that spot?</p>
-            <p>Submit your clip and, all of sudden, you'll be the Boss at <%= @spot.name %>..</p>
-            <p><a class="btn" href="/videos/new" role="button">Submit your clip</a></p>
-          </div>
-        </center>
+        <div class="col s12 center-align jumbotron">
+          <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">
+          <h1>You're lucky today!</h1>
+          <p>You already killed that spot?</p>
+          <p>Submit your clip and, all of sudden, you'll be the Boss at <%= @spot.name %>..</p>
+          <p><a class="btn" href="/videos/new" role="button">Submit your clip</a></p>
+        </div>
       <%end%>
     </div>
+    <div class="section">
+    </div>
   </div>
-</div>
 </div>

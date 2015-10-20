@@ -65,6 +65,9 @@ footer a:hover {
   color: white;
   background-color: #00695c;
 }
+footer {
+  margin-top: -20px !important;
+}
 
 .page-footer {
   padding: 5px 0 !important;
@@ -103,16 +106,73 @@ footer a:hover {
    height: 100%;
   }
 
-  ul {
-    list-style: none;
-  };
+  .jumbotron {
+    background-color: white;
+  }
+
+//* Backgrounds
+
+.main__background {
+  background-size: 100% auto;
+}
+
+.Macba {
+  background-image: url("http://i.imgur.com/yI78QIE.jpg");
+}
+
+.background-469 {
+  background-image: url("https://s3.amazonaws.com/ownthespot/glories-bg.jpg")
+}
+
+.background-457 {
+  background-image: url("https://s3.amazonaws.com/ownthespot/mercat-bg.jpg")
+}
+
+
+.background-473 {
+  background-image: url("https://s3.amazonaws.com/ownthespot/sants-bg.jpg")
+}
+
+.background-454 {
+  background-image: url("https://s3.amazonaws.com/ownthespot/uni-bg.jpg")
+}
+
+.background-460 {
+  background-image: url("https://s3.amazonaws.com/ownthespot/wheelie-bg.jpg")
+}
+
+.background-465 {
+  background-image: url("https://s3.amazonaws.com/ownthespot/fondo-bg.jpg")
+}
+
+.background-464 {
+  background-image: url("https://s3.amazonaws.com/ownthespot/annafrank-bg.jpg")
+}
+
+.background-456 {
+  background-image: url("https://s3.amazonaws.com/ownthespot/biblioteca-bg.jpg")
+}
+
+ul {
+  list-style: none;
+};
 
  .alert {
    padding: 5px 35px;
    margin: 3px auto;
    border-radius: 50px;
    width:80%;
- };
+ }
+
+ .boilingspots__card--action a:hover {
+   color: white;
+   background-color: #00695c;
+ }
+
+ .footer a:hover {
+   color: white;
+   background-color: #00695c;
+ }
 
  .button__category--spotshow {
    margin-top: 40px;

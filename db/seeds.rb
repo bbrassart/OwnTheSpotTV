@@ -12,12 +12,12 @@ Vote.all.destroy_all
 ActiveRecord::Base.connection.execute("delete from friendly_id_slugs")
 
 spots = [
-  Spot.create!(name: "Plaça Universitat", description: "Marble ledges everywhere, perfect flatground, best SKATE game spot, lines for days", district: 'Eixample'),
+  Spot.create!(name: "Plaça Universitat", description: "Marble ledges everywhere, perfect flatground, best SKATE game spot, lines for days. You'll have a hard time trying to find what went down on this spot", district: 'Eixample'),
   Spot.create!(name: 'Macba', description: "The one and only Macba, the dream spot, ledges, stairs, gaps, all you need to prove your skills", district: 'Raval'),
   Spot.create!(name: 'Macba downhill', description: "This spot is located between Plaça Universitat and the Macba. A very funny little downhill with banks and little curbs. Getcha slappy on!", district: 'Raval'),
-  Spot.create!(name: 'Mercat de las Flors', description: "Probably the best ledge in Barcelona. Perfect to practice your ledge skills", district: 'Poble Sec'),
+  Spot.create!(name: 'Mercat de les Flors', description: "Probably the best ledge in Barcelona. Perfect to practice your ledge skills", district: 'Poble Sec'),
   Spot.create!(name: 'Arc de Triomf', description: 'Another perfect spot in Barcelona', district: 'Fort Pienc'),
-  Spot.create!(name: 'Parc de la Ciutadella', description: 'Awesome manny pad, chillout atmosphere, sunday spot', district: 'Fort Pienc'),
+  Spot.create!(name: 'Parc de la Ciutadella', description: "Awesome manny pad, chillout atmosphere, sunday spot. That spot may not be as popular as others but it is a true BCN authentic spot", district: 'Fort Pienc'),
   Spot.create!(name: 'Montbau manual pad', description: 'Little stair up, long manny and a bank to go down, the way to go', district: 'Montbau'),
   Spot.create!(name: 'Montbau downhill', description: 'Try to get the perfect line at this difficult spot', district: 'Montbau'),
   Spot.create!(name: 'Hostafrancs', description: 'Stairs for days, a big handrail and a big flatground space', district: 'Sants'),
@@ -26,7 +26,7 @@ spots = [
   Spot.create!(name: "Forum stairs", description: 'That double set has already been murdered but who knows, maybe you come up with something new', district: 'Forum'),
   Spot.create!(name: "Vallcarca tennis court curbs", description: 'Low curbs, lines for days', district: 'Vallcarca'),
   Spot.create!(name: "Forum fountain", description: 'Weird sculpture with all kind of possibilities. Mannys, banks, curbs and all...', district: 'Forum'),
-  Spot.create!(name: "The infamois red low-to-high curb", description: 'A very long metal ledge, low-to-high-to-low', district: 'Poble Nou'),
+  Spot.create!(name: "The infamous red low-to-high curb", description: 'A very long metal ledge, low-to-high-to-low', district: 'Poble Nou'),
   Spot.create!(name: "Glories bumps and curbs", description: 'Some awesome kickers, colored curbs everywhere, security is on the alert', district: 'Glories'),
   Spot.create!(name: "Marina micro spot", description: 'Stairs, a mini curb, a long hanbdrail, get creative!', district: 'Marina'),
   Spot.create!(name: "World Trade Center", description: 'Perfect flatground, curbs, benches and security is on the alert', district: 'Drassanes'),

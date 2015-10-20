@@ -1,14 +1,7 @@
 <div class="votebuttons__wrapper">
   <h5 class="text__votebuttons right-align"><b>Overall Score:</b> <%= video.score %></h5>
-
-
   <div class="vote__buttons">
-    <%= form_tag('/votes/like') do %>
-      <%= hidden_field_tag :video_id, video.id %>
-      <button type="submit" class="btn vote--buttons">
-        <i class="material-icons">thumb_up</i>
-      </button>
-    <% end %>
+    <button type="button" class="navbar--title btn poser__button"><%= link_to ("POSER"), skaters_path%></button></a>
   </div>
 
   <div class="vote__buttons">
@@ -19,9 +12,15 @@
       </button>
     <%end%>
   </div>
-
-
   <div class="vote__buttons">
-    <button type="button" class="navbar--title btn poser__button"><%= link_to ("POSER"), skaters_path%></button></a>
+    <%= form_tag('/votes/like') do %>
+      <%= hidden_field_tag :video_id, video.id %>
+      <button type="submit" class="btn vote--buttons">
+        <i class="material-icons">thumb_up</i>
+      </button>
+    <% end %>
   </div>
+
+
+
 </div>

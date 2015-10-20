@@ -6,11 +6,14 @@
     </span>
   </div>
   <div class="card-content">
-    <p><%= truncate spot.description, length: 50 %>...</p>
+    <p><%= truncate spot.description, length: 75 %>...</p>
+    <br>
+    <div class="divider"></div>
+    <br>
     <p><em><%= spot.videos.length %> clips submited for this spot</em></p>
   </div>
-  <div class="card-action">
-    <a href="<%= new_skater_path %>">
+  <div class="card-action center-align">
+    <a class="blue-text" href="<%= new_skater_path %>">
       Sign up for more!
     </a>
   </div>
