@@ -2,17 +2,19 @@
   <div class="container">
     <div class="row">
       <div class="section">
-        <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
-          <h5 class="center-align">No videos submitted yet...</h5>
-        <% elsif @best_overall_videos.present? %>
-          <h5 class="center-align">The Boss here is</h5>
-        <% elsif @best_trick_videos.present? %>
-          <h5 class="center-align">The Best Trick Award goes to</h5>
-        <% elsif @worst_slam_videos.present? %>
-          <h5 class="center-align">The Worst Slam Award goes to</h5>
-        <% elsif @best_line_videos.present? %>
-          <h5 class="center-align">The Firing Line Award goes to</h5>
-        <% end %>
+        <div class="col s12">
+          <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
+            <h5 class="center-align">No videos submitted yet...</h5>
+          <% elsif @best_overall_videos.present? %>
+            <h5 class="center-align">The Boss here is</h5>
+          <% elsif @best_trick_videos.present? %>
+            <h5 class="center-align">The Best Trick Award goes to</h5>
+          <% elsif @worst_slam_videos.present? %>
+            <h5 class="center-align">The Worst Slam Award goes to</h5>
+          <% elsif @best_line_videos.present? %>
+            <h5 class="center-align">The Firing Line Award goes to</h5>
+          <% end %>
+        </div>
       </div>
 
       <div class="section">
@@ -33,12 +35,7 @@
         </div>
 
         <div class="col s3">
-          <ul class="dropdown-menu">
-              <li><a href="<%= spot_path(params[:id])%>">All the videos</a></li>
-              <li><a href="<%= spot_path(params[:id])%>?category=trick">Best Trick</a></li>
-              <li><a href="<%= spot_path(params[:id])%>?category=line">Firing Line</a></li>
-              <li><a href="<%= spot_path(params[:id])%>?category=slam">Worst Slam</a></li>
-          </ul>
+          <%= render partial: "helpers/category_menu" %>
         </div>
       </div>
     </div>

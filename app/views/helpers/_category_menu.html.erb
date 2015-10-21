@@ -1,0 +1,9 @@
+<a class='dropdown-button btn' href='#' data-activates='dropdown2'>Categories</a>
+<!-- Dropdown Structure -->
+<ul id='dropdown2' class='dropdown-content'>
+ <li><a href="<%= spot_path(params[:id])%>?category=slam">Slams</a></li>
+ <li><a href="<%= spot_path(params[:id])%>?category=trick">Hammers</a></li>
+ <li><a href="<%= spot_path(params[:id])%>?category=line">Lines</a></li>
+ <li class="divider"></li>
+ <li><a href="<%= spot_path(params[:id])%>">All clips</a></li>
+</ul>
