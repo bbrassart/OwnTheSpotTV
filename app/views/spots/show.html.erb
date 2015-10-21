@@ -2,44 +2,88 @@
   <div class="container">
     <div class="row">
       <div class="section">
-        <div class="col s12">
+        <div class="col s6 offset-s3">
           <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
-            <h5 class="center-align">No videos submitted yet...</h5>
+            <div class="card-panel jumbotron center-align">
+              <span class="black-text">
+                <h5 class="center-align">
+                  No videos submitted yet...
+                </h5>
+              </span>
+            </div>
           <% elsif @best_overall_videos.present? %>
-            <h5 class="center-align">The Boss here is</h5>
+            <div class="card-panel jumbotron center-align">
+              <span class="black-text">
+                <h5 class="center-align">
+                  The Boss here is
+                </h5>
+              </span>
+            </div>
           <% elsif @best_trick_videos.present? %>
-            <h5 class="center-align">The Best Trick Award goes to</h5>
+          <div class="card-panel jumbotron center-align">
+            <span class="black-text">
+              <h5 class="center-align">
+                The Best Trick award goes to
+              </h5>
+            </span>
+          </div>
           <% elsif @worst_slam_videos.present? %>
-            <h5 class="center-align">The Worst Slam Award goes to</h5>
+            <div class="card-panel jumbotron center-align">
+              <span class="black-text">
+                <h5 class="center-align">
+                  The Worst Slam award goes to
+                </h5>
+              </span>
+            </div>
           <% elsif @best_line_videos.present? %>
-            <h5 class="center-align">The Firing Line Award goes to</h5>
+          <div class="card-panel jumbotron center-align">
+            <span class="black-text">
+              <h5 class="center-align">
+                The Worst Slam award goes to
+              </h5>
+            </span>
+          </div>
+            <h5 class="center-align">
+              The Firing Line Award goes to
+            </h5>
           <% end %>
         </div>
       </div>
-
       <div class="section">
-        <div class="col s4">
-          <%= render partial: "spots/show_spot", locals: {spot: @spot} %>
-        </div>
+        <% if @best_overall_videos.present? %>
+          <div class="col m4 s12">
+            <%= render partial: "spots/show_spot", locals: {spot: @spot} %>
+          </div>
 
-        <div class="col s5">
-          <%if @best_overall_videos.present? %>
-            <%= render partial: "spots/best_skater_profile", locals: {skater: @overall_best_skater} %>
-          <% elsif @best_trick_videos.present? %>
-            <%= render partial: "spots/best_skater_profile", locals: {skater: @best_trick_skater} %>
-          <% elsif @worst_slam_videos.present? %>
-            <%= render partial: "spots/best_skater_profile", locals: {skater: @worst_slam_skater} %>
-          <% elsif @best_line_videos.present? %>
-            <%= render partial: "spots/best_skater_profile", locals: {skater: @best_line_skater} %>
-          <% end %>
-        </div>
+          <div class="col m5 s12">
+            <%if @best_overall_videos.present? %>
+              <%= render partial: "spots/best_skater_profile", locals: {skater: @overall_best_skater} %>
+            <% elsif @best_trick_videos.present? %>
+              <%= render partial: "spots/best_skater_profile", locals: {skater: @best_trick_skater} %>
+            <% elsif @worst_slam_videos.present? %>
+              <%= render partial: "spots/best_skater_profile", locals: {skater: @worst_slam_skater} %>
+            <% elsif @best_line_videos.present? %>
+              <%= render partial: "spots/best_skater_profile", locals: {skater: @best_line_skater} %>
+            <% end %>
+          </div>
 
-        <div class="col s3">
-          <%= render partial: "helpers/category_menu" %>
-        </div>
+          <div class="col m3 s12">
+            <%= render partial: "helpers/category_menu" %>
+          </div>
+        <% else %>
+          <div class="col m6 s12">
+            <%= render partial: "spots/show_spot", locals: {spot: @spot} %>
+          </div>
+          <div class="col m6 s12">
+            <% if current_user.present? %>
+              <%= render partial: "skaters/overall_best_current_user", locals: {skaters: @skaters} %>
+            <% else %>
+              <%= render partial: "skaters/overall_best_visitor", locals: {skaters: @skaters} %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
-
     <div class="row">
       <% if @best_overall_videos.present? %>
         <%= render partial:"spots/row_videos_component", locals: {videos: @best_overall_videos} %>
@@ -62,12 +106,16 @@
       <% elsif @latest_slam_videos.present?%>
         <%= render partial:"spots/row_latest_videos_component", locals: {videos: @latest_slam_videos} %>
       <% else %>
-        <div class="col s12 center-align jumbotron">
-          <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">
-          <h1>You're lucky today!</h1>
-          <p>You already killed that spot?</p>
-          <p>Submit your clip and, all of sudden, you'll be the Boss at <%= @spot.name %>..</p>
-          <p><a class="btn" href="/videos/new" role="button">Submit your clip</a></p>
+        <div class="col m6 offset-m3 s12 center-align">
+          <div class="card-panel jumbotron">
+            <span class="black-text">
+              <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">
+              <h1>You're lucky today!</h1>
+              <p>You already killed that spot?</p>
+              <p>Submit your clip and, all of sudden, you'll be the Boss at <%= @spot.name %>..</p>
+              <p><a class="btn" href="/videos/new" role="button">Submit your clip</a></p>
+            </span>
+          </div>
         </div>
       <%end%>
     </div>

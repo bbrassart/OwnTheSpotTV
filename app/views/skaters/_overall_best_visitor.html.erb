@@ -1,19 +1,10 @@
-<div class="col s4">
-  <div class="section">
-    <h5>Top 5 ranking</h5>
-    <div class="collection">
-      <% skaters.each do |skater| %>
-        <a href="<%= new_skater_path%>" class="collection-item">
-          <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
-          <%= skater.username %>
-          <span class="navbar--title badge">18 likes</span>
-        </a>
-      <%end%>
-    </div>
-  </div>
-</div>
-<div class="col s8">
-  <div class="section">
-    <img src="http://i.imgur.com/38CPPcu.jpg" width="525px"alt="Number one" class="center-align">
-  </div>
+<div class="collection">
+  <h5 class="collection-item center-align">Top 5 ranking</h5>
+  <% skaters.each do |skater| %>
+    <a href="<%= new_skater_path%>" class="collection-item">
+      <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+      <%= skater.username %>
+      <span class="navbar--title badge">18 likes</span>
+    </a>
+  <%end%>
 </div>

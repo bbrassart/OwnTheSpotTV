@@ -1,9 +1,23 @@
 <div class="container">
   <div class="row">
     <% if current_user.present? %>
-      <%= render partial: "skaters/overall_best_current_user", locals: {skaters: @skaters} %>
+      <div class="col l4 s12">
+        <%= render partial: "skaters/overall_best_current_user", locals: {skaters: @skaters} %>
+      </div>
+      <div class="col l8 s12">
+        <div class="section">
+          <img src="http://i.imgur.com/38CPPcu.jpg" width="525px"alt="Number one" class="center-align">
+        </div>
+      </div>
     <% else %>
-      <%= render partial: "skaters/overall_best_visitor", locals: {skaters: @skaters} %>
+      <div class="col l4 s12">
+        <%= render partial: "skaters/overall_best_visitor", locals: {skaters: @skaters} %>
+      </div>
+      <div class="col l8 s12">
+        <div class="section">
+          <img src="http://i.imgur.com/38CPPcu.jpg" width="525px"alt="Number one" class="center-align">
+        </div>
+      </div>
     <% end %>
   </div>
   <div class="row">

@@ -21,6 +21,12 @@ class SpotsController < ApplicationController
   end
 
   def show
+    first = Skater.all.find_by_results(0)
+    second = Skater.all.find_by_results(1)
+    third = Skater.all.find_by_results(2)
+    fourth = Skater.all.find_by_results(3)
+    fifth = Skater.all.find_by_results(4)
+    @skaters = [first, second, third, fourth, fifth]
     @spot = Spot.friendly.find(params[:id])
     @bg_id = @spot.fullname
     videos = @spot.videos
