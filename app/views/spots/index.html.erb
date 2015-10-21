@@ -17,15 +17,9 @@
       </div>
       <div class="section">
         <% @most_active_spots.each do |spot|%>
-          <% if current_user %>
-            <div class="col l4 m12 s12">
-              <%= render partial: "spot_media_current_user", locals: {:spot => spot} %>
-            </div>
-          <% else %>
-            <div class="col l4 m12 s12">
-              <%= render partial: "spot_media_visitor", locals: {spot: spot} %>
-            </div>
-          <% end %>
+          <div class="col l4 m12 s12">
+            <%= render partial: "spot_media", locals: {:spot => spot} %>
+          </div>
         <% end %>
       </div>
     </div>

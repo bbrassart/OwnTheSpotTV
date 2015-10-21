@@ -56,7 +56,7 @@
           </div>
 
           <div class="col m5 s12">
-            <%if @best_overall_videos.present? %>
+            <%if @spot.videos.present? %>
               <%= render partial: "spots/best_skater_profile", locals: {skater: @overall_best_skater} %>
             <% elsif @best_trick_videos.present? %>
               <%= render partial: "spots/best_skater_profile", locals: {skater: @best_trick_skater} %>
