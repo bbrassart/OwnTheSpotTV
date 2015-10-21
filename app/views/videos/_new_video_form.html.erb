@@ -1,6 +1,6 @@
 <%= form_for @video, locals: {spots: @spots}  do |f| %>
   <form>
-    <div class="form-group">
+
       <label for="spot_id">Choose the right spot</label>
         <select id="spots" name="spot_id">
           <% @spots.each do |spot| %>
@@ -8,30 +8,26 @@
           <% end %>
         </select>
       </label>
-    </div>
-    <div class="form-group">
+
       <label for="name">Video title</label>
       <%= f.text_field :name, class: "form-control", placeholder: "Video title" %>
-    </div>
-    <div class="form-group">
+
       <label for="name">Video description</label>
       <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
-    </div>
-    <div class="form-group">
+
       <label for="email">Video URL</label>
       <p>Your YouTube video URL should like this: <em>https://www.youtube.com/watch?v=0oeoesORUJU</em> or <em>http://youtu.be/_ut8DOv3XeI</em></p>
       <%= f.text_field :url, class: "form-control", placeholder: "Paste your YouTube link" %>
-    </div>
-    <div class="form-group">
+
       <%= f.radio_button :category, 'trick', :checked => true %>
       <%= label :category, 'Best trick' %>
       <%= f.radio_button :category, 'line' %>
       <%= label :category, 'Firing line' %>
       <%= f.radio_button :category, 'slam' %>
       <%= label :category, 'Worst slam' %>
-    </div>
-    <div class="form-group">
+
+
       <%= f.submit "Submit", class:"btn btn-primary" %>
-    </div>
+
   </form>
 <% end %>

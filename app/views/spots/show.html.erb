@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="section">
-        <div class="col s6 offset-s3">
+        <div class="col m6 offset-m3">
           <% if !@best_overall_videos.present? && !@best_trick_videos.present? && !@best_line_videos.present? && !@worst_slam_videos.present? %>
             <div class="card-panel jumbotron center-align">
               <span class="black-text">
@@ -39,24 +39,22 @@
           <div class="card-panel jumbotron center-align">
             <span class="black-text">
               <h5 class="center-align">
-                The Worst Slam award goes to
+                The Firing Line Award goes to
               </h5>
             </span>
           </div>
-            <h5 class="center-align">
-              The Firing Line Award goes to
-            </h5>
           <% end %>
         </div>
       </div>
+
       <div class="section">
-        <% if @best_overall_videos.present? %>
+        <% if @spot.videos.present? %>
           <div class="col m4 s12">
             <%= render partial: "spots/show_spot", locals: {spot: @spot} %>
           </div>
 
-          <div class="col m5 s12">
-            <%if @spot.videos.present? %>
+          <div class="col m4 s12">
+            <%if @best_overall_videos.present? %>
               <%= render partial: "spots/best_skater_profile", locals: {skater: @overall_best_skater} %>
             <% elsif @best_trick_videos.present? %>
               <%= render partial: "spots/best_skater_profile", locals: {skater: @best_trick_skater} %>
@@ -67,7 +65,7 @@
             <% end %>
           </div>
 
-          <div class="col m3 s12">
+          <div class="col m4 s12">
             <%= render partial: "helpers/category_menu" %>
           </div>
         <% else %>
@@ -84,11 +82,13 @@
         <% end %>
       </div>
     </div>
+
+
     <div class="row">
       <% if @best_overall_videos.present? %>
         <%= render partial:"spots/row_videos_component", locals: {videos: @best_overall_videos} %>
       <% elsif @best_trick_videos.present?%>
-        <%= render partial:"spots/row_videos_component", locals: {videos: @best_tricks_videos} %>
+        <%= render partial:"spots/row_videos_component", locals: {videos: @best_trick_videos} %>
       <% elsif @best_line_videos.present?%>
         <%= render partial:"spots/row_videos_component", locals: {videos: @best_line_videos} %>
       <% elsif @worst_slam_videos.present?%>

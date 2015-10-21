@@ -1,19 +1,33 @@
 <% if videos.length == 1 %>
-  <div class="col s12">
+  <div class="col s12 m6 offset-m3">
     <div class="section">
       <div class="divider"></div>
-      <h4 class="center-align">Latest entry</h4>
+      <div class="card-panel jumbotron center-align">
+        <span class="black-text">
+          <h5 class="center-align">
+            Latest entry
+          </h5>
+        </span>
+      </div>
     </div>
+  </div>
+  <div class="col s12">
     <div class="section">
       <%= render partial: "videos/video_media", locals: {video: videos[0]} %>
       <%= render partial: "helpers/buttons_form", locals: {:video => videos[0]} %>
     </div>
   </div>
 <% elsif videos.length == 2 %>
-  <div class="col s12">
+  <div class="col s12 m6 offset-m3">
     <div class="section">
       <div class="divider"></div>
-      <h4 class="center-align">Latest entries</h4>
+      <div class="card-panel jumbotron center-align">
+        <span class="black-text">
+          <h5 class="center-align">
+            Latest entries
+          </h5>
+        </span>
+      </div>
     </div>
   </div>
   <% videos.each do |video| %>
@@ -25,10 +39,16 @@
     </div>
   <% end %>
 <% elsif videos.length > 2 %>
-  <div class="col s12">
+  <div class="col s12 m6 offset-m3">
     <div class="section">
       <div class="divider"></div>
-      <h4 class="center-align">Latest entries</h4>
+      <div class="card-panel jumbotron center-align">
+        <span class="black-text">
+          <h5 class="center-align">
+            Latest entries
+          </h5>
+        </span>
+      </div>
     </div>
   </div>
   <% videos.each do |video| %>

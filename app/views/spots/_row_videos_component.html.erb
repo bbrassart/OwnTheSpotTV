@@ -1,28 +1,46 @@
 <% if !videos.present? %>
-  <div class="col s12">
+  <div class="col s12 m6 offset-m3">
     <div class="section">
       <div class="divider"></div>
-      <p class="center-align">No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %></p>
-    </div>
-  </div>
-<% elsif videos.length == 1 %>
-  <div class="col s12">
-    <div class="section">
-      <div class="divider"></div>
-      <h4 class="center-align">Overall best video</h4>
-    </div>
-    <div class="section">
-      <div class="section">
-        <%= render partial: "videos/video_media", locals: {video: videos[0]} %>
-        <%= render partial: "helpers/buttons_form", locals: {:video => videos[0]} %>
+      <div class="card-panel jumbotron center-align">
+        <span class="black-text">
+          <h5 class="center-align">
+            No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %>
+          </h5>
+        </span>
       </div>
     </div>
   </div>
-<% elsif videos.length == 2 %>
-  <div class="col s12">
+<% elsif videos.length == 1 %>
+  <div class="col s12 m6 offset-m3">
     <div class="section">
       <div class="divider"></div>
-      <h4 class="center-align">Overall best videos</h4>
+      <div class="card-panel jumbotron center-align">
+        <span class="black-text">
+          <h5 class="center-align">
+            Overall best video
+          </h5>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col s12">
+    <div class="section">
+        <%= render partial: "videos/video_media", locals: {video: videos[0]} %>
+        <%= render partial: "helpers/buttons_form", locals: {:video => videos[0]} %>
+    </div>
+  </div>
+<% elsif videos.length == 2 %>
+  <div class="col s12 m6 offset-m3">
+    <div class="section">
+      <div class="divider"></div>
+      <div class="card-panel jumbotron center-align">
+        <span class="black-text">
+          <h5 class="center-align">
+            Overall best videos
+          </h5>
+        </span>
+      </div>
     </div>
   </div>
   <% videos.each do |video| %>
@@ -34,10 +52,16 @@
     </div>
   <% end %>
 <% elsif videos.length > 2 %>
-  <div class="col s12">
+  <div class="col s12 m6 offset-m3">
     <div class="section">
       <div class="divider"></div>
-      <h4 class="center-align">Overall best videos</h4>
+      <div class="card-panel jumbotron center-align">
+        <span class="black-text">
+          <h5 class="center-align">
+            Overall best videos
+          </h5>
+        </span>
+      </div>
     </div>
   </div>
   <% videos.each do |video| %>
