@@ -1,15 +1,27 @@
-<div class="container">
+<div class="main__background custom__background-<%=@bg_id%>">
+  <div class="container">
   <div class="row">
-    <div class="col s12 center-align">
-      <h2>About us</h2>
-      <p>OwnTheSpot.TV is a website created by skateboarders for skateboarders.</p>
-      <p>Registered users can submit their own YouTube videos and then vote for the best clips.</p>
-      <p>20 skate spots in Barcelona. Become the boss of the spot</p>
-      <% if current_user.nil? %>
-        <%= render 'helpers/suscribe_buttons' %>
-      <% end %>
+
+      <div class="col m6 s12">
+        <div class="section">
+        <div class="card-panel jumbotron center-align">
+          <span class="black-text">
+            <h4>About us</h4>
+            <p>OwnTheSpot.TV is a website created by skateboarders for skateboarders.</p>
+            <p>Registered users can submit their own YouTube videos and then vote for the best clips.</p>
+            <p>20 skate spots in Barcelona. Become the boss of the spot</p>
+          </span>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="section">
-  </div>
+    <% if current_user.nil? %>
+      <div class="section">
+        <div class="col m6 s12 center-align">
+          <%= render 'helpers/suscribe_buttons' %>
+        </div>
+      </div>
+      <% end %>
+    <div class="section">
+    </div>
+</div>
 </div>

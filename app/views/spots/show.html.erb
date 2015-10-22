@@ -124,7 +124,11 @@
               <h1>You're lucky today!</h1>
               <p>You already killed that spot?</p>
               <p>Submit your clip and, all of sudden, you'll be the Boss at <%= @spot.name %>..</p>
-              <p><a class="btn" href="/videos/new" role="button">Submit your clip</a></p>
+              <% if current_user %>
+                <p><a class="btn" href="/videos/new" role="button">Submit your clip</a></p>
+              <%else %>
+                <p><a class="btn" href="/skaters/new" role="button">Sign up now!</a></p>
+              <%end%>
             </span>
           </div>
         </div>

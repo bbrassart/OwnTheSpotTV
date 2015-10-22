@@ -1,19 +1,20 @@
-<div class="container">
+<div class="main__background custom__background-<%=@bg_id%>">
+  <div class="container">
   <div class="row">
     <% if current_user.present? %>
-      <div class="col l4 s12">
+      <div class="col m6 s12">
         <%= render partial: "skaters/overall_best_current_user", locals: {skaters: @skaters} %>
       </div>
-      <div class="col l8 s12">
+      <div class="col m6 s12">
         <div class="section">
           <img src="http://i.imgur.com/38CPPcu.jpg" width="525px"alt="Number one" class="center-align">
         </div>
       </div>
     <% else %>
-      <div class="col l4 s12">
+      <div class="col m4 s12">
         <%= render partial: "skaters/overall_best_visitor", locals: {skaters: @skaters} %>
       </div>
-      <div class="col l8 s12">
+      <div class="col m8 s12">
         <div class="section">
           <img src="http://i.imgur.com/38CPPcu.jpg" width="525px"alt="Number one" class="center-align">
         </div>
@@ -21,10 +22,22 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="section">
+    <div class="col s12">
       <div class="divider"></div>
-      <h5 class="center-align">Highest rated videos</h5>
+
     </div>
+  </div>
+  <div class="row">
+    <div class="col m6 offset-m3 s12">
+      <div class="section">
+      <div class="card-panel jumbotron center-align">
+        <span class="black-text">
+          <h5 class="center-align">Highest rated videos</h5>
+        </span>
+      </div>
+    </div>
+  </div>
+
     <div class="section">
       <% @highest_rated_videos.each do |video| %>
         <div class="col l4 m6 s12">
@@ -53,4 +66,5 @@
   <%end%>
   <div class="section">
   </div>
+</div>
 </div>

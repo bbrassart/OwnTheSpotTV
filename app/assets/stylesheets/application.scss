@@ -149,7 +149,6 @@ footer {
  //*General styling
 
  html {
-   position: relative;
    height: 100%;
   }
 
@@ -240,11 +239,16 @@ ul {
    margin-bottom: 20px;
  }
 
-body {
-  margin: 0 0; /* bottom = footer height */
-  height: 100%;
-}
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
 
+
+  main {
+    flex: 1 0 auto;
+  }
 
 //*YouTube videos styling
 
