@@ -62,6 +62,15 @@
               <%= render partial: "spots/best_skater_profile", locals: {skater: @worst_slam_skater} %>
             <% elsif @best_line_videos.present? %>
               <%= render partial: "spots/best_skater_profile", locals: {skater: @best_line_skater} %>
+            <%else%>
+              <div class="card-panel show__collapse__header jumbotron center-align">
+                <span class="black-text">
+                  <h5 class="text--padding--below center-align">
+                    No videos found...
+                  </h5>
+                </span>
+              </div>
+
             <% end %>
           </div>
 
@@ -108,7 +117,7 @@
       <% elsif @latest_slam_videos.present?%>
         <%= render partial:"spots/row_latest_videos_component", locals: {videos: @latest_slam_videos} %>
       <% else %>
-        <div class="col m6 offset-m3 s12 center-align">
+        <div class="col m8 offset-m2 s12 center-align">
           <div class="card-panel jumbotron">
             <span class="black-text">
               <img alt="Brand" class="pull-right" width="200" height="200" src="http://i.imgur.com/tjF76Fq.png">

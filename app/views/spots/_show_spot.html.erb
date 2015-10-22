@@ -1,8 +1,8 @@
 <ul class="collapsible" data-collapsible="accordion">
    <li>
-     <div class="center-align hoverable collapsible-header show__collapse__header spot__show--collapsible"><div class="div__dropdown--showspot"><img class="navbar--title rounded--avatars" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar"><span class="text__dropdown--card"><%= spot.name %></span></div></div>
+     <div class="center-align hoverable collapsible-header show__collapse__header spot__show--collapsible"><div class="div__dropdown--showspot"><img class="navbar--title rounded--avatars" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar"><span class="text__dropdown--card"><%= truncate spot.name, length: 19 %></span></div></div>
      <div class="collapsible-body spot__show--collapsible">
-       <p class="navbar--title center-align"><%= spot.description%></p>
+       <p class="navbar--title center-align"><%= spot.description %></p>
        <div class="divider"></div>
        <p class="center-align spot__show--collapsible"><em><%= spot.videos.length %> clips submited for this spot</em></p>
      </div>
