@@ -1,8 +1,18 @@
 <div class="container">
-  <div class="row homepage--pushcontent__below">
-    <h4>The Mob family</h4>
-    <h5>Our most devoted soldiers</h5>
-    <div class="contentdiv--default__shadow">
+  <div class="row">
+    <div class="col m6 offset-m3 s12">
+      <div class="section">
+        <div class="card">
+          <div class="card-content spot__show--collapsible">
+            <span class="card-title activator grey-text text-darken-4">
+              <h4 class="center-align">The Mob family</h4>
+              <h5 class="center-align">Our most devoted soldiers</h5>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
       <% @most_active_skaters.each do |skater|%>
         <% if current_user.nil? %>
           <div class="col s4">
@@ -16,31 +26,39 @@
       <%end%>
     </div>
   </div>
+
   <div class="row">
-    <div class="col s6">
-      <% if current_user %>
-      <div class="pushing__div--below">
-        <ul class="skater__menu--whitebg">
-          <% @skaters.each do |skater|%>
-            <% next if skater.id == current_user.id %>
-            <li><%= link_to skater.username, skater_path(skater) %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% else %>
-        <div class="pushing__div--below">
-          <div class="rules__about--div">
-            <%= render 'helpers/suscribe_buttons' %>
+    <% if current_user %>
+      <div class="col m6 offset-m3 s12">
+        <div class="section">
+          <div class="card">
+            <div class="card-content spot__show--collapsible">
+              <h5 class="center-align">Check the latest clip!</h5>
+            </div>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+      <div class="col s12">
+        <div class="section">
+          <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
+        </div>
+      </div>
+    <% else %>
+      <div class="col m6 s12">
+        <div class="section">
+          <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
+        </div>
+      </div>
+      <div class="col m6 s12">
+        <div class="section">
+          <%= render 'helpers/suscribe_buttons' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-    <div class="col s6 pushing__div--below">
-      <h4>Check the latest clip!</h4>
-      <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
+    <div class="section">
     </div>
   </div>
-  <div class="section">
-  </div>
+
 </div>

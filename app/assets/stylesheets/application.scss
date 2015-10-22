@@ -25,12 +25,30 @@
   font-size: 18px;
 }
 
+.category_menu {
+  padding-top: 15px;
+}
+
+.category_menu {
+  padding-top: 8px;
+}
+
 .navbar--title {
   vertical-align: middle;
 }
 
 .spot__show--collapsible {
   background-color: #f5f5f5
+}
+
+.text__dropdown--card {
+  padding-left: 10px;
+  font-size: 22px;
+}
+
+.nav-wrapper a:hover {
+  color: white;
+  background-color: #00695c;
 }
 
 .nav-wrapper a:hover {
@@ -80,6 +98,10 @@ footer {
 
 .page-footer {
   padding: 5px 0 !important;
+}
+
+.div__dropdown--showspot {
+  padding-top: 8px;
 }
 
 .footer__elements--padding {

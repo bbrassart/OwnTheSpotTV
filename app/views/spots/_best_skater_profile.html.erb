@@ -1,7 +1,7 @@
 <ul class="collapsible" data-collapsible="accordion">
    <li>
-     <div class="collapsible-header show__collapse__header spot__show--collapsible"><img class="rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar"> <%= skater.username %></div>
-     <div class="collapsible-body spot__show--collapsible center-align">
+     <div class="center-align hoverable collapsible-header show__collapse__header spot__show--collapsible"><div class="div__dropdown--showspot"><img class="navbar--title rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar"> <span class="text__dropdown--card"><%= skater.username %></span></div></div>
+     <div class="collapsible-body spot__show--collapsible navbar--title center-align">
        <% if skater.stance.present? %>
         <p><b>Stance:</b> <%= skater.stance.capitalize() %></p>
         <div class="divider"></div>

@@ -7,7 +7,7 @@
       <%= skater.username %>
     </span>
   </div>
-  <div class="card-content">
+  <div class="card-content spot__show--collapsible">
     <% if skater.stance.present? %>
       <b>Stance:</b> <%= skater.stance.capitalize() %>
       <% if skater.videos.length == 1 %>
@@ -18,7 +18,7 @@
     <%end%>
   </div>
 
-  <div class="card-action">
-    <a href="<%= spots_path%>">Check out the skate spots!</a>
+  <div class="card-action  spot__show--collapsible hoverable">
+    <a class="center-align blue-text" href="<%= spots_path%>">Check out the skate spots!</a>
   </div>
 </div>
