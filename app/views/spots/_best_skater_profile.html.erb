@@ -1,20 +1,16 @@
-<div class="card small">
-  <div class="card-image">
-    <a href="<%= skater_path(skater) %>">
-      <img class="rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
-    </a>
-    <span class="card-title">
-      <%= skater.username %>
-    </span>
-  </div>
-  <div class="card-content">
-    <% if skater.stance.present? %>
-      <b>Stance:</b> <%= skater.stance.capitalize() %>
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header show__collapse__header spot__show--collapsible"><img class="rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar"> <%= skater.username %></div>
+     <div class="collapsible-body spot__show--collapsible center-align">
+       <% if skater.stance.present? %>
+        <p><b>Stance:</b> <%= skater.stance.capitalize() %></p>
+        <div class="divider"></div>
+      <%end%>
       <% if skater.videos.length == 1 %>
-        <p> <%= skater.videos.length %> video posted</p>
+        <p class="center-align"> <%= skater.videos.length %> video posted</p>
       <% else %>
-        <p><%= skater.videos.length %> videos posted</p>
+        <p class="center-align"><%= skater.videos.length %> videos posted</p>
       <% end %>
-    <%end%>
-  </div>
-</div>
+     </div>
+   </li>
+ </ul>

@@ -29,6 +29,10 @@
   vertical-align: middle;
 }
 
+.spot__show--collapsible {
+  background-color: #f5f5f5
+}
+
 .nav-wrapper a:hover {
   color: white;
   background-color: #00695c;
@@ -86,6 +90,9 @@ footer {
   padding: 0 15px;
 }
 
+.show__collapse__header {
+  height: 120px;
+}
 
 #map {
   height: 550px;

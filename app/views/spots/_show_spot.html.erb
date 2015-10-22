@@ -1,15 +1,10 @@
-<div class="card">
-  <div class="card-image">
-    <img class="rounded--avatars" src="<%= spot.logo.url(:square)%>" alt="Spot's avatar">
-    <span class="card-title">
-      <%= spot.name %>
-    </span>
-  </div>
-  <div class="card-content">
-    <p><%= truncate spot.description, length: 75 %>...</p>
-    <br>
-    <div class="divider"></div>
-    <br>
-    <p class="center-align"><em><%= spot.videos.length %> clips submited for this spot</em></p>
-  </div>
-</div>
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header show__collapse__header spot__show--collapsible"><img class="rounded--avatars" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar"> <%= spot.name %></div>
+     <div class="collapsible-body spot__show--collapsible">
+       <p class="center-align"><%= spot.description%></p>
+       <div class="divider"></div>
+       <p class="center-align spot__show--collapsible"><em><%= spot.videos.length %> clips submited for this spot</em></p>
+     </div>
+   </li>
+ </ul>

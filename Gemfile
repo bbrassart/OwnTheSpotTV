@@ -20,6 +20,8 @@ gem 'figaro'
 gem 'mail_form'
 gem 'simple_form'
 
+gem 'newrelic_rpm'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
