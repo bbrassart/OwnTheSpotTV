@@ -3,14 +3,16 @@
   <div class="row">
     <% if current_user.present? %>
       <div class="col m6 offset-m3 s12">
-        <%= render partial: "skaters/overall_best_current_user", locals: {skaters: @skaters} %>
+        <div class="section">
+          <%= render partial: "skaters/overall_best_current_user", locals: {skaters: @skaters} %>
+      </div>
       </div>
 
     <% else %>
       <div class="col m6 offset-m3 s12">
         <div class="section">
-        <%= render partial: "skaters/overall_best_visitor", locals: {skaters: @skaters} %>
-      </div>
+          <%= render partial: "skaters/overall_best_visitor", locals: {skaters: @skaters} %>
+        </div>
       </div>
 
     <% end %>
@@ -19,7 +21,7 @@
       <div class="divider"></div>
 
     </div>
-  </div>
+
   <div class="row">
     <div class="col m6 offset-m3 s12">
       <div class="section">
@@ -30,8 +32,10 @@
       </div>
     </div>
   </div>
+</div>
+<div class="row">
 
-    <div class="section">
+
       <% @highest_rated_videos.each do |video| %>
         <div class="col l4 m6 s12">
           <div class="section">
@@ -45,8 +49,8 @@
 
         </div>
       <% end %>
-    </div>
-  </div>
+
+
   <%unless current_user %>
     <div class="row">
       <div class="col s12">
@@ -56,6 +60,7 @@
         </div>
       </div>
     </div>
+
   <%end%>
   <div class="section">
   </div>
