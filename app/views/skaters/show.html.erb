@@ -1,15 +1,27 @@
 <div class="container">
   <% if current_user.id == @skater.id %>
-
-    <div class="row homepage--pushcontent__below">
+    <div class="row">
         <%= render partial: "helpers/current_user/user_profile", locals: {skater: current_user} %>
-    </div>
-    <div class="row video__carousel--border  homepage--pushcontent__below">
-      <h5>Your clips</h5>
-      <% if current_user.videos.any?%>
+        <div class="col l6 offset-l3 s12 center-align">
+          <div class="section">
+          <div class="card-panel jumbotron">
+            <span class="black-text">
+              <h5>Your clips</h5>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <% if current_user.videos.any? %>
+
         <% if current_user.videos.length == 1 %>
+          <div class="col s12">
+            <div class="divider"></div>
+            <div class="section">
             <%= render partial: "videos/video_media", locals: {video: current_user.videos[0]} %>
             <%= render partial: "helpers/current_user/edit_delete_video_buttons", locals: {video: current_user.videos[0]} %>
+          </div>
+        </div>
         <%elsif current_user.videos.length > 1 %>
           <%current_user.videos.each do |video| %>
             <div class="col l6 m12">

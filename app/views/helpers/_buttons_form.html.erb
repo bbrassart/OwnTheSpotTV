@@ -1,8 +1,10 @@
 <%if !current_user %>
   <div class="center-align">
-    <button class="btn hoverable waves-effect signup__vote__button waves-light" type="submit" name="action"><a class="white-text" href=<%=new_skater_path%>>Sign up to vote
-      <i class="material-icons right">send</i></a>
+    <a class="white-text" href=<%=new_skater_path%>>
+      <button class="btn hoverable waves-effect signup__vote__button waves-light" type="submit" name="action">Sign up to vote
+      <i class="material-icons right">send</i>
     </button>
+  </a>
   </div>
 <%else%>
   <div class="votebuttons__wrapper">

@@ -1,4 +1,5 @@
 <div class="col l6 s12">
+  <div class="section">
   <div class="card small">
     <div class="card-image">
       <img class="rounded--avatars" src="<%= skater.logo.url(:medium)%>" alt="Skater's avatar">
@@ -18,13 +19,15 @@
       <%end%>
     </div>
 
-    <div class="card-action">
-      <a href="<%= spots_path%>">Go to the skate spots!</a>
+    <div class="card-action center-align">
+      <a class="blue-text" href="<%= spots_path%>">Go to the skate spots!</a>
     </div>
   </div>
 </div>
+</div>
 
 <div class="col l6 s12">
+  <div class="section">
   <div class="card small">
 
     <div class="card-content">
@@ -44,8 +47,9 @@
       </ul>
 
     </div>
-    <div class="card-action">
-      <a>Here will go the number of likes</a>
+    <div class="card-action center-action">
+      <a class="center-align blue-text">Here will go the number of likes</a>
     </div>
   </div>
+</div>
 </div>
