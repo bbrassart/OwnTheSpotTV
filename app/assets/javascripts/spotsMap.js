@@ -24,9 +24,7 @@ mapObject.prototype.createDefaultIcon = function() {
 }
 
 mapObject.prototype.setDefaultView = function() {
-  var map = L.map('map').setView(this.defaultLatLon, this.defaultZoom);
-  map.scrollWheelZoom.disable();
-  return map;
+  return L.map('map').setView(this.defaultLatLon, this.defaultZoom);
 }
 
 mapObject.prototype.displayMap = function(map) {

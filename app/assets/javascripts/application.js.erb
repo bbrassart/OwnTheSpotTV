@@ -27,12 +27,9 @@ $(document).on('page:change', function() {
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
 
-
-
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
   var listenToMap = new mapObject(mapboxAccessToken, mapboxId);
-
 
   function fadeAlert(){
     $('.alert-temp').removeClass('in');
