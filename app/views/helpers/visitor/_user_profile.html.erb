@@ -1,16 +1,47 @@
-<div class="col s6 offset-s1">
-  <img class="rounded--avatars" style="width: 250px; height: 250px" src="<%= skater.logo.url(:medium)%>" alt="Skater's avatar">
+<div class="col l6 s12">
+  <div class="section">
+  <div class="card small">
+    <div class="card-image">
+      <img class="rounded--avatars" src="<%= skater.logo.url(:medium)%>" alt="Skater's avatar">
+    </div>
+    <div class="card-content">
+      <% if skater.stance.present? %>
+        <b>Stance:</b> <%= skater.stance.capitalize() %>
+      <%end%>
+      <%if skater.videos.any? %>
+        <% if skater.videos.length == 1 %>
+          <p> <%= skater.videos.length %> video posted</p>
+        <% else %>
+          <p><%= skater.videos.length %> videos posted</p>
+        <% end %>
+      <%else%>
+        <p><%= skater.username%> didn't submit any clips yet...</p>
+      <%end%>
+    </div>
+
+    <div class="card-action center-align">
+      <a class="blue-text" href="<%= spots_path%>">Go to the skate spots!</a>
+    </div>
+  </div>
 </div>
-<div class="col s4">
-  <%= skater.username %></h4>
-  <p><%= skater.username %> is <%= skater.stance %>-footed</p>
-  <% if skater.videos.any? %>
-    <% if skater.videos.length == 1 %>
-      <p><%= skater.username %> already posted <%= (skater.videos.length) %> video.</p>
+</div>
+
+<div class="col l6 s12">
+  <div class="section">
+  <div class="card small">
+
+    <div class="center-align card-content">
+      <h5><%= skater.username %>'s profile</h5>
+    </div>
+    <% if @skater_likes %>
+      <div class="card-action center-align">
+        <a class="blue-text"><%= skater.username %> received <%= @skater_likes%> likes</a>
+      </div>
     <% else %>
-      <p><%= skater.username %> already posted <%= (skater.videos.length) %> videos.</p>
-    <%end %>
-  <% elsif %>
-    <p>No video submited by this skater yet.</p>
-  <% end %>
+      <div class="card-action center-align center-action">
+        <%= skater.username %> didn't receive any thumbs up yet...
+      </div>
+    <%end%>
+  </div>
+</div>
 </div>

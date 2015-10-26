@@ -25,6 +25,7 @@ class SkatersController < ApplicationController
   def show
     @videos = Video.all
     @skater = Skater.friendly.find(params[:id])
+    @skater_likes = Skater.friendly.find(params[:id]).videos.reduce(0) {|sum, video| sum + video.score}
   end
 
   def destroy

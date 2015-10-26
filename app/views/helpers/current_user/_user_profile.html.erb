@@ -30,8 +30,8 @@
   <div class="section">
   <div class="card small">
 
-    <div class="card-content">
-      <h4>What's up <%= skater.username %> ?</h4>
+    <div class="center-align card-content">
+      <h5>What's up <%= skater.username %> ?</h5>
       <ul>
         <li>
           <%= link_to edit_skater_path(skater) do %>
@@ -47,9 +47,15 @@
       </ul>
 
     </div>
-    <div class="card-action center-action">
-      <a class="center-align blue-text">Here will go the number of likes</a>
-    </div>
+    <% if @skater_likes %>
+      <div class="card-action center-align">
+        <a class="blue-text">You received <%= @skater_likes%> likes</a>
+      </div>
+    <% else %>
+      <div class="card-action center-align center-align">
+        You didn't receive any thumbs up yet...
+      </div>
+    <%end%>
   </div>
 </div>
 </div>
