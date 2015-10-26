@@ -32,23 +32,24 @@
       </div>
     </div>
   </div>
-</div>
-<div class="row">
-
 
       <% @highest_rated_videos.each do |video| %>
         <div class="col l4 m6 s12">
           <div class="section">
             <%= render partial: "videos/video_media", locals: {video: video} %>
-            <% if video.score == 1 %>
-              <h5 class="center-align"><%= video.score %> like !</h5>
-            <% else %>
-              <h5 class="center-align"><%= video.score %> likes !</h5>
-            <%end %>
+            <div class="card-panel jumbotron center-align">
+              <span class="black-text">
+                <% if video.score == 1 %>
+                  <h5 class="center-align"><%= video.score %> like !</h5>
+                <% else %>
+                  <h5 class="center-align"><%= video.score %> likes !</h5>
+                <%end %>
+              </span>
+            </div>
           </div>
-
         </div>
       <% end %>
+    </div>
 
 
   <%unless current_user %>

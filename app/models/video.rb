@@ -13,6 +13,7 @@ class Video < ActiveRecord::Base
   	votes.inject(0) { |total, vote| total + vote.result }
   end
 
+
   def self.category_trick(category)
     where category: category
   end

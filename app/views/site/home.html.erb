@@ -31,17 +31,17 @@
       <div class="section">
         <ul class="collection z-depth-2">
           <li class="collection-item"><h5 class="align-center">Top of the Mob<i class="material-icons topmob__star">grade</i></h5></li>
-          <% @best_skaters.each do |skater| %>
+          <% @skaters.each do |skater_id, likes|
+            skater = Skater.find(skater_id)
+            %>
             <li class="collection-item avatar">
               <img src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar" class="circle">
-              <span class="title"><%= skater.username %></span>
-              <% if skater.stance.present? %>
-                <p><b>Stance:</b> <%= skater.stance.capitalize() %>
-              <%end %>
+              <span class="title"><b><%= skater.username %></b></span>
+              <p><%= likes %> likes</p>
               <% if skater.videos.length == 1 %>
-                <%= skater.videos.length %> video posted</p>
+                <p><%= skater.videos.length %> video posted</p>
               <% else %>
-                <%= skater.videos.length %> videos posted</p>
+                <p><%= skater.videos.length %> videos posted</p>
               <% end %>
               <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
             </li>

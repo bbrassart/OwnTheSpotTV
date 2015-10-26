@@ -9,7 +9,6 @@ class Skater < ActiveRecord::Base
   has_many :videos, dependent: :destroy
   has_many :votes
 
-
   def self.most_active_skaters
     Skater.all.sort_by{|skater| skater.videos.count}.reverse.slice(0..2)
   end
@@ -20,5 +19,17 @@ class Skater < ActiveRecord::Base
 
   def self.find_best(videos)
     Skater.find_by_id(videos.slice(0).skater_id)
+  end
+
+  def self.top_5_number_of_likes
+    ordered_videos = Video.all.sort_by{|video| video.score}.reverse
+    results = ordered_videos.each_with_object({}) do |video, hash|
+      if hash[video.skater.id]
+        hash[video.skater.id] += video.score
+      else
+        hash[video.skater.id] = video.score
+      end
+    end
+    results.sort_by {|_key, value| value}.reverse
   end
 end
