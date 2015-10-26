@@ -42,12 +42,40 @@
       <div class="col s12">
         <div class="section">
           <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
+          <a class="hoverable" href="<%=skater_path(@last_video_updated.skater.id)%>">
+            <div class="chip chip__highest--rated">
+              <img  src="<%= @last_video_updated.skater.logo.url(:thumb)%>" alt="Skater's avatar">
+              <%= @last_video_updated.skater.username %>
+            </div>
+          </a>
+          <div class="chip chip__highest--rated">
+            <% if @last_video_updated.score == 1 %>
+              <%= @last_video_updated.score %> like!
+            <% else %>
+              <%= @last_video_updated.score %> likes!
+            <%end %>
+            <i class="small material-icons">insert_chart</i>
+          </div>
         </div>
       </div>
     <% else %>
       <div class="col m6 s12">
         <div class="section">
           <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
+          <a class="hoverable" href="<%=skater_path(@last_video_updated.skater.id)%>">
+            <div class="chip chip__highest--rated">
+              <img  src="<%= @last_video_updated.skater.logo.url(:thumb)%>" alt="Skater's avatar">
+              <%= @last_video_updated.skater.username %>
+            </div>
+          </a>
+          <div class="chip chip__highest--rated">
+            <% if @last_video_updated.score == 1 %>
+              <%= @last_video_updated.score %> like!
+            <% else %>
+              <%= @last_video_updated.score %> likes!
+            <%end %>
+            <i class="small material-icons">insert_chart</i>
+          </div>
         </div>
       </div>
       <div class="col m6 s12">

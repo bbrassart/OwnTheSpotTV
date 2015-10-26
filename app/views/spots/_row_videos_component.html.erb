@@ -30,7 +30,7 @@
         <%= render partial: "helpers/buttons_form", locals: {:video => videos[0]} %>
     </div>
   </div>
-<% elsif videos.length == 2 %>
+<% else %>
   <div class="col s12 m6 offset-m3">
     <div class="section">
       <div class="divider"></div>
@@ -44,28 +44,7 @@
     </div>
   </div>
   <% videos.each do |video| %>
-    <div class="col l6 m6 s12">
-      <div class="section">
-        <%= render partial: "videos/video_media", locals: {video: video} %>
-        <%= render partial: "helpers/buttons_form", locals: {:video => video} %>
-      </div>
-    </div>
-  <% end %>
-<% elsif videos.length > 2 %>
-  <div class="col s12 m6 offset-m3">
-    <div class="section">
-      <div class="divider"></div>
-      <div class="card-panel jumbotron center-align">
-        <span class="black-text">
-          <h5 class="center-align">
-            Overall best videos
-          </h5>
-        </span>
-      </div>
-    </div>
-  </div>
-  <% videos.each do |video| %>
-    <div class="col l4 m6 s12">
+    <div class="col l6 m12">
       <div class="section">
         <%= render partial: "videos/video_media", locals: {video: video} %>
         <%= render partial: "helpers/buttons_form", locals: {:video => video} %>

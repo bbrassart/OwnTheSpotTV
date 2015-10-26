@@ -9,33 +9,38 @@
 <%else%>
 <% skater = Skater.find(video.skater.id) %>
   <div class="votebuttons__wrapper">
-    
-    <div class="chip">
-      <img src="<%=skater.id%>" alt="Skater's avatar">
-      <%= skater.username %>
+    <div class="chip--vote__buttons">
+      <a href="<%=skater_path(skater.id)%>">
+        <div class="chip hoverable">
+          <img src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+          <span class="black-text"><%= truncate skater.username, length: 9 %></span>
+        </div>
+      </a>
+      <div class="chip">
+        <%= video.score%> <i class="material-icons">thumb_up</i>
+      </div>
     </div>
-    <div class="chip">
-      <i class="material_icons">insert_chart</i>
-      <%= video.score%> likes
-    </div>
+    <div class="real__votes">
+      <div class="vote__buttons">
+        <button type="button" class="navbar--title btn poser__button"><%= link_to ("POSER"), skaters_path%></button></a>
+      </div>
 
-
-
-    <div class="vote__buttons">
-      <%= form_tag('/votes/dislike') do %>
-        <%= hidden_field_tag :video_id, video.id %>
-        <button type="submit" class="btn red vote--buttons">
-          <i class="material-icons">thumb_down</i>
-        </button>
-      <%end%>
-    </div>
-    <div class="vote__buttons">
-      <%= form_tag('/votes/like') do %>
-        <%= hidden_field_tag :video_id, video.id %>
-        <button type="submit" class="btn vote--buttons">
-          <i class="material-icons">thumb_up</i>
-        </button>
-      <% end %>
+      <div class="vote__buttons">
+        <%= form_tag('/votes/dislike') do %>
+          <%= hidden_field_tag :video_id, video.id %>
+          <button type="submit" class="btn like__dislike_buttons red vote--buttons">
+            <i class="material-icons">thumb_down</i>
+          </button>
+        <%end%>
+      </div>
+      <div class="vote__buttons">
+        <%= form_tag('/votes/like') do %>
+          <%= hidden_field_tag :video_id, video.id %>
+          <button type="submit" class="btn like__dislike_buttons vote--buttons">
+            <i class="material-icons">thumb_up</i>
+          </button>
+        <% end %>
+      </div>
     </div>
   </div>
 <%end%>

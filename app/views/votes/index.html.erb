@@ -35,19 +35,21 @@
 
       <% @highest_rated_videos.each do |video|
         skater = Skater.find(video.skater.id) %>
-        <div class="col l4 m6 s12">
+        <div class="col m6 s12">
           <%= render partial: "videos/video_media", locals: {video: video} %>
-          <div class="chip">
-            <img  src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
-            <%= skater.username %>
-          </div>
-          <div class="chip">
-            <i class=" small material-icons">insert_chart</i>
+          <a class="hoverable" href="<%=skater_path(video.skater.id)%>">
+            <div class="chip chip__highest--rated">
+              <img  src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+              <%= skater.username %>
+            </div>
+          </a>
+          <div class="chip chip__highest--rated">
             <% if video.score == 1 %>
               <%= video.score %> like!
             <% else %>
               <%= video.score %> likes!
             <%end %>
+            <i class="small material-icons">insert_chart</i>
           </div>
         </div>
       <% end %>
