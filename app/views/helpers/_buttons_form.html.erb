@@ -7,11 +7,19 @@
   </a>
   </div>
 <%else%>
+<% skater = Skater.find(video.skater.id) %>
   <div class="votebuttons__wrapper">
-    <h5 class="text__votebuttons right-align"><b>Overall Score:</b> <%= video.score %></h5>
-    <div class="vote__buttons">
-      <button type="button" class="navbar--title btn poser__button"><%= link_to ("POSER"), skaters_path%></button></a>
+    
+    <div class="chip">
+      <img src="<%=skater.id%>" alt="Skater's avatar">
+      <%= skater.username %>
     </div>
+    <div class="chip">
+      <i class="material_icons">insert_chart</i>
+      <%= video.score%> likes
+    </div>
+
+
 
     <div class="vote__buttons">
       <%= form_tag('/votes/dislike') do %>
