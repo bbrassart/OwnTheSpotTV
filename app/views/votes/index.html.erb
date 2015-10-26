@@ -33,18 +33,18 @@
     </div>
   </div>
 
-      <% @highest_rated_videos.each do |video| %>
+      <% @highest_rated_videos.each do |video|
+        skater = Skater.find(video.skater.id) %>
         <div class="col l4 m6 s12">
           <div class="section">
             <%= render partial: "videos/video_media", locals: {video: video} %>
-            <div class="card-panel jumbotron center-align">
-              <span class="black-text">
-                <% if video.score == 1 %>
-                  <h5 class="center-align"><%= video.score %> like !</h5>
-                <% else %>
-                  <h5 class="center-align"><%= video.score %> likes !</h5>
-                <%end %>
-              </span>
+            <div class="chip">
+              <img src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+              <% if video.score == 1 %>
+                <%= video.score %> like!
+              <% else %>
+                <%= video.score %> likes!
+              <%end %>
             </div>
           </div>
         </div>
