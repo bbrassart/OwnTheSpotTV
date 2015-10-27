@@ -16,4 +16,10 @@ Rails.application.routes.draw do
   resources :videos
   get '/rankings' => 'votes#index'
 
+  namespace :api do
+    namespace :v1 do
+      get 'spots' => 'spots#get_all'
+    end
+  end
+
 end
