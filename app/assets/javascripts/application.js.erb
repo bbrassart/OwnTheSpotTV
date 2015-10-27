@@ -27,6 +27,14 @@ $(document).on('page:change', function() {
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
 
+  $("#show_spot_info").on('click', function() {
+    $("#show_spot_info-button").fadeToggle("slow");
+  });
+
+  $("#show_skater_info").on('click', function() {
+    $("#show_skater_info-button").fadeToggle("slow");
+  });
+
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
   var listenToMap = new mapObject(mapboxAccessToken, mapboxId);

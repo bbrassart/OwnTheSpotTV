@@ -32,10 +32,11 @@
 
     <div class="center-align card-content">
       <h5>What's up <%= skater.username %> ?</h5>
+      <div class="divider skater__profile--whatsup"></div>
       <ul>
         <li>
-          <%= link_to edit_skater_path(skater) do %>
-            <i class="navbar--title material-icons">build</i>  Update your profile
+          <%= link_to edit_skater_path(skater)  do %>
+            <i class="material-icons">build</i> Update your profile
           <% end %>
         </li>
         <li>

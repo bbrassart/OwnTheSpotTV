@@ -26,8 +26,14 @@
   font-size: 18px;
 }
 
+
+
 .category_menu {
   padding-top: 15px;
+}
+
+.skater__profile--whatsup {
+  margin: 20px 0;
 }
 
 .category_menu {
@@ -38,9 +44,6 @@
   vertical-align: middle;
 }
 
-.spot__show--collapsible {
-  background-color: #f5f5f5
-}
 
 .chip__highest--rated {
   margin: 8px 0 19px 0;
@@ -124,6 +127,11 @@ footer {
 
 .show__collapse__header {
   height: 120px;
+
+}
+
+.spot__show--collapsible {
+  background-color: #f5f5f5;
 }
 
 #map {
@@ -133,6 +141,12 @@ footer {
 .leaflet-popup-content-wrapper {
   width: 238px;
 }
+
+.show__spot--seemore {
+  width: 100%;
+}
+
+
 
 .votebuttons__wrapper {
   margin-bottom: 5px;
