@@ -28,11 +28,11 @@ $(document).on('page:change', function() {
   });
 
   $("#show_spot_info").on('click', function() {
-    $("#show_spot_info-button").fadeToggle("slow");
+    $("#show_spot_info-button").fadeToggle("fast");
   });
 
   $("#show_skater_info").on('click', function() {
-    $("#show_skater_info-button").fadeToggle("slow");
+    $("#show_skater_info-button").fadeToggle("fast");
   });
 
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
