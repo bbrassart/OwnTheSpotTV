@@ -35,7 +35,15 @@
         <%end%>
       <% else %>
         <div class="col s12">
-          You didn't submit any video yet. <%= link_to "Submit your first clip", new_video_path %>
+          <div class="section">
+              <div class="card-panel center-align jumbotron">
+                <span class="black-text">
+                  <h5>You didn't submit any video yet.</h5>
+                  <%= link_to "Submit your first clip", new_video_path, class:"btn" %></h5>
+                </span>
+              </div>
+          </div>
+
         </div>
       <% end %>
     </div>
@@ -76,7 +84,11 @@
     <% else %>
       <div class="col s12">
         <div class="section">
-          <%= @skater.username%> didn't submit any video yet.
+            <div class="card-panel jumbotron">
+              <span class="black-text">
+                <h5><%= @skater.username%> didn't submit any video yet.</h5>
+              </span>
+            </div>
         </div>
       </div>
     <% end %>

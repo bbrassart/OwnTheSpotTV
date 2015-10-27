@@ -35,6 +35,7 @@ $(document).on('page:change', function() {
     $("#show_skater_info-button").fadeToggle("fast");
   });
 
+
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
   var listenToMap = new mapObject(mapboxAccessToken, mapboxId);

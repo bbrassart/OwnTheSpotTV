@@ -17,10 +17,11 @@
       </div>
     <% end %>
     <div class="form-group">
-      <%= f.radio_button :stance, 'regular', :checked => true %>
-      <%= label :stance, 'regular' %>
-      <%= f.radio_button :stance, 'goofy' %>
-      <%= label :stance, 'goofy' %>
+      <%= f.radio_button(:stance, "regular", class:"with-gap") %>
+      <label for="skater_stance_regular">Regular</label>
+
+      <%= f.radio_button( :stance, 'goofy' , class:"with-gap" )%>
+      <label for="skater_stance_goofy">Goofy</label>
     </div>
     <% if current_user %>
       <div class="form-group">
