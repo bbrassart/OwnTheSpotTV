@@ -20,10 +20,7 @@
             <p class="center-align">20 skate spots located in Barcelona.
             Best Trick, Best Line, Worst Slam... Send us your best videos!
             Watch the footy, you decide who is the Boss of the spot!</p>
-            <div class="center-align">
-              <%= link_to 'Log in', login_path, class:"white-text waves-effect waves-light btn" %>
-              <%= link_to 'Signup', new_skater_path, class:"white-text waves-effect waves-light btn" %>
-            </div>
+
           </div>
         </div>
         <a href="<%= spots_path%>">
@@ -42,7 +39,14 @@
             skater = Skater.find(skater_id)
             %>
             <li class="collection-item avatar">
+              <% if current_user %>
+                <a href="<%= skater_path(skater)%>" class="hoverable">
+              <%end%>
               <img src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar" class="circle">
+              <% if current_user %>
+                </a>
+              <%end%>
+
               <span class="title"><b><%= skater.username %></b></span>
               <p><%= likes %> likes</p>
               <% if skater.videos.length == 1 %>
@@ -51,6 +55,9 @@
                 <p><%= skater.videos.length %> videos posted</p>
               <% end %>
               <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+              <% if current_user %>
+                </a>
+              <%end%>
             </li>
           <%end%>
         </ul>

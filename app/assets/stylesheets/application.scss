@@ -71,7 +71,9 @@
   background-color: #00695c;
 }
 
-
+.skater__profile--img {
+  top: -100px !important;
+}
 
 .nav-wrapper {
   @extend .teal, .lighten-4;

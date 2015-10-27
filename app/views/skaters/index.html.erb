@@ -62,12 +62,16 @@
       <div class="col m6 s12">
         <div class="section">
           <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
-          <a class="hoverable" href="<%=skater_path(@last_video_updated.skater.id)%>">
+          <% if current_user %>
+            <a class="hoverable" href="<%=skater_path(@last_video_updated.skater.id)%>">
+          <%end%>
             <div class="chip chip__highest--rated">
               <img  src="<%= @last_video_updated.skater.logo.url(:thumb)%>" alt="Skater's avatar">
               <%= @last_video_updated.skater.username %>
             </div>
-          </a>
+            <% if current_user %>
+              </a>
+            <%end%>
           <div class="chip chip__highest--rated">
             <% if @last_video_updated.score == 1 %>
               <%= @last_video_updated.score %> like!
