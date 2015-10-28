@@ -22,7 +22,7 @@ class Skater < ActiveRecord::Base
   end
 
   def self.top_5_number_of_likes
-    ordered_videos = Video.all.sort_by{|video| video.score}.reverse
+    ordered_videos = Video.all.top_videos(5)
     results = ordered_videos.each_with_object({}) do |video, hash|
       if hash[video.skater.id]
         hash[video.skater.id] += video.score
@@ -30,6 +30,8 @@ class Skater < ActiveRecord::Base
         hash[video.skater.id] = video.score
       end
     end
-    results.sort_by {|_key, value| value}.reverse
+    top_5_skaters = results.sort_by {|_key, value| value}.reverse.slice(0..4).each do |pair|
+      pair[0] = Skater.find(pair[0])
+    end
   end
 end

@@ -12,7 +12,6 @@ class SkatersController < ApplicationController
 
   def create
     @skater = Skater.new(skater_params)
-    binding.pry
     if @skater.save
       WelcomeMailer.welcome_email(@skater).deliver_now
       session[:user_id] = @skater.id

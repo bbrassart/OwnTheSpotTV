@@ -1,7 +1,9 @@
 <div class="collection">
   <h5 class="collection-item center-align">Top 5 ranking</h5>
-  <% skaters.each do |skater_id, likes|
-    skater = Skater.find(skater_id)%>
+  <% skaters.each do |results|
+    skater = results[0]
+    likes = results[1]
+  %>
 
     <a href="<%= new_skater_path%>" class="hoverable collection-item">
       <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">

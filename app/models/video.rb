@@ -13,7 +13,6 @@ class Video < ActiveRecord::Base
   	votes.inject(0) { |total, vote| total + vote.result }
   end
 
-
   def self.category_trick(category)
     where category: category
   end
@@ -25,5 +24,13 @@ class Video < ActiveRecord::Base
   def self.top_videos(number)
     Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(0..number)
   end
+
+  def self.top_5_videos_with_skater
+    best_videos = Video.all.top_videos(5)
+    results = best_videos.map do |video|
+      [Skater.find(video.skater.id), video]
+    end
+  end
+
 
 end

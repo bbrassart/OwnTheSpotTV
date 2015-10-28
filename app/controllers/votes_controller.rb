@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
 
   def index
-    @highest_rated_videos =  Video.all.top_videos(5)
+    @highest_rated_videos =  Video.all.top_5_videos_with_skater
     @skaters = Skater.top_5_number_of_likes
   end
 

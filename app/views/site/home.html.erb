@@ -1,79 +1,91 @@
 <div class="main__background custom__background-<%=@bg_id%>">
   <div class="container">
-  <div class="row">
-    <div class="col l8 m12">
-      <div class="section">
-        <div class="card z-depth-2">
-          <div class="card-image hoverable waves-effect waves-block waves-light">
-            <img class="activator" src="https://s3.amazonaws.com/ownthespot/background_image.jpg">
-          </div>
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4 center-align">
-              <p class="welcome_card-text">Barcelona Skateboarding Video Contest<br>20 spots, your videos, one Leaderboard</p>
-            </span>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4 center-align">Welcome to OwnTheSpot.TV<i class=" material-icons right">close</i></span>
-            <div class="center-align">
-              <img class="center-align" width="250" height="250" src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/123/medium/tjF76Fq.png">
+    <div class="row">
+      <div class="col l8 m12">
+        <div class="section">
+          <div class="card z-depth-2">
+            <div class="card-image hoverable waves-effect waves-block waves-light">
+              <img class="activator" src="https://s3.amazonaws.com/ownthespot/background_image.jpg">
             </div>
-            <p class="center-align">20 skate spots located in Barcelona.
-            Best Trick, Best Line, Worst Slam... Send us your best videos!
-            Watch the footy, you decide who is the Boss of the spot!</p>
-
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4 center-align">
+                <p class="welcome_card-text">
+                  Barcelona Skateboarding Video Contest
+                  <br>20 spots, your videos, one Leaderboard</p>
+              </span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4 center-align">Welcome to OwnTheSpot.TV
+                <i class=" material-icons right">close</i>
+              </span>
+              <div class="center-align">
+                <img class="center-align" width="250" height="250" src="http://s3.amazonaws.com/ownthespot/skaters/logos/000/000/123/medium/tjF76Fq.png">
+              </div>
+              <p class="center-align">
+                20 skate spots located in Barcelona.
+                Best Trick, Best Line, Worst Slam... Send us your best videos!
+                Watch the footy, you decide who is the Boss of the spot!
+              </p>
+            </div>
           </div>
+          <a href="<%= spots_path%>">
+            <button class="btn show__spot--seemore waves-effect waves-block waves-light">
+              Become the boss of the spot
+            </button>
+          </a>
         </div>
-        <a href="<%= spots_path%>">
-          <button class="btn show__spot--seemore waves-effect waves-block waves-light">
-            Become the boss of the spot
-          </button>
-        </a>
       </div>
-
-    </div>
-    <div class="col l4 m12">
-      <div class="section">
-        <ul class="collection z-depth-2">
-          <li class="collection-item"><h5 class="align-center">Top of the Mob<i class="material-icons topmob__star">grade</i></h5></li>
-          <% @skaters.each do |skater_id, likes|
-            skater = Skater.find(skater_id)
+      <div class="col l4 m12">
+        <div class="section">
+          <ul class="collection z-depth-2">
+            <li class="collection-item">
+              <h5 class="align-center">Top of the Mob
+                <i class="material-icons topmob__star">grade</i>
+              </h5>
+            </li>
+            <% @skaters.each do |results|
+              skater = results[0]
+              likes = results[1]
             %>
-            <li class="collection-item avatar">
+              <li class="collection-item avatar">
               <% if current_user %>
-                <a href="<%= skater_path(skater)%>" class="hoverable">
+                <a href="<%= skater_path(skater.id)%>" class="hoverable">
               <%end%>
               <img src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar" class="circle">
               <% if current_user %>
                 </a>
               <%end%>
-
-              <span class="title"><b><%= skater.username %></b></span>
+              <span class="title">
+                <b><%= skater.username %></b>
+              </span>
               <p><%= likes %> likes</p>
               <% if skater.videos.length == 1 %>
                 <p><%= skater.videos.length %> video posted</p>
               <% else %>
                 <p><%= skater.videos.length %> videos posted</p>
               <% end %>
-              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+              <a href="#!" class="secondary-content">
+                <i class="material-icons">grade</i>
+              </a>
               <% if current_user %>
                 </a>
               <%end%>
-            </li>
-          <%end%>
-        </ul>
+              </li>
+            <%end%>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-  <% if current_user.nil?%>
-    <div class="row">
-      <div class="col l12">
-        <div class="divider"></div>
-        <%= render 'helpers/suscribe_buttons' %>
+    <% if current_user.nil?%>
+      <div class="row">
+        <div class="col l12">
+          <div class="divider"></div>
+          <%= render 'helpers/suscribe_buttons' %>
+        </div>
       </div>
+    <%end%>
+    <div class="section">
     </div>
-  <%end%>
-  <div class="section">
   </div>
-</div>
 </div>
