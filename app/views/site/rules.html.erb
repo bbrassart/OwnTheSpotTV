@@ -1,35 +1,34 @@
 <div class="main__background custom__background-<%=@bg_id%>">
-
-<div class="container">
-  <div class="row">
-
+  <div class="container">
+    <div class="row">
       <div class="col m6 s12">
         <div class="section">
-        <div class="card-panel jumbotron center-align">
-          <span class="black-text">
-            <h4>8 rules to rule them all</h4>
-            <p class="left-align">20 spots, three categories: <b>Best Trick, Firing Line, Worst SLam</b><br>
-            Registered users can <b>submit their own YouTube clips</b><br>
-            Only registered users can <b>vote</b> for the best clips<br>
-            Each user has one vote for each video: <b>Like or Dislike</b><br>
-            It's not a game of SKATE, you can do bonelesses, grabs, benihanas...<br>
-            Don't worry about NBD's<br>
-            By clicking 'Report poser', you can inform us if a video is not legit<br>
-            Feel free to hit us on Facebook or via email to suggest any improvements<br></p>
-          </span>
+          <div class="card-panel jumbotron center-align">
+            <span class="black-text">
+              <h4>8 rules to rule them all</h4>
+              <p class="left-align">20 spots, three categories: <b>Best Trick, Firing Line, Worst SLam</b><br>
+                Registered users can <b>submit their own YouTube clips</b><br>
+                Only registered users can <b>vote</b> for the best clips<br>
+                Each user has one vote for each video: <b>Like or Dislike</b><br>
+                It's not a game of SKATE, you can do bonelesses, grabs, benihanas...<br>
+                Don't worry about NBD's<br>
+                By clicking 'Report poser', you can inform us if a video is not legit<br>
+                Feel free to hit us on Facebook or via email to suggest any improvements<br>
+              </p>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
 
-
-  <div class="col s12 m6">
-    <div class="section">
-      <% if current_user.nil? %>
-        <%= render 'helpers/suscribe_buttons' %>
-      <% end %>
+      <div class="col s12 m6">
+        <div class="section">
+          <% if current_user.nil? %>
+            <%= render 'helpers/suscribe_buttons' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="section">
+      </div>
     </div>
   </div>
-  <div class="section">
-  </div>
-</div>
 </div>

@@ -1,36 +1,26 @@
 <div class="main__background custom__background-<%=@bg_id%>">
-<div class="container">
-  <div class="row">
-    <div class="col m6 offset-m3 s12">
-      <div class="section">
-      <div class="card-panel jumbotron center-align">
-        <span class="black-text">
-          <h4>Contact us</h4>
-          <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
-          <form>
-              <%= f.input :name,  class: "form-control", :required => true %>
-
-              <%= f.input :email, class: "form-control", :required => true %>
-
-              <%= f.input :message, class: "form-control", :as => :text, :required => true %>
-
-            <div class= "hidden">
-              <%= f.input :nickname, :hint => 'Leave this field blank!' %>
-            </div>
-
-              </br>
-              <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
-
-          <% end %>
-        </span>
+  <div class="container">
+    <div class="row">
+      <div class="col m6 offset-m3 s12">
+        <div class="section">
+          <div class="card-panel jumbotron center-align">
+            <span class="black-text">
+              <h4>Contact us</h4>
+              <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
+                <%= f.input :name,  class: "form-control", :required => true %>
+                <%= f.input :email, class: "form-control", :required => true %>
+                <%= f.input :message, class: "form-control", :as => :text, :required => true %>
+                <div class= "hidden">
+                  <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+                </div>
+                <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
+              <% end %>
+            </span>
+          </div>
+        </div>
+        <div class="section">
+        </div>
       </div>
     </div>
-
-
-
-  <div class="section">
   </div>
-</div>
-</div>
-</div>
 </div>

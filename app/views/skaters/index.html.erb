@@ -1,98 +1,94 @@
 <div class="main__background custom__background-<%=@bg_id%>">
   <div class="container">
-  <div class="row">
-    <div class="col m6 offset-m3 s12">
-      <div class="section">
-        <div class="card">
-          <div class="card-content spot__show--collapsible">
-            <span class="card-title activator grey-text text-darken-4">
-              <h4 class="center-align">The Mob family</h4>
-              <h5 class="center-align">Our most devoted soldiers</h5>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <% @most_active_skaters.each do |skater|%>
-        <% if current_user.nil? %>
-          <div class="col s4">
-            <%= render partial: "helpers/visitor/list_user_profile", locals: {skater: skater} %>
-          </div>
-        <% elsif skater.id != current_user.id  %>
-          <div class="col s4">
-            <%= render partial: "helpers/current_user/list_user_profile", locals: {skater: skater} %>
-          </div>
-        <%end%>
-      <%end%>
-    </div>
-  </div>
-
-  <div class="row">
-    <% if current_user %>
+    <div class="row">
       <div class="col m6 offset-m3 s12">
         <div class="section">
           <div class="card">
             <div class="card-content spot__show--collapsible">
-              <h5 class="center-align">Check the latest clip!</h5>
+              <span class="card-title activator grey-text text-darken-4">
+                <h4 class="center-align">The Mob family</h4>
+                <h5 class="center-align">Our most devoted soldiers</h5>
+              </span>
             </div>
           </div>
         </div>
       </div>
-      <div class="col s12">
-        <div class="section">
-          <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
-          <a class="hoverable" href="<%=skater_path(@last_video_updated.skater.id)%>">
-            <div class="chip chip__highest--rated">
-              <img  src="<%= @last_video_updated.skater.logo.url(:thumb)%>" alt="Skater's avatar">
-              <%= @last_video_updated.skater.username %>
+      <div class="section">
+        <% @most_active_skaters.each do |skater|%>
+          <% if current_user.nil? %>
+            <div class="col s4">
+              <%= render partial: "helpers/visitor/list_user_profile", locals: {skater: skater} %>
             </div>
-          </a>
-          <div class="chip chip__highest--rated">
-            <% if @last_video_updated.score == 1 %>
-              <%= @last_video_updated.score %> like!
-            <% else %>
-              <%= @last_video_updated.score %> likes!
-            <%end %>
-            <i class="small material-icons">insert_chart</i>
-          </div>
-        </div>
-      </div>
-    <% else %>
-      <div class="col m6 s12">
-        <div class="section">
-          <%= render partial: "videos/video_media", locals: {video: @last_video_updated} %>
-          <% if current_user %>
-            <a class="hoverable" href="<%=skater_path(@last_video_updated.skater.id)%>">
+          <% elsif skater.id != current_user.id  %>
+            <div class="col s4">
+              <%= render partial: "helpers/current_user/list_user_profile", locals: {skater: skater} %>
+            </div>
           <%end%>
-            <div class="chip chip__highest--rated">
-              <img  src="<%= @last_video_updated.skater.logo.url(:thumb)%>" alt="Skater's avatar">
-              <%= @last_video_updated.skater.username %>
+        <%end%>
+      </div>
+    </div>
+
+    <div class="row">
+      <% if current_user %>
+        <div class="col m6 offset-m3 s12">
+          <div class="section">
+            <div class="card">
+              <div class="card-content spot__show--collapsible">
+                <h5 class="center-align">Check the latest clip!</h5>
+              </div>
             </div>
-            <% if current_user %>
-              </a>
-            <%end%>
-          <div class="chip chip__highest--rated">
-            <% if @last_video_updated.score == 1 %>
-              <%= @last_video_updated.score %> like!
-            <% else %>
-              <%= @last_video_updated.score %> likes!
-            <%end %>
-            <i class="small material-icons">insert_chart</i>
           </div>
         </div>
-      </div>
-      <div class="col m6 s12">
-        <div class="section">
-          <%= render 'helpers/suscribe_buttons' %>
+        <div class="col s12">
+          <div class="section">
+            <%= render partial: "helpers/video_media", locals: {video: @last_video_updated} %>
+            <a class="hoverable" href="<%=skater_path(@last_video_updated.skater.id)%>">
+              <div class="chip chip__highest--rated">
+                <img  src="<%= @last_video_updated.skater.logo.url(:thumb)%>" alt="Skater's avatar">
+                <%= @last_video_updated.skater.username %>
+              </div>
+            </a>
+            <div class="chip chip__highest--rated">
+              <% if @last_video_updated.score == 1 %>
+                <%= @last_video_updated.score %> like!
+              <% else %>
+                <%= @last_video_updated.score %> likes!
+              <%end %>
+              <i class="small material-icons">insert_chart</i>
+            </div>
+          </div>
         </div>
+        <% else %>
+          <div class="col m6 s12">
+            <div class="section">
+              <%= render partial: "helpers/video_media", locals: {video: @last_video_updated} %>
+              <% if current_user %>
+                <a class="hoverable" href="<%=skater_path(@last_video_updated.skater.id)%>">
+              <%end%>
+              <div class="chip chip__highest--rated">
+                <img  src="<%= @last_video_updated.skater.logo.url(:thumb)%>" alt="Skater's avatar">
+                <%= @last_video_updated.skater.username %>
+              </div>
+              <% if current_user %>
+                </a>
+              <%end%>
+              <div class="chip chip__highest--rated">
+                <% if @last_video_updated.score == 1 %>
+                  <%= @last_video_updated.score %> like!
+                <% else %>
+                  <%= @last_video_updated.score %> likes!
+                <%end %>
+                <i class="small material-icons">insert_chart</i>
+              </div>
+            </div>
+          </div>
+          <div class="col m6 s12">
+            <div class="section">
+              <%= render 'helpers/suscribe_buttons' %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-
-    <div class="section">
+      <div class="section"></div>
     </div>
   </div>
-
-</div>
-</div>

@@ -1,9 +1,9 @@
 <div class="container">
   <% if current_user.id == @skater.id %>
     <div class="row">
-        <%= render partial: "helpers/current_user/user_profile", locals: {skater: current_user} %>
-        <div class="col l6 offset-l3 s12 center-align">
-          <div class="section">
+      <%= render partial: "helpers/current_user/user_profile", locals: {skater: current_user} %>
+      <div class="col l6 offset-l3 s12 center-align">
+        <div class="section">
           <div class="card-panel jumbotron">
             <span class="black-text">
               <h5>Your clips</h5>
@@ -14,21 +14,20 @@
 
       <% if current_user.videos.any? %>
 
-
         <% if current_user.videos.length == 1 %>
           <div class="col s12">
             <div class="divider"></div>
             <div class="section">
-            <%= render partial: "videos/video_media", locals: {video: current_user.videos[0]} %>
+              <%= render partial: "helpers/video_media", locals: {video: current_user.videos[0]} %>
+            </div>
           </div>
           <div class="col s12 m6 offset-m3">
             <%= render partial: "helpers/current_user/edit_delete_video_buttons", locals: {video: current_user.videos[0]} %>
           </div>
-        </div>
         <%elsif current_user.videos.length > 1 %>
           <%current_user.videos.each do |video| %>
             <div class="col l6 m12">
-              <%= render partial: "videos/video_media", locals: {video: video} %>
+              <%= render partial: "helpers/video_media", locals: {video: video} %>
               <%= render partial: "helpers/current_user/edit_delete_video_buttons", locals: {video: video} %>
             </div>
           <% end %>
@@ -43,42 +42,38 @@
                 </span>
               </div>
           </div>
-
         </div>
       <% end %>
     </div>
 
-  <% else %>
-  <div class="row">
-      <%= render partial: "helpers/visitor/user_profile", locals: {skater: @skater} %>
-
-      <div class="col l6 offset-l3 s12 center-align">
-        <div class="section">
-          <div class="card-panel jumbotron">
-            <span class="black-text">
-              <h5><%= @skater.username %>'s clips</h5>
-            </span>
+    <% else %>
+      <div class="row">
+        <%= render partial: "helpers/visitor/user_profile", locals: {skater: @skater} %>
+        <div class="col l6 offset-l3 s12 center-align">
+          <div class="section">
+            <div class="card-panel jumbotron">
+              <span class="black-text">
+                <h5><%= @skater.username %>'s clips</h5>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-
       <% if @skater.videos.any? %>
         <% if @skater.videos.length == 1 %>
           <div class="col s12">
             <div class="divider"></div>
             <div class="section">
-              <%= render partial: "videos/video_media", locals: {video: @skater.videos[0]} %>
+              <%= render partial: "helpers/video_media", locals: {video: @skater.videos[0]} %>
             </div>
           </div>
         <%elsif @skater.videos.length > 1 %>
           <% @skater.videos.each do |video| %>
             <div class="col l6 m12">
               <div class="section">
-                <%= render partial: "videos/video_media", locals: {video: video} %>
+                <%= render partial: "helpers/video_media", locals: {video: video} %>
                 <%= render partial: "helpers/buttons_form", locals: {video: video} %>
               </div>
             </div>
-
           <% end %>
         <%end%>
     <% else %>
@@ -92,11 +87,10 @@
         </div>
       </div>
     <% end %>
-    <div class="col s12">
-      <div class="section">
+      <div class="col s12">
+        <div class="section">
+        </div>
       </div>
     </div>
-  </div>
-<%end%>
-
+  <%end%>
 </div>

@@ -1,24 +1,11 @@
-<% if !videos.present? %>
+<% if videos.length == 1 %>
   <div class="col s12 m6 offset-m3">
     <div class="section">
       <div class="divider"></div>
       <div class="card-panel jumbotron center-align">
         <span class="black-text">
           <h5 class="center-align">
-            No clips submited. Post your YouTube clip for this spot and you'll become the Boss of <%= @spot.name %>
-          </h5>
-        </span>
-      </div>
-    </div>
-  </div>
-<% elsif videos.length == 1 %>
-  <div class="col s12 m6 offset-m3">
-    <div class="section">
-      <div class="divider"></div>
-      <div class="card-panel jumbotron center-align">
-        <span class="black-text">
-          <h5 class="center-align">
-            Overall best video
+            Latest entry
           </h5>
         </span>
       </div>
@@ -26,8 +13,8 @@
   </div>
   <div class="col s12">
     <div class="section">
-        <%= render partial: "videos/video_media", locals: {video: videos[0]} %>
-        <%= render partial: "helpers/buttons_form", locals: {:video => videos[0]} %>
+      <%= render partial: "helpers/video_media", locals: {video: videos[0]} %>
+      <%= render partial: "helpers/buttons_form", locals: {:video => videos[0]} %>
     </div>
   </div>
 <% else %>
@@ -37,7 +24,7 @@
       <div class="card-panel jumbotron center-align">
         <span class="black-text">
           <h5 class="center-align">
-            Overall best videos
+            Latest entries
           </h5>
         </span>
       </div>
@@ -46,7 +33,7 @@
   <% videos.each do |video| %>
     <div class="col l6 m12">
       <div class="section">
-        <%= render partial: "videos/video_media", locals: {video: video} %>
+        <%= render partial: "helpers/video_media", locals: {video: video} %>
         <%= render partial: "helpers/buttons_form", locals: {:video => video} %>
       </div>
     </div>

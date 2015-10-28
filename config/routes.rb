@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/about-us' => 'site#about'
   post '/votes/like' => 'votes#like'
   post '/votes/dislike' => 'votes#dislike'
-  match '/contacts',     to: 'contacts#new',             via: 'get'
+  match '/contact',     to: 'contacts#new',             via: 'get'
   resources :contacts, only: [:new, :create]
   resources :skaters
   resources :spots, only: [:index, :show]
