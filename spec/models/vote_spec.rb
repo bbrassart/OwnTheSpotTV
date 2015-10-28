@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Vote, type: :model do
 
   before(:each) do
-    @skater = Skater.create!(username: 'Usher', email: 'usher@gmail.com', password: 'usher', password_confirmation: 'usher', stance: 'goofy')
-    @spot = Spot.create!(name: 'Parc de la Ciutadella', description: 'Awesome manny pad, chillout atmosphere, sunday spot', district: 'Fort Pienc')
+    @skater = @skater = FactoryGirl.create(:skater)
+    @spot = FactoryGirl.create(:skater)
     @video = Video.create!(url: "https://www.youtube.com/watch?v=aT_yFSUbbVw", skater_id: @skater.id, spot_id: @spot.id, category: 'trick', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
     @video_two = Video.create!(url: "https://www.youtube.com/watch?v=hefhyerhdhn", skater_id: @skater.id, spot_id: @spot.id, category: 'line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
   end

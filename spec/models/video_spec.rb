@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Video, type: :model do
 
   before(:each) do
-    @skater = Skater.create!(username: 'Usher', email: 'usher@gmail.com', password: 'usher', password_confirmation: 'usher', stance: 'goofy')
+    @skater = FactoryGirl.create(:skater)
     @spot = Spot.create!(name: 'Parc de la Ciutadella', description: 'Awesome manny pad, chillout atmosphere, sunday spot', district: 'Fort Pienc')
   end
 
@@ -32,8 +32,8 @@ RSpec.describe Video, type: :model do
     expect(video_example).not_to be_valid
   end
 
-  it "will NOT create the video if URL is smaller than 27 characters" do
-    video_example = Video.new(url: 'https://www.youtu.be/small', skater_id: @skater.id, spot_id: @spot.id, category: 'line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
+  it "will NOT create the video if URL is smaller than 26 characters" do
+    video_example = Video.new(url: 'https://www.youtu.be/sml', skater_id: @skater.id, spot_id: @spot.id, category: 'line', description: Faker::Lorem.sentence(5), name: Faker::Lorem.sentence(2))
     expect(video_example).not_to be_valid
   end
 
