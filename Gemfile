@@ -19,6 +19,7 @@ gem 'pg'
 gem 'figaro'
 gem 'mail_form'
 gem 'simple_form'
+gem 'rack-cors', :require => 'rack/cors'
 
 gem 'newrelic_rpm'
 
