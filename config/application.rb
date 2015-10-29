@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module OwnTheSpot
   class Application < Rails::Application
+
     config.generators do |g|
       g.test_framework :rspec,
       :fixtures => true,
@@ -19,10 +20,10 @@ module OwnTheSpot
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
-    config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+    config.middleware.insert_before(0, "Rack::Cors", logger: (-> { Rails.logger })) do
       allow do
         origins '*'
-        resource '/api/v1/*', :headers => :any, :methods => [:get, :post, :options]
+        resource '*', headers: :any, methods: [:get, :post, :patch, :options]
       end
     end
 
