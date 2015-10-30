@@ -9,9 +9,8 @@ var mapObject = function(accessToken, id) {
 }
 
 mapObject.prototype.setInitalListeners = function() {
-  var that = this;
   if ($('#map')) {
-    that.processMap();
+    this.processMap().bind(this);
   }
 }
 
