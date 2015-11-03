@@ -30,7 +30,7 @@ RSpec.describe Vote, type: :model do
 
   it "will create correctly the votes if the user vote for one video and then a different one" do
     FactoryGirl.create(:vote)
-    vote = FactoryGirl.create(:vote)
+    vote = FactoryGirl.create(:vote, video_id: 3)
     expect(vote).to be_valid
   end
 
