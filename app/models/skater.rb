@@ -10,15 +10,15 @@ class Skater < ActiveRecord::Base
   has_many :votes
 
   def self.most_active_skaters
-    Skater.all.sort_by{|skater| skater.videos.count}.reverse.slice(0..2)
+    includes(:videos).sort { |x,y| x.videos.length <=> y.videos.length }.reverse.slice(0..2)
   end
 
   def self.find_by_results(position)
-    Skater.all.find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(position).skater_id)
+    includes(:videos).find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(position).skater_id)
   end
 
   def self.find_best(videos)
-    Skater.find_by_id(videos.slice(0).skater_id)
+    includes(:videos).find_by_id(videos.slice(0).skater_id)
   end
 
   def self.top_5_number_of_likes
