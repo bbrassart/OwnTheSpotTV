@@ -9,11 +9,7 @@ class Spot < ActiveRecord::Base
   has_many :videos
 
   def self.most_active_spots
-    Spot.all.sort_by{|spot| spot.videos.count}.reverse.slice(0..2)
-  end
-
-  def self.spots_by_district
-    Spot.all.sort_by{ |spot| spot.district }
+    includes(:videos).sort_by { |spot| spot.videos.count}.reverse.slice(0..2)
   end
 
   def fullname

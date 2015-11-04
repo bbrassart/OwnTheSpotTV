@@ -3,7 +3,6 @@ class SpotsController < ApplicationController
   def index
     @spots = Spot.all
     @most_active_spots = Spot.most_active_spots
-    @spots_by_district = Spot.spots_by_district
     @last_video_updated = Video.last
   end
 

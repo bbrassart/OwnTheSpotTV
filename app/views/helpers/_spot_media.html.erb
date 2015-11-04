@@ -8,12 +8,12 @@
     </span>
   </div>
   <div class="card-content">
-    <p><%= truncate spot.description, length: 75 %>...</p>
+    <p><%= truncate spot.description, omission: "...", length: 75 %></p>
     <br>
     <div class="divider"></div>
     <br>
     <p class="center-align">
-      <em><%= spot.videos.length %> clips submited for this spot</em>
+      <em><%= spot.videos.length %> clips submited</em>
     </p>
   </div>
   <div class="center-align hoverable card-action">
