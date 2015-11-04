@@ -1,3 +1,4 @@
+
 class SpotsController < ApplicationController
 
   def index

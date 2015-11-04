@@ -22,11 +22,11 @@ class Video < ActiveRecord::Base
   end
 
   def self.top_videos(number)
-    Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(0..number)
+    includes(:votes).sort_by {|video| video.votes.sum('result')}.reverse.slice(0..number)
   end
 
   def self.top_5_videos_with_skater
-    best_videos = Video.all.top_videos(5)
+    best_videos = Video.top_videos(5)
     results = best_videos.map do |video|
       [Skater.find(video.skater.id), video]
     end
