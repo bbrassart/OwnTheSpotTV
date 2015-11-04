@@ -36,7 +36,7 @@ RSpec.describe Skater, type: :model do
     end
   end
 
-  describe "#most_active_skaters method, sort the users by number of videos they submitted" do
+  describe "#most_active_skaters , sort the users by number of videos they submitted" do
     context "10 users created and they all have lots of videos" do
       it "will return the length of the most active skaters array, which is 3" do
         skaters_array = []
@@ -47,6 +47,19 @@ RSpec.describe Skater, type: :model do
           FactoryGirl.create(:video, url: "https://www.youtube.com/watch?v=#{index}ok1VgnC4", skater_id: skaters_array.sample.id)
         end
         expect(Skater.most_active_skaters.length).to eq(3)
+      end
+
+      it "will return the first skater of the array, the one who submitted the most videos" do
+        skaters_array = []
+        10.times do |index|
+          skaters_array.push(FactoryGirl.create(:skater, username: "#{index + 1}"))
+        end
+        skaters_array.each do |skater|
+          (skater.username.to_i).times do |index|
+            FactoryGirl.create(:video, url: "https://www.youtube.com/watch?v=ok1V4C4#{skater.username}#{index.to_s}", skater_id: skater.id )
+          end
+        end
+        expect(Skater.most_active_skaters[0]).to eq(Skater.find_by_username("10"))
       end
     end
   end
