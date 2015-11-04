@@ -16,16 +16,22 @@
       <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
 
       <label for="email">Video URL</label>
-      <p>Your YouTube video URL should like this: <em>https://www.youtube.com/watch?v=0oeoesORUJU</em> or <em>http://youtu.be/_ut8DOv3XeI</em></p>
+      <p class="small-font">Your YouTube video URL should like this:<br>
+      <em>https://www.youtube.com/watch?v=0oeoesORUJU</em><br>
+      <em>http://youtu.be/_ut8DOv3XeI</em></p>
       <%= f.text_field :url, class: "form-control", placeholder: "Paste your YouTube link" %>
 
-      <%= f.radio_button :category, 'trick', :checked => true %>
-      <%= label :category, 'Best trick' %>
-      <%= f.radio_button :category, 'line' %>
-      <%= label :category, 'Firing line' %>
-      <%= f.radio_button :category, 'slam' %>
-      <%= label :category, 'Worst slam' %>
+      <div class="form-group">
+        <%= f.radio_button(:category, "trick", :checked => true, class:"with-gap") %>
+        <label for="video_category_trick">Best trick</label>
 
+        <%= f.radio_button( :category, 'line' , class:"with-gap" )%>
+        <label for="video_category_line">Firing Line</label>
+
+        <%= f.radio_button( :category, 'slam' , class:"with-gap" )%>
+        <label for="video_category_slam">Worst slam</label>
+
+      </div>
 
       <%= f.submit "Submit", class:"btn btn-primary" %>
 
