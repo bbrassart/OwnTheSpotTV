@@ -13,10 +13,6 @@ class Skater < ActiveRecord::Base
     includes(:videos).sort { |x,y| x.videos.length <=> y.videos.length }.reverse.slice(0..2)
   end
 
-  def self.find_by_results(position)
-    includes(:videos).find_by_id(Video.all.sort_by {|video| video.votes.sum('result')}.reverse.slice(position).skater_id)
-  end
-
   def self.find_best(videos)
     includes(:videos).find_by_id(videos.slice(0).skater_id)
   end

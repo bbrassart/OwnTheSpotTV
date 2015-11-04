@@ -63,4 +63,39 @@ RSpec.describe Skater, type: :model do
       end
     end
   end
+
+  describe "#find_best(videos), give to this method an array of videos sorted by result and it returns the ID of the best skater" do
+    context "10 users created and they all have lots of videos" do
+      it "will return the ID of the skater whose video has the most votes, so video number 1" do
+        skaters_array = []
+        10.times do |index|
+          skaters_array.push(FactoryGirl.create(:skater, username: "#{index + 1}"))
+        end
+        videos_array = []
+        skaters_array.each do |skater|
+          (skater.username.to_i).times do |index|
+            videos_array.push(FactoryGirl.create(:video, url: "https://www.youtube.com/watch?v=ok1V4C4#{skater.username}#{index.to_s}", skater_id: skater.id ) )
+          end
+        end
+        20.times do
+          vote = FactoryGirl.build(:vote, voter_id: skaters_array.sample.id, video_id: videos_array[0].id)
+          if vote.voter_id != Skater.find(videos_array[0].skater.id)
+            vote.save
+          end
+        end
+        videos_array.each do |video|
+          2.times do
+            vote = FactoryGirl.build(:vote, result: -1, voter_id: skaters_array.sample.id, video_id: video.id)
+            if vote.voter_id != Video.find(video.id).skater.id
+              vote.save
+            end
+          end
+        end
+        sorted_clips = videos_array.sort_by {|video| video.votes.sum('result')}.reverse
+
+        expect( Skater.find_best(sorted_clips) ).to eq(Skater.find_by_username("1"))
+      end
+    end
+  end
+
 end
