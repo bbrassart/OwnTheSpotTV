@@ -15,7 +15,7 @@ class SkatersController < ApplicationController
     if @skater.save
       WelcomeMailer.welcome_email(@skater).deliver_now
       session[:user_id] = @skater.id
-      redirect_to skaters_path, flash: {success: "Hi #{current_user.username}! Welcome to OwnTheSpot.TV!" }
+      redirect_to spots_path, flash: {success: "Hi #{current_user.username}! Welcome to OwnTheSpot.TV!" }
 
     else
       redirect_to root_path, flash: {danger: "Oops, try to register again please" }

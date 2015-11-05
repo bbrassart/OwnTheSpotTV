@@ -1,3 +1,5 @@
+<% button = current_user ? "Edit your profile" : "Create your profile" %>
+
 <%= form_for @skater, :html => {:multipart => true }  do |f| %>
   <form>
     <div class="form-group">
@@ -43,7 +45,7 @@
       </div>
     <% end %>
     <div class="form-group">
-      <%= f.submit "Submit", class:"btn btn-primary" %>
+      <%= f.submit button, class:"btn btn-primary" %>
     </div>
   </form>
 <% end %>
