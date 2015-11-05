@@ -83,11 +83,7 @@
             <%= render partial: "helpers/show_spot_card", locals: {spot: @spot} %>
           </div>
           <div class="col m6 s12">
-            <% if current_user.present? %>
-              <%= render partial: "helpers/overall_best_current_user", locals: {skaters: @skaters} %>
-            <% else %>
-              <%= render partial: "helpers/overall_best_visitor", locals: {skaters: @skaters} %>
-            <% end %>
+            <%= render partial: "helpers/overall_best", locals: {skaters: @skaters} %>
           </div>
         <% end %>
       </div>
