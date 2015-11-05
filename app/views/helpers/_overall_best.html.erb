@@ -3,9 +3,10 @@
   <% skaters.each do |results|
     skater = results[0]
     likes = results[1]
+    link = current_user ? "skaters/#{skater.id}" : 'skaters/new'
   %>
 
-    <a href="<%= new_skater_path%>" class="hoverable collection-item">
+    <a href=<%= link %> class="hoverable collection-item">
       <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
       <%= skater.username %>
       <span class="navbar--title badge"><%=likes%> likes</span>

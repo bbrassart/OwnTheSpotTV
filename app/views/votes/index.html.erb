@@ -1,20 +1,12 @@
 <div class="main__background custom__background-<%=@bg_id%>">
   <div class="container">
     <div class="row">
-      <% if current_user.present? %>
-        <div class="col m6 offset-m3 s12">
-          <div class="section">
-            <%= render partial: "helpers/overall_best_current_user", locals: {skaters: @skaters} %>
-          </div>
+      <div class="col m6 offset-m3 s12">
+        <div class="section">
+          <%= render partial: "helpers/overall_best", locals: {skaters: @skaters} %>
         </div>
+      </div>
 
-      <% else %>
-        <div class="col m6 offset-m3 s12">
-          <div class="section">
-            <%= render partial: "helpers/overall_best_visitor", locals: {skaters: @skaters} %>
-          </div>
-        </div>
-      <% end %>
       <div class="col s12">
         <div class="divider"></div>
       </div>
