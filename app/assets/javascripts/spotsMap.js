@@ -86,7 +86,7 @@ mapObject.prototype.processMap = function (accessToken, id) {
   this.addMarkerToMap(marinaMicroSpot, "Marina mini spot", "264/square/marina.jpg", "marina-micro-spot" );
   this.addMarkerToMap(worldTradeCenter, "World Trade Center", "265/square/wtc.png?1438730516", "world-trade-center" );
   this.addMarkerToMap(sants, "Estació de Sants", "267/square/sants.jpg", "estacio-de-sants" );
-  this.addMarkerToMap(mercatDeLesFlors, "Mercat de les Flors", "251/square/mercat.jpg", "mercat-de-les-flors" );
+  this.addMarkerToMap(mercatDeLesFlors, "Mercat de les Flors", "251/square/mercat.jpg", "mercat-de-las-flors" );
 
   this.displayMap(map, id, accessToken);
 };
