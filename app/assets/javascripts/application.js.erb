@@ -20,8 +20,17 @@
 //= require_tree .
 //= require turbolinks
 
-
 $(document).on('page:change', function() {
+  $('select').material_select();
+
+  if ($('.danger').length) {
+    var content = $('.danger').text();
+    Materialize.toast(content, 3000, 'rounded danger--notif');
+  }
+  if ($('.success').length) {
+    var content = $('.success').text();
+    Materialize.toast(content, 3000, 'rounded success--notif');
+  }
 
   $(".button-collapse").sideNav();
   $(".dropdown-button").dropdown();

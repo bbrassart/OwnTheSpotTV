@@ -11,13 +11,14 @@ class SessionsController < ApplicationController
       redirect_to spots_path, :flash => {success: "Welcome Home #{skater.username}" }
     else
   # If user's login doesn't work, send them back to the login form.
-      redirect_to root_path, :flash => {danger: "Oops, something went wrong! Try again please"}
+      redirect_to root_path, :flash => {danger: "Something went wrong... Make sure all the fields were filled"}
     end
   end
 
   def destroy
+    name = current_user.username
     session[:user_id] = nil
-    redirect_to root_path
+    redirect_to root_path, :flash => {success: "Bye #{name}! See you soon!"}
   end
 
 end

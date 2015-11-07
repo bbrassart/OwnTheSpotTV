@@ -18,7 +18,7 @@ class SkatersController < ApplicationController
       redirect_to spots_path, flash: {success: "Hi #{current_user.username}! Welcome to OwnTheSpot.TV!" }
 
     else
-      redirect_to root_path, flash: {danger: "Oops, try to register again please" }
+      redirect_to root_path, flash: {danger: "Something went wrong... Make sure all the fields were filled" }
     end
   end
 

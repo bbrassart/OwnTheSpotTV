@@ -4,7 +4,7 @@
       <label for="spot_id">Choose the right spot</label>
         <select id="spots" name="spot_id">
           <% @spots.each do |spot| %>
-          <option value="<%= spot.id %>"><%= spot.name %></option>
+            <option value="<%= spot.id %>"><%= spot.name %></option>
           <% end %>
         </select>
       </label>
@@ -17,7 +17,10 @@
 
       <label for="email">Video URL</label>
       <p class="small-font">Your Instagram code URL should like this:<br>
-      
+        <em>https://instagram.com/p/9rydb7SFkM/</em> or <br>
+        <em>https://instagram.com/p/9uEPN8CzXc/?taken-by=seedthespot</em> <br>
+
+
       Don't worry too much, just copy paste it</p>
       <%= f.text_field :url, class: "form-control", placeholder: "Paste your YouTube link" %>
 

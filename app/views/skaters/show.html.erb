@@ -18,7 +18,7 @@
           <div class="col s12">
             <div class="divider"></div>
             <div class="section center-align">
-              <%= current_user.videos[0].url.html_safe %>
+              <%= render "helpers/video_media", video: current_user.videos[0] %>
             </div>
           </div>
           <div class="col s12 m6 offset-m3">
@@ -27,7 +27,7 @@
         <%elsif current_user.videos.length > 1 %>
           <%current_user.videos.each do |video| %>
             <div class="col l6 m12">
-              <%= video.url.html_safe %>
+              <%= render "helpers/video_media", video: video %>
               <%= render partial: "helpers/current_user/edit_delete_video_buttons", locals: {video: video} %>
             </div>
           <% end %>

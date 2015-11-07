@@ -2,7 +2,7 @@ class Video < ActiveRecord::Base
   validates :skater_id, presence: true
   validates :spot_id, presence: true
   validates :name, presence: true
-#  validates :url, presence: true, uniqueness: true, length: { minimum: 26, maximum: 43}, format: /youtu/
+  validates :url, presence: true, uniqueness: true, length: { minimum: 30, maximum: 90}, format: /instagram.com/
   validates :spot_id, presence: true
   validates :category, presence: true, inclusion: { in: %w( trick line slam ) }
   belongs_to :spot
@@ -11,6 +11,14 @@ class Video < ActiveRecord::Base
 
   def score
   	votes.inject(0) { |total, vote| total + vote.result }
+  end
+
+  def format_url
+    if url.include?("?taken-by=")
+      index = url.index("?")
+      url.slice!(index...url.length)
+    end
+    url.concat("embed")
   end
 
   def self.category_trick(category)
@@ -31,6 +39,4 @@ class Video < ActiveRecord::Base
       [Skater.find(video.skater.id), video]
     end
   end
-
-
 end
