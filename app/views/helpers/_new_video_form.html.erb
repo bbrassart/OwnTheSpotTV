@@ -1,42 +1,45 @@
-<%= form_for @video, locals: {spots: @spots}  do |f| %>
-  <form>
-
-      <label for="spot_id">Choose the right spot</label>
-        <select id="spots" name="spot_id">
-          <% @spots.each do |spot| %>
-            <option value="<%= spot.id %>"><%= spot.name %></option>
-          <% end %>
-        </select>
-      </label>
-
-      <label for="name">Video title</label>
-      <%= f.text_field :name, class: "form-control", placeholder: "Video title" %>
-
-      <label for="name">Video description</label>
-      <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
-
-      <label for="email">Video URL</label>
-      <p class="small-font">Your Instagram code URL should like this:<br>
-        <em>https://instagram.com/p/9rydb7SFkM/</em> or <br>
-        <em>https://instagram.com/p/9uEPN8CzXc/?taken-by=seedthespot</em> <br>
+<%= form_for @video, locals: {spots: @spots}, class: "center-align"  do |f| %>
+    <label for="title">Choose a title</label>
+    <%= f.text_field :name, placeholder: "Choose a title" %>
 
 
-      Don't worry too much, just copy paste it</p>
-      <%= f.text_field :url, class: "form-control", placeholder: "Paste your YouTube link" %>
+    <label for="description">Describe your clip</label>
+    <%= f.text_field :description, placeholder: "Description" %>
 
-      <div class="form-group">
-        <%= f.radio_button(:category, "trick", :checked => true, class:"with-gap") %>
-        <label for="video_category_trick">Best trick</label>
+    <label for="url">Video URL</label>
+    <p class="center-align small-font">
+      <i class="material-icons">info_outline</i>
+      <br>
+      Your Instagram code URL should like this:
+      <br>
+      <em>https://instagram.com/p/9rydb7SFkM/</em>
+      <br>
+      <a href="https://help.instagram.com/372819389498306" target="_blank">How to find your Instagram clip link</a>
+    </p>
 
-        <%= f.radio_button( :category, 'line' , class:"with-gap" )%>
-        <label for="video_category_line">Firing Line</label>
+    <%= f.text_field :url, class: "form-control", placeholder: "Paste your Instagram link" %>
 
-        <%= f.radio_button( :category, 'slam' , class:"with-gap" )%>
-        <label for="video_category_slam">Worst slam</label>
+    <label for="category center-align">Choose the category of your clip</label><br>
 
-      </div>
+    <%= f.radio_button(:category, "trick", :checked => true, class:"with-gap") %>
+    <label for="video_category_trick">Best trick</label>
 
-      <%= f.submit "Submit", class:"btn btn-primary" %>
+    <%= f.radio_button( :category, 'line' , class:"with-gap" )%>
+    <label for="video_category_line">Firing Line</label>
 
-  </form>
+    <%= f.radio_button( :category, 'slam' , class:"with-gap" )%>
+    <label for="video_category_slam">Worst slam</label>
+    <br>
+
+
+
+    <label for="spot_id">Choose the right spot</label>
+    <select class="browser-default" id="spots" name="spot_id">
+      <% @spots.each do |spot| %>
+        <option value="<%= spot.id %>"><%= spot.name %></option>
+      <% end %>
+    </select>
+
+    <%= f.submit "Submit", class:"center-align btn btn-primary" %>
+
 <% end %>

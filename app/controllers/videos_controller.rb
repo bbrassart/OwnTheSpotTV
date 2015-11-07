@@ -13,6 +13,7 @@ class VideosController < ApplicationController
     @video.format_url
     @video.skater_id = current_user.id
     @video.spot_id = @spot.id
+    binding.pry
     if @video.save
       WelcomeMailer.user_added_video(@video).deliver_now
       redirect_to skater_path(current_user), flash: {success: "Great! Your clip is now online!"}
