@@ -20,32 +20,15 @@
           </div>
         </div>
       </div>
-
-      <% @highest_rated_videos.each do |pair|
-        skater = pair[0]
-        video = pair[1] %>
+      <% @highest_rated_videos.each do |skater_and_video| %>
         <div class="col m6 s12">
-          <%= render partial: "helpers/video_media", locals: {video: video} %>
-          <% if current_user %>
-            <a class="hoverable" href="<%=skater_path(video.skater.id)%>">
-          <%end%>
-          <div class="chip chip__highest--rated">
-            <img  src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
-            <%= skater.username %>
+          <div class="aspect-ratio">
+            <iframe scrolling="no" src=<%= skater_and_video[1].url%>></iframe>
           </div>
-          <% if current_user %>
-            </a>
-          <%end%>
-          <div class="chip chip__highest--rated">
-            <% if video.score == 1 %>
-              <%= video.score %> like!
-            <% else %>
-              <%= video.score %> likes!
-            <%end %>
-            <i class="small material-icons">insert_chart</i>
-          </div>
+          <%= render partial: "helpers/buttons_form", locals: {:video => skater_and_video[1]} %>
         </div>
-      <% end %>
+      <%end%>
+
     </div>
 
     <%unless current_user %>

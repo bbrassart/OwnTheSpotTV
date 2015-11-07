@@ -3,7 +3,7 @@
   <% skaters.each do |results|
     skater = results[0]
     likes = results[1]
-    link = current_user ? "skaters/#{skater.id}" : 'skaters/new'
+    link = current_user ? skater_path(skater) : new_skater_path
   %>
 
     <a href=<%= link %> class="hoverable collection-item">

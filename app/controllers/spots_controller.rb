@@ -29,26 +29,26 @@ class SpotsController < ApplicationController
       if params[:category] == 'trick'
         @trick_videos = videos.category_trick('trick')
         if @trick_videos.present?
-          @best_trick_videos = @trick_videos.top_videos(2)
+          @best_trick_videos = @trick_videos.top_videos(1)
           @best_trick_skater = Skater.find_best(@best_trick_videos)
           @latest_trick_videos = @trick_videos.latest_videos
         end
       elsif params[:category] == 'line'
         @line_videos = videos.category_trick('line')
         if @line_videos.present?
-          @best_line_videos = @line_videos.top_videos(2)
+          @best_line_videos = @line_videos.top_videos(1)
           @best_line_skater = Skater.find_best(@best_line_videos)
           @latest_line_videos = @line_videos.latest_videos
         end
       elsif params[:category] == 'slam'
         @slam_videos = videos.category_trick('slam')
         if @slam_videos.present?
-          @worst_slam_videos = @slam_videos.top_videos(2)
+          @worst_slam_videos = @slam_videos.top_videos(1)
           @worst_slam_skater = Skater.find_best(@worst_slam_videos)
           @latest_slam_videos = @slam_videos.latest_videos
         end
       else
-        @best_overall_videos = videos.top_videos(2)
+        @best_overall_videos = videos.top_videos(1)
         @overall_best_skater = Skater.find_best(@best_overall_videos)
         @latest_overall_videos = videos.latest_videos
       end

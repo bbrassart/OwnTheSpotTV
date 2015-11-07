@@ -50,30 +50,29 @@ categories = [
   'slam'
 ]
 
+
 videos = [
-  Video.create!(url: 'https://www.youtube.com/watch?v=aT_yFSUbbVw', skater_id: skaters[0].id, spot_id: spots[0].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=XR3vgu_WeZM', skater_id: skaters[1].id, spot_id: spots[2].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=1rvZVp5S9Jg', skater_id: skaters[1].id, spot_id: spots[0].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=j3EwXPTSlZ8', skater_id: skaters[1].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=mqGEOK-pnXQ', skater_id: skaters[1].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=GO-MRMgQS8s', skater_id: skaters[1].id, spot_id: spots[3].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=MSR71TaFges', skater_id: skaters[1].id, spot_id: spots[8].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=Marv3fkn3LM', skater_id: skaters[4].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=mY8PBrjNdwk', skater_id: skaters[4].id, spot_id: spots[5].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=WoB1dZAAaNE', skater_id: skaters[4].id, spot_id: spots[5].id, category: categories[2], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=LNIH4jraLk0', skater_id: skaters[3].id, spot_id: spots[3].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://www.youtube.com/watch?v=w68bAwu9RDs', skater_id: skaters[3].id, spot_id: spots[3].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'http://youtu.be/eqI9yo19dps', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'http://youtu.be/_ut8DOv3XeI', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'http://youtu.be/GmhSdznosGk', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'http://youtu.be/Q9Ndo2VZmYA', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'http://youtu.be/1Ph9RzcD3bg', skater_id: skaters[5].id, spot_id: spots[3].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'http://youtu.be/eavp9d8xWmk', skater_id: skaters[5].id, spot_id: spots[3].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'http://youtu.be/NGJh5Neubro', skater_id: skaters[5].id, spot_id: spots[3].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'http://youtu.be/lKVXwLlCL-c', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[2], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
-  Video.create!(url: 'https://youtu.be/On_coapihnQ', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2))
-
-
+  Video.create!(url: 'https://instagram.com/p/9uDwxYizWh/', skater_id: skaters[0].id, spot_id: spots[0].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uFeebizZr/', skater_id: skaters[1].id, spot_id: spots[2].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uEEsOCzXK/', skater_id: skaters[1].id, spot_id: spots[0].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uD8-vCzW6/', skater_id: skaters[1].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uEBgcCzXH/', skater_id: skaters[1].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uD2BrizWr/', skater_id: skaters[1].id, spot_id: spots[3].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uDzNPizWl/', skater_id: skaters[1].id, spot_id: spots[8].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uFJGKCzZE/', skater_id: skaters[4].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uFBTOizY8/', skater_id: skaters[4].id, spot_id: spots[5].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uDfjwizV-/', skater_id: skaters[4].id, spot_id: spots[5].id, category: categories[2], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uEOmjizXb/', skater_id: skaters[3].id, spot_id: spots[3].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uEVBcCzXl/', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uEi8XizX_/', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uEPuGCzXd/', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uEsEECzYQ/', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uErXZCzYO/', skater_id: skaters[5].id, spot_id: spots[3].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uEvRpizYX/', skater_id: skaters[5].id, spot_id: spots[3].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uE59jCzYq/', skater_id: skaters[5].id, spot_id: spots[3].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uE62QCzYr/', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[2], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uFRDZCzZU/', skater_id: skaters[5].id, spot_id: spots[5].id, category: categories[0], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2)),
+  Video.create!(url: 'https://instagram.com/p/9uEPN8CzXc/', skater_id: skaters[3].id, spot_id: spots[3].id, category: categories[1], description: Faker::Lorem.sentence(5), name:  Faker::Lorem.sentence(2))
 ]
 
 votes = [

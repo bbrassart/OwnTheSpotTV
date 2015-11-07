@@ -11,9 +11,11 @@
       </div>
     </div>
   </div>
-  <div class="col s12">
+  <div class="col s12 m6 offset-m3">
     <div class="section">
-      <%= render partial: "helpers/video_media", locals: {video: videos[0]} %>
+      <div class="aspect-ratio">
+        <iframe scrolling="no" src=<%= videos[0].url%>></iframe>
+      </div>
       <%= render partial: "helpers/buttons_form", locals: {:video => videos[0]} %>
     </div>
   </div>
@@ -31,10 +33,12 @@
     </div>
   </div>
   <% videos.each do |video| %>
-    <div class="col l6 m12 s12">
+    <div class="col s12 m6">
       <div class="section">
-        <%= render partial: "helpers/video_media", locals: {video: video} %>
-        <%= render partial: "helpers/buttons_form", locals: {:video => video} %>
+        <div class="aspect-ratio">
+          <iframe scrolling="no" src=<%= video.url%>></iframe>
+        </div>
+        <%= render partial: "helpers/buttons_form", locals: {:video=> video} %>
       </div>
     </div>
   <% end %>
