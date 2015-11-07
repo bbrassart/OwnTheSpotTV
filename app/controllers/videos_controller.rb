@@ -10,11 +10,10 @@ class VideosController < ApplicationController
     @spot = Spot.find(params[:spot_id])
     @spots = Spot.all
     @video = Video.new video_params
-    @video.format_url
     @video.skater_id = current_user.id
     @video.spot_id = @spot.id
-    binding.pry
     if @video.save
+      @video.format_url
       WelcomeMailer.user_added_video(@video).deliver_now
       redirect_to skater_path(current_user), flash: {success: "Great! Your clip is now online!"}
     else
