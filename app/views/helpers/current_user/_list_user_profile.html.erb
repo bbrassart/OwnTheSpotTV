@@ -1,7 +1,7 @@
 <div class="card small">
   <div class="card-image">
     <a href="<%= skater_path(skater) %>">
-      <img class="rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+      <img class="rounded--avatars  skater__profile--img" src="<%= skater.logo.url(:medium)%>" alt="Skater's avatar">
     </a>
     <span class="card-title">
       <%= skater.username %>
@@ -18,7 +18,7 @@
     <%end%>
   </div>
 
-  <div class="card-action  spot__show--collapsible hoverable">
+  <div class="card-action center-align spot__show--collapsible hoverable">
     <a class="center-align blue-text" href="<%= spots_path%>">Check out the skate spots!</a>
   </div>
 </div>
