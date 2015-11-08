@@ -1,8 +1,7 @@
 class Video < ActiveRecord::Base
   validates :skater_id, presence: true
   validates :spot_id, presence: true
-  validates :name, presence: true
-  validates :url, presence: true, uniqueness: true, length: { minimum: 30, maximum: 90}, format: /instagram.com/
+  validates :url, presence: true, uniqueness: true, length: { maximum: 90}
   validates :spot_id, presence: true
   validates :category, presence: true, inclusion: { in: %w( trick line slam ) }
   belongs_to :spot
@@ -18,7 +17,12 @@ class Video < ActiveRecord::Base
       index = url.index("?")
       url.slice!(index...url.length)
     end
-    url.concat("embed")
+    if url.include?("https://instagram.com/p/")
+      url.slice!("https://instagram.com/p/")
+    elsif url.include?("http://instagram.com/p/")
+      url.slice!("http://instagram.com/p/")
+    end
+    url
   end
 
   def self.category_trick(category)

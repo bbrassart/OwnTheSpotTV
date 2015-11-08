@@ -24,9 +24,7 @@
         <% @highest_rated_videos.each_with_index do |skater_and_video, index| %>
           <% if index % 2 == 0 %>
             <div class="section">
-              <div class="aspect-ratio">
-                <iframe scrolling="no" src=<%= skater_and_video[1].url%>></iframe>
-              </div>
+              <%= skater_and_video[1].html.html_safe%>
               <%= render partial: "helpers/buttons_form", locals: {:video => skater_and_video[1]} %>
             </div>
           <% end %>
@@ -36,9 +34,7 @@
         <% @highest_rated_videos.each_with_index do |skater_and_video, index| %>
           <% if index % 2 != 0 %>
             <div class="section">
-              <div class="aspect-ratio">
-                <iframe scrolling="no" src=<%= skater_and_video[1].url%>></iframe>
-              </div>
+              <%= skater_and_video[1].html.html_safe%>
               <%= render partial: "helpers/buttons_form", locals: {:video => skater_and_video[1]} %>
             </div>
           <% end %>

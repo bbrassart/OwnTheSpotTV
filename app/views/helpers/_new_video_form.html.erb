@@ -1,10 +1,4 @@
 <%= form_for @video, locals: {spots: @spots}, class: "center-align"  do |f| %>
-    <label for="title">Choose a title</label>
-    <%= f.text_field :name, placeholder: "Choose a title" %>
-
-
-    <label for="description">Describe your clip</label>
-    <%= f.text_field :description, placeholder: "Description" %>
 
     <label for="url">Video URL</label>
     <p class="center-align small-font">

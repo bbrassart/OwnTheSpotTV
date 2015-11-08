@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731172758) do
+ActiveRecord::Schema.define(version: 20151108183522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,9 +67,18 @@ ActiveRecord::Schema.define(version: 20150731172758) do
     t.string   "name"
     t.string   "url"
     t.string   "category"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "html"
+    t.string   "media_id"
+    t.string   "author_name"
+    t.string   "thumbnail_url"
+    t.string   "thumbnail_width"
+    t.string   "thumbnail_height"
+    t.string   "width"
+    t.string   "author_url"
+    t.string   "author_id"
+    t.string   "media_type"
   end
 
   create_table "votes", force: :cascade do |t|

@@ -15,7 +15,7 @@
       <% if current_user.videos.any? %>
 
         <% if current_user.videos.length == 1 %>
-          <div class="col s12">
+          <div class="col s12 m10 offset-m1">
             <div class="divider"></div>
             <div class="section center-align">
               <%= render "helpers/video_media", video: current_user.videos[0] %>
@@ -77,7 +77,7 @@
         </div>
       <% if @skater.videos.any? %>
         <% if @skater.videos.length == 1 %>
-          <div class="col s12">
+          <div class="col s12 m10 offset-1">
             <div class="divider"></div>
             <div class="section">
               <%= render partial: "helpers/video_media", locals: {video: @skater.videos[0]} %>

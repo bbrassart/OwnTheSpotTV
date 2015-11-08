@@ -20,6 +20,7 @@ gem 'figaro'
 gem 'mail_form'
 gem 'simple_form'
 gem 'faraday'
+gem 'faraday_middleware'
 gem 'newrelic_rpm'
 
 
