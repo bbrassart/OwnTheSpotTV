@@ -13,12 +13,12 @@ class VotesController < ApplicationController
     @vote.video_id = params[:video_id]
     video = @vote.video
     if @vote.voter_id == Video.find(params[:video_id].skater_id)
-      redirect_to spot_path(video.spot), flash: {danger: "Your vote couldn't be processed" }
+      redirect_to spot_path(video.spot), flash: {danger: "Oops... Your vote couldn't be saved" }
     elsif @vote.valid?
       @vote.save
       redirect_to spot_path(video.spot), flash: {success: "Your vote has been registered!"}
     else
-      redirect_to spot_path(video.spot), flash: {danger: "You cannot vote twice for the same video" }
+      redirect_to spot_path(video.spot), flash: {danger: "Oops... Your vote couldn't be saved" }
     end
   end
 
@@ -28,11 +28,13 @@ class VotesController < ApplicationController
     @vote.result = -1
     @vote.video_id = params[:video_id]
     video = @vote.video
-    if @vote.valid?
+    if @vote.voter_id == Video.find(params[:video_id].skater_id)
+      redirect_to spot_path(video.spot), flash: {danger: "Oops... Your vote couldn't be saved" }
+    elsif @vote.valid?
       @vote.save
       redirect_to spot_path(video.spot), flash: {success: "Your vote has been registered!"}
     else
-      redirect_to spot_path(video.spot), flash: {danger: "Oops, try to create it again please!" }
+      redirect_to spot_path(video.spot), flash: {danger: "Oops... Your vote couldn't be saved" }
     end
   end
 end
