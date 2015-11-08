@@ -12,7 +12,9 @@ class VotesController < ApplicationController
     @vote.result = 1
     @vote.video_id = params[:video_id]
     video = @vote.video
-    if @vote.valid? && @vote.voter_id != Video.find(params[:video_id].skater_id)
+    if @vote.voter_id == Video.find(params[:video_id].skater_id)
+      redirect_to spot_path(video.spot), flash: {danger: "Your vote couldn't be processed" }
+    elsif @vote.valid?
       @vote.save
       redirect_to spot_path(video.spot), flash: {success: "Your vote has been registered!"}
     else
