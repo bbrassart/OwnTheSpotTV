@@ -50,8 +50,6 @@
               <li class="collection-item avatar">
               <% if current_user %>
                 <a href="<%= skater_path(skater.id)%>" class="hoverable">
-              <% else %>
-                <a href="<%= new_skater_path%>" class="hoverable">
               <%end%>
               <img src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar" class="circle">
               <% if current_user %>
