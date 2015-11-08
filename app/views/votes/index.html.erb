@@ -20,14 +20,30 @@
           </div>
         </div>
       </div>
-      <% @highest_rated_videos.each do |skater_and_video| %>
-        <div class="col m6 s12">
-          <div class="aspect-ratio">
-            <iframe scrolling="no" src=<%= skater_and_video[1].url%>></iframe>
-          </div>
-          <%= render partial: "helpers/buttons_form", locals: {:video => skater_and_video[1]} %>
-        </div>
-      <%end%>
+      <div class="col m6 s12">
+        <% @highest_rated_videos.each_with_index do |skater_and_video, index| %>
+          <% if index % 2 == 0 %>
+            <div class="section">
+              <div class="aspect-ratio">
+                <iframe scrolling="no" src=<%= skater_and_video[1].url%>></iframe>
+              </div>
+              <%= render partial: "helpers/buttons_form", locals: {:video => skater_and_video[1]} %>
+            </div>
+          <% end %>
+        <%end%>
+      </div>
+      <div class="col m6 s12">
+        <% @highest_rated_videos.each_with_index do |skater_and_video, index| %>
+          <% if index % 2 != 0 %>
+            <div class="section">
+              <div class="aspect-ratio">
+                <iframe scrolling="no" src=<%= skater_and_video[1].url%>></iframe>
+              </div>
+              <%= render partial: "helpers/buttons_form", locals: {:video => skater_and_video[1]} %>
+            </div>
+          <% end %>
+        <%end%>
+      </div>
 
     </div>
 

@@ -32,14 +32,28 @@
       </div>
     </div>
   </div>
-  <% videos.each do |video| %>
-    <div class="col s12 m6">
-      <div class="section">
-        <div class="aspect-ratio">
-          <iframe scrolling="no" src=<%= video.url%>></iframe>
+  <div class="col s12 m6">
+    <% videos.each_with_index do |video, index|
+      if index % 2 == 0 %>
+        <div class="section">
+          <div class="aspect-ratio">
+            <iframe scrolling="no" src=<%= video.url%>></iframe>
+          </div>
+          <%= render partial: "helpers/buttons_form", locals: {:video=> video} %>
         </div>
-        <%= render partial: "helpers/buttons_form", locals: {:video=> video} %>
-      </div>
-    </div>
-  <% end %>
+      <%end%>
+    <%end%>
+  </div>
+  <div class="col s12 m6">
+    <% videos.each_with_index do |video, index|
+      if index % 2 != 0 %>
+        <div class="section">
+          <div class="aspect-ratio">
+            <iframe scrolling="no" src=<%= video.url%>></iframe>
+          </div>
+          <%= render partial: "helpers/buttons_form", locals: {:video=> video} %>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
 <% end %>
