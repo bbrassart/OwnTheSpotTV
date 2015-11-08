@@ -48,10 +48,12 @@ class VideosController < ApplicationController
   end
 
   def edit
+    @spots = Spot.all
     @video = Video.find(params[:id])
   end
 
   def update
+
     @video = Video.find(params[:id])
     if @video.update_attributes(video_params) && current_user
       redirect_to skater_path(current_user), flash: {success: 'Great!! Your video has been edited'}

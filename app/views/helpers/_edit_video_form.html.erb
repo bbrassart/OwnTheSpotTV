@@ -1,4 +1,4 @@
-<%= form_for @video  do |f| %>
+<%= form_for @video, locals: {spots: @spots}, class: "center-align"  do |f| %>
   <%= f.radio_button(:category, "trick", :checked => true, class:"with-gap") %>
   <label for="video_category_trick">Best trick</label>
 
@@ -7,6 +7,13 @@
 
   <%= f.radio_button( :category, 'slam' , class:"with-gap" )%>
   <label for="video_category_slam">Worst slam</label><br>
+
+  <label for="spot_id">Choose the right spot</label>
+  <select class="browser-default" id="spots" name="spot_id">
+    <% @spots.each do |spot| %>
+      <option value="<%= spot.id %>"><%= spot.name %></option>
+    <% end %>
+  </select>
 
 
 
