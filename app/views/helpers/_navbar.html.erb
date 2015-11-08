@@ -10,7 +10,6 @@
 
 <% if current_user %>
   <ul id="dropdown2" class="dropdown-content">
-    <li><%= link_to "Submit your clip", new_video_path, class: "navbar__dropdown--font hoverable" %></li>
     <li><%= link_to "View your profile", skater_path(current_user), class: "navbar__dropdown--font hoverable" %></li>
     <li><%= link_to "Edit your profile", edit_skater_path(current_user), class: "navbar__dropdown--font hoverable" %></li>
     <li><%= link_to "Log out", logout_path, method:"delete", class: "navbar__dropdown--font hoverable" %></li>
@@ -41,7 +40,8 @@
         </li>
         <li><a href="http://facebook.com/ownthespotofficial" target=_blank><img class="hoverable navbar--title" src="http://static.viewbook.com/images/social_icons/facebook_32.png"></a></li>
         <% if current_user %>
-          <li><a disabled="true"><b>Signed in as <%= current_user.username %></b> <img class=" navbar--title rounded--avatars" style="width:30px; height:30px" src="<%= current_user.logo.url(:thumb)%>" alt="Skater's avatar"></a></li>
+          <li><%= link_to "Submit your clip", new_video_path, class: "navbar__dropdown--font hoverable" %></li>
+          <li><a disabled="true"><img class=" navbar--title rounded--avatars" style="width:30px; height:30px" src="<%= current_user.logo.url(:thumb)%>" alt="Skater's avatar"></a></li>
               <li><a class="hoverable dropdown-button" href="#!" data-activates="dropdown2">
                 Account<i class="material-icons right">arrow_drop_down</i></a>
               </li>
