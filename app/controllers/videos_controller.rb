@@ -39,6 +39,7 @@ class VideosController < ApplicationController
     @video.spot_id = @spot.id
     if @video.valid?
       process_api_call(@video)
+      binding.pry
       @video.save!
       binding.pry
       WelcomeMailer.user_added_video(@video).deliver_now
