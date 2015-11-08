@@ -51,6 +51,7 @@ $(document).on('page:change', function() {
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
   var listenToMap = new mapObject(mapboxAccessToken, mapboxId);
+  instgrm.Embeds.process()
 
   function fadeAlert(){
     $('.alert-temp').removeClass('in');

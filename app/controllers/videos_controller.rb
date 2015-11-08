@@ -13,7 +13,7 @@ class VideosController < ApplicationController
       faraday.response :json            # log requests to STDOUT
       faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
     end
-    response = conn.get, {hidecaption: 'true'}
+    response = conn.get, {hidecaption: 'true', omnitscript: 'true'}
     set_video_attributes(video, response[0].body)
   end
 
