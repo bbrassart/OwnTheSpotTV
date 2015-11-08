@@ -46,7 +46,7 @@
   <% videos.each do |video| %>
     <div class="col m6 s12">
       <div class="section">
-        <%= video.html.html_safe%>>
+        <%= video.html.html_safe%>
         <%= render partial: "helpers/buttons_form", locals: {:video => video} %>
       </div>
     </div>
