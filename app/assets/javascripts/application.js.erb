@@ -22,6 +22,7 @@
 
 $(document).on('page:change', function() {
   $('select').material_select();
+  instgrm.Embeds.process();
 
   if ($('.danger').length) {
     var content = $('.danger').text();
