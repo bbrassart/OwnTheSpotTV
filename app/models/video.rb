@@ -14,7 +14,7 @@ class Video < ActiveRecord::Base
   end
 
   def format_url
-    if url.include?("?taken-by=")
+    if url.include?("?taken-by=") || url.include?("?tagged-by")
       index = url.index("?")
       url.slice!(index...url.length)
     end
