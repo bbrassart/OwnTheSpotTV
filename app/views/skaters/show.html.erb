@@ -15,7 +15,7 @@
       <% if current_user.videos.any? %>
 
         <% if current_user.videos.length == 1 %>
-          <div class="col s12 m10 offset-m1">
+          <div class="col s12 m8 offset-m2">
             <div class="divider"></div>
             <div class="section center-align">
               <%= render "helpers/video_media", video: current_user.videos[0] %>
