@@ -21,14 +21,19 @@ class VideosController < ApplicationController
     if @video.valid?
       @video.save
       process_api_call(@video)
-      if @video.html.include?("A photo posted by") || @video.html.include?("Une photo publiée par")
-        redirect_to new_video_path, flash: {danger: "Skate clips only... Sorry!"}
-      else
-        WelcomeMailer.user_added_video(@video).deliver_now
-        redirect_to skater_path(current_user), flash: {success: "Great! Your clip is now online!"}
-      end
+      check_for_video(@video)
     else
       redirect_to new_video_path, flash: {danger: "Something went wrong... Sorry!"}
+    end
+  end
+
+  def check_for_video(video)
+    if video.html.include?("A photo posted by") || video.html.include?("Une photo publiée par")
+      video.destroy
+      redirect_to new_video_path, flash: {danger: "Skate clips only... Sorry!"}
+    else
+      WelcomeMailer.user_added_video(video).deliver_now
+      redirect_to skater_path(current_user), flash: {success: "Great! Your clip is now online!"}
     end
   end
 
