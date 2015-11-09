@@ -28,7 +28,7 @@ class VideosController < ApplicationController
   end
 
   def check_for_video(video)
-    if video.html.include?("A photo posted by") || video.html.include?("Une photo publiée par")
+    if video.html.include?(">A photo posted by") || video.html.include?(">Une photo publiée par")
       video.destroy
       redirect_to new_video_path, flash: {danger: "Skate clips only... Sorry!"}
     else
