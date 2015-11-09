@@ -10,7 +10,6 @@ class VideosController < ApplicationController
     unique_id = "http://instagr.am/p/".concat(video.format_url)
     response = video.ajax_call(unique_id)
     video.set_video_attributes(response[0].body)
-  
   end
 
   def create
@@ -22,10 +21,14 @@ class VideosController < ApplicationController
     if @video.valid?
       @video.save
       process_api_call(@video)
-      WelcomeMailer.user_added_video(@video).deliver_now
-      redirect_to skater_path(current_user), flash: {success: "Great! Your clip is now online!"}
+      if @video.html.include?("A photo posted by") || @video.html.include?("Une photo publiée par")
+        redirect_to new_video_path, flash: {danger: "Skate clips only... Sorry!"}
+      else
+        WelcomeMailer.user_added_video(@video).deliver_now
+        redirect_to skater_path(current_user), flash: {success: "Great! Your clip is now online!"}
+      end
     else
-      redirect_to new_video_path, flash: {danger: "Something went wrong... Make sure all the fields were filled"}
+      redirect_to new_video_path, flash: {danger: "Something went wrong... Sorry!"}
     end
   end
 
