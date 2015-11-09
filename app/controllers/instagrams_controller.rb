@@ -1,6 +1,6 @@
 require 'instagram'
 class InstagramsController < ApplicationController
-  CALLBACK_URL = "http://ownthespot.tv/oauth/callback"
+  CALLBACK_URL = "http://www.ownthespot.tv/oauth/callback"
 
   def redirection
     redirect_to Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
