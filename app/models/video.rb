@@ -36,19 +36,20 @@ class Video < ActiveRecord::Base
     media_type = metadata["type"]
   end
 
-  def format_url
-    if url.include?("?taken-by=") || url.include?("?tagged-by")
-      index = url.index("?")
-      unique_id = url.slice(index...url.length)
+  def format_url(url)
+    new_url = url
+    if new_url.include?("?")
+      index = new_url.index("?")
+      new_url.slice!(index...new_url.length)
     else
-      unique_id = url
+      new_url
     end
-    if unique_id.include?("https://instagram.com/p/")
-      unique_id.slice!("https://instagram.com/p/")
-    elsif unique_id.include?("http://instagram.com/p/")
-      unique_id.slice!("http://instagram.com/p/")
+    if new_url.include?("https://instagram.com/p/")
+      new_url.slice!("https://instagram.com/p/")
+    elsif new_url.include?("http://instagram.com/p/")
+      new_url.slice!("http://instagram.com/p/")
     end
-    unique_id
+    new_url
   end
 
   def self.category_trick(category)
