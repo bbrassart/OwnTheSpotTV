@@ -23,18 +23,17 @@ class Video < ActiveRecord::Base
   end
 
   def set_video_attributes(video, metadata)
-    video.html = metadata["html"]
-    video.media_id = metadata["media_id"]
-    video.author_name = metadata["author_name"]
-    video.thumbnail_url = metadata["thumbnail_url"]
-    video.thumbnail_width = metadata["thumbnail_width"]
-    video.thumbnail_height = metadata["thumbnail_height"]
-    video.title = metadata["title"]
-    video.width = metadata["width"]
-    video.author_url = metadata["author_url"]
-    video.author_id = metadata["author_id"]
-    video.media_type = metadata["type"]
-    video.save
+    html = metadata["html"]
+    media_id = metadata["media_id"]
+    author_name = metadata["author_name"]
+    thumbnail_url = metadata["thumbnail_url"]
+    thumbnail_width = metadata["thumbnail_width"]
+    thumbnail_height = metadata["thumbnail_height"]
+    title = metadata["title"]
+    width = metadata["width"]
+    author_url = metadata["author_url"]
+    author_id = metadata["author_id"]
+    media_type = metadata["type"]
   end
 
   def format_url
