@@ -8,27 +8,8 @@ class VideosController < ApplicationController
 
   def process_api_call(video)
     unique_id = "http://instagr.am/p/".concat(video.format_url)
-    api_url = "http://api.instagram.com/oembed/?url=".concat(unique_id)
-    conn = Faraday.new(:url => api_url) do |faraday|
-      faraday.response :json            # log requests to STDOUT
-      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-    end
-    response = conn.get, {hidecaption: 'true'}
+    response = video.ajax_call(unique_id)
     set_video_attributes(video, response[0].body)
-  end
-
-  def set_video_attributes(video, metadata)
-    video.html = metadata["html"]
-    video.media_id = metadata["media_id"]
-    video.author_name = metadata["author_name"]
-    video.thumbnail_url = metadata["thumbnail_url"]
-    video.thumbnail_width = metadata["thumbnail_width"]
-    video.thumbnail_height = metadata["thumbnail_height"]
-    video.title = metadata["title"]
-    video.width = metadata["width"]
-    video.author_url = metadata["author_url"]
-    video.author_id = metadata["author_id"]
-    video.media_type = metadata["type"]
   end
 
   def create

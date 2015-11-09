@@ -12,17 +12,41 @@ class Video < ActiveRecord::Base
   	votes.inject(0) { |total, vote| total + vote.result }
   end
 
+  def ajax_call(unique_id)
+    api_url = "http://api.instagram.com/oembed/?url=".concat(unique_id)
+    conn = Faraday.new(:url => api_url) do |faraday|
+      faraday.response :json            # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+    end
+    conn.get, {hidecaption: 'true'}
+  end
+
+  def set_video_attributes(video, metadata)
+    video.html = metadata["html"]
+    video.media_id = metadata["media_id"]
+    video.author_name = metadata["author_name"]
+    video.thumbnail_url = metadata["thumbnail_url"]
+    video.thumbnail_width = metadata["thumbnail_width"]
+    video.thumbnail_height = metadata["thumbnail_height"]
+    video.title = metadata["title"]
+    video.width = metadata["width"]
+    video.author_url = metadata["author_url"]
+    video.author_id = metadata["author_id"]
+    video.media_type = metadata["type"]
+    video.save
+  end
+
   def format_url
     if url.include?("?taken-by=") || url.include?("?tagged-by")
       index = url.index("?")
-      url.slice!(index...url.length)
+      unique_id = url.slice(index...url.length)
     end
-    if url.include?("https://instagram.com/p/")
-      url.slice!("https://instagram.com/p/")
-    elsif url.include?("http://instagram.com/p/")
-      url.slice!("http://instagram.com/p/")
+    if unique_id.include?("https://instagram.com/p/")
+      unique_id.slice!("https://instagram.com/p/")
+    elsif unique_id.include?("http://instagram.com/p/")
+      unique_id.slice!("http://instagram.com/p/")
     end
-    url
+    unique_id
   end
 
   def self.category_trick(category)
