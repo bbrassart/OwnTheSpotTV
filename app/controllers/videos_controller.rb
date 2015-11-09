@@ -7,7 +7,8 @@ class VideosController < ApplicationController
   end
 
   def process_api_call(video)
-    unique_id = "http://instagr.am/p/".concat(video.format_url)
+    id = video.format_url
+    unique_id = "http://instagr.am/p/".concat(id)
     response = video.ajax_call(unique_id)
     set_video_attributes(video, response[0].body)
   end
