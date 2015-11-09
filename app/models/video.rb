@@ -36,7 +36,7 @@ class Video < ActiveRecord::Base
     media_type = metadata["type"]
   end
 
-  def format_url(url)
+  def format_url
     new_url = url
     if new_url.include?("?")
       index = new_url.index("?")
