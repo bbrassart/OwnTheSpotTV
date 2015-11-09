@@ -18,7 +18,8 @@ class Video < ActiveRecord::Base
       faraday.response :json            # log requests to STDOUT
       faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
     end
-    conn.get, {hidecaption: 'true'}
+    response = conn.get, {hidecaption: 'true'}
+    response
   end
 
   def set_video_attributes(video, metadata)
