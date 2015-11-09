@@ -10,7 +10,6 @@ class VideosController < ApplicationController
     unique_id = "http://instagr.am/p/".concat(video.format_url)
     response = video.ajax_call(unique_id)
     video.set_video_attributes(response[0].body)
-    binding.pry
   end
 
   def create
