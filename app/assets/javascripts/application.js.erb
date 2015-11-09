@@ -24,6 +24,7 @@ $(document).on('page:change', function() {
   $('select').material_select();
 
 
+
   if ($('.danger').length) {
     var content = $('.danger').text();
     Materialize.toast(content, 3000, 'rounded danger--notif');
@@ -52,6 +53,7 @@ $(document).on('page:change', function() {
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
   var listenToMap = new mapObject(mapboxAccessToken, mapboxId);
 
+
   function fadeAlert(){
     $('.alert-temp').removeClass('in');
   }
@@ -61,5 +63,6 @@ $(document).on('page:change', function() {
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
 });
+
 
 $('.dropdown-toggle').dropdown();

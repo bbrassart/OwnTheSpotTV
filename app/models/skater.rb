@@ -18,7 +18,7 @@ class Skater < ActiveRecord::Base
   end
 
   def self.top_5_number_of_likes
-    ordered_videos = Video.all.top_videos(5)
+    ordered_videos = Video.all.top_videos(20)
     results = ordered_videos.each_with_object({}) do |video, hash|
       if hash[video.skater.id]
         hash[video.skater.id] += video.score
