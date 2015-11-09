@@ -41,6 +41,8 @@ class Video < ActiveRecord::Base
     if url.include?("?taken-by=") || url.include?("?tagged-by")
       index = url.index("?")
       unique_id = url.slice(index...url.length)
+    else
+      unique_id = url
     end
     if unique_id.include?("https://instagram.com/p/")
       unique_id.slice!("https://instagram.com/p/")
