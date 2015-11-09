@@ -22,6 +22,15 @@ class Video < ActiveRecord::Base
     response
   end
 
+  def check_authenticity(api_url)
+    conn = Faraday.new(:url => api_url) do |faraday|
+      faraday.response :json            # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+    end
+    response = conn.get, {hidecaption: 'true'}
+    response
+  end
+
   def set_video_attributes(metadata)
     self.update_columns(
       html: metadata["html"],
@@ -50,6 +59,10 @@ class Video < ActiveRecord::Base
       new_url.slice!("https://instagram.com/p/")
     elsif new_url.include?("http://instagram.com/p/")
       new_url.slice!("http://instagram.com/p/")
+    elsif new_url.include?("https://www.instagram.com/p/")
+      new_url.slice!("https://www.instagram.com/p/")
+    elsif new_url.include?("http://www.instagram.com/p/")
+      new_url.slice!("http://www.instagram.com/p/")
     end
     new_url
   end

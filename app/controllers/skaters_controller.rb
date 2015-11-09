@@ -1,4 +1,5 @@
 class SkatersController < ApplicationController
+  CALLBACK_URL = "http://localhost:3000/oauth/callback"
 
   def index
     @skaters = Skater.all
@@ -8,15 +9,16 @@ class SkatersController < ApplicationController
 
   def new
     @skater = Skater.new
+
   end
 
   def create
+
     @skater = Skater.new(skater_params)
     if @skater.save
       WelcomeMailer.welcome_email(@skater).deliver_now
       session[:user_id] = @skater.id
-      redirect_to spots_path, flash: {success: "Hi #{current_user.username}! Welcome to OwnTheSpot.TV!" }
-
+      redirect_to instagram_auth_path, flash: {success: "Hi #{current_user.username}! Welcome to OwnTheSpot.TV!" }
     else
       redirect_to root_path, flash: {danger: "Something went wrong... Make sure all the fields were filled" }
     end

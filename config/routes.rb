@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'site#home'
+  get '/oauth/connect' => 'instagrams#redirection', as: 'instagram_auth'
+  get '/oauth/callback' => 'instagrams#callback'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'

@@ -13,6 +13,18 @@ class Skater < ActiveRecord::Base
     includes(:videos).sort { |x,y| x.videos.length <=> y.videos.length }.reverse.slice(0..2)
   end
 
+  def get_user_info
+    api_url = "https://api.instagram.com/v1/users/self/?access_token=#{access_token}"
+    conn = Faraday.new(:url => api_url) do |faraday|
+      faraday.response :json            # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+    end
+    response = conn.get, {hidecaption: 'true'}
+    self.update_columns(
+      insta_id: response[0].body["data"]["id"]
+    )
+  end
+
   def self.find_best(videos)
     includes(:videos).find_by_id(videos.slice(0).skater_id)
   end
