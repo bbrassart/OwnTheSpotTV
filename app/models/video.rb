@@ -23,7 +23,7 @@ class Video < ActiveRecord::Base
   end
 
   def set_video_attributes(metadata)
-    self.update_attributes(
+    self.update_columns(
       html: metadata["html"],
       media_id: metadata["media_id"],
       author_name: metadata["author_name"],
