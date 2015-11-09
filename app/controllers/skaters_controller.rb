@@ -1,5 +1,4 @@
 class SkatersController < ApplicationController
-  CALLBACK_URL = "http://localhost:3000/oauth/callback"
 
   def index
     @skaters = Skater.all
