@@ -30,7 +30,7 @@ module Helpers
     Video.destroy_all
     Skater.all.each do |skater|
       (skater.username.to_i).times do |index|
-        FactoryGirl.create(:video, spot_id: index, url: "https://www.youtube.com/watch?v=ok1V4C4#{skater.username}#{index.to_s}", skater_id: skater.id )
+        FactoryGirl.create(:video, spot_id: index, url: "https://instagram.com/p/91yPIDC#{skater.username}#{index.to_s}/?taken-by=seedthespot", skater_id: skater.id )
       end
     end
   end
@@ -55,7 +55,7 @@ module Helpers
     Video.destroy_all
     Skater.all.each do |skater|
       (skater.username.to_i).times do |index|
-        FactoryGirl.create(:video, url: "https://www.youtube.com/watch?v=ok1V4C4#{skater.username}#{index.to_s}", skater_id: skater.id )
+        FactoryGirl.create(:video, url: "https://instagram.com/p/91yPIDC#{skater.username}#{index.to_s}/?taken-by=seedthespot", skater_id: skater.id )
       end
     end
   end

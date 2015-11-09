@@ -26,25 +26,20 @@ RSpec.describe Video, type: :model do
         expect(video).not_to be_valid
       end
 
-      it "will NOT create the video if URL does not include Youtu" do
-        video = FactoryGirl.build(:video, url: 'https://www.yotbe.com/watch?v=aT_yFSUbbVw')
+      it "will NOT create the video if URL does not include instagram" do
+        video = FactoryGirl.build(:video, url: 'https://www.youtube.com/watch?v=aT_yFSUbbVw')
         expect(video).not_to be_valid
       end
 
-      it "will NOT create the video if URL is larger than 43 characters" do
-        video = FactoryGirl.build(:video, url: 'https://www.youtbe.com/watch?v=aT_yFSUbbVwsdbsdudesc/ibfjhfkdbadadsbkadjs/')
-        expect(video).not_to be_valid
-      end
-
-      it "will NOT create the video if URL is smaller than 26 characters" do
-        video = FactoryGirl.build(:video, url: 'https://www.youtu.be/sml')
+      it "will NOT create the video if URL is larger than 90 characters" do
+        video = FactoryGirl.build(:video, url: 'https://instagram.com/p/91yPIDCzYm#{(1..3000).to_a.sample}/?taken-by=seedthespotblablbalbalabbalbabalabalabalabalbablablalbabl')
         expect(video).not_to be_valid
       end
 
 
       it "will NOT create a video if URL is already online in the site" do
-        FactoryGirl.create(:video, url: "https://www.youtube.com/watch?v=0emMYsy0Wak")
-        video = FactoryGirl.build(:video, url: "https://www.youtube.com/watch?v=0emMYsy0Wak")
+        FactoryGirl.create(:video, url: "https://instagram.com/p/91yPIDCzYm/?taken-by=seedthespot")
+        video = FactoryGirl.build(:video, url: "https://instagram.com/p/91yPIDCzYm/?taken-by=seedthespot")
         expect(video).not_to be_valid
       end
     end

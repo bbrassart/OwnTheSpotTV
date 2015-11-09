@@ -1,7 +1,7 @@
 class Video < ActiveRecord::Base
   validates :skater_id, presence: true
   validates :spot_id, presence: true
-  validates :url, presence: true, uniqueness: true, length: { maximum: 90}
+  validates :url, presence: true, uniqueness: true, length: { maximum: 90}, format: /instagram/
   validates :spot_id, presence: true
   validates :category, presence: true, inclusion: { in: %w( trick line slam ) }
   belongs_to :spot

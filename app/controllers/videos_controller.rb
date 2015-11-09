@@ -38,8 +38,8 @@ class VideosController < ApplicationController
     @video.skater_id = current_user.id
     @video.spot_id = @spot.id
     if @video.valid?
-      process_api_call(@video)
       @video.save
+      process_api_call(@video)
       WelcomeMailer.user_added_video(@video).deliver_now
       redirect_to skater_path(current_user), flash: {success: "Great! Your clip is now online!"}
     else
