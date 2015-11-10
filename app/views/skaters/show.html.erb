@@ -13,19 +13,20 @@
           </div>
         </div>
       </div>
-      <div class="col l6 offset-l3 s12 center-align">
-        <div class="section">
-          <div class="card-panel jumbotron">
-            <span class="black-text">
-              <h5>Your clips</h5>
-            </span>
-          </div>
-        </div>
-      </div>
+
 
 
 
       <% if current_user.videos.any? %>
+        <div class="col l6 offset-l3 s12 center-align">
+          <div class="section">
+            <div class="card-panel jumbotron">
+              <span class="black-text">
+                <h5>Your clips</h5>
+              </span>
+            </div>
+          </div>
+        </div>
 
         <% if current_user.videos.length == 1 %>
           <div class="col s12 m8 offset-m2">
