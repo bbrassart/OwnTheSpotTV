@@ -6,7 +6,7 @@ var instaFeed = function() {
 instaFeed.prototype.setInitialListeners = function() {
   $('a#feed_launch').on('click', function(event) {
     event.preventDefault();
-    var identifier = "<%= current_user.access_token %>";
+    var identifier = "current_user.access_token";
     this.processFeed(identifier).bind(this);
   });
 }
@@ -18,6 +18,6 @@ instaFeed.prototype.processFeed = function(identifier) {
       if (media["type"] == "video") {
         $('#display_feed').append('<li>' + media["link"] + '</li>');
       };
-    });
+    })
   })
 }
