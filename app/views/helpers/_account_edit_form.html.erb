@@ -2,43 +2,52 @@
 
 <%= form_for @skater, :html => {:multipart => true }  do |f| %>
 
-      <label for="stance">Choose an avatar</label><br>
+
       <div class="modify--userlogo">
         <%= f.label :logo %>
         <%= f.file_field :logo %>
       </div>
+      <label for="stance">Choose an avatar</label><br>
     <% if current_user.nil? %>
-        <label for="username">Enter your username</label>
+
         <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+        <label for="username">Enter your username</label>
 
 
-        <label for="email">Enter a valid email</label>
+
         <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+        <label for="email">Enter a valid email</label>
 
     <% end %>
-      <label for="stance">Choose your stance</label><br>
+
       <%= f.radio_button(:stance, "regular", class:"with-gap") %>
       <label for="skater_stance_regular">Regular</label>
+
 
       <%= f.radio_button( :stance, 'goofy' , class:"with-gap" )%>
       <label for="skater_stance_goofy">Goofy</label><br>
 
+      <label for="stance">Choose your stance</label>
+
     <% if current_user %>
+
+        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
         <label for="password">Type a new password</label>
-        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
 
 
-        <label for="password_confirmation">Confirm your new password</label>
+
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"  %>
-
+        <label for="password_confirmation">Confirm your new password</label>
     <% else %>
-        <label for="password">Enter your password</label>
+
         <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+        <label for="password">Enter your password</label>
 
-        <label for="password_confirmation">Confirm your password</label>
+
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"   %>
-
+        <label for="password_confirmation">Confirm your password</label>
     <% end %>
+    
       <%= f.submit button, class:"btn btn-primary" %>
 
 
