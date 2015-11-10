@@ -1,4 +1,5 @@
 <li><a disabled="true"><b>Signed in as <%= current_user.username %></b></a></li>
+<li><%= link_to 'Your recent Instagram clips', '/videos/your-insta-links' %></li>
 <li><%= link_to 'Submit your clip', new_video_path %></li>
 <li><%= link_to "View your profile", skater_path(current_user)%></li>
 <li><%= link_to "Edit your profile", edit_skater_path(current_user)%></li>
