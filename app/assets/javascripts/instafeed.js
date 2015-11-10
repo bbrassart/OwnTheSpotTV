@@ -6,8 +6,7 @@ var instaFeed = function() {
 instaFeed.prototype.setInitialListeners = function() {
   $('.container').on('click', 'a#feed_launch', function(event) {
     event.preventDefault();
-    debugger;
-    var identifier = <%= current_user.access_token %>;
+    var identifier = "<%= current_user.access_token %>";
     this.processFeed(identifier).bind(this);
   });
 }
