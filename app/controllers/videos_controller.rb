@@ -7,7 +7,7 @@ class VideosController < ApplicationController
   end
 
   def links
-    api_url = "https://api.instagram.com/v1/users/self/feed?access_token=".concat(current_user.access_token)
+    api_url = "https://api.instagram.com/v1/users/self/media/recent/?access_token=".concat(current_user.access_token)
     conn = Faraday.new(:url => api_url) do |faraday|
       faraday.response :json            # log requests to STDOUT
       faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
