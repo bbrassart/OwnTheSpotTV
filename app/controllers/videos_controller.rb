@@ -16,9 +16,9 @@ class VideosController < ApplicationController
     markup = "<ul>"
     response[0].body["data"].each do |media|
       if media["type"] == "video"
-        markup += "<img src=#{media["images"]["low_resolution"]}>
+        markup += "<img src=#{media["images"]["low_resolution"]["url"]}>
         <video controls>
-        <source src=#{media["videos"]["low_resolution"]}>
+        <source src=#{media["videos"]["low_resolution"]["url"]}>
         </video>
         <li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li>"
       end
