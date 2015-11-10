@@ -20,10 +20,9 @@ class VideosController < ApplicationController
         <video controls>
         <source src=#{media["videos"]["thumbnail"]["url"]}>
         </video>
-        <li><b>#{media["caption"]["text"]}</b>
-        </li>
+        <li><b>#{media["caption"]["text"]}</b></li>
         <li><h5><a href=#{media["link"]} target=_blank>#{media["link"]}</a></h5></li>
-        <div class='section'></div>"
+        <div class=section></div>"
       end
     end
     @markup =  markup.concat("</ul>")
