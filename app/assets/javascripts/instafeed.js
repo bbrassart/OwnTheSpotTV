@@ -16,7 +16,7 @@ instaFeed.prototype.processFeed = function(identifier) {
   request.done(function(response) {
     response[0].body["data"].forEach(function(media) {
       if (media["type"] == "video") {
-        $('#display_feed').append(`<li>${media["link"]}</li>`);
+        $('#display_feed').append('<li>' + media["link"] + '</li>');
       };
     });
   })
