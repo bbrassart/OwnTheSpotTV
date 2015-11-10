@@ -1,11 +1,31 @@
+<% if current_user %>
+	<div class="row">
+		<div class="col l8 offset-l2 s12">
+			<div class="section">
+				<div class="card">
+					<div class="card-content spot__show--collapsible">
+						<span class="card-title activator grey-text text-darken-4">
+							<h4 class="center-align">Submit a new video!</h4>
+							<div class="center-align"><%= render 'helpers/new_video_form' %> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col s12">
+			<div class="section">
+			</div>
+		</div>
+	</div>
+<% else %>
 <div class="row">
 	<div class="col l8 offset-l2 s12">
 		<div class="section">
 			<div class="card">
 				<div class="card-content spot__show--collapsible">
 					<span class="card-title activator grey-text text-darken-4">
-						<h4 class="center-align">Submit a new video!</h4>
-						<div class="center-align"><%= render 'helpers/new_video_form' %> </div>
+						<a class="waves-effect waves-light btn-large" href=<%= new contact_path %>>
+							<i class="material-icons left">info_outline</i>Please log in to submit your Instagram clip
+						</a>
 				</div>
 			</div>
 		</div>
