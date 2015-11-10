@@ -16,7 +16,7 @@
 
 
         <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
-        <label for="email">Enter a valid email</label>
+        <label for="email">Enter a valid email</label><br>
 
     <% end %>
 
@@ -37,7 +37,7 @@
 
 
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"  %>
-        <label for="password_confirmation">Confirm your new password</label>
+        <label for="password_confirmation">Confirm your new password</label><br>
     <% else %>
 
         <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
@@ -45,9 +45,9 @@
 
 
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"   %>
-        <label for="password_confirmation">Confirm your password</label>
+        <label for="password_confirmation">Confirm your password</label><br>
     <% end %>
-    
+
       <%= f.submit button, class:"btn btn-primary" %>
 
 
