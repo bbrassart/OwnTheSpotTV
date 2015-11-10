@@ -7,7 +7,7 @@ class VideosController < ApplicationController
   end
 
   def links
-    api_url = "https://api.instagram.com/v1/users/self/media/recent/?access_token=".concat(current_user.access_token)
+    api_url = "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{current_user.access_token}/?count=50"
     conn = Faraday.new(:url => api_url) do |faraday|
       faraday.response :json            # log requests to STDOUT
       faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
@@ -16,7 +16,7 @@ class VideosController < ApplicationController
     markup = "<ul>"
     response[0].body["data"].each do |media|
       if media["type"] == "video"
-        markup += "<li>#{media["caption"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</li>"
+        markup += "<li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li>"
       end
     end
     @markup =  markup.concat("</li>")
