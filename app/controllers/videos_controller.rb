@@ -16,12 +16,16 @@ class VideosController < ApplicationController
     markup = "<br><ul>"
     response[0].body["data"].each do |media|
       if media["type"] == "video"
-        markup += "<br><li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li>
+        markup += "<br><li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li><br>
         <video controls>
         <source src=#{media["videos"]["low_resolution"]["url"]}>
         </video>
+        <br>
         <br>"
       end
+    end
+    if markup == "<br><ul>"
+      markup += "<h5>Sorry, you didn´t submit any clips recently</h5>"
     end
     @markup =  markup.concat("</ul><br>")
   end
