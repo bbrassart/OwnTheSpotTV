@@ -21,8 +21,6 @@ class VideosController < ApplicationController
         <source src=#{media["videos"]["low_resolution"]["url"]}>
         </video>
         <li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li>"
-      else
-        markup += "<h5>No recent clips detected</h5>"
       end
     end
     @markup =  markup.concat("</ul>")
