@@ -13,17 +13,17 @@ class VideosController < ApplicationController
       faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
     end
     response = conn.get, {hidecaption: 'true'}
-    markup = "<ul>"
+    markup = "<br><ul>"
     response[0].body["data"].each do |media|
       if media["type"] == "video"
-        markup += "<img src=#{media["images"]["low_resolution"]["url"]}>
+        markup += "<br><img src=#{media["images"]["low_resolution"]["url"]}>
         <video controls>
         <source src=#{media["videos"]["low_resolution"]["url"]}>
         </video>
         <li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li>"
       end
     end
-    @markup =  markup.concat("</ul>")
+    @markup =  markup.concat("</ul><br>")
   end
 
   def process_api_call(video)
