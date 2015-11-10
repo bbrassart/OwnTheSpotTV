@@ -16,10 +16,9 @@ class VideosController < ApplicationController
     markup = "<ul>"
     response[0].body["data"].each do |media|
       if media["type"] == "video"
-        markup += "<li>#{media["link"]}</li>"
+        markup += "<li>#{media["caption"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</li>"
       end
     end
-    binding.pry
     @markup =  markup.concat("</li>")
   end
 
