@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'site#home'
+  get '/videos/your-insta-links' => 'videos#links'
   get '/oauth/connect' => 'instagrams#redirection', as: 'instagram_auth'
   get '/oauth/callback' => 'instagrams#callback'
   get '/login' => 'sessions#new'

@@ -6,6 +6,23 @@ class VideosController < ApplicationController
     render :new
   end
 
+  def links
+    api_url = "https://api.instagram.com/v1/users/self/feed?access_token=".concat(current_user.access_token)
+    conn = Faraday.new(:url => api_url) do |faraday|
+      faraday.response :json            # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+    end
+    response = conn.get, {hidecaption: 'true'}
+    markup = "<ul>"
+    response[0].body["data"].each do |media|
+      if media["type"] == "video"
+        markup += "<li>#{media["link"]}</li>"
+      end
+    end
+    binding.pry
+    @markup =  markup.concat("</li>")
+  end
+
   def process_api_call(video)
     unique_id = "http://instagr.am/p/".concat(video.format_url)
     response = video.ajax_call(unique_id)
