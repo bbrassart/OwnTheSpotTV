@@ -18,9 +18,12 @@ class VideosController < ApplicationController
       if media["type"] == "video"
         markup += "<img src=#{media["images"]["low_resolution"]["url"]}>
         <video controls>
-        <source src=#{media["videos"]["low_resolution"]["url"]}>
+        <source src=#{media["videos"]["thumbnail"]["url"]}>
         </video>
-        <li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li>"
+        <li><b>#{media["caption"]["text"]}</b>
+        </li>
+        <li><h5><a href=#{media["link"]} target=_blank>#{media["link"]}</a></h5></li>
+        <div class='section'></div>"
       end
     end
     @markup =  markup.concat("</ul>")
