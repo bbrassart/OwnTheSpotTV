@@ -64,8 +64,11 @@ $(document).on('page:change', function() {
   }
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
-  window.setTimeout(function(){ window.instgrm.Embeds.process(); }, 1000);
 
+});
+
+$(document).on('page:change', function(event) {
+  window.instgrm.Embeds.process();
 });
 
 
