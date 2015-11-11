@@ -48,6 +48,8 @@ $(document).on('page:change', function() {
     $("#show_skater_info-button").fadeToggle("fast");
   });
 
+  window.instgrm.Embeds.process();
+
 
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";

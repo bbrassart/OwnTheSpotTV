@@ -38,6 +38,7 @@ class VideosController < ApplicationController
 
   def authorize_media(video, api_url, skater)
     response = video.check_authenticity(api_url)
+
      if image_error(response, video, skater)
        flash[:danger] = "Either you don't owe the media or it's not a clip... Sorry!"
        redirect_to(:action => "new") and return
