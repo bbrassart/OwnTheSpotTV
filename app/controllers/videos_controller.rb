@@ -13,19 +13,17 @@ class VideosController < ApplicationController
       faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
     end
     response = conn.get, {hidecaption: 'true'}
-    markup = "<br><ul>"
+    markup = ""
     response[0].body["data"].each do |media|
       if media["type"] == "video"
-        markup += "<br><li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li><br>
+        markup += "<div class=section><li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li><br>
         <video controls>
         <source src=#{media["videos"]["low_resolution"]["url"]}>
-        </video>
-        <br>
-        <br>"
+        </video></div>"
       end
     end
-    if markup == "<br><ul>"
-      markup += "<h5>Sorry, you didn´t submit any clips recently</h5>"
+    if markup == ""
+      markup += "<div class=section><h5>Sorry, you didn´t submit any clips recently</h5></div>"
     end
     @markup =  markup.concat("</ul><br>")
   end
