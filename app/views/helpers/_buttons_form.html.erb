@@ -12,17 +12,14 @@
         <%= video.score%> <i class="material-icons">thumb_up</i>
       </div>
     </div>
-    <div class="real__votes">
-      <div class="center-align">
-        <a class="white-text" href=<%=login_path%>>
-          <button class="btn hoverable waves-effect signup__vote__button waves-light" type="submit" name="action">Log in to vote
-            <i class="material-icons right">send</i>
-          </button>
-        </a>
-      </div>
+    <div class="center-align">
+      <a class="white-text" href=<%=login_path%>>
+        <button class="btn hoverable waves-effect signup__vote__button waves-light" type="submit" name="action">Log in to vote
+          <i class="material-icons right">send</i>
+        </button>
+      </a>
     </div>
   </div>
-
   <div class="section"></div>
 <%else%>
 <% skater = Skater.find(video.skater.id) %>
