@@ -65,7 +65,17 @@ $(document).on('page:change', function() {
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
 
+  var myTimeoutInsta;
+  var reloadInsta = function() {
+    window.instgrm.Embeds.process();
+  }
+  var launchReloadInsta = function() {
+      myTimeoutInsta = setTimeout(reloadInsta, 1000);
+  }
+
+  myTimeoutInsta();
 });
-window.instgrm.Embeds.process();
+
+
 
 $('.dropdown-toggle').dropdown();
