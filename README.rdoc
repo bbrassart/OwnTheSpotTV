@@ -1,15 +1,16 @@
-Getting Started
+Getting Started:
 
-Git clone
+- Git clone
+- Bundle install
+- Create database and seed it.
+- To run all the tests, run "rspec".
+- Initialize the rails server.
 
-Bundle install
+- Test account
+    Username: "dummy"
+    Email: "dummy@dummy.com"
 
-create database and seed it
-
-initialize the rails server
-
-Username: Richie
-password: richie
+- You are good to go!
 
 
-You are good to go
+Note that to upload video, you'll have to create a new account on the production website and authorize OwnTheSpot.TV to access your Instagram media.
