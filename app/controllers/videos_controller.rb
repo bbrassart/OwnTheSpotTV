@@ -16,7 +16,7 @@ class VideosController < ApplicationController
     markup = "<br><ul>"
     response[0].body["data"].each do |media|
       if media["type"] == "video"
-        markup += "<br><li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li><br>
+        markup += "<br><li>#{media["caption"]["text"]}</li><li><a id=#{media["caption"] onclick=copyToClipboard(document.getElementById("#{media["id"]").innerHTML) href=#{media["link"]} target=_blank>#{media["link"]}</a></li><br>
         <video controls>
         <source src=#{media["videos"]["low_resolution"]["url"]}>
         </video>
