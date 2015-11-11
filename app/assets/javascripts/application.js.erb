@@ -48,7 +48,7 @@ $(document).on('page:change', function() {
     $("#show_skater_info-button").fadeToggle("fast");
   });
 
-  window.instgrm.Embeds.process();
+
 
 
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
@@ -64,6 +64,7 @@ $(document).on('page:change', function() {
   }
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
+  window.instgrm.Embeds.process();
 });
 
 
