@@ -10,12 +10,12 @@
       <label for="stance">Choose an avatar</label><br>
     <% if current_user.nil? %>
 
-        <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+        <%= f.text_field :username, placeholder: "Username" %>
         <label for="username">Enter your username</label>
 
 
 
-        <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+        <%= f.email_field :email, placeholder: "Email" %>
         <label for="email">Enter a valid email</label><br>
 
     <% end %>
@@ -31,12 +31,12 @@
 
     <% if current_user %>
 
-        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+        <%= f.password_field :password, placeholder: "Password" %>
         <label for="password">Type a new password</label>
 
 
 
-        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"  %>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm Password"  %>
         <label for="password_confirmation">Confirm your new password</label><br>
     <% else %>
 
@@ -44,11 +44,11 @@
         <label for="password">Enter your password</label>
 
 
-        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"   %>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm Password"   %>
         <label for="password_confirmation">Confirm your password</label><br>
     <% end %>
 
-      <%= f.submit button, class:"btn btn-primary waves-effect waves-light" %>
+      <%= f.submit button, class:"btn btn-primary waves-effect" %>
 
 
 <% end %>
