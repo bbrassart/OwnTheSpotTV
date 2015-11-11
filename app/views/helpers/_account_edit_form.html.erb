@@ -1,4 +1,4 @@
-<% button = current_user ? "Edit your profile" : "Create your profile" %>
+<% button = current_user ? "Edit your profile" : "<b>Sign in</b> with Instagram" %>
 
 <%= form_for @skater, :html => {:multipart => true }  do |f| %>
 
@@ -47,8 +47,9 @@
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"   %>
         <label for="password_confirmation">Confirm your password</label><br>
     <% end %>
-
-      <%= f.submit button, class:"btn btn-primary" %>
+    <div style="text-align:center; margin-top:5em;">
+      <%= f.submit button.html_safe, class:" btn-instagram" %>
+    </div>
 
 
 <% end %>
