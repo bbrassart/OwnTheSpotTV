@@ -67,9 +67,14 @@ $(document).on('page:change', function() {
 
 });
 
-$(document).on('page:change', function(event) {
+var ready;
+ready = function() {
   window.instgrm.Embeds.process();
-});
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
 
 
 
