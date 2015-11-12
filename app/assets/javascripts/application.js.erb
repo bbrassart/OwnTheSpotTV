@@ -22,11 +22,9 @@
 
 $(document).on('page:change', function() {
   $('select').material_select();
-  $(".button-collapse").sideNav();
-  $(".dropdown-button").dropdown();
-  $('.collapsible').collapsible({
-    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-  });
+
+
+
   if ($('.danger').length) {
     var content = $('.danger').text();
     Materialize.toast(content, 3000, 'rounded danger--notif');
@@ -36,6 +34,11 @@ $(document).on('page:change', function() {
     Materialize.toast(content, 3000, 'rounded success--notif');
   }
 
+  $(".button-collapse").sideNav();
+  $(".dropdown-button").dropdown();
+  $('.collapsible').collapsible({
+    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+  });
 
   $("#show_spot_info").on('click', function() {
     $("#show_spot_info-button").fadeToggle("fast");
@@ -44,6 +47,8 @@ $(document).on('page:change', function() {
   $("#show_skater_info").on('click', function() {
     $("#show_skater_info-button").fadeToggle("fast");
   });
+
+
 
 
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
