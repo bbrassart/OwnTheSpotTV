@@ -19,6 +19,7 @@
 //= require_tree .
 //= require turbolinks
 
+
 $(document).on('page:change', function() {
   //Materialize JS init
 
@@ -64,7 +65,6 @@ var ready;
 ready = function() {
   window.instgrm.Embeds.process();
 };
-//Dealing with Insta loading
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
