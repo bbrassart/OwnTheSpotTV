@@ -1,3 +1,7 @@
+WELCOME TO OWNTHESPOT.TV REPO
+=============================
+
+
 Getting Started:
 
 - Git clone
@@ -7,10 +11,10 @@ Getting Started:
 - Initialize the rails server.
 
 - Test account
-    Username: "dummy"
-    Email: "dummy@dummy.com"
+    Username: "foo"
+    Email: "foo@bar.com"
+
+    Note that you will not be able to add videos since no Instagram account is linked to that user.
+    If you want to add a video, create a new account here http://www.ownthespot.tv
 
 - You are good to go!
-
-
-Note that to upload video, you'll have to create a new account on the production website and authorize OwnTheSpot.TV to access your Instagram media.
