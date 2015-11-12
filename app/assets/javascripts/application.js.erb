@@ -33,7 +33,8 @@ $(document).on('page:change', function() {
 
   //Main JS files init
 
-  var listenToSpotsDropdown = new SpotDropdown();
+  var listenToSpotsDropdown = new SpotDropdown( $("#show_spot_info"), $("#show_spot_info-button") );
+  var listenToSkatersDropdown = new SpotDropdown( $("#show_skater_info"), $("#show_skater_info-button") );
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
   var listenToMap = new mapObject(mapboxAccessToken, mapboxId);

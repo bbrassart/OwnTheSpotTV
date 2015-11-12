@@ -1,14 +1,15 @@
-
-var SpotDropdown = function() {
+var SpotDropdown = function(button) {
+  this.button = button;
+  this.modal = modal;
   this.init();
 }
 
 SpotDropdown.prototype.init = function () {
-  $("#show_spot_info").on('click', function() {
-    $("#show_spot_info-button").fadeToggle("fast");
+  this.button.on('click', function() {
+    this.modal.fadeToggle("fast");
   });
 
-  $("#show_skater_info").on('click', function() {
-    $("#show_skater_info-button").fadeToggle("fast");
+  this.button.on('click', function() {
+    this.modal.fadeToggle("fast");
   });
 }
