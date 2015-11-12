@@ -326,19 +326,27 @@ ul {
 
 
 .chip--vote__buttons {
+  border-radius: 7px 0 0 7px;
+
   padding: 10px 0px 10px 10px;
   display: inline-block;
   float: left;
+  min-width: 60%;
   max-width: 60%;
   padding-bottom: 10px;
+  background-color: #f6f6f7;
 }
 .real__votes {
-  max-width: 50%;
+  border-radius: 0 7px 7px 0;
+  padding: 3px 10px 10px 0;
+  background-color: #f6f6f7;
+  max-width: 40%;
+  min-width: 40%;
   float:right;
-  padding-bottom: 10px;
 }
 
 .text__votebuttons {
+  background-color: #f6f6f7;
   margin: 0.42rem 0 0.36rem 0;
 }
 
