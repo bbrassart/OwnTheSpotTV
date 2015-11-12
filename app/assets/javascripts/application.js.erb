@@ -49,6 +49,7 @@ $(document).on('page:change', function() {
   }
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
+  
   if ($('.danger').length) {
     var content = $('.danger').text();
     Materialize.toast(content, 3000, 'rounded danger--notif');
