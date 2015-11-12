@@ -11,6 +11,7 @@
 // about supported directives.
 //
 
+
 //= require jquery
 //= require materialize-sprockets
 //= require jquery_ujs
@@ -19,27 +20,36 @@
 //= require_tree .
 //= require turbolinks
 
-
 $(document).on('page:change', function() {
-  //Materialize JS init
-
   $('select').material_select();
-  $('.dropdown-toggle').dropdown();
   $(".button-collapse").sideNav();
   $(".dropdown-button").dropdown();
   $('.collapsible').collapsible({
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
+  if ($('.danger').length) {
+    var content = $('.danger').text();
+    Materialize.toast(content, 3000, 'rounded danger--notif');
+  }
+  if ($('.success').length) {
+    var content = $('.success').text();
+    Materialize.toast(content, 3000, 'rounded success--notif');
+  }
 
-  //Main JS files init
 
-  var listenToSpotsDropdown = new SpotDropdown( $("#show_spot_info"), $("#show_spot_info-button") );
-  var listenToSkatersDropdown = new SpotDropdown( $("#show_skater_info"), $("#show_skater_info-button") );
+  $("#show_spot_info").on('click', function() {
+    $("#show_spot_info-button").fadeToggle("fast");
+  });
+
+  $("#show_skater_info").on('click', function() {
+    $("#show_skater_info-button").fadeToggle("fast");
+  });
+
+
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
   var listenToMap = new mapObject(mapboxAccessToken, mapboxId);
 
-  //Flash messages
 
   function fadeAlert(){
     $('.alert-temp').removeClass('in');
@@ -49,17 +59,9 @@ $(document).on('page:change', function() {
   }
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
-  if ($('.danger').length) {
-    var content = $('.danger').text();
-    Materialize.toast(content, 3000, 'rounded danger--notif');
-  }
-  if ($('.success').length) {
-    var content = $('.success').text();
-    Materialize.toast(content, 3000, 'rounded success--notif');
-  }
+
 });
 
-//Dealing with Insta loading
 
 var ready;
 ready = function() {
@@ -68,3 +70,8 @@ ready = function() {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
+
+
+
+$('.dropdown-toggle').dropdown();
