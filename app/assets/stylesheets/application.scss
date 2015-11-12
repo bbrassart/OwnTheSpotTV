@@ -175,7 +175,10 @@ footer {
 
 
 .votebuttons__wrapper {
+  margin-top: 2px;
+  border-radius: 7px 7px 0 0;
   margin-bottom: 5px;
+  background-color: #f6f6f7;
 }
 
 
@@ -322,7 +325,7 @@ ul {
 
 
 .chip--vote__buttons {
-  padding: 5px 5px 0 5px;
+  padding: 10px 0px 10px 10px;
   display: inline-block;
   float: left;
   max-width: 60%;
