@@ -1,7 +1,7 @@
 <div class="section">
   <div class="card-panel jumbotron center-align">
     <span class="black-text">
-      <h5 class="center-align">Top 10 ranking</h5>
+      <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i> Top 10 ranking</h5>
     </span>
   </div>
 </div>
@@ -18,9 +18,9 @@
           <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
           <%= skater.username %>
         </div>
-        <div class="collapsible-body jumbotron">
+        <div class="collapsible-body jumbotron center-align">
           <p>
-            <% if likes == 1 %>
+            <% if likes < 2 %>
               <%= skater.username %> received <%=likes%> like!<br>
             <% else %>
               <%= skater.username %> received <%=likes%> likes!<br>
