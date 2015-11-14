@@ -23,6 +23,8 @@
 $(document).on('page:change', function() {
   $('select').material_select();
 
+  listenToDropDown( $("#skater__profile--card") , $('#skater__arrow') );
+  listenToDropDown( $("#spot__show--card") , $('#spot__arrow') );
 
 
   if ($('.danger').length) {
@@ -48,6 +50,9 @@ $(document).on('page:change', function() {
   function fadeAlert(){
     $('.alert-temp').removeClass('in');
   }
+
+
+
   function removeAlert(){
     $('.alert-temp').fadeOut("slow");
   }

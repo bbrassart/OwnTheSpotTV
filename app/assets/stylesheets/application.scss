@@ -19,6 +19,16 @@
 @import "materialize/components/color";
 @import 'materialize';
 
+.triangle {
+  margin-top: 45px;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 40px solid #16978c;;
+}
+
 .danger--notif {
   background-color: #ED4A5A;
 }
@@ -157,12 +167,16 @@ footer {
 }
 
 .show__collapse__header {
-  height: 120px;
+  height: 175px;
 
 }
 
 .spot__show--collapsible {
   background-color: #f5f5f5;
+}
+
+.invisible--arrow {
+  border-color: transparent !important;
 }
 
 #map {

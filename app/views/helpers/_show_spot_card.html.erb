@@ -1,9 +1,10 @@
 <ul id="showspot--ul" class="collapsible" data-collapsible="accordion">
    <li>
-     <div class="center-align hoverable jumbotron collapsible-header show__collapse__header" id="show_spot_info">
+     <div class="center-align hoverable jumbotron collapsible-header show__collapse__header" id="spot__show--card">
        <div class="div__dropdown--showspot">
          <img class="navbar--title rounded--avatars" src="<%= spot.logo.url(:thumb)%>" alt="Spot's avatar">
          <span class="text__dropdown--card"><%= truncate spot.name, length: 19 %></span>
+         <div class="triangle" id="spot__arrow"></div>
        </div>
      </div>
      <div class="collapsible-body spot__show--collapsible">

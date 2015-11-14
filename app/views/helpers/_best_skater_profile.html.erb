@@ -1,10 +1,11 @@
 <ul class="collapsible" data-collapsible="accordion">
    <li>
-     <div class="center-align hoverable jumbotron collapsible-header show__collapse__header" id="show_skater_info">
+     <div class="center-align hoverable jumbotron collapsible-header show__collapse__header" id="skater__profile--card">
        <div class="div__dropdown--showspot">
          <img class="navbar--title rounded--avatars" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
          <span class="text__dropdown--card"><%= truncate skater.username, length: 19 %>
-         </span>
+         </span><br>
+         <div class="triangle" id="skater__arrow"></div>
        </div>
      </div>
      <div class="collapsible-body spot__show--collapsible navbar--title center-align">
