@@ -35,13 +35,13 @@ spots = [
 ]
 
 skaters = [
-  Skater.create(username: "foo", email: "foo@bar.com", password: "bar", password_confirmation: "bar", stance: 'regular'),
   Skater.create!(username: 'Richie', email: 'richard.william.roberts@gmail.com', password: 'richie', password_confirmation: 'richie', stance: 'goofy'),
   Skater.create!(username: 'Baptiste', email: 'baptiste.brassart@gmail.com', password: 'baptiste', password_confirmation: 'baptiste', stance: 'regular'),
   Skater.create!(username: 'Usher', email: 'usher@gmail.com', password: 'usher', password_confirmation: 'usher', stance: 'goofy'),
   Skater.create!(username: 'Damingo', email: 'blackout@hotmail.fr', password: 'damingo', password_confirmation: 'damingo', stance: 'regular'),
   Skater.create!(username: 'Gavin', email: 'gavin@gmail.com', password: 'gavin', password_confirmation: 'gavin', stance: 'regular'),
-  Skater.create!(username: 'Enrico', email: 'enricon@gmail.com', password: 'enrico', password_confirmation: 'enrico', stance: 'regular')
+  Skater.create!(username: 'Enrico', email: 'enricon@gmail.com', password: 'enrico', password_confirmation: 'enrico', stance: 'regular'),
+  Skater.create(username: "foo", email: "foo@bar.com", password: "bar", password_confirmation: "bar", stance: 'regular')
 
 ]
 

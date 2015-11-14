@@ -1,15 +1,38 @@
-<div class="collection">
-  <h5 class="collection-item center-align">Top 5 ranking</h5>
-  <% skaters.each do |results|
-    skater = results[0]
-    likes = results[1]
-    link = current_user ? skater_path(skater) : new_skater_path
-  %>
+<div class="section">
+  <div class="card-panel jumbotron center-align">
+    <span class="black-text">
+      <h5 class="center-align">Top 10 ranking</h5>
+    </span>
+  </div>
+</div>
 
-    <a href=<%= link %> class="hoverable collection-item">
-      <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
-      <%= skater.username %>
-      <span class="navbar--title badge"><%=likes%> likes</span>
-    </a>
-  <%end%>
+<div class="section">
+  <ul class="collapsible" data-collapsible="accordion">
+    <% skaters.each do |results|
+      skater = results[0]
+      likes = results[1]
+      link = current_user ? skater_path(skater) : new_skater_path
+    %>
+      <li>
+        <div class="collapsible-header">
+          <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+          <%= skater.username %>
+        </div>
+        <div class="collapsible-body jumbotron">
+          <p>
+            <% if likes == 1 %>
+              <%= skater.username %> received <%=likes%> like!<br>
+            <% else %>
+              <%= skater.username %> received <%=likes%> likes!<br>
+            <%end%>
+            <% if skater.videos.count == 1 %>
+              He published <%= skater.videos.count %> video!
+            <%else %>
+              He published <%= skater.videos.count %> videos!
+            <%end%>
+          </p>
+        </div>
+      </li>
+    <%end%>
+  </ul>
 </div>
