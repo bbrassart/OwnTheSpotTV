@@ -5,9 +5,20 @@ class VotesController < ApplicationController
     @skaters = Skater.top_5_number_of_likes
     if params[:spot]
       @spot = Spot.find_by_name(params[:spot])
-      @skaters_for_spot = @spot.videos.top_videos(4).map {|video|
-        video.skater
+      tmp_skaters = @spot.videos.top_videos(4).map {|video|
+          video.skater
       }
+      @skaters_for_spot = []
+      if tmp_skaters
+        tmp_skaters.each do |skater|
+          unless @skaters_for_spot.include?(skater)
+            @skaters_for_spot.push(skater)
+          end
+        end
+      end
+
+
+      @list_of_spots = Spot.all
     elsif params[:type] == "likes"
       @skaters = Skater.top_5_number_of_likes
     elsif params[:type] == "spots"

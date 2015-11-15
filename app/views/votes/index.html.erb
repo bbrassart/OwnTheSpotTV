@@ -40,10 +40,19 @@
             <div class="section">
               <div class="card-panel jumbotron center-align">
                 <span class="black-text">
-                  <h5 class="center-align"><img class="center__material--icons media-object rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar"> Top 5 ranking for <%=@spot.name%></h5>
+                  <h5 class="center-align">
+                    <img class="center__material--icons media-object rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
+                      Top 5 ranking for <%=@spot.name%>
+                  </h5>
                 </span>
               </div>
               <%= render partial: "helpers/leaderboard_by_spot", locals: {skaters: @skaters_for_spot} %>
+              <select onChange="if(this.selectedIndex!=0)
+                self.location=this.options[this.selectedIndex].value" class="browser-default" id="spots" name="spot_id">
+                <% @list_of_spots.each do |spot| %>
+                  <option value="<%= rankings_path%>?spot=<%= spot.name %>"><%= spot.name %></option>
+                <% end %>
+              </select>
               <div class="category_menu center-align">
                 <%= render partial: "helpers/leaderboard_dropdown" %>
               </div>
