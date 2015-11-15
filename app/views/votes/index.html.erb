@@ -40,7 +40,7 @@
             <div class="section">
               <div class="card-panel jumbotron center-align">
                 <span class="black-text">
-                  <h5 class="center-align"><img class="media-object rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar"> Top 5 ranking for <%=@spot.name%></h5>
+                  <h5 class="center-align"><img class="center__material--icons media-object rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar"> Top 5 ranking for <%=@spot.name%></h5>
                 </span>
               </div>
               <%= render partial: "helpers/leaderboard_by_spot", locals: {skaters: @skaters_for_spot} %>
