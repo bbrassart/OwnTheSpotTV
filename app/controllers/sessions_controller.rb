@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to spots_path, :flash => {success: "Welcome Home #{skater.username}" }
     else
   # If user's login doesn't work, send them back to the login form.
-      redirect_to root_path, :flash => {danger: "Something went wrong... Make sure all the fields were filled"}
+      redirect_to root_path, :flash => {danger: "Oops... Something went wrong..."}
     end
   end
 

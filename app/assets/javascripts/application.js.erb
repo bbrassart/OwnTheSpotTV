@@ -23,6 +23,17 @@
 $(document).on('page:change', function() {
   $('select').material_select();
 
+  if ( $("#loginForm").length != 0 ) {
+    var listenToLogInInputs = new LoginInputs();
+  }
+  if( $('#new_skater').length != 0 ) {
+    var listenToRegistrationInputs = new RegistrationInputs();
+  }
+
+  if ( $("#new_video").length != 0 ) {
+    var listenToNewVideoInputs = new VideoInputs();
+  }
+
   listenToDropDown( $("#skater__profile--card") , $('#skater__arrow') );
   listenToDropDown( $("#spot__show--card") , $('#spot__arrow') );
 
@@ -42,9 +53,12 @@ $(document).on('page:change', function() {
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
 
+
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
   var listenToMap = new mapObject(mapboxAccessToken, mapboxId);
+
+
 
 
   function fadeAlert(){
@@ -58,6 +72,8 @@ $(document).on('page:change', function() {
   }
   window.setTimeout(fadeAlert,1000);
   window.setTimeout(removeAlert,5000);
+
+
 
 });
 

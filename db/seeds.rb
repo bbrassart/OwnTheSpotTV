@@ -20,7 +20,7 @@ spots = [
   Spot.create!(name: 'Parc de la Ciutadella', description: "Awesome manny pad, chillout atmosphere, sunday spot. That spot may not be as popular as others but it is a true BCN authentic spot", district: 'Fort Pienc'),
   Spot.create!(name: 'Montbau manual pad', description: 'Little stair up, long manny and a bank to go down, the way to go', district: 'Montbau'),
   Spot.create!(name: 'Montbau downhill', description: 'Try to get the perfect line at this difficult spot', district: 'Montbau'),
-  Spot.create!(name: 'Hostafrancs', description: 'Stairs for days, a big handrail and a big flatground space', district: 'Sants'),
+  Spot.create!(name: 'Hostafrancs', description: 'Stairs for days, a big handrail and a big flatground space. Really close to Sants train station', district: 'Sants'),
   Spot.create!(name: 'Barceloneta banks', description: 'Funny banks to skate', district: 'Barceloneta'),
   Spot.create!(name: "Plaça d'Anna Frank", description: 'A big set of stairs, a man sized handrail', district: 'Gracia'),
   Spot.create!(name: "Forum stairs", description: 'That double set has already been murdered but who knows, maybe you come up with something new', district: 'Forum'),
@@ -35,13 +35,13 @@ spots = [
 ]
 
 skaters = [
-  Skater.create!(username: 'Richie', email: 'richard.william.roberts@gmail.com', password: 'richie', password_confirmation: 'richie', stance: 'goofy'),
-  Skater.create!(username: 'Baptiste', email: 'baptiste.brassart@gmail.com', password: 'baptiste', password_confirmation: 'baptiste', stance: 'regular'),
-  Skater.create!(username: 'Usher', email: 'usher@gmail.com', password: 'usher', password_confirmation: 'usher', stance: 'goofy'),
-  Skater.create!(username: 'Damingo', email: 'blackout@hotmail.fr', password: 'damingo', password_confirmation: 'damingo', stance: 'regular'),
-  Skater.create!(username: 'Gavin', email: 'gavin@gmail.com', password: 'gavin', password_confirmation: 'gavin', stance: 'regular'),
-  Skater.create!(username: 'Enrico', email: 'enricon@gmail.com', password: 'enrico', password_confirmation: 'enrico', stance: 'regular'),
-  Skater.create(username: "foo", email: "foo@bar.com", password: "bar", password_confirmation: "bar", stance: 'regular')
+  Skater.create!(username: 'Richie', email: 'richard.william.roberts@gmail.com', password: 'richierichie', password_confirmation: 'richierichie', stance: 'goofy'),
+  Skater.create!(username: 'Baptiste', email: 'baptiste.brassart@gmail.com', password: 'baptistebaptiste', password_confirmation: 'baptistebaptiste', stance: 'regular'),
+  Skater.create!(username: 'Usher', email: 'usher@gmail.com', password: 'usherusher', password_confirmation: 'usherusher', stance: 'goofy'),
+  Skater.create!(username: 'Damingo', email: 'blackout@hotmail.fr', password: 'damingodamingo', password_confirmation: 'damingodamingo', stance: 'regular'),
+  Skater.create!(username: 'Gavin', email: 'gavin@gmail.com', password: 'gavingavin', password_confirmation: 'gavingavin', stance: 'regular'),
+  Skater.create!(username: 'Enrico', email: 'enricon@gmail.com', password: 'enricoenrico', password_confirmation: 'enricoenrico', stance: 'regular'),
+  Skater.create(username: "foo", email: "foo@bar.com", password: "foobarfoobar", password_confirmation: "foobarfoobar", stance: 'regular')
 
 ]
 
