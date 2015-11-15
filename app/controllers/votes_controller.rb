@@ -11,7 +11,8 @@ class VotesController < ApplicationController
       @skaters_for_spot = []
       if tmp_skaters
         tmp_skaters.each do |skater|
-          unless @skaters_for_spot.include?(skater)
+          unless 
+            @skaters_for_spot.include?(skater)
             @skaters_for_spot.push(skater)
           end
         end
