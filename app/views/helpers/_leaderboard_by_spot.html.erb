@@ -1,0 +1,37 @@
+
+<% if skaters.length > 0 %>
+  <ul class="collapsible" data-collapsible="accordion">
+    <% skaters.each do |skater|
+      link = current_user ? skater_path(skater) : new_skater_path
+    %>
+      <li>
+        <div class="collapsible-header">
+          <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+          <%= skater.username %>
+        </div>
+        <div class="collapsible-body jumbotron center-align">
+          <p>
+            <% if skater.videos.count == 1 %>
+              He published <%= skater.videos.count %> video!
+            <%else %>
+              He published <%= skater.videos.count %> videos!
+            <%end%>
+          </p>
+        </div>
+      </li>
+    <%end%>
+  </ul>
+<% elsif skaters.length == 0 %>
+  <div class="card-panel jumbotron center-align">
+    <span class="black-text">
+      <div class="center-align">
+        <h5>No clips submited<br><br> Post your Instagram clip at <%= @spot.name %></h5><br>
+        <div class="center-align">
+          <%= link_to 'Log in', login_path, class:"white-text waves-effect waves-light btn" %>
+          <%= link_to 'Signup', new_skater_path, class:"white-text waves-effect waves-light btn" %>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div class="divider"></div>
+<%end%>

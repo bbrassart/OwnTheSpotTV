@@ -8,11 +8,9 @@ class SkatersController < ApplicationController
 
   def new
     @skater = Skater.new
-
   end
 
   def create
-
     @skater = Skater.new(skater_params)
     if @skater.save
       WelcomeMailer.welcome_email(@skater).deliver_now

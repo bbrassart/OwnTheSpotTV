@@ -1,10 +1,68 @@
 <div class="main__background custom__background-<%=@bg_id%>">
   <div class="container">
     <div class="row">
-      <div class="col m6 offset-m3 s12">
+      <div class="col m8 offset-m2 s12">
         <div class="section">
-          <%= render partial: "helpers/overall_best", locals: {skaters: @skaters} %>
+          <% if @skaters_by_videos %>
+            <div class="section">
+              <div class="card-panel jumbotron center-align">
+                <span class="black-text">
+                  <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i> Top 5 ranking by number of videos</h5>
+                </span>
+              </div>
+              <%= render partial: "helpers/leaderboard_by_videos", locals: {skaters: @skaters_by_videos } %>
+              <div class="category_menu center-align">
+                <%= render partial: "helpers/leaderboard_dropdown" %>
+              </div>
+            </div>
+          <% elsif @spots %>
+            <div class="section">
+              <div class="card-panel jumbotron center-align">
+                <span class="black-text">
+                  <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i> Choose a spot</h5>
+                </span>
+              </div>
+              <form>
+                <select onChange="if(this.selectedIndex!=0)
+                  self.location=this.options[this.selectedIndex].value" class="browser-default" id="spots" name="spot_id">
+                  <% @spots.each do |spot| %>
+                    <option value="<%= rankings_path%>?spot=<%= spot.name %>"><%= spot.name %></option>
+                  <% end %>
+                </select>
+              </form>
+              <br>
+              <div class="category_menu center-align">
+                <%= render partial: "helpers/leaderboard_dropdown" %>
+              </div>
+
+            </div>
+          <% elsif @skaters_for_spot %>
+            <div class="section">
+              <div class="card-panel jumbotron center-align">
+                <span class="black-text">
+                  <h5 class="center-align"><img class="media-object rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar"> Top 5 ranking for <%=@spot.name%></h5>
+                </span>
+              </div>
+              <%= render partial: "helpers/leaderboard_by_spot", locals: {skaters: @skaters_for_spot} %>
+              <div class="category_menu center-align">
+                <%= render partial: "helpers/leaderboard_dropdown" %>
+              </div>
+            </div>
+          <% elsif @skaters %>
+            <div class="section">
+              <div class="card-panel jumbotron center-align">
+                <span class="black-text">
+                  <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i> Top 5 ranking by number of likes</h5>
+                </span>
+              </div>
+              <%= render partial: "helpers/overall_best", locals: {skaters: @skaters} %>
+              <div class="category_menu center-align">
+                <%= render partial: "helpers/leaderboard_dropdown" %>
+              </div>
+            </div>
+          <%end%>
         </div>
+
       </div>
 
       <div class="col s12">
@@ -15,7 +73,7 @@
         <div class="section">
           <div class="card-panel jumbotron center-align">
             <span class="black-text">
-              <h5 class="center-align">Highest rated videos</h5>
+              <h5 class="center-align">All-time greatest videos</h5>
             </span>
           </div>
         </div>

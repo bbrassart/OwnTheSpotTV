@@ -1,8 +1,6 @@
 
 <ul class="collapsible" data-collapsible="accordion">
-  <% skaters.each do |results|
-    skater = results[0]
-    likes = results[1]
+  <% skaters.each do |skater|
     link = current_user ? skater_path(skater) : new_skater_path
   %>
     <li>
@@ -12,11 +10,6 @@
       </div>
       <div class="collapsible-body jumbotron center-align">
         <p>
-          <% if likes < 2 %>
-            <%= skater.username %> received <%=likes%> like!<br>
-          <% else %>
-            <%= skater.username %> received <%=likes%> likes!<br>
-          <%end%>
           <% if skater.videos.count == 1 %>
             He published <%= skater.videos.count %> video!
           <%else %>
