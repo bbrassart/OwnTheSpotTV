@@ -83,7 +83,7 @@
             <%= render partial: "helpers/show_spot_card", locals: {spot: @spot} %>
           </div>
           <div class="col m6 s12">
-            <%= render partial: "helpers/overall_best", locals: {skaters: @skaters} %>
+            <%= render partial: "helpers/overall_best", locals: {skaters: @skaters, spot: nil} %>
           </div>
         <% end %>
       </div>

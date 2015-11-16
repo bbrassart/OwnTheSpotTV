@@ -36,13 +36,17 @@
               </div>
 
             </div>
-          <% elsif @skaters_for_spot %>
+          <% elsif @skaters_for_spot
+          spot_link = current_user ? spot_path(@spot) : new_skater_path
+          spot_text = current_user ? "Visit this spot" : "Log in to see more"
+          %>
             <div class="section">
               <div class="card-panel jumbotron center-align">
                 <span class="black-text">
                   <h5 class="center-align">
                     <img class="center__material--icons media-object rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
                       Top 5 ranking for <%=@spot.name%>
+                      <a href="<%= spot_link%>"><%= spot_text%></a>
                   </h5>
                 </span>
               </div>
