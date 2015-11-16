@@ -2,28 +2,19 @@ class VotesController < ApplicationController
 
   def index
     @highest_rated_videos =  Video.all.top_5_videos_with_skater
-    @skaters = Skater.top_5_number_of_likes
+    @skaters = Skater.top_5_number_of_likes(Video.all)
+
     if params[:spot]
       @spot = Spot.find_by_name(params[:spot])
-      tmp_skaters = @spot.videos.top_videos(4).map {|video|
-          video.skater
-      }
-      @skaters_for_spot = []
-      if tmp_skaters
-        tmp_skaters.each do |skater|
-          unless 
-            @skaters_for_spot.include?(skater)
-            @skaters_for_spot.push(skater)
-          end
-        end
-      end
-
-
+      @skaters_for_spot = Skater.top_5_number_of_likes(@spot.videos)
       @list_of_spots = Spot.all
+
     elsif params[:type] == "likes"
       @skaters = Skater.top_5_number_of_likes
+
     elsif params[:type] == "spots"
       @spots = Spot.all
+
     elsif params[:type] == "videos"
       @skaters_by_videos = Skater.most_active_skaters
     end

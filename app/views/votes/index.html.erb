@@ -46,7 +46,7 @@
                   </h5>
                 </span>
               </div>
-              <%= render partial: "helpers/leaderboard_by_spot", locals: {skaters: @skaters_for_spot} %>
+              <%= render partial: "helpers/overall_best", locals: {skaters: @skaters_for_spot} %>
               <select onChange="if(this.selectedIndex!=0)
                 self.location=this.options[this.selectedIndex].value" class="browser-default" id="spots" name="spot_id">
                 <% @list_of_spots.each do |spot| %>
