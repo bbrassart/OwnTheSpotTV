@@ -1,31 +1,59 @@
+<% if skaters.length == 0 %>
+<div class="section">
+  <div class="card-panel jumbotron center-align">
+    <span class="black-text">
+      <h5 class="center-align">No videos were published here yet.</h5>
+    </span>
+  </div>
+</div>
 
-<ul class="collapsible" data-collapsible="accordion">
-  <% skaters.each do |results|
-    skater = results[0]
-    likes = results[1]
-    link = current_user ? skater_path(skater) : new_skater_path
-    text = current_user ? "Check his profile" : "Log in to see more"
-  %>
-    <li>
-      <div class="collapsible-header">
-        <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
-        <%= skater.username %>
-      </div>
-      <div class="collapsible-body jumbotron center-align">
-        <p>
-          <% if likes < 2 %>
-            <%= skater.username %> received <%=likes%> like!<br>
-          <% else %>
-            <%= skater.username %> received <%=likes%> likes!<br>
-          <%end%>
-          <% if skater.videos.count == 1 %>
-            He published <%= skater.videos.count %> video!
-          <%else %>
-            He published <%= skater.videos.count %> videos!
-          <%end%><br>
-          <a class = "left-align" href=<%= link%>><%=text%></a>
-        </p>
-      </div>
-    </li>
-  <%end%>
-</ul>
+<%else%>
+  <ul class="collapsible" data-collapsible="accordion">
+    <% skaters.each do |results|
+      skater = results[0]
+      likes = results[1]
+      link = current_user ? skater_path(skater) : new_skater_path
+      text = current_user ? "Check his profile" : "Log in to see more"
+    %>
+      <li>
+        <div class="collapsible-header">
+          <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
+          <%= skater.username %>
+        </div>
+        <div class="collapsible-body jumbotron center-align">
+          <p>
+            <% if spot.nil? %>
+
+              <% if likes < 2 %>
+                <%= skater.username %> received a total of <%=likes%> like !<br>
+              <% else %>
+                <%= skater.username %> received a total of <%=likes%> likes!<br>
+              <%end%>
+              <% if skater.videos.count == 1 %>
+                He published <%= skater.videos.count %> video!
+              <%else %>
+                He published <%= skater.videos.count %> videos!
+              <%end%><br>
+
+            <% else %>
+
+
+              <% if likes < 2 %>
+                <%= skater.username %> received <%=likes%> like for his videos at <%= spot.name %>!<br>
+              <% else %>
+                <%= skater.username %> received <%=likes%> likes for his videos at <%= spot.name %>!<br>
+              <%end%>
+              <% if skater.videos.count == 1 %>
+                He published a total of <%= skater.videos.count %> video!
+              <%else %>
+                He published a total of <%= skater.videos.count %> videos!
+              <%end%><br>
+
+            <%end%>
+            <a class = "left-align" href=<%= link%>><%=text%></a>
+          </p>
+        </div>
+      </li>
+    <%end%>
+  </ul>
+<%end%>

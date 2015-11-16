@@ -10,7 +10,7 @@
                   <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i> Top 3 ranking by number of videos</h5>
                 </span>
               </div>
-              <%= render partial: "helpers/leaderboard_by_videos", locals: {skaters: @skaters_by_videos } %>
+              <%= render partial: "helpers/leaderboard_by_videos", locals: {skaters: @skaters_by_videos, spot: nil } %>
               <div class="category_menu center-align">
                 <%= render partial: "helpers/leaderboard_dropdown" %>
               </div>
@@ -46,7 +46,7 @@
                   </h5>
                 </span>
               </div>
-              <%= render partial: "helpers/overall_best", locals: {skaters: @skaters_for_spot} %>
+              <%= render partial: "helpers/overall_best", locals: {:skaters => @skaters_for_spot, :spot => @spot} %>
               <select onChange="if(this.selectedIndex!=0)
                 self.location=this.options[this.selectedIndex].value" class="browser-default" id="spots" name="spot_id">
                 <% @list_of_spots.each do |spot| %>
@@ -64,7 +64,7 @@
                   <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i> Top 5 ranking by number of likes</h5>
                 </span>
               </div>
-              <%= render partial: "helpers/overall_best", locals: {skaters: @skaters} %>
+              <%= render partial: "helpers/overall_best", locals: {skaters: @skaters, spot: nil} %>
               <div class="category_menu center-align">
                 <%= render partial: "helpers/leaderboard_dropdown" %>
               </div>
