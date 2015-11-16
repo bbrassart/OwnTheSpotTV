@@ -37,7 +37,7 @@
 
             </div>
           <% elsif @skaters_for_spot
-          spot_link = current_user ? spot_path(@spot) : new_skater_path
+          spot_link = current_user ? spot_path(@spot) : login_path
           spot_text = current_user ? "Visit this spot" : "Log in to see more"
           %>
             <div class="section">
