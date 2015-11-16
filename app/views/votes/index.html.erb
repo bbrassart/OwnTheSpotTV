@@ -45,9 +45,9 @@
                 <span class="black-text">
                   <h5 class="center-align">
                     <img class="center__material--icons media-object rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
-                      Top 5 ranking for <%=@spot.name%>
-                      <a href="<%= spot_link%>"><%= spot_text%></a>
+                    Top 5 ranking for <%=@spot.name%><br>
                   </h5>
+                  <a href="<%= spot_link%>"><%= spot_text%></a>
                 </span>
               </div>
               <%= render partial: "helpers/overall_best", locals: {:skaters => @skaters_for_spot, :spot => @spot} %>
