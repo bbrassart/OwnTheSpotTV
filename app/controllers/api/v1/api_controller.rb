@@ -17,20 +17,20 @@ class Api::V1::ApiController < ApplicationController
 
   def video_leaderboard
     most_active_skaters = Skater.most_active_skaters(4)
-    skaters_by_videos = []
+    skaters = []
     most_active_skaters.each do |skater|
       score = 0
       skater.videos.each do |video|
         score += video.votes.sum('result')
       end
       result = [skater, score]
-      skaters_by_videos.push(result)
+      skaters.push(result)
     end
     logo_urls = []
-    skaters_by_videos.each do |pair|
+    skaters.each do |pair|
       logo_urls.push( pair[0].logo_url )
     end
-    response = {skaters_by_videos: skaters_by_videos, logo_urls: logo_urls}
+    response = {skaters: skaters, logo_urls: logo_urls}
     render json: response
   end
 

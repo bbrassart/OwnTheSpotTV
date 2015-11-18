@@ -106,6 +106,7 @@ var leaderboard = {
     var counter = true;
     html += `<ul class="collapsible popout" data-collapsible="accordion">`;
     if (response.videos) {
+      debugger;
       response.videos.forEach(function(results, index) {
         html += `<div class="collapsible-header `;
         if (counter) {
@@ -130,7 +131,7 @@ var leaderboard = {
       html += `</ul></div>`
       return html
     } else {
-      response.forEach(function(results, index) {
+      response.skaters.forEach(function(results, index) {
         html += `<div class="collapsible-header `;
         if (counter) {
           html += `active`;
