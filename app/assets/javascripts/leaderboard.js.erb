@@ -12,7 +12,7 @@ var leaderboard = {
     $('main').on('change', '.spotSelected', function(event) {
       event.preventDefault();
       var spotName = $(this).find(":selected").val();
-      self.param = `/spots/${spotName}`
+      self.param = `spots/${spotName}`
       self.launchAjax();
     });
 
