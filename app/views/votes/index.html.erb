@@ -3,66 +3,17 @@
     <div class="row">
       <div class="col m8 offset-m2 s12">
         <div class="section" id="showLeader">
-
-          <% if @spots %>
-            <div class="section">
-              <div class="card-panel jumbotron center-align">
-                <span class="black-text">
-                  <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i> Choose a spot</h5>
-                </span>
-              </div>
-              <form>
-                <select onChange="if(this.selectedIndex!=0)
-                  self.location=this.options[this.selectedIndex].value" class="browser-default" id="spots" name="spot_id">
-                  <% @spots.each do |spot| %>
-                    <option value="<%= rankings_path%>?spot=<%= spot.name %>"><%= spot.name %></option>
-                  <% end %>
-                </select>
-              </form>
-              <br>
-              <div class="category_menu center-align">
-                <%= render partial: "helpers/leaderboard_dropdown" %>
-              </div>
-
+          <div class="category_menu center-align">
+            <%= render partial: "helpers/leaderboard_dropdown" %>
+          </div>
+          <div class="section">
+            <div class="card-panel jumbotron center-align">
+              <span class="black-text">
+                <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i> Top 5 ranking by number of likes</h5>
+              </span>
             </div>
-          <% elsif @skaters_for_spot
-          spot_link = current_user ? spot_path(@spot) : login_path
-          spot_text = current_user ? "Visit this spot" : "Log in to see more"
-          %>
-            <div class="section">
-              <div class="card-panel jumbotron center-align">
-                <span class="black-text">
-                  <h5 class="center-align">
-                    <img class="center__material--icons media-object rounded--avatars" src="<%= @spot.logo.url(:thumb)%>" alt="Spot's avatar">
-                    Top 5 ranking for <%=@spot.name%><br>
-                  </h5>
-                  <a href="<%= spot_link%>"><%= spot_text%></a>
-                </span>
-              </div>
-              <%= render partial: "helpers/overall_best", locals: {:skaters => @skaters_for_spot, :spot => @spot} %>
-              <select onChange="if(this.selectedIndex!=0)
-                self.location=this.options[this.selectedIndex].value" class="browser-default" id="spots" name="spot_id">
-                <% @list_of_spots.each do |spot| %>
-                  <option value="<%= rankings_path%>?spot=<%= spot.name %>"><%= spot.name %></option>
-                <% end %>
-              </select>
-              <div class="category_menu center-align">
-                <%= render partial: "helpers/leaderboard_dropdown" %>
-              </div>
-            </div>
-          <% elsif @skaters %>
-            <div class="section">
-              <div class="card-panel jumbotron center-align">
-                <span class="black-text">
-                  <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i> Top 5 ranking by number of likes</h5>
-                </span>
-              </div>
-              <%= render partial: "helpers/overall_best", locals: {skaters: @skaters, spot: nil} %>
-              <div class="category_menu center-align">
-                <%= render partial: "helpers/leaderboard_dropdown" %>
-              </div>
-            </div>
-          <%end%>
+            <%= render partial: "helpers/overall_best", locals: {skaters: @skaters, spot: nil} %>
+          </div>
         </div>
 
       </div>

@@ -38,6 +38,7 @@ var leaderboard = {
     var self = this;
     debugger;
     var html = "";
+    html += self.buildButton();
     html += self.buildHeader(response);
     if (response.length == 0) {
       html += self.emptyResponse(response);
@@ -55,7 +56,6 @@ var leaderboard = {
     } else {
       html += self.buildResponse(response);
     }
-    html += self.buildButton();
     $('#showLeader').html("");
     $('#showLeader').append(html);
   },
