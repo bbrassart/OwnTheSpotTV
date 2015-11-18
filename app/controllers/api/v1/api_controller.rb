@@ -7,7 +7,11 @@ class Api::V1::ApiController < ApplicationController
   def spot
     spot = Spot.find_by(name: params[:name])
     videos = Skater.top_5_number_of_likes(spot.videos)
-    response = {spot: spot, videos: videos}
+    logo_urls = []
+    videos.each do |pair|
+      logo_urls.push( pair[0].avatar_url )
+    end
+    response = {spot: spot, videos: videos, logo_urls: logo_urls}
     render json: response
   end
 
@@ -22,12 +26,22 @@ class Api::V1::ApiController < ApplicationController
       result = [skater, score]
       skaters_by_videos.push(result)
     end
-    render json: skaters_by_videos
+    logo_urls = []
+    skaters_by_videos.each do |pair|
+      logo_urls.push( pair[0].logo_url )
+    end
+    response = {skaters_by_videos: skaters_by_videos, logo_urls: logo_urls}
+    render json: response
   end
 
   def likes_leaderboard
     skaters = Skater.top_5_number_of_likes(Video.all)
-    render json: skaters
+    logo_urls = []
+    skaters.each do |pair|
+      logo_urls.push( pair[0].logo_url )
+    end
+    response = {skaters: skaters, logo_urls: logo_urls}
+    render json: response
   end
 
 end

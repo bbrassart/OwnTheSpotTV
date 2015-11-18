@@ -106,15 +106,15 @@ var leaderboard = {
     var counter = true;
     html += `<ul class="collapsible popout" data-collapsible="accordion">`;
     if (response.videos) {
-      response.videos.forEach(function(results) {
+      response.videos.forEach(function(results, index) {
         html += `<div class="collapsible-header `;
         if (counter) {
           html += `active`;
         }
         counter = false;
         html += `">
-                  <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src=${results[0].logo} alt="Skater's avatar">
-                  ${results[0].username}
+                  <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src=${response.logo_urls[index]} alt="Skater's avatar">
+                  ${response[0].username}
                 </div>
                 <div class="collapsible-body jumbotron center-align">
                   <p>`
@@ -130,14 +130,14 @@ var leaderboard = {
       html += `</ul></div>`
       return html
     } else {
-      response.forEach(function(results) {
+      response.forEach(function(results, index) {
         html += `<div class="collapsible-header `;
         if (counter) {
           html += `active`;
         }
         counter = false;
         html += `">
-                  <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src=${results[0].logo} alt="Skater's avatar">
+                  <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src=${response.logo_urls[index]} alt="Skater's avatar">
                   ${results[0].username}
                 </div>
                 <div class="collapsible-body jumbotron center-align">

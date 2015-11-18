@@ -14,6 +14,10 @@ class Skater < ActiveRecord::Base
     includes(:videos).sort { |x,y| x.videos.length <=> y.videos.length }.reverse.slice(0..number)
   end
 
+  def logo_url
+     logo.url(:thumb)
+  end
+
   def get_user_info
     api_url = "https://api.instagram.com/v1/users/self/?access_token=#{access_token}"
     conn = Faraday.new(:url => api_url) do |faraday|
