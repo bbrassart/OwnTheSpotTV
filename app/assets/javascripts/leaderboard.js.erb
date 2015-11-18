@@ -11,8 +11,8 @@ var leaderboard = {
 
     $('main').on('change', '.spotSelected', function(event) {
       event.preventDefault();
-      var spotName = $(this).find(":selected").val();
-      self.param = `spots/${spotName}`
+      var spotId = $(this).find(':selected').data('hook');
+      self.param = `spots/${spotId}`
       self.launchAjax();
     });
 

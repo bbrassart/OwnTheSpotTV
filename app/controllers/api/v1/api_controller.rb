@@ -5,7 +5,7 @@ class Api::V1::ApiController < ApplicationController
   end
 
   def spot
-    spot = Spot.find_by(name: params[:name])
+    spot = Spot.find_by(id: params[:id])
     videos = Skater.top_5_number_of_likes(spot.videos)
     logo_urls = []
     videos.each do |pair|
