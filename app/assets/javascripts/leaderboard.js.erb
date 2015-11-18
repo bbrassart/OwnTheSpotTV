@@ -1,0 +1,180 @@
+var leaderboard = {
+  baseUrl: "/api/v1/",
+
+  setInitialListeners: function() {
+    var self = this;
+    $('main').on('click', '#leaderboardVideos', function(event) {
+      event.preventDefault();
+      self.param = "video_leaderboard";
+      self.launchAjax();
+    });
+
+    $('main').on('change', '.spotSelected', function(event) {
+      event.preventDefault();
+      var spotName = $(this).find(":selected").val();
+      self.param = `/spots/${spotName}`
+      self.launchAjax();
+    });
+
+    $('main').on('click', '#leaderboardLikes', function(event) {
+      event.preventDefault();
+      self.param = "likes_leaderboard";
+      self.launchAjax();
+    })
+
+    $('main').on('click', '#spotSelection', function(event) {
+      event.preventDefault();
+      self.param = "spots";
+      self.launchAjax();
+    })
+  },
+
+  launchAjax: function() {
+    var request = $.get(this.baseUrl + this.param);
+    request.done(this.template.bind(this));
+  },
+
+  template: function (response) {
+    var self = this;
+    debugger;
+    var html = "";
+    html += self.buildHeader(response);
+    if (response.length == 0) {
+      html += self.emptyResponse(response);
+    }
+    else if (this.param == "spots") {
+      html += self.buildSpots(response)
+    }
+    else if (this.param.indexOf("spots/") == 1)  {
+      if (response.videos.length == 0 ) {
+        html += self.emptyResponse(response);
+      }
+      else {
+        html += self.buildResponse(response);
+      }
+    } else {
+      html += self.buildResponse(response);
+    }
+    html += self.buildButton();
+    $('#showLeader').html("");
+    $('#showLeader').append(html);
+  },
+
+  buildSpots: function(response) {
+    html = ``;
+    html += `<form><select class="spotSelected browser-default" name="spot_id">`;
+    response.spots.forEach(function(spot) {
+      html += `<option data-hook="${spot.id}">${spot.name}</option>`
+    });
+    html += `</select></form><br>`
+    return html;
+  },
+
+  buildHeader: function(response) {
+    html = ""
+    html += `<div class="section">
+    <div class="card-panel jumbotron center-align">
+    <span class="black-text">
+    <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i>`
+    if (this.param == "video_leaderboard") {
+      html += ' Top 5 ranking by number of videos';
+    } else if ( this.param.indexOf("spots/") == 1 ) {
+      html += ` Top 5 ranking at ${response.spot.name}`;
+    } else if (this.param == "likes_leaderboard") {
+      html += ' Top 5 ranking by total number of likes';
+    } else if (this.param == "spots") {
+      html += ` Choose a spot`;
+    }
+    html += `</h5></span></div>`
+    return html;
+  },
+
+  buildButton: function () {
+    return `<div class="category_menu center-align">
+    <a class='dropdown-button center-align btn' data-activates='dropdown_categories'>
+    Sorted by</a>
+    <ul id='dropdown_categories' class='dropdown-content'>
+      <li><a class="center-align" id="leaderboardLikes">Overall</a></li>
+      <li class="divider"></li>
+      <li><a class="center-align" id="spotSelection">Spots</a></li>
+      <li><a class="center-align" id="leaderboardLikes">Likes</a></li>
+      <li><a class="center-align" id="leaderboardVideos">Videos</a></li>
+    </ul></div>`
+  },
+
+  buildResponse: function (response) {
+    var html = "";
+    var counter = true;
+    html += `<ul class="collapsible popout" data-collapsible="accordion">`;
+    if (response.videos) {
+      response.videos.forEach(function(results) {
+        html += `<div class="collapsible-header `;
+        if (counter) {
+          html += `active`;
+        }
+        counter = false;
+        html += `">
+                  <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src=${results[0].logo} alt="Skater's avatar">
+                  ${results[0].username}
+                </div>
+                <div class="collapsible-body jumbotron center-align">
+                  <p>`
+        if (results[1] < 2) {
+          html += `${results[0].username} received a total of ${results[1]} like !<br>`
+        } else {
+          html += `${results[0].username} received a total of ${results[1]} likes !<br>`
+        }
+        html += `</p>
+                </div>
+                </li>`
+      });
+      html += `</ul></div>`
+      return html
+    } else {
+      response.forEach(function(results) {
+        html += `<div class="collapsible-header `;
+        if (counter) {
+          html += `active`;
+        }
+        counter = false;
+        html += `">
+                  <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src=${results[0].logo} alt="Skater's avatar">
+                  ${results[0].username}
+                </div>
+                <div class="collapsible-body jumbotron center-align">
+                  <p>`
+        if (results[1] < 2) {
+          html += `${results[0].username} received a total of ${results[1]} like !<br>`
+        } else {
+          html += `${results[0].username} received a total of ${results[1]} likes !<br>`
+        }
+        html += `</p>
+                </div>
+                </li>`
+      });
+      html += `</ul></div>`
+      return html
+    };
+  },
+
+  emptyResponse: function (response) {
+    if (response.spot) {
+      return `<div class="section">
+        <div class="card-panel jumbotron center-align">
+          <span class="black-text">
+            <h5 class="center-align">No videos were published at ${response.spot.name} yet.</h5>
+          </span>
+        </div>
+      </div>`
+    }
+    else {
+      return `<div class="section">
+        <div class="card-panel jumbotron center-align">
+          <span class="black-text">
+            <h5 class="center-align">No videos were published here yet.</h5>
+          </span>
+        </div>
+      </div>`
+    }
+  }
+}

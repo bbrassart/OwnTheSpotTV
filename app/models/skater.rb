@@ -10,8 +10,8 @@ class Skater < ActiveRecord::Base
   has_many :videos, dependent: :destroy
   has_many :votes
 
-  def self.most_active_skaters
-    includes(:videos).sort { |x,y| x.videos.length <=> y.videos.length }.reverse.slice(0..2)
+  def self.most_active_skaters(number)
+    includes(:videos).sort { |x,y| x.videos.length <=> y.videos.length }.reverse.slice(0..number)
   end
 
   def get_user_info

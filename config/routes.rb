@@ -21,7 +21,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get 'spots' => 'spots#get_all'
+      get 'spots' => 'api#spots'
+      get 'video_leaderboard' => 'api#video_leaderboard'
+      get 'likes_leaderboard' => 'api#likes_leaderboard'
+      get 'spots/:name' => 'api#spot'
     end
   end
 

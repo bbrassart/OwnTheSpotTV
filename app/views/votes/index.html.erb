@@ -2,20 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col m8 offset-m2 s12">
-        <div class="section">
-          <% if @skaters_by_videos %>
-            <div class="section">
-              <div class="card-panel jumbotron center-align">
-                <span class="black-text">
-                  <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i> Top 3 ranking by number of videos</h5>
-                </span>
-              </div>
-              <%= render partial: "helpers/leaderboard_by_videos", locals: {skaters: @skaters_by_videos, spot: nil } %>
-              <div class="category_menu center-align">
-                <%= render partial: "helpers/leaderboard_dropdown" %>
-              </div>
-            </div>
-          <% elsif @spots %>
+        <div class="section" id="showLeader">
+
+          <% if @spots %>
             <div class="section">
               <div class="card-panel jumbotron center-align">
                 <span class="black-text">

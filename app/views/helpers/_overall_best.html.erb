@@ -8,15 +8,18 @@
 </div>
 
 <%else%>
-  <ul class="collapsible" data-collapsible="accordion">
+  <ul class="collapsible popout" data-collapsible="accordion">
     <% skaters.each do |results|
       skater = results[0]
       likes = results[1]
       link = current_user ? skater_path(skater) : login_path
       text = current_user ? "Check his profile" : "Log in to see his profile"
+      counter = true
     %>
       <li>
-        <div class="collapsible-header">
+
+        <div class="collapsible-header <% if counter %> active <% counter = false end %>">
+
           <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src="<%= skater.logo.url(:thumb)%>" alt="Skater's avatar">
           <%= skater.username %>
         </div>

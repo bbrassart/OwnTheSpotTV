@@ -21,6 +21,9 @@
 //= require turbolinks
 
 $(document).on('page:change', function() {
+  var listenToLeaderboard = Object.create(leaderboard);
+  listenToLeaderboard.setInitialListeners();
+
   $('select').material_select();
 
   if ( $("#loginForm").length != 0 ) {
@@ -34,9 +37,11 @@ $(document).on('page:change', function() {
     var listenToNewVideoInputs = new VideoInputs();
   }
 
-  listenToDropDown( $("#skater__profile--card") , $('#skater__arrow') );
-  listenToDropDown( $("#spot__show--card") , $('#spot__arrow') );
+  var skaterDropdown = Object.create(dropdown);
+  skaterDropdown.listen( $("#skater__profile--card") , $('#skater__arrow') );
 
+  var spotDropdown = Object.create(dropdown);
+  spotDropdown.listen( $("#spot__show--card") , $('#spot__arrow') );
 
   if ($('.danger').length) {
     var content = $('.danger').text();
@@ -48,15 +53,23 @@ $(document).on('page:change', function() {
   }
 
   $(".button-collapse").sideNav();
-  $(".dropdown-button").dropdown();
-  $('.collapsible').collapsible({
-    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-  });
-
+  $('body').on('mouseover', '.dropdown-button', function() {
+    $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      belowOrigin: true,
+    });
+  })
+  $('body').on('mouseover', '.collapsible', function() {
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  })
 
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
-  var listenToMap = new mapObject(mapboxAccessToken, mapboxId);
+  var listenToMap = Object.create(mapObject)
+  listenToMap.setInitalListeners(mapboxAccessToken, mapboxId);
 
 
 

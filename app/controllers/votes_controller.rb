@@ -8,15 +8,6 @@ class VotesController < ApplicationController
       @spot = Spot.find_by_name(params[:spot])
       @skaters_for_spot = Skater.top_5_number_of_likes(@spot.videos)
       @list_of_spots = Spot.all
-
-    elsif params[:type] == "likes"
-      @skaters = Skater.top_5_number_of_likes
-
-    elsif params[:type] == "spots"
-      @spots = Spot.all
-
-    elsif params[:type] == "videos"
-      @skaters_by_videos = Skater.most_active_skaters
     end
   end
 

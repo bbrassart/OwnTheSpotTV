@@ -2,7 +2,7 @@ class SkatersController < ApplicationController
 
   def index
     @skaters = Skater.all
-    @most_active_skaters = Skater.most_active_skaters
+    @most_active_skaters = Skater.most_active_skaters(2)
     @last_video_updated = Video.last
   end
 
