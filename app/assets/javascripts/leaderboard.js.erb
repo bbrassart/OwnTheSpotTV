@@ -107,9 +107,12 @@ var leaderboard = {
     html += `<ul class="collapsible popout" data-collapsible="accordion">`;
     if (response.videos) {
       response.videos.forEach(function(results, index) {
-        html += `<div class="collapsible-header `;
+        html += `<li class="`
         if (counter) {
-          html += `active`;
+          html += `active"><div class="collapsible-header active`;
+        }
+        else {
+          html += `"><div class="collapsible-header`;
         }
         counter = false;
         html += `">
@@ -131,9 +134,12 @@ var leaderboard = {
       return html
     } else {
       response.skaters.forEach(function(results, index) {
-        html += `<div class="collapsible-header `;
+        html += `<li class="`;
         if (counter) {
-          html += `active`;
+          html += `active"><div class="collapsible-header active`;
+        }
+        else {
+          html += `"><div class="collapsible-header`;
         }
         counter = false;
         html += `">

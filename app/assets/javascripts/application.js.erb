@@ -21,6 +21,7 @@
 //= require turbolinks
 
 $(document).on('page:change', function() {
+
   var listenToLeaderboard = Object.create(leaderboard);
   listenToLeaderboard.setInitialListeners();
 
@@ -53,6 +54,7 @@ $(document).on('page:change', function() {
   }
 
   $(".button-collapse").sideNav();
+
   $('body').on('mouseover', '.dropdown-button', function() {
     $('.dropdown-button').dropdown({
       inDuration: 300,
@@ -60,19 +62,19 @@ $(document).on('page:change', function() {
       belowOrigin: true,
     });
   })
+  
   $('body').on('mouseover', '.collapsible', function() {
     $('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      accordion : true
     });
   })
+
+
 
   var mapboxAccessToken = "<%= ENV['MAPBOX_ACCESSTOKEN'] %>";
   var mapboxId = "<%= ENV['MAPBOX_ID'] %>";
   var listenToMap = Object.create(mapObject)
   listenToMap.setInitalListeners(mapboxAccessToken, mapboxId);
-
-
-
 
   function fadeAlert(){
     $('.alert-temp').removeClass('in');
@@ -90,7 +92,6 @@ $(document).on('page:change', function() {
 
 });
 
-
 var ready;
 ready = function() {
   window.instgrm.Embeds.process();
@@ -98,8 +99,3 @@ ready = function() {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
-
-
-
-
-$('.dropdown-toggle').dropdown();
