@@ -46,7 +46,7 @@ var leaderboard = {
       html += self.buildSpots(response)
     }
     else if (this.param.indexOf("spots/") > -1)  {
-      if (response.videos.length == 0 ) {
+      if (response.skaters.length == 0 ) {
         html += self.emptyResponse(response);
       }
       else {
@@ -76,15 +76,15 @@ var leaderboard = {
     <span class="black-text">
     <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i>`
     if (this.param == "video_leaderboard") {
-      html += ' Top 5 ranking by number of videos';
+      html += ' Top 5 ranking by number of videos</h5>';
     } else if ( this.param.indexOf("spots/") > -1 ) {
-      html += ` Top 5 ranking at ${response.spot.name}`;
+      html += ` Top 5 ranking at ${response.spot.name}</h5>`;
     } else if (this.param == "likes_leaderboard") {
-      html += ' Top 5 ranking by total number of likes';
+      html += ' Top 5 ranking by total number of likes</h5>';
     } else if (this.param == "spots") {
-      html += ` Choose a spot`;
+      html += ` Choose a spot</h5>`;
     }
-    html += `</h5></span></div>`
+    html += `</span></div>`
     return html;
   },
 
@@ -105,8 +105,8 @@ var leaderboard = {
     var html = "";
     var counter = true;
     html += `<ul class="collapsible popout" data-collapsible="accordion">`;
-    if (response.videos) {
-      response.videos.forEach(function(results, index) {
+    if (response.skaters) {
+      response.skaters.forEach(function(results, index) {
         html += `<li class="`
         if (counter) {
           html += `active"><div class="collapsible-header active`;
@@ -121,47 +121,20 @@ var leaderboard = {
                 </div>
                 <div class="collapsible-body jumbotron center-align">
                   <p>`
-        if (results[1] < 2) {
+        if (results[1] == 0) {
+          html += `${results[0].username} didn't receive any like !<br>`
+        }
+        else if (results[1] == 1) {
           html += `${results[0].username} received just ${results[1]} like !<br>`
         } else {
           html += `${results[0].username} received a total of ${results[1]} likes !<br>`
         }
-        if (results[0].videos.length < 2) {
-          html += `${results[0].username} posted just ${results[0].videos.length} video !<br>`
+        if (response.videos[index] == 0) {
+          html += `${results[0].username} didn't submit any clip !<br><a href="/skaters/${results[0].username.toLowerCase()}">Go see his profile</a>`
+        } else if (response.videos[index] == 1) {
+          html += `${results[0].username} posted just ${response.videos[index]} video !<br><a href="/skaters/${results[0].username.toLowerCase()}">Go see his profile</a>`
         } else {
-          html += `${results[0].username} posted a total of ${results[0].videos.length} videos !<br>`
-        }
-        html += `</p>
-                </div>
-                </li>`
-      });
-      html += `</ul></div>`
-      return html
-    } else {
-      response.skaters.forEach(function(results, index) {
-        html += `<li class="`;
-        if (counter) {
-          html += `active"><div class="collapsible-header active`;
-        }
-        else {
-          html += `"><div class="collapsible-header`;
-        }
-        counter = false;
-        html += `">
-                  <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src=${response.logo_urls[index]} alt="Skater's avatar">
-                  ${results[0].username}
-                </div>
-                <div class="collapsible-body jumbotron center-align">
-                  <p>`
-        if (results[1] < 2) {
-          html += `${results[0].username} received a total of ${results[1]} like !<br>`
-        } else {
-          html += `${results[0].username} received a total of ${results[1]} likes !<br>`
-        }
-        if (results[0].videos.length < 2) {
-          html += `${results[0].username} posted just ${results[0].videos.length} video !<br>`
-        } else {
-          html += `${results[0].username} posted a total of ${results[0].videos.length} videos !<br>`
+          html += `${results[0].username} posted a total of ${response.videos[index]} videos !<br><a href="/skaters/${results[0].username.toLowerCase()}">Go see his profile</a>`
         }
         html += `</p>
                 </div>
