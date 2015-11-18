@@ -25,9 +25,6 @@ $(document).on('page:change', function() {
   var listenToLeaderboard = Object.create(leaderboard);
   listenToLeaderboard.setInitialListeners();
 
-  var listenToClipsList = Object.create(clipsList);
-  listenToClipsList.setInitalListeners();
-
   $('select').material_select();
 
   if ( $("#loginForm").length != 0 ) {
