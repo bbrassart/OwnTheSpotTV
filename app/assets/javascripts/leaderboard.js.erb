@@ -45,7 +45,7 @@ var leaderboard = {
     else if (this.param == "spots") {
       html += self.buildSpots(response)
     }
-    else if (this.param.indexOf("spots/") == 1)  {
+    else if (this.param.indexOf("spots/") > -1)  {
       if (response.videos.length == 0 ) {
         html += self.emptyResponse(response);
       }
@@ -77,7 +77,7 @@ var leaderboard = {
     <h5 class="center-align"><i class="medium material-icons center__material--icons">insert_chart</i>`
     if (this.param == "video_leaderboard") {
       html += ' Top 5 ranking by number of videos';
-    } else if ( this.param.indexOf("spots/") == 1 ) {
+    } else if ( this.param.indexOf("spots/") > -1 ) {
       html += ` Top 5 ranking at ${response.spot.name}`;
     } else if (this.param == "likes_leaderboard") {
       html += ' Top 5 ranking by total number of likes';
@@ -115,7 +115,7 @@ var leaderboard = {
         counter = false;
         html += `">
                   <img class="navbar--title rounded--avatars" style="width:35px; height:35px" src=${response.logo_urls[index]} alt="Skater's avatar">
-                  ${response[0].username}
+                  ${results[0].username}
                 </div>
                 <div class="collapsible-body jumbotron center-align">
                   <p>`

@@ -8,8 +8,10 @@ class Api::V1::ApiController < ApplicationController
     spot = Spot.find_by(id: params[:id])
     videos = Skater.top_5_number_of_likes(spot.videos)
     logo_urls = []
-    videos.each do |pair|
-      logo_urls.push( pair[0].avatar_url )
+    if videos
+      videos.each do |pair|
+        logo_urls.push( pair[0].logo_url )
+      end
     end
     response = {spot: spot, videos: videos, logo_urls: logo_urls}
     render json: response
