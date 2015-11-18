@@ -122,9 +122,14 @@ var leaderboard = {
                 <div class="collapsible-body jumbotron center-align">
                   <p>`
         if (results[1] < 2) {
-          html += `${results[0].username} received a total of ${results[1]} like !<br>`
+          html += `${results[0].username} received just ${results[1]} like !<br>`
         } else {
           html += `${results[0].username} received a total of ${results[1]} likes !<br>`
+        }
+        if (results[0].videos.length < 2) {
+          html += `${results[0].username} posted just ${results[0].videos.length} video !<br>`
+        } else {
+          html += `${results[0].username} posted a total of ${results[0].videos.length} videos !<br>`
         }
         html += `</p>
                 </div>
@@ -152,6 +157,11 @@ var leaderboard = {
           html += `${results[0].username} received a total of ${results[1]} like !<br>`
         } else {
           html += `${results[0].username} received a total of ${results[1]} likes !<br>`
+        }
+        if (results[0].videos.length < 2) {
+          html += `${results[0].username} posted just ${results[0].videos.length} video !<br>`
+        } else {
+          html += `${results[0].username} posted a total of ${results[0].videos.length} videos !<br>`
         }
         html += `</p>
                 </div>
