@@ -4,6 +4,13 @@ class Api::V1::ApiController < ApplicationController
    render json: {:spots => spots}
   end
 
+  def retrieve_token
+    skater = Skater.find_by(id: params[:id])
+    token = skater.access_token
+    response = {token: token}
+    render json: response
+  end
+
   def spot
     spot = Spot.find_by(id: params[:id])
     videos = Skater.top_5_number_of_likes(spot.videos)

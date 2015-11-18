@@ -9,10 +9,13 @@
       <br>
       <a href="https://help.instagram.com/372819389498306" target="_blank">How to find your Instagram clip link</a>
       <br>
-      <a class="waves-effect waves-light btn-small" href="/videos/your-insta-links">
+      <button data-id="<%=current_user.id%>" class="btn waves-effect waves-light btn-small" id="showClips">
         <i class="material-icons left">subject</i>Get the links of your recent Insta clips
-      </a>
+      </button>
     </p>
+    <div id="clipsList">
+
+    </div>
 
     <%= f.text_field :url, class: "form-control", placeholder: "Paste your Instagram link" %>
     <label for="url">Video URL</label><br>

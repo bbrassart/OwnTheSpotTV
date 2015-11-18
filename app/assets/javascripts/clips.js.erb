@@ -1,0 +1,54 @@
+var clipsList = {
+  apiUrl: "https://api.instagram.com/v1/users/self/media/recent/?access_token=",
+  tokenUrl: "/api/v1/retrieve_token",
+
+  setInitalListeners: function() {
+    var self = this;
+    $('#showClips').on('click', function(event) {
+      event.preventDefault();
+      $.when(self.retrieveToken()).done(function(first) {
+        self.assignToken(first);
+        self.launchAjax();
+      })
+    });
+  },
+
+  retrieveToken: function() {
+    var userId = event.currentTarget.dataset.id
+    var request = $.get(this.tokenUrl.concat(`/${userId}`) );
+    return request;
+  },
+
+  assignToken: function(data) {
+    this.token = data.token;
+  },
+
+  launchAjax: function() {
+    var request = $.get(this.apiUrl.concat(this.token));
+    request.done(this.template.bind(this));
+  },
+
+  template: function(response) {
+    var markup = "";
+    response.data.forEach(function(media) {
+      if (media.type == "video") {
+        markup += `<div class=section><li>`
+        if (media.caption) {
+          markup += `${media["caption"]["text"]}`
+        } else {
+          markup += ""
+        }
+        markup += `</li><li><a href=${media["link"]} target=_blank>${media["link"]}</a></li><br>
+        <video controls>
+        <source src=${media["videos"]["low_resolution"]["url"]}>
+        </video></div>`
+      }
+      if (markup == "") {
+        markup += `div class=section><h5>Sorry, you didn´t submit any clips recently</h5></div>`
+      }
+    })
+    markup += "</ul><br>"
+    $('#clipsList').html("");
+    $('#clipsList').append(markup);
+  }
+}
