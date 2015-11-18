@@ -14,7 +14,8 @@ class VideosController < ApplicationController
     end
     response = conn.get, {hidecaption: 'true'}
     markup = ""
-    response[0].body["data"].each do |media|
+    binding.pry
+    response.data.each do |media|
       if media["type"] == "video"
         markup += "<div class=section><li>#{media["caption"]["text"]}</li><li><a href=#{media["link"]} target=_blank>#{media["link"]}</a></li><br>
         <video controls>
