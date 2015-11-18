@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       get 'spots' => 'api#spots'
       get 'video_leaderboard' => 'api#video_leaderboard'
       get 'likes_leaderboard' => 'api#likes_leaderboard'
-      get 'spots/:name' => 'api#spot'
+      get 'spots/:id' => 'api#spot'
     end
   end
 
