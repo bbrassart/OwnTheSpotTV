@@ -1,0 +1,8 @@
+<h1>User with name <%= @skater.username %> reported a poser! </h1>
+<br>
+<h2>Video details:</h2>
+<p>ID: <em><%= @video.id %></em></p>
+<p>Email of the poser: <em><%= @video.skater.email %></em> </p>
+<br>
+Link to poser profile: <%= link_to 'Click here', 'http://ownthespot.tv/skaters/' + (@video.skater.username) %>
+</p>

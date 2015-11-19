@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/about-us' => 'site#about'
   post '/votes/like' => 'votes#like'
   post '/votes/dislike' => 'votes#dislike'
+  post '/votes/report_poser' => 'votes#report_poser'
   match '/contact',     to: 'contacts#new',             via: 'get'
   resources :contacts, only: [:new, :create]
   resources :skaters

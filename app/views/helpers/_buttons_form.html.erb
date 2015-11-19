@@ -37,7 +37,12 @@
     </div>
     <div class="real__votes">
       <div class="vote__buttons">
-        <button type="button" class="navbar--title btn poser__button"><%= link_to ("POSER"), skaters_path, class: "hoverable white-text"%></button></a>
+        <%= form_tag('/votes/report_poser') do %>
+          <%= hidden_field_tag :video_id, video.id %>
+          <button type="submit" class="navbar--title btn poser__button">
+            <span class="white-text hoverable">POSER</span>
+          </button>
+        <%end%>
       </div>
 
       <div class="vote__buttons">

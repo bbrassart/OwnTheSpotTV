@@ -7,8 +7,13 @@ class WelcomeMailer < ApplicationMailer
   end
 
   def user_added_video(video)
-
     @video = video
     mail(to: 'ownthespotofficial@gmail.com')
+  end
+
+  def poser_button(video, skater)
+    @skater = skater
+    @video = video
+    mail(to: 'ownthespotofficial@gmail.com', subject: "Poser reported")
   end
 end
