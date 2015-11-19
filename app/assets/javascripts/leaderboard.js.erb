@@ -130,11 +130,11 @@ var leaderboard = {
           html += `${results[0].username} received a total of ${results[1]} likes !<br>`
         }
         if (response.videos[index] == 0) {
-          html += `${results[0].username} didn't submit any clip !<br><a href="/skaters/${results[0].username.toLowerCase()}">Go see his profile</a>`
+          html += `He didn't submit any clip !<br><a href="/skaters/${results[0].username.toLowerCase()}">Go see his profile</a>`
         } else if (response.videos[index] == 1) {
-          html += `${results[0].username} posted just ${response.videos[index]} video !<br><a href="/skaters/${results[0].username.toLowerCase()}">Go see his profile</a>`
+          html += `He posted just ${response.videos[index]} video !<br><a href="/skaters/${results[0].username.toLowerCase()}">Go see his profile</a>`
         } else {
-          html += `${results[0].username} posted a total of ${response.videos[index]} videos !<br><a href="/skaters/${results[0].username.toLowerCase()}">Go see his profile</a>`
+          html += `He posted a total of ${response.videos[index]} videos !<br><a href="/skaters/${results[0].username.toLowerCase()}">Go see his profile</a>`
         }
         html += `</p>
                 </div>
