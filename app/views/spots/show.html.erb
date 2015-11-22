@@ -83,6 +83,13 @@
             <%= render partial: "helpers/show_spot_card", locals: {spot: @spot} %>
           </div>
           <div class="col m6 s12">
+            <div class="card-panel jumbotron center-align">
+              <span class="black-text">
+                <h5 class="center-align">
+                  Overall leaderboard
+                </h5>
+              </span>
+            </div>
             <%= render partial: "helpers/overall_best", locals: {skaters: @skaters, spot: nil} %>
           </div>
         <% end %>
