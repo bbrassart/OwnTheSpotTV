@@ -51,5 +51,4 @@ class Api::V1::ApiController < ApplicationController
     response = {skaters: skaters, logo_urls: logo_urls, videos: videos}
     render json: response
   end
-
 end
