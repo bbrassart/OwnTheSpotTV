@@ -10,31 +10,35 @@ RSpec.describe Spot, type: :model do
 
     context "matching examples" do
       it "will create a spot properly" do
-        spot = FactoryGirl.create(:spot)
-        expect(spot.id).to be_truthy
+        spot = FactoryGirl.build(:spot)
+        expect(spot).to be_valid
       end
     end
 
     context "failing examples" do
       it "will NOT create the spot if description field is empty" do
-        spot = FactoryGirl.build(:spot, description: '')
-        expect(spot).not_to be_valid
+        spot = FactoryGirl.build(:spot, description: nil)
+        spot.valid?
+        expect(spot.errors[:description]).to include("can't be blank")
       end
 
       it "will NOT create the spot if name is not provided" do
-        spot = FactoryGirl.build(:spot, name: '')
-        expect(spot).not_to be_valid
+        spot = FactoryGirl.build(:spot, name: nil)
+        spot.valid?
+        expect(spot.errors[:name]).to include("can't be blank")
       end
 
       it "will NOT create a spot if name is already taken" do
         FactoryGirl.create(:spot, name: 'foo')
         spot = FactoryGirl.build(:spot, name: 'foo')
-        expect(spot).not_to be_valid
+        spot.valid?
+        expect(spot.errors[:name]).to include("has already been taken")
       end
 
       it "will NOT create a spot if presence is set to nil" do
         spot = FactoryGirl.build(:spot, visible: nil)
-        expect(spot).not_to be_valid
+        spot.valid?
+        expect(spot.errors[:visible]).to include("can't be blank")
       end
     end
   end

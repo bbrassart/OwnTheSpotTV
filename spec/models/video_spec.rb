@@ -5,42 +5,48 @@ RSpec.describe Video, type: :model do
 
     context "matching examples" do
       it "will create a video properly" do
-        video = FactoryGirl.create(:video)
-        expect(video.id).to be_truthy
+        video = FactoryGirl.build(:video)
+        expect(video).to be_valid
       end
     end
 
     context "failing examples" do
       it "will NOT create the video if skater ID is not present" do
-        video = FactoryGirl.build(:video, skater_id: "")
-        expect(video).not_to be_valid
+        video = FactoryGirl.build(:video, skater_id: nil)
+        video.valid?
+        expect(video.errors[:skater_id]).to include("can't be blank")
       end
 
       it "will NOT create the video if URL is not provided" do
-        video = FactoryGirl.build(:video, url: "")
-        expect(video).not_to be_valid
+        video = FactoryGirl.build(:video, url: nil)
+        video.valid?
+        expect(video.errors[:url]).to include("can't be blank")
       end
 
       it "will NOT create the video if category is not line, slam or trick" do
         video = FactoryGirl.build(:video, category: "twotricks")
-        expect(video).not_to be_valid
+        video.valid?
+        expect(video.errors[:category]).to include("is not included in the list")
       end
 
       it "will NOT create the video if URL does not include instagram" do
         video = FactoryGirl.build(:video, url: 'https://www.youtube.com/watch?v=aT_yFSUbbVw')
-        expect(video).not_to be_valid
+        video.valid?
+        expect(video.errors[:url]).to include("is invalid")
       end
 
       it "will NOT create the video if URL is larger than 90 characters" do
         video = FactoryGirl.build(:video, url: 'https://instagram.com/p/91yPIDCzYm#{(1..3000).to_a.sample}/?taken-by=seedthespotblablbalbalabbalbabalabalabalabalbablablalbabl')
-        expect(video).not_to be_valid
+        video.valid?
+        expect(video.errors[:url]).to include("is too long (maximum is 90 characters)")
       end
 
 
       it "will NOT create a video if URL is already online in the site" do
         FactoryGirl.create(:video, url: "https://instagram.com/p/91yPIDCzYm/?taken-by=seedthespot")
         video = FactoryGirl.build(:video, url: "https://instagram.com/p/91yPIDCzYm/?taken-by=seedthespot")
-        expect(video).not_to be_valid
+        video.valid?
+        expect(video.errors[:url]).to include("has already been taken")
       end
     end
   end

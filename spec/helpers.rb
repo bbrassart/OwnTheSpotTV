@@ -7,7 +7,6 @@ module Helpers
     FactoryGirl.create(:vote, result: -1, voter_id: Skater.last.id, video_id: Video.first.id)
   end
 
-
   def create_video_with_votes
     create_skaters
     create_spots

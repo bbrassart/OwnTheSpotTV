@@ -11,32 +11,36 @@ RSpec.describe Skater, type: :model do
 
     context "matching examples" do
       it "will create a skater properly" do
-        skater = FactoryGirl.create(:skater)
-        expect(skater.id).to be_truthy
+        skater = FactoryGirl.build(:skater)
+        expect(skater).to be_valid
       end
     end
 
     context "failing examples" do
       it "will NOT create the skater if email field is empty" do
-        skater = FactoryGirl.build(:skater, email: '')
-        expect(skater).not_to be_valid
+        skater = FactoryGirl.build(:skater, email: nil)
+        skater.valid?
+        expect(skater.errors[:email]).to include("can't be blank")
       end
 
       it "will NOT create the skater if username is not provided" do
         skater = FactoryGirl.build(:skater, username: '')
-        expect(skater).not_to be_valid
+        skater.valid?
+        expect(skater.errors[:username]).to include("can't be blank")
       end
 
       it "will NOT create a skater if username is already taken" do
         FactoryGirl.create(:skater, username: 'Rick')
         skater = FactoryGirl.build(:skater, username: 'Rick')
-        expect(skater).not_to be_valid
+        skater.valid?
+        expect(skater.errors[:username]).to include("has already been taken")
       end
 
       it "will NOT create a skater if an account using the email already" do
         FactoryGirl.create(:skater, email: 'example@gmail.com')
         skater = FactoryGirl.build(:skater, email: 'example@gmail.com')
-        expect(skater).not_to be_valid
+        skater.valid?
+        expect(skater.errors[:email]).to include("has already been taken")
       end
     end
   end
@@ -44,15 +48,16 @@ RSpec.describe Skater, type: :model do
   describe "#most_active_skaters , sort the users by number of videos they submitted" do
     context "10 users created and they all have lots of videos" do
 
-      it "will return the length of the most active skaters array, which is 3" do
+      it "will return the length of the most active skaters array, which is in this case is 6" do
         create_skaters_and_videos
-        expect(Skater.most_active_skaters.length).to eq(3)
+        top_5__most_active_skaters = Skater.most_active_skaters(9)
+        expect(top_5__most_active_skaters.length).to eq(10)
       end
 
 
       it "will return the first skater of the array, the one who submitted the most videos" do
         create_skaters_and_videos
-        expect(Skater.most_active_skaters[0]).to eq(Skater.find_by_username("10"))
+        expect(Skater.most_active_skaters(10)[0]).to eq(Skater.find_by_username("10"))
       end
 
     end
@@ -65,16 +70,6 @@ RSpec.describe Skater, type: :model do
         create_skaters_videos_and_votes
         sorted_clips = Video.all.sort_by {|video| video.votes.sum('result')}.reverse
         expect( Skater.find_best(sorted_clips) ).to eq(Skater.find_by_username("1"))
-      end
-    end
-  end
-
-  describe "#top_5_number_of_likes, return an array of arrays, each array contains the number of likes from a user and the respective Skater object from top 5 skaters" do
-    context "10 users created and they all have lots of videos" do
-
-      it "will return the skater who has the highest numbers of likes as the first element of the first array" do
-        create_skaters_videos_and_votes
-        expect( Skater.top_5_number_of_likes[0][0]).to eq( Skater.find_by_username("1") )
       end
     end
   end
