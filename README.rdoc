@@ -7,7 +7,7 @@ Getting Started:
 - Git clone
 - Bundle install
 - Create database and seed it.
-- To run all the tests, run "bundle exec rspec".
+- To run all the tests, run "rspec".
 - Initialize the rails server.
 
 - Test account
