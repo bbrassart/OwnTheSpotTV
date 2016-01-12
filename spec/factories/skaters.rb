@@ -7,6 +7,6 @@ FactoryGirl.define do
     f.email { Faker::Internet.email }
     f.password  { strong_password }
     f.password_confirmation { strong_password }
-    f.stance {" goofy" }
+    f.stance {"goofy" }
   end
 end
