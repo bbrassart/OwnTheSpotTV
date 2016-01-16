@@ -4,6 +4,18 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require "capybara/rspec"
 require 'database_cleaner'
+
+Capybara.register_driver :selenium do |app|
+  profile = Selenium::WebDriver::Firefox::Profile.new
+  Capybara::Selenium::Driver.new( app, :profile => profile)
+end
+
+Capybara.run_server = true
+Capybara.server_port = 7000
+Capybara.app_host = "http://localhost:#{Capybara.server_port}"
+
+Capybara.default_max_wait_time = 10
+Capybara.default_driver = :selenium
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
 #
@@ -12,7 +24,6 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
-
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

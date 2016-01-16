@@ -42,10 +42,10 @@ RSpec.describe Vote, type: :model do
       end
 
       it "will NOT create the vote if user has already voted for the video" do
-        FactoryGirl.create(:vote)
-        vote = FactoryGirl.build(:vote)
-        vote.valid?
-        expect(vote.errors[:voter_id]).to include("has already been taken")
+        first_vote = FactoryGirl.create(:vote, result: 1, voter_id: Skater.last.id, video_id: Video.last.id)
+        unauthorized_vote = FactoryGirl.build(:vote, result: 1, voter_id: Skater.last.id, video_id: Video.last.id)
+        unauthorized_vote.valid?
+        expect(unauthorized_vote.errors[:voter_id]).to include("has already been taken")
       end
     end
   end

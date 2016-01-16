@@ -55,16 +55,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :test do
   gem 'database_cleaner'
-#  gem 'capybara-webkit'
+  gem 'capybara-webkit'
+  gem 'selenium-webdriver'
+  gem 'capybara'
+
 end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'selenium-webdriver'
+
 
   gem 'pry'
-  gem 'capybara'
+
   gem 'launchy'
   gem 'factory_girl_rails'
 
