@@ -8,6 +8,7 @@ gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '< 2.0'
 gem 'awesome_print'
 gem 'instagram', '1.1.4'
+gem 'haml'
 
 gem 'materialize-sass'
 gem 'friendly_id', '~> 5.1.0'
