@@ -1,0 +1,23 @@
+.main__background{class: "custom__background-#{@bg_id}"}
+  .container
+    .row
+      .col.m6.s12
+        .section
+          .card
+            .card-content.spot__show--collapsible
+              %span.card-title.activator.grey-text.text-darken-4
+                %h4.center-align Log in!
+                .center-align
+                  = render 'helpers/signin_form'
+      .col.m6.s12
+        .section
+          .card
+            .card-content.spot__show--collapsible
+              %span.card-title.activator.grey-text.text-darken-4
+                %h4.center-align Not registered yet?
+                .center-align
+                  = link_to new_skater_path, id: 'button', type: 'submit', name: 'action', class: ['btn', 'waves-effect', 'signup__vote__button', 'waves-light', 'white-text'] do
+                    Create an account
+                    %i.material-icons.right send
+      .col.s12
+        .section
