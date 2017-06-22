@@ -15,7 +15,12 @@ class SkatersController < ApplicationController
     if @skater.save
       WelcomeMailer.welcome_email(@skater).deliver_now
       session[:user_id] = @skater.id
-      redirect_to instagram_auth_path, flash: {success: "Hi #{current_user.username}! Welcome to OwnTheSpot.TV!" }
+      flash[:success] = "Hi #{@skater.username}! Welcome to OwnTheSpot.TV!"
+      if bypass_instagram_auth?
+        redirect_to skater_path(@skater)
+      else
+        redirect_to instagram_auth_path
+      end
     else
       redirect_to root_path, flash: {danger: "Something went wrong... Make sure all the fields were filled" }
     end

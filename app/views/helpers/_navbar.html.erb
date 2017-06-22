@@ -10,7 +10,9 @@
 
 <% if current_user %>
   <ul id="dropdown2" class="dropdown-content">
-    <li><%= link_to 'Your recent Instagram clips', '/videos/your-insta-links', class: "navbar__dropdown--font hoverable" %></li>
+    <% unless bypass_instagram_auth? %>
+      <li><%= link_to 'Your recent Instagram clips', '/videos/your-insta-links', class: "navbar__dropdown--font hoverable" %></li>
+    <% end %>
     <li><%= link_to "View your profile", skater_path(current_user), class: "navbar__dropdown--font hoverable" %></li>
     <li><%= link_to "Edit your profile", edit_skater_path(current_user), class: "navbar__dropdown--font hoverable" %></li>
     <li><%= link_to "Log out", logout_path, method:"delete", class: "navbar__dropdown--font hoverable" %></li>

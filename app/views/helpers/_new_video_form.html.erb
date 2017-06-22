@@ -9,9 +9,11 @@
       <br>
       <a href="https://help.instagram.com/372819389498306" target="_blank">How to find your Instagram clip link</a>
       <br>
-      <a class="waves-effect waves-light btn-small" href="/videos/your-insta-links">
-         <i class="material-icons left">subject</i>Get the links of your recent Insta clips
-       </a>
+      <% unless bypass_instagram_auth? %>
+        <a class="waves-effect waves-light btn-small" href="/videos/your-insta-links">
+           <i class="material-icons left">subject</i>Get the links of your recent Insta clips
+         </a>
+      <% end %>
     </p>
     <div id="clipsList">
 
