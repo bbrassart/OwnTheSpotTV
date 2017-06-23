@@ -25,8 +25,13 @@ class VotesController < ApplicationController
   def report_poser
     @video = Video.find(params[:video_id])
     @skater = current_user
-    WelcomeMailer.poser_button(@video, @skater).deliver_now
-    redirect_to spot_path(@video.spot_id), flash: {success: "Thank you for helping us!"}
+    begin
+      WelcomeMailer.poser_button(@video, @skater).deliver_now
+    rescue
+      puts 'Another email issue'
+    ensure
+      redirect_to spot_path(@video.spot_id), flash: {success: "Thank you for helping us!"}
+    end
   end
 
   def dislike

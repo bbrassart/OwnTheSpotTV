@@ -18,6 +18,7 @@ class SkatersController < ApplicationController
       begin
         WelcomeMailer.welcome_email(@skater).deliver_now
       rescue
+        puts 'Another email issue'
       ensure
         if bypass_instagram_auth?
           redirect_to skater_path(@skater)

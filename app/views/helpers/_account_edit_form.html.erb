@@ -1,4 +1,4 @@
-<% button = current_user ? "Edit your profile" : "Connect with Instagram" %>
+<% cta_text = current_user ? "Edit your profile" : bypass_instagram_auth? ? "Create your account" : "Connect with Instagram" %>
 
 <%= form_for @skater, :html => {:multipart => true }  do |f| %>
 
@@ -12,8 +12,6 @@
 
         <%= f.text_field :username, placeholder: "Username" %>
         <label for="username">Enter your username</label>
-
-
 
         <%= f.email_field :email, placeholder: "Email" %>
         <label for="email">Enter a valid email</label><br>
@@ -35,7 +33,6 @@
         <label for="password">Type a new password</label>
 
 
-
         <%= f.password_field :password_confirmation, placeholder: "Confirm Password"  %>
         <label for="password_confirmation">Confirm your new password</label><br>
     <% else %>
@@ -48,7 +45,6 @@
         <label for="password_confirmation">Confirm your password</label><br>
     <% end %>
 
-      <%= f.submit button, class:"btn btn-primary" %>
-
+      <%= f.submit cta_text, class:"btn btn-primary" %>
 
 <% end %>

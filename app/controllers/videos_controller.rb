@@ -46,9 +46,14 @@ class VideosController < ApplicationController
        flash[:danger] = "Either you don't owe the media or it's not a clip... Sorry!"
        redirect_to(:action => "new") and return
      else
-       WelcomeMailer.user_added_video(video).deliver_now
-       flash[:success] = "Great! Your clip is now online!"
-       redirect_to skater_path(@skater) and return
+       begin
+         WelcomeMailer.user_added_video(video).deliver_now
+       rescue
+         puts 'Another email issue'
+       ensure
+         flash[:success] = "Great! Your clip is now online!"
+         redirect_to skater_path(@skater) and return
+       end
      end
   end
 
