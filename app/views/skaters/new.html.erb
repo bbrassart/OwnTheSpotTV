@@ -7,7 +7,11 @@
 						<div class="card-content spot__show--collapsible">
 							<span class="card-title activator grey-text text-darken-4">
 								<h4 class="center-align">Register as a new user</h4>
-								<h5 class="center-align">Sign in with your Instagram account</h5>
+
+                <% unless bypass_instagram_auth? %>
+								  <h5 class="center-align">Sign in with your Instagram account</h5>
+                <% end %>
+
 								<div class="center-align"><%= render 'helpers/account_edit_form' %></div>
 							</span>
 						</div>

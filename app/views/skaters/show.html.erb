@@ -3,20 +3,20 @@
   <% if current_user.id == @skater.id %>
     <div class="row">
       <%= render partial: "helpers/current_user/user_profile", locals: {skater: current_user} %>
-      <div class="col l6 offset-l3 s12 center-align">
-        <div class="section">
-          <div class="card-panel jumbotron">
-            <span class="black-text">
-              <a class="waves-effect waves-light btn-large" href="/videos/your-insta-links">
-                <i class="material-icons left">subject</i>Get the links of all your Insta clips
-              </a>
-            </span>
+
+      <% unless bypass_instagram_auth?  %>
+        <div class="col l6 offset-l3 s12 center-align">
+          <div class="section">
+            <div class="card-panel jumbotron">
+              <span class="black-text">
+                <a class="waves-effect waves-light btn-large" href="/videos/your-insta-links">
+                  <i class="material-icons left">subject</i>Get the links of all your Insta clips
+                </a>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-
-
-
+      <% end %>
 
       <% if current_user.videos.any? %>
         <div class="col l6 offset-l3 s12 center-align">

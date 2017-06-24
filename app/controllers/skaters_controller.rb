@@ -44,12 +44,13 @@ class SkatersController < ApplicationController
   end
 
   def edit
-    @skater = current_user
+    @skater = Skater.friendly.find(params[:id])
   end
 
   def update
-    if current_user.update_attributes(skater_params)
-      redirect_to skaters_path, flash: {success: "Congrats #{current_user.username}! Your new information has been saved." }
+    skater = Skater.friendly.find(params[:skater][:id])
+    if skater.update_attributes skater_params
+      redirect_to skaters_path, flash: {success: "Congrats #{skater.username}! Your new information has been saved." }
     else
       render :edit
     end
