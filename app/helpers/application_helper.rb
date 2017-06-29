@@ -1,5 +1,5 @@
 module ApplicationHelper
   def bypass_instagram_auth?
-    true
+    false
   end
 end
