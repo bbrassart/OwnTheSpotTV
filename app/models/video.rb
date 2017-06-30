@@ -13,7 +13,7 @@ class Video < ActiveRecord::Base
   end
 
   def ajax_call(unique_id)
-    api_url = "http://api.instagram.com/oembed/?url=".concat(unique_id)
+    api_url = "http://api.instagram.com/oembed/?url=" + unique_id + "&hidecaption=true"
     conn = Faraday.new(:url => api_url) do |faraday|
       faraday.response :json            # log requests to STDOUT
       faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
