@@ -8,6 +8,8 @@ class Video < ActiveRecord::Base
   belongs_to :skater
   has_many :votes
 
+  scope :lines, -> { where(category: 'line') }
+
   def score
   	votes.inject(0) { |total, vote| total + vote.result }
   end

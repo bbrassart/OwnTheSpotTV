@@ -20,6 +20,10 @@ class SpotsController < ApplicationController
   end
 
   def show
+    if only_lines
+      params.delete :category if params[:category]
+    end
+
     @skaters = Skater.top_5_number_of_likes(Video.all)
     @spot = Spot.friendly.find(params[:id])
     @bg_id = @spot.fullname
