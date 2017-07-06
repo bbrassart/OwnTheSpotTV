@@ -49,35 +49,55 @@
 
       <div class="section">
         <% if @spot.videos.present? %>
-          <div class="col m5 s12">
-            <%= render partial: "helpers/show_spot_card", locals: {spot: @spot} %>
-          </div>
 
-          <div class="col m5 s12">
-            <%if @best_overall_videos.present? %>
-              <%= render partial: "helpers/best_skater_profile", locals: {skater: @overall_best_skater} %>
-            <% elsif @best_trick_videos.present? %>
-              <%= render partial: "helpers/best_skater_profile", locals: {skater: @best_trick_skater} %>
-            <% elsif @worst_slam_videos.present? %>
-              <%= render partial: "helpers/best_skater_profile", locals: {skater: @worst_slam_skater} %>
-            <% elsif @best_line_videos.present? %>
-              <%= render partial: "helpers/best_skater_profile", locals: {skater: @best_line_skater} %>
-            <%else%>
-              <div class="card-panel show__collapse__header jumbotron center-align">
-                <span class="black-text">
-                  <h5 class="text--padding--below center-align">
-                    No videos found...
-                  </h5>
-                </span>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="col m2 s12">
-            <div class="category_menu center-align">
-              <%= render partial: "helpers/category_menu" %>
+          <% if only_lines %>
+            <div class="col m6 s12">
+              <%= render partial: "helpers/show_spot_card", locals: {spot: @spot} %>
             </div>
-          </div>
+            <div class="col m6 s12">
+              <%if @best_overall_videos.present? %>
+                <%= render partial: "helpers/best_skater_profile", locals: {skater: @overall_best_skater} %>
+              <%else%>
+                <div class="card-panel show__collapse__header jumbotron center-align">
+                  <span class="black-text">
+                    <h5 class="text--padding--below center-align">
+                      No videos found...
+                    </h5>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+
+          <% else %>
+            <div class="col m5 s12">
+              <%= render partial: "helpers/show_spot_card", locals: {spot: @spot} %>
+            </div>
+            <div class="col m5 s12">
+              <%if @best_overall_videos.present? %>
+                <%= render partial: "helpers/best_skater_profile", locals: {skater: @overall_best_skater} %>
+              <% elsif @best_trick_videos.present? %>
+                <%= render partial: "helpers/best_skater_profile", locals: {skater: @best_trick_skater} %>
+              <% elsif @worst_slam_videos.present? %>
+                <%= render partial: "helpers/best_skater_profile", locals: {skater: @worst_slam_skater} %>
+              <% elsif @best_line_videos.present? %>
+                <%= render partial: "helpers/best_skater_profile", locals: {skater: @best_line_skater} %>
+              <%else%>
+                <div class="card-panel show__collapse__header jumbotron center-align">
+                  <span class="black-text">
+                    <h5 class="text--padding--below center-align">
+                      No videos found...
+                    </h5>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+            <div class="col m2 s12">
+              <div class="category_menu center-align">
+                <%= render partial: "helpers/category_menu" %>
+              </div>
+            </div>
+          <% end %>
+
         <% else %>
           <div class="col m6 s12">
             <%= render partial: "helpers/show_spot_card", locals: {spot: @spot} %>
@@ -96,7 +116,6 @@
       </div>
     </div>
 
-
     <div class="row">
       <% if @best_overall_videos.present? %>
         <%= render partial:"helpers/row_videos_component", locals: {videos: @best_overall_videos} %>
@@ -108,8 +127,6 @@
         <%= render partial:"helpers/row_videos_component", locals: {videos: @worst_slam_videos} %>
       <%end%>
     </div>
-
-
 
     <div class="row">
       <% if @latest_overall_videos.present? %>

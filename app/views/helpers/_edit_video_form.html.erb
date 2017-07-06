@@ -1,12 +1,14 @@
 <%= form_for @video, locals: {spots: @spots}, class: "center-align"  do |f| %>
-  <%= f.radio_button(:category, "trick", :checked => true, class:"with-gap") %>
-  <label for="video_category_trick">Best trick</label>
+  <% unless only_lines %>
+    <%= f.radio_button(:category, "trick", :checked => true, class:"with-gap") %>
+    <label for="video_category_trick">Best trick</label>
 
-  <%= f.radio_button( :category, 'line' , class:"with-gap" )%>
-  <label for="video_category_line">Firing Line</label>
+    <%= f.radio_button( :category, 'line' , class:"with-gap" )%>
+    <label for="video_category_line">Firing Line</label>
 
-  <%= f.radio_button( :category, 'slam' , class:"with-gap" )%>
-  <label for="video_category_slam">Worst slam</label><br>
+    <%= f.radio_button( :category, 'slam' , class:"with-gap" )%>
+    <label for="video_category_slam">Worst slam</label><br>
+  <% end %>
 
   <label for="spot_id">Choose the right spot</label>
   <select class="browser-default" id="spots" name="spot_id">

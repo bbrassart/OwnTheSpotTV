@@ -11,7 +11,13 @@
           <div class="card-panel jumbotron center-align">
             <span class="black-text">
               <h4>8 rules to rule them all</h4>
-              <p class="center-align">20 spots, three categories: <b>Best Trick, Firing Line, Worst SLam</b><br>
+              <p class="center-align">
+                <% if only_lines %>
+                  Instagram clips dispatched between 20 Barcelona skate spots
+                <% else %>
+                  20 spots, three categories: <b>Best Trick, Firing Line, Worst SLam</b>
+                <% end %>
+                <br>
                 Registered users can <b>submit their own Instagram clips</b><br>
                 Only registered users can <b>vote</b> for the best clips<br>
                 Each user has one vote for each video: <b>Like or Dislike</b><br>
