@@ -1,10 +1,5 @@
 = form_tag ('/login'), id: "loginForm" do
 
-  %label{"for" => "username"} Username
-  = text_field_tag :username
-
-
-  %label{"for" => "password"} Password
-  = password_field_tag :password
-
+  = text_field_tag :username, nil, placeholder: 'Username'
+  = password_field_tag :password, nil, placeholder: 'Password'
   = submit_tag "Log in", {"class" => "btn btn-primary"}
