@@ -11,7 +11,7 @@
               <span class="card-title activator grey-text text-darken-4 center-align">
                 <p class="welcome_card-text">
                   Barcelona Skateboarding Video Contest
-                  <br>20 spots, your videos, one Leaderboard</p>
+                  <br>20 spots, your clips, one Leaderboard</p>
               </span>
             </div>
             <div class="card-reveal">
@@ -26,7 +26,7 @@
                 <% unless only_lines %>
                   Best Trick, Best Line, Worst Slam...
                 <% end %>
-                Send us your best videos!
+                Post your best clips!
                 Watch the footy, you decide who is the Boss of the spot!
               </p>
             </div>
@@ -63,9 +63,9 @@
               </span>
               <p><%= likes %> likes</p>
               <% if skater.videos.length == 1 %>
-                <p><%= skater.videos.length %> video posted</p>
+                <p><%= skater.videos.length %> clip posted</p>
               <% else %>
-                <p><%= skater.videos.length %> videos posted</p>
+                <p><%= skater.videos.length %> clips posted</p>
               <% end %>
               <a href="#!" class="secondary-content">
                 <i class="material-icons">grade</i>
