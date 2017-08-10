@@ -13496,19 +13496,10 @@ textarea.materialize-textarea {
 /***************
   Radio Buttons
 ***************/
-/* Remove default Radio Buttons */
-/* line 243, /Users/ghettoblaster/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/materialize-sass-0.97.1/app/assets/stylesheets/materialize/components/_form.scss */
-/*[type="radio"]:not(:checked),
-[type="radio"]:checked {
-  position: absolute;
-  left: -9999px;
-  visibility: hidden;
-}
-/* Commenting this block to keep default checkbox buttons
+
 /* line 250, /Users/ghettoblaster/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/materialize-sass-0.97.1/app/assets/stylesheets/materialize/components/_form.scss */
 [type="radio"]:not(:checked) + label,
 [type="radio"]:checked + label {
-  /*position: relative;*/
   padding-left: 35px;
   cursor: pointer;
   display: inline-block;
