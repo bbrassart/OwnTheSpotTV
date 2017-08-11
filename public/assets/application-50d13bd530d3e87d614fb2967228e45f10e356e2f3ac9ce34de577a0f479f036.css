@@ -13497,6 +13497,8 @@ textarea.materialize-textarea {
   Radio Buttons
 ***************/
 
+/* Manually removing some code here */
+
 /* line 250, /Users/ghettoblaster/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/materialize-sass-0.97.1/app/assets/stylesheets/materialize/components/_form.scss */
 [type="radio"]:not(:checked) + label,
 [type="radio"]:checked + label {

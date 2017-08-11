@@ -15,16 +15,23 @@
         <label for="email">Enter a valid email</label>
         <%= f.email_field :email, placeholder: "Email", required: true %>
 
-        <label for="logo">Choose an avatar</label>
-        <%= f.file_field :logo, required: true, id: 'input-logo-edit' %>
+        <div>
+          <label for="logo">Choose an avatar</label>
+          <%= f.file_field :logo, required: true, id: 'input-logo-edit' %>
+        </div>
 
     <% end %>
-    <div class="stance-checkboxes-form">
-      <label for="skater_stance_regular" class="regular-checkbox-edit">Regular</label>
-      <%= f.radio_button(:stance, "regular", required: true) %>
 
-      <label for="skater_stance_goofy">Goofy</label>
-      <%= f.radio_button( :stance, 'goofy' , required: true )%>
+    <label for="stance">Choose your stance</label>
+    <div class="stance-radio-form">
+      <span class="stance-radio-btn-container">
+        <label for="skater_stance_regular" class="stance-radio-edit-label">Regular</label>
+        <%= f.radio_button(:stance, "regular", required: true) %>
+      </span>
+      <span class=>
+         <label for="skater_stance_goofy" class="stance-radio-edit-label">Goofy</label>
+        <%= f.radio_button( :stance, 'goofy' , required: true )%>
+      </span>
     </div>
 
     <% if !current_user %>
@@ -37,5 +44,4 @@
     <% end %>
 
       <%= f.submit cta_text, class:"btn btn-primary" %>
-
 <% end %>

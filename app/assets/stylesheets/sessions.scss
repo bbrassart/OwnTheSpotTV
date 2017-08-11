@@ -3,18 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 form {
-  .regular-checkbox-edit {
-    font-size: 15px;
-  }
-
   input[name="skater[logo]"] {
     display: block;
     padding-left: 20%;
     margin: 1em 0;
   }
 
-  .stance-checkboxes-form {
-    margin: 1em 0;
+  .stance-radio-form {
+    margin: 0 0 1.5em 0;
+    padding-right: 2em;
+
+    .stance-radio-edit-label {
+      font-size: 15px;
+    }
+    .stance-radio-btn-container {
+      padding: 0 2em;
+    }
   }
 
 }

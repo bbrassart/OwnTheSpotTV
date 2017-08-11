@@ -10,7 +10,7 @@ gem 'awesome_print'
 gem 'instagram', '1.1.4'
 gem 'haml'
 
-gem 'materialize-sass'
+gem 'materialize-sass', '0.97.5'
 gem 'friendly_id', '~> 5.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

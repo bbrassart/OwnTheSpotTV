@@ -277,7 +277,7 @@ DEPENDENCIES
   launchy
   mail_form
   material_icons
-  materialize-sass
+  materialize-sass (= 0.97.5)
   newrelic_rpm
   paperclip (~> 4.2)
   pg
